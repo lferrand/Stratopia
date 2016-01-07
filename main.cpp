@@ -40,6 +40,8 @@ int main(int argc, char *argv[])
         else
         {
             mesTiles->RecevoirEvenement(event);
+            monEditeur->RecevoirEvenement(event);
+
         }
 
         /*SDL_RenderClear(rendererTile);

@@ -1,6 +1,7 @@
 #ifndef MAPEDITEUR_H
 #define MAPEDITEUR_H
 
+#include <iostream>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include "tilesediteur.h"
@@ -22,8 +23,10 @@ class MapEditeur
     protected:
     private:
         SDL_Window *editeurFenetre;
-
+        SDL_Surface *mapSurface;
         SDL_Texture *grilleTexture;
+
+        bool cliqueEnCours;
         //SDL_Texture *mapTexture;
 
         TilesEditeur *mesTiles;

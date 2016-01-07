@@ -10,6 +10,7 @@ class TilesEditeur
         SDL_Surface *GetTilesSurface();
         virtual ~TilesEditeur();
         void RecevoirEvenement(SDL_Event event);
+        SDL_Rect GetPositionTileSelectionne(){return positionTileSelectionne;}
     protected:
     private:
         SDL_Window *tileFenetre;
@@ -21,6 +22,7 @@ class TilesEditeur
 
         SDL_Renderer *renderer;
         SDL_Rect positionTiles;
+        SDL_Rect positionTileSelectionne;
 };
 
 #endif // TILESEDITEUR_H
