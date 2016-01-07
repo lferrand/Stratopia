@@ -1,10 +1,11 @@
 # depslib dependency file v1.0
-1452162153 source:d:\projets\stratopia\main.cpp
+1452175925 source:d:\projets\stratopia\main.cpp
 	<SDL2/SDL.h>
 	<iostream>
 	<SDL2/SDL_image.h>
 	"mapediteur.h"
 	"tilesediteur.h"
+	"mapjeu.h"
 
 1394937196 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl.h
 	"SDL_main.h"
@@ -335,19 +336,21 @@
 	"begin_code.h"
 	"close_code.h"
 
-1452168746 source:d:\projets\stratopia\editeur\map\mapediteur.cpp
+1452174010 source:d:\projets\stratopia\editeur\map\mapediteur.cpp
 	"mapediteur.h"
 
-1452168381 d:\projets\stratopia\editeur\map\mapediteur.h
+1452173122 d:\projets\stratopia\editeur\map\mapediteur.h
+	"tilesediteur.h"
 	<iostream>
+	<fstream>
+	<sstream>
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
-	"tilesediteur.h"
 
 1452164223 source:d:\projets\stratopia\editeur\tiles\tilesediteur.cpp
 	"tilesediteur.h"
 
-1452162019 d:\projets\stratopia\editeur\tiles\tilesediteur.h
+1452172983 d:\projets\stratopia\editeur\tiles\tilesediteur.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 
@@ -698,4 +701,14 @@
 	<SDL2/SDL_image.h>
 	"mapediteur.h"
 	"tilesediteur.h"
+
+1452175218 source:d:\projets\stratopia\jeu\map\mapjeu.cpp
+	"mapjeu.h"
+
+1452175177 d:\projets\stratopia\jeu\map\mapjeu.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	<fstream>
+	<iostream>
+	<sstream>
 

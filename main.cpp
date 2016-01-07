@@ -3,6 +3,7 @@
 #include <SDL2/SDL_image.h>
 #include "mapediteur.h"
 #include "tilesediteur.h"
+#include "mapjeu.h"
 
 
 int main(int argc, char *argv[])
@@ -10,24 +11,13 @@ int main(int argc, char *argv[])
     SDL_Event event;
     bool end = false;
 
-    MapEditeur *monEditeur=new MapEditeur();
+    MapJeu *monJeu=new MapJeu();
+    /*MapEditeur *monEditeur=new MapEditeur();
     TilesEditeur *mesTiles=new TilesEditeur();
 
     monEditeur->ChangerTiles(mesTiles);
-    monEditeur->NewMap();
+    monEditeur->NewMap();*/
 
-
-    // Window
-
-    // Renderer
-/*
-    rendererTile = SDL_CreateRenderer(Tile, -1, SDL_RENDERER_ACCELERATED);
-
-    bitmapSurface = IMG_Load("Editeur/Images/map_tiles_2.png");
-    bitmapTex = SDL_CreateTextureFromSurface(rendererTile, bitmapSurface);
-    SDL_FreeSurface(bitmapSurface);
-*/
-    // Event loop
 
     while(!end)
     {
@@ -39,14 +29,10 @@ int main(int argc, char *argv[])
             }
         else
         {
-            mesTiles->RecevoirEvenement(event);
-            monEditeur->RecevoirEvenement(event);
+            /*mesTiles->RecevoirEvenement(event);
+            monEditeur->RecevoirEvenement(event);*/
 
         }
-
-        /*SDL_RenderClear(rendererTile);
-        SDL_RenderCopy(rendererTile, bitmapTex, NULL, NULL);
-        SDL_RenderPresent(rendererTile);*/
 
     }
 
