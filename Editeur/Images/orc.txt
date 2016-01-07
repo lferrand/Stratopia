@@ -1,0 +1,7 @@
+4096*1024
+
+32 -> 8
+
+128px largeur 128px Hauteur
+
+55-70 utile
