@@ -21,8 +21,31 @@ TilesEditeur::TilesEditeur()
     positionTiles.w=400;
     positionTiles.h=325;
 
+    positionTileSelectionne.x=0;
+    positionTileSelectionne.y=0;
+    positionTileSelectionne.w=16;
+    positionTileSelectionne.h=16;
+
+    SDL_Rect positionClic;
+
+    int w_tiles, h_tiles;
+    SDL_QueryTexture(tilesTexture, NULL, NULL, &w_tiles, &h_tiles);
+    float ratio_w=(float)positionTiles.w/(float)w_tiles;
+    float ratio_h=(float)positionTiles.h/(float)h_tiles;
+
+    positionClic.x=0;
+    positionClic.y=0;
+    positionClic.w=w_tiles/16*ratio_w;
+    positionClic.h=h_tiles/13*ratio_h;
+
+
+
+
+
     SDL_RenderClear(renderer);
     SDL_RenderCopy(renderer,tilesTexture,NULL,&positionTiles);
+    SDL_RenderCopy(renderer,selectionTexture,NULL,&positionClic);
+
     SDL_RenderPresent(renderer);
 
 }
@@ -52,6 +75,12 @@ void TilesEditeur::RecevoirEvenement(SDL_Event event)
 
             positionClic.w=w_tiles/16*ratio_w;
             positionClic.h=h_tiles/13*ratio_h;
+
+            positionTileSelectionne=positionClic;
+
+
+
+
             SDL_RenderClear(renderer);
 
             SDL_RenderCopy(renderer,tilesTexture,NULL,&positionTiles);
