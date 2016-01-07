@@ -336,21 +336,22 @@
 	"begin_code.h"
 	"close_code.h"
 
-1452183798 source:d:\projets\stratopia\editeur\map\mapediteur.cpp
+1452188574 source:d:\projets\stratopia\editeur\map\mapediteur.cpp
 	"mapediteur.h"
 
-1452184179 d:\projets\stratopia\editeur\map\mapediteur.h
+1452186285 d:\projets\stratopia\editeur\map\mapediteur.h
 	"tilesediteur.h"
 	<iostream>
 	<fstream>
 	<sstream>
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
+	<vector>
 
 1452184193 source:d:\projets\stratopia\editeur\tiles\tilesediteur.cpp
 	"tilesediteur.h"
 
-1452184563 d:\projets\stratopia\editeur\tiles\tilesediteur.h
+1452189404 d:\projets\stratopia\editeur\tiles\tilesediteur.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 

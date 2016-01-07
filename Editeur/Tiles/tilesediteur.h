@@ -32,6 +32,7 @@ class TilesEditeur
         SDL_Texture *tilesTexture;
         SDL_Texture *selectionTexture;
         SDL_Texture *spriteOrcTexture;
+        SDL_Texture *spriteOrcEnnemieTexture;
         SDL_Surface *tilesSurface;
 
         int modeActuel;

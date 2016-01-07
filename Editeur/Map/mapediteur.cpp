@@ -168,10 +168,11 @@ void MapEditeur::RecevoirEvenement(SDL_Event event)
                 positionClic.w=30;
                 positionClic.h=30;
                 SDL_Rect positionSpriteCaC=mesTiles->GetPositionSpriteCaC();
-
-                SDL_RenderCopy(renderer,spriteOrcTexture,&positionSpriteCaC,&positionClic);
-                SDL_RenderPresent(renderer);
-
+                UniteEditeurStr unit;
+                unit.type='c';
+                unit.position=positionClic;
+                uniteJoueur.push_back(unit);
+                ActualiserAffichageCarte();
             }
 
         }
@@ -242,7 +243,7 @@ void MapEditeur::RecevoirEvenement(SDL_Event event)
 
             if(event.key.keysym.sym==SDLK_s)
             {
-                //SauvegarderMap();
+                SauvegarderMap();
             }
             else if(event.key.keysym.sym==SDLK_m)
             {
@@ -279,7 +280,11 @@ void MapEditeur::ActualiserAffichageCarte()
             }
         }
     }
-
+    SDL_Rect positionOrcCaC=mesTiles->GetPositionSpriteCaC();
+    for(int unsigned i=0;i<uniteJoueur.size();i++)
+    {
+        SDL_RenderCopy(renderer,spriteOrcTexture,&positionOrcCaC,&uniteJoueur[i].position);
+    }
 
     if(!visionCarte)
         SDL_RenderCopy(renderer,grilleTexture,NULL,NULL);
@@ -305,9 +310,14 @@ void MapEditeur::SauvegarderMap()
             fichier << " " << carteTexture[i][j];
             fichier<< '\n';
         }
-
-
     }
+    fichier.close();
+    fichier.open("unite1.lvl", std::ios::out | std::ios::trunc);
+    for(unsigned int i=0;i<uniteJoueur.size();i++)
+    {
+        fichier << uniteJoueur[i].type << " " << uniteJoueur[i].position.x << " " << uniteJoueur[i].position.y << '\n';
+    }
+    fichier.close();
 
 
 }
@@ -319,4 +329,5 @@ MapEditeur::~MapEditeur()
          delete[] cartePassage[i];
     }
     delete[] cartePassage;
+    SDL_FreeSurface(mapSurface);
 }

@@ -54,15 +54,23 @@ void TilesEditeur::ChargerFenetreSprite()
     rendererSprites =SDL_CreateRenderer(spriteFenetre,-1,0);
 
     SDL_Surface* spriteOrcSurface=IMG_Load("Editeur/Images/orc0.png");
+    SDL_Surface* spriteOrcEnnemieSurface=IMG_Load("Editeur/Images/orc_ennemy.png");
+
     spriteOrcTexture=SDL_CreateTextureFromSurface(rendererSprites, spriteOrcSurface);
+    spriteOrcEnnemieTexture=SDL_CreateTextureFromSurface(rendererSprites, spriteOrcEnnemieSurface);
+
+    SDL_FreeSurface(spriteOrcSurface);
+    SDL_FreeSurface(spriteOrcEnnemieSurface);
+
+
     positionSpriteCaC.x=37;
     positionSpriteCaC.y=37;
     positionSpriteCaC.w=75;
     positionSpriteCaC.h=75;
-    positionSpriteCaCAffichage.x=37;
-    positionSpriteCaCAffichage.y=37;
-    positionSpriteCaCAffichage.w=15;
-    positionSpriteCaCAffichage.h=15;
+    positionSpriteCaCAffichage.x=0;
+    positionSpriteCaCAffichage.y=0;
+    positionSpriteCaCAffichage.w=75;
+    positionSpriteCaCAffichage.h=75;
 
     UpdateFenetreSprite();
 }
@@ -138,7 +146,11 @@ void TilesEditeur::UpdateFenetreTile()
 void TilesEditeur::UpdateFenetreSprite()
 {
     SDL_RenderClear(rendererSprites);
-    SDL_RenderCopy(rendererSprites,spriteOrcTexture,&positionSpriteCaC,&positionSpriteCaC);
+    SDL_Rect positionSpriteEnnemieCaCAffichage=positionSpriteCaCAffichage;
+    positionSpriteEnnemieCaCAffichage.x=75;
+    SDL_RenderCopy(rendererSprites,spriteOrcTexture,&positionSpriteCaC,&positionSpriteCaCAffichage);
+    SDL_RenderCopy(rendererSprites,spriteOrcEnnemieTexture,&positionSpriteCaC,&positionSpriteEnnemieCaCAffichage);
+
     SDL_RenderPresent(rendererSprites);
 }
 

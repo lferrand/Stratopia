@@ -11,7 +11,11 @@
 #define LARGEUR_CASE 20
 #define HAUTEUR_CASE 20
 
-
+struct UniteEditeurStr
+{
+    char type;
+    SDL_Rect position;
+};
 
 class MapEditeur
 {
@@ -48,6 +52,8 @@ class MapEditeur
         bool **cartePassage;
         std::string **carteTexture;
 
+        std::vector<UniteEditeurStr> uniteJoueur;
 };
+
 
 #endif // MAPEDITEUR_H
