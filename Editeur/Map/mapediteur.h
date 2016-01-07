@@ -20,16 +20,22 @@ class MapEditeur
         void ChangerTiles(TilesEditeur *nouveauTile);
         void NewMap();
         void RecevoirEvenement(SDL_Event event);
+        void ActualiserAffichageCartePassage();
     protected:
     private:
         SDL_Window *editeurFenetre;
         SDL_Surface *mapSurface;
         SDL_Texture *grilleTexture;
+        SDL_Texture *mapTexture;
+
+        SDL_Texture* passageBloqueTexture;
         TilesEditeur *mesTiles;
         SDL_Renderer *renderer;
 
         int longueur;
         int largeur;
+
+        bool editerLieuPassage;
 
         SDL_Rect positionSourisPrecedente;
 
