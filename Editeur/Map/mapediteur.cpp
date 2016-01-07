@@ -83,7 +83,7 @@ void MapEditeur::LoadMap()
         for(int j=0;j<largeur;j++)
         {
             cartePassage[i][j]=true;
-            carteTexture[i][j]="0;0";
+            carteTexture[i][j]="0 0";
             positionGrille.x=i*LARGEUR_CASE;
             positionGrille.y=j*HAUTEUR_CASE;
             SDL_BlitSurface(caseGrilleSurface,NULL,grilleSurface,&positionGrille);
@@ -147,7 +147,7 @@ void MapEditeur::RecevoirEvenement(SDL_Event event)
 
                 std::stringstream ss;
                 ss << positionTileSelectionne.x/16;
-                ss << ";";
+                ss << " ";
                 ss << positionTileSelectionne.y/16;
                 std::string sauvegardeTexture= ss.str();
                 carteTexture[event.button.x/LARGEUR_CASE][event.button.y/HAUTEUR_CASE]=sauvegardeTexture;
@@ -201,7 +201,6 @@ void MapEditeur::RecevoirEvenement(SDL_Event event)
                             }
                             positionSourisPrecedente=positionClic;
 
-
                             SDL_Surface *tilesSurface=mesTiles->GetTilesSurface();
 
                             SDL_Rect positionTileSelectionne=mesTiles->GetPositionTileSelectionne();
@@ -209,6 +208,13 @@ void MapEditeur::RecevoirEvenement(SDL_Event event)
                             positionTileSelectionne.y/=1.5625;
                             positionTileSelectionne.w/=1.5625;
                             positionTileSelectionne.h/=1.5625;
+
+                            std::stringstream ss;
+                            ss << positionTileSelectionne.x/16;
+                            ss << " ";
+                            ss << positionTileSelectionne.y/16;
+                            std::string sauvegardeTexture= ss.str();
+                            carteTexture[event.button.x/LARGEUR_CASE][event.button.y/HAUTEUR_CASE]=sauvegardeTexture;
 
                             SDL_BlitSurface(tilesSurface,&positionTileSelectionne,mapSurface,&positionClic);
                             mapTexture=SDL_CreateTextureFromSurface(renderer,mapSurface);
@@ -277,7 +283,7 @@ void MapEditeur::SauvegarderMap()
             {
                 fichier << '1';
             }
-            fichier << ":" << carteTexture[i][j];
+            fichier << " " << carteTexture[i][j];
             fichier<< '\n';
         }
 

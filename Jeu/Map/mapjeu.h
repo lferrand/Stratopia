@@ -4,6 +4,12 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <fstream>
+#include <iostream>
+#include <sstream>
+
+
+#define LARGEUR_CASE 20
+#define HAUTEUR_CASE 20
 
 
 class MapJeu
