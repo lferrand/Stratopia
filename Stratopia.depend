@@ -335,11 +335,13 @@
 	"begin_code.h"
 	"close_code.h"
 
-1452168746 source:d:\projets\stratopia\editeur\map\mapediteur.cpp
+1452171787 source:d:\projets\stratopia\editeur\map\mapediteur.cpp
 	"mapediteur.h"
 
-1452168381 d:\projets\stratopia\editeur\map\mapediteur.h
+1452171781 d:\projets\stratopia\editeur\map\mapediteur.h
 	<iostream>
+	<fstream>
+	<sstream>
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	"tilesediteur.h"

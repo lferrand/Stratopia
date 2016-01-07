@@ -2,6 +2,8 @@
 #define MAPEDITEUR_H
 
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include "tilesediteur.h"
@@ -21,6 +23,7 @@ class MapEditeur
         void NewMap();
         void RecevoirEvenement(SDL_Event event);
         void ActualiserAffichageCartePassage();
+        void SauvegarderMap();
     protected:
     private:
         SDL_Window *editeurFenetre;
@@ -40,6 +43,7 @@ class MapEditeur
         SDL_Rect positionSourisPrecedente;
 
         bool **cartePassage;
+        std::string **carteTexture;
 
 };
 

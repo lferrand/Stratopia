@@ -84,13 +84,15 @@ void MapEditeur::LoadMap()
 
 
     cartePassage=new bool*[longueur];
-
+    carteTexture=new std::string*[longueur];
     for(int i=0;i<longueur;i++)
     {
         cartePassage[i]=new bool[largeur];
+        carteTexture[i]=new std::string[largeur];
         for(int j=0;j<largeur;j++)
         {
             cartePassage[i][j]=true;
+            carteTexture[i][j]="0;0";
             positionGrille.x=i*LARGEUR_CASE;
             positionGrille.y=j*HAUTEUR_CASE;
             SDL_BlitSurface(caseGrilleSurface,NULL,grilleSurface,&positionGrille);
@@ -120,8 +122,6 @@ void MapEditeur::RecevoirEvenement(SDL_Event event)
 
         if(event.button.windowID==SDL_GetWindowID(editeurFenetre))
         {
-
-
             if(editerLieuPassage)
             {
                 SDL_Rect positionClic;
@@ -134,26 +134,37 @@ void MapEditeur::RecevoirEvenement(SDL_Event event)
             }
             else
             {
-            SDL_Rect positionClic;
-            positionClic.x=event.button.x/LARGEUR_CASE*16;
-            positionClic.y=event.button.y/HAUTEUR_CASE*16;
-            positionClic.w=16;
-            positionClic.h=16;
+                //récupération de la case sélectionnée
+                SDL_Rect positionClic;
+                positionClic.x=event.button.x/LARGEUR_CASE*16;
+                positionClic.y=event.button.y/HAUTEUR_CASE*16;
+                positionClic.w=16;
+                positionClic.h=16;
+                positionSourisPrecedente=positionClic;
 
-            positionSourisPrecedente=positionClic;
+                //Création texture
                 SDL_Surface *tilesSurface=mesTiles->GetTilesSurface();
-
-
                 SDL_Texture *textureTiles=SDL_CreateTextureFromSurface(renderer, tilesSurface);
 
+                //Récupération du tile selectionné
                 SDL_Rect positionTileSelectionne=mesTiles->GetPositionTileSelectionne();
                 positionTileSelectionne.x/=1.5625;
                 positionTileSelectionne.y/=1.5625;
                 positionTileSelectionne.w/=1.5625;
                 positionTileSelectionne.h/=1.5625;
 
+                //Collage du tile sur la case
+
+                std::stringstream ss;
+                ss << positionTileSelectionne.x/16;
+                ss << ";";
+                ss << positionTileSelectionne.y/16;
+                std::string sauvegardeTexture= ss.str();
+                carteTexture[event.button.x/LARGEUR_CASE][event.button.y/HAUTEUR_CASE]=sauvegardeTexture;
                 SDL_BlitSurface(tilesSurface,&positionTileSelectionne,mapSurface,&positionClic);
                 mapTexture=SDL_CreateTextureFromSurface(renderer,mapSurface);
+
+                //mise à jour de l'affichage
                 SDL_RenderClear(renderer);
 
                 SDL_RenderCopy(renderer,mapTexture,NULL,NULL);
@@ -263,6 +274,31 @@ void MapEditeur::ActualiserAffichageCartePassage()
 
     SDL_RenderPresent(renderer);
 }
+
+void MapEditeur::SauvegarderMap()
+{
+    std::ofstream fichier("carte1.lvl", std::ios::out | std::ios::trunc);
+    for(int i=0; i<longueur;i++)
+    {
+        for(int j=0;j<largeur;j++)
+        {
+            if(!cartePassage[i][j])
+            {
+                fichier << '0';
+            }
+            else
+            {
+                fichier << '1';
+            }
+            fichier << ":" << carteTexture[i][j] << "-";
+        }
+                fichier<< '\n';
+
+    }
+
+
+}
+
 MapEditeur::~MapEditeur()
 {
     for(int i=0;i<longueur;i++)
