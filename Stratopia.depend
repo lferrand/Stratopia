@@ -351,10 +351,11 @@
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 
-1452162261 source:c:\users\taliera\documents\github\stratopia\editeur\map\mapediteur.cpp
+1452171208 source:c:\users\taliera\documents\github\stratopia\editeur\map\mapediteur.cpp
 	"mapediteur.h"
 
-1452165868 c:\users\taliera\documents\github\stratopia\editeur\map\mapediteur.h
+1452171140 c:\users\taliera\documents\github\stratopia\editeur\map\mapediteur.h
+	<iostream>
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	"tilesediteur.h"
@@ -684,15 +685,14 @@
 	"begin_code.h"
 	"close_code.h"
 
-1452169035 c:\users\taliera\documents\github\stratopia\editeur\tiles\tilesediteur.h
+1452171140 c:\users\taliera\documents\github\stratopia\editeur\tiles\tilesediteur.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
-	<iostream>
 
-1452169493 source:c:\users\taliera\documents\github\stratopia\editeur\tiles\tilesediteur.cpp
+1452171140 source:c:\users\taliera\documents\github\stratopia\editeur\tiles\tilesediteur.cpp
 	"tilesediteur.h"
 
-1452167744 source:c:\users\taliera\documents\github\stratopia\main.cpp
+1452171140 source:c:\users\taliera\documents\github\stratopia\main.cpp
 	<SDL2/SDL.h>
 	<iostream>
 	<SDL2/SDL_image.h>

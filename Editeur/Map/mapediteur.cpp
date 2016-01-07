@@ -231,7 +231,7 @@ void MapEditeur::RecevoirEvenement(SDL_Event event)
             }
             if(event.key.keysym.sym==SDLK_s)
             {
-                SauvegarderMap();
+                //SauvegarderMap();
             }
             break;
 
