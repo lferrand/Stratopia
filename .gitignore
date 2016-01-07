@@ -51,3 +51,7 @@ Temporary Items
 *.exe
 *.o
 *.depend
+*.layout
+*.o
+*.exe
+*.o

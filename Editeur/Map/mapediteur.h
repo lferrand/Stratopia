@@ -1,12 +1,12 @@
 #ifndef MAPEDITEUR_H
 #define MAPEDITEUR_H
-
+#include "tilesediteur.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-#include "tilesediteur.h"
+
 
 #define LARGEUR_CASE 20
 #define HAUTEUR_CASE 20

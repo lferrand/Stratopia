@@ -12,9 +12,6 @@ MapEditeur::MapEditeur()
     passageBloqueTexture=SDL_CreateTextureFromSurface(renderer,passageBloqueSurface);
     SDL_FreeSurface(passageBloqueSurface);
 
-
-
-
     LoadMap();
 
 }
@@ -32,16 +29,10 @@ void MapEditeur::NewMap()
     positionGrille.w=LARGEUR_CASE;
     positionGrille.h=HAUTEUR_CASE;
 
-    SDL_Rect positionTile;
-    positionTile.x=0;
-    positionTile.y=0;
-    positionTile.w=LARGEUR_CASE;
-    positionTile.h=HAUTEUR_CASE;
 
     SDL_RenderClear(renderer);
     SDL_Surface *tilesSurface=mesTiles->GetTilesSurface();
     mapSurface=SDL_CreateRGBSurface(0,longueur*16,largeur*16,32,0,0,0,0);
-    //SDL_Texture *textureTiles=SDL_CreateTextureFromSurface(renderer, tilesSurface);
 
     SDL_Rect positionTileDefaut;
     positionTileDefaut.x=0;
@@ -144,7 +135,6 @@ void MapEditeur::RecevoirEvenement(SDL_Event event)
 
                 //Création texture
                 SDL_Surface *tilesSurface=mesTiles->GetTilesSurface();
-                SDL_Texture *textureTiles=SDL_CreateTextureFromSurface(renderer, tilesSurface);
 
                 //Récupération du tile selectionné
                 SDL_Rect positionTileSelectionne=mesTiles->GetPositionTileSelectionne();
@@ -213,9 +203,6 @@ void MapEditeur::RecevoirEvenement(SDL_Event event)
 
 
                             SDL_Surface *tilesSurface=mesTiles->GetTilesSurface();
-
-
-                            SDL_Texture *textureTiles=SDL_CreateTextureFromSurface(renderer, tilesSurface);
 
                             SDL_Rect positionTileSelectionne=mesTiles->GetPositionTileSelectionne();
                             positionTileSelectionne.x/=1.5625;
@@ -290,9 +277,10 @@ void MapEditeur::SauvegarderMap()
             {
                 fichier << '1';
             }
-            fichier << ":" << carteTexture[i][j] << "-";
+            fichier << ":" << carteTexture[i][j];
+            fichier<< '\n';
         }
-                fichier<< '\n';
+
 
     }
 
