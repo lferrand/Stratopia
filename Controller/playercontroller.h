@@ -1,7 +1,7 @@
 #ifndef PLAYERCONTROLLER_H
 #define PLAYERCONTROLLER_H
 
-#include <controller.h>
+#include "controller.h"
 
 
 class PlayerController : public Controller

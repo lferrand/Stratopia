@@ -336,7 +336,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1452174010 source:d:\projets\stratopia\editeur\map\mapediteur.cpp
+1452177202 source:d:\projets\stratopia\editeur\map\mapediteur.cpp
 	"mapediteur.h"
 
 1452173122 d:\projets\stratopia\editeur\map\mapediteur.h
@@ -711,4 +711,44 @@
 	<fstream>
 	<iostream>
 	<sstream>
+
+1452177202 source:d:\projets\stratopia\controller\aicontroller.cpp
+	"aicontroller.h"
+
+1452177568 d:\projets\stratopia\controller\aicontroller.h
+	"controller.h"
+
+1452177202 d:\projets\stratopia\controller\controller.h
+
+1452177202 source:d:\projets\stratopia\controller\controller.cpp
+	"controller.h"
+
+1452177202 source:d:\projets\stratopia\controller\playercontroller.cpp
+	"playercontroller.h"
+
+1452177574 d:\projets\stratopia\controller\playercontroller.h
+	"controller.h"
+
+1452177202 source:d:\projets\stratopia\gameobjects\building.cpp
+	"building.h"
+
+1452177579 d:\projets\stratopia\gameobjects\building.h
+	"renderableobject.h"
+
+1452177585 d:\projets\stratopia\gameobjects\renderableobject.h
+	"movableobject.h"
+
+1452177590 d:\projets\stratopia\gameobjects\movableobject.h
+	"gameobject.h"
+
+1452177202 d:\projets\stratopia\gameobjects\gameobject.h
+
+1452177202 source:d:\projets\stratopia\gameobjects\gameobject.cpp
+	"gameobject.h"
+
+1452177202 source:d:\projets\stratopia\gameobjects\movableobject.cpp
+	"movableobject.h"
+
+1452177202 source:d:\projets\stratopia\gameobjects\renderableobject.cpp
+	"renderableobject.h"
 
