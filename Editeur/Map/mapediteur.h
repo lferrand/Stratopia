@@ -25,16 +25,13 @@ class MapEditeur
         SDL_Window *editeurFenetre;
         SDL_Surface *mapSurface;
         SDL_Texture *grilleTexture;
-
-        bool cliqueEnCours;
-        //SDL_Texture *mapTexture;
-
         TilesEditeur *mesTiles;
-
         SDL_Renderer *renderer;
 
         int longueur;
         int largeur;
+
+        SDL_Rect positionSourisPrecedente;
 
         bool **cartePassage;
 

@@ -117,14 +117,13 @@ void MapEditeur::RecevoirEvenement(SDL_Event event)
     case SDL_MOUSEBUTTONDOWN:
         if(event.button.windowID==SDL_GetWindowID(editeurFenetre))
         {
-            cliqueEnCours=true;
             SDL_Rect positionClic;
 
             positionClic.x=event.button.x/LARGEUR_CASE*16;
             positionClic.y=event.button.y/HAUTEUR_CASE*16;
             positionClic.w=16;
             positionClic.h=16;
-
+            positionSourisPrecedente=positionClic;
             SDL_Surface *tilesSurface=mesTiles->GetTilesSurface();
 
 
@@ -146,16 +145,45 @@ void MapEditeur::RecevoirEvenement(SDL_Event event)
             SDL_RenderPresent(renderer);
         }
         break;
-        case SDL_MOUSEBUTTONUP:
-            cliqueEnCours=false;
-        break;
+
         case SDL_MOUSEMOTION:
             if(event.button.windowID==SDL_GetWindowID(editeurFenetre))
             {
-                if(cliqueEnCours)
-                {
+                    if(event.motion.state & SDL_BUTTON(SDL_BUTTON_LEFT))
+                    {
+                        SDL_Rect positionClic;
 
-                }
+                        positionClic.x=event.motion.x/LARGEUR_CASE*16;
+                        positionClic.y=event.motion.y/HAUTEUR_CASE*16;
+                        positionClic.w=16;
+                        positionClic.h=16;
+                        if(positionClic.x == positionSourisPrecedente.x &&positionClic.y == positionSourisPrecedente.y)
+                        {
+                            return;
+                        }
+                        positionSourisPrecedente=positionClic;
+
+
+                        SDL_Surface *tilesSurface=mesTiles->GetTilesSurface();
+
+
+                        SDL_Texture *textureTiles=SDL_CreateTextureFromSurface(renderer, tilesSurface);
+
+                        SDL_Rect positionTileSelectionne=mesTiles->GetPositionTileSelectionne();
+                        positionTileSelectionne.x/=1.5625;
+                        positionTileSelectionne.y/=1.5625;
+                        positionTileSelectionne.w/=1.5625;
+                        positionTileSelectionne.h/=1.5625;
+
+                        SDL_BlitSurface(tilesSurface,&positionTileSelectionne,mapSurface,&positionClic);
+                        SDL_Texture *mapTexture=SDL_CreateTextureFromSurface(renderer,mapSurface);
+                        SDL_RenderClear(renderer);
+
+                        SDL_RenderCopy(renderer,mapTexture,NULL,NULL);
+                        SDL_RenderCopy(renderer,grilleTexture,NULL,NULL);
+
+                        SDL_RenderPresent(renderer);
+                    }
             }
             break;
 
