@@ -1,14 +1,14 @@
 #include <SDL2/SDL.h>
 #include <iostream>
 #include <SDL2/SDL_image.h>
-#include "Jeu\Map\mapjeu.h"
+#include "mapjeu.h"
 #include "mapediteur.h"
 #include "tilesediteur.h"
-
+#include "jeu.h"
 
 void ChargerJeu()
 {
-    MapJeu *monJeu=new MapJeu();
+    Jeu *monJeu=new Jeu();
         SDL_Event event;
     bool end = false;
     while(!end)

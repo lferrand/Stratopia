@@ -6,11 +6,12 @@ class GameObject
 {
     private:
         int id;
-        float x;
-        float y;
+        int x;
+        int y;
 
     public:
         GameObject();
+        GameObject(int x1, int y1):x(x1),y(y1){}
         virtual ~GameObject();
         float getX();
         float getY();

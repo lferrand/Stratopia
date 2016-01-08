@@ -2,39 +2,35 @@
 #include "../../Tools/node.h"
 #include "../../Tools/tools.h"
 
-MapJeu::MapJeu()
+MapJeu::MapJeu(SDL_Renderer *render)
 {
-    jeuFenetre = SDL_CreateWindow("Stratopia jeu", 450, 30, 800, 600, SDL_WINDOW_SHOWN);
-
+    renderer=render;
     longueur=40;
     largeur=30;
 
-    renderer= SDL_CreateRenderer(jeuFenetre, -1, 0);
-
     LoadMap();
 }
-
+void MapJeu::Render()
+{
+    SDL_RenderCopy(renderer,mapTexture,NULL,NULL);
+}
 void MapJeu::LoadMap()
 {
     std::ifstream fichier("carte1.lvl", std::ios::in);
 
     cartePassage=new bool*[longueur];
 
-
     //Chargement des textures du tile
     SDL_Surface *tilesSurface=IMG_Load("Editeur/Images/map_tiles_2.png");
-    SDL_Texture *tilesTexture=SDL_CreateTextureFromSurface(renderer,tilesSurface);
-    SDL_FreeSurface(tilesSurface);
-
+    SDL_Surface *mapSurface=SDL_CreateRGBSurface(0,longueur*32,largeur*32,32,0,0,0,0);
     //Préparation des positions
     SDL_Rect positionTexture;
     positionTexture.w=32;
     positionTexture.h=32;
     SDL_Rect positionCollage;
-    positionCollage.w=LARGEUR_CASE;
-    positionCollage.h=HAUTEUR_CASE;
+    positionCollage.w=32;
+    positionCollage.h=32;
 
-    SDL_RenderClear(renderer);
 
     //Chargement de la map
       std::string ligne;
@@ -43,8 +39,8 @@ void MapJeu::LoadMap()
         cartePassage[i]=new bool[largeur];
         for(int j=0;j<largeur;j++)
         {
-            positionCollage.x=i*LARGEUR_CASE;
-            positionCollage.y=j*HAUTEUR_CASE;
+            positionCollage.x=i*32;
+            positionCollage.y=j*32;
             //Remplissage tableau de passage
             fichier>>ligne;
             if(ligne.compare("0"))
@@ -67,19 +63,21 @@ void MapJeu::LoadMap()
             convert2 >> result;
             positionTexture.y=result*32+result;
 
-            SDL_RenderCopy(renderer,tilesTexture,&positionTexture,&positionCollage);
+            SDL_BlitSurface(tilesSurface,&positionTexture,mapSurface ,&positionCollage);
         }
     }
+    mapTexture=SDL_CreateTextureFromSurface(renderer,mapSurface),
+    SDL_FreeSurface(tilesSurface);
+    SDL_FreeSurface(mapSurface);
+    fichier.close();
+//    Node start = Node(7,7);
+//    Node endNode = Node(20,13);
+//    std::vector<Node> path;
+//
+//    if(Tools::Astar(start,endNode,cartePassage,path)){
+//        std::cout << "found path";
+//    }
 
-    Node start = Node(7,7);
-    Node endNode = Node(20,13);
-    std::vector<Node> path;
-
-    if(Tools::Astar(start,endNode,cartePassage,path)){
-        std::cout << "found path";
-    }
-
-    SDL_RenderPresent(renderer);
 }
 
 MapJeu::~MapJeu()
