@@ -5,15 +5,19 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
+
 class RenderableObject : public MovableObject
 {
     public:
         RenderableObject();
-        RenderableObject(SDL_Texture *texture, SDL_Rect posTexture,SDL_Rect positionCarte,SDL_Renderer *render):MovableObject(positionCarte.x,positionCarte.y),renderer(render),textureObjet(texture),positionObjetTexture(posTexture),positionObjetMap(positionCarte){}
+        RenderableObject(SDL_Texture *texture, SDL_Rect posTexture,SDL_Rect positionCarte,SDL_Renderer *render);
         virtual ~RenderableObject();
         void setHealth(int h){health=h;}
         float getHealth(){return health;}
         void Render();
+
+        static SDL_Texture* BarreVieTexture100;
+
     protected:
     private:
         int health;
@@ -21,8 +25,11 @@ class RenderableObject : public MovableObject
         SDL_Renderer *renderer;
         SDL_Texture *textureObjet;
 
+
         SDL_Rect positionObjetTexture;
         SDL_Rect positionObjetMap;
+
+        SDL_Rect positionBarreVieTexture;
 
 };
 

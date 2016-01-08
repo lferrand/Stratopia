@@ -171,8 +171,8 @@ void MapEditeur::RecevoirEvenement(SDL_Event event)
                 SDL_Rect positionClic;
                 positionClic.x=event.button.x;
                 positionClic.y=event.button.y;
-                positionClic.w=30;
-                positionClic.h=30;
+                positionClic.w=40;
+                positionClic.h=40;
                 SDL_Rect positionSpriteSelectionne=mesTiles->GetPositionSpriteSelectionneSurTexture();
                 UniteEditeurStr unit;
                 unit.type=mesTiles->GetTypeSpriteSelectionne();
@@ -242,10 +242,6 @@ void MapEditeur::RecevoirEvenement(SDL_Event event)
                             SDL_BlitSurface(tilesSurface,&positionTileSelectionne,mapSurface,&positionClic);
                             mapTexture=SDL_CreateTextureFromSurface(renderer,mapSurface);
                             ActualiserAffichageCarte();
-                        }
-                        else if(mesTiles->GetModeActuel()==SPRITE_MODE)
-                        {
-
                         }
                     }
             }

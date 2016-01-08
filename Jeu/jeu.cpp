@@ -28,6 +28,12 @@ void Jeu::ChargerMap()
 
 void Jeu::ChargerUnite()
 {
+    //Chargement des textures de la barre de vie
+    SDL_Surface *barreVie100Surface=SDL_CreateRGBSurface(0,10,50,32,0,0,0,0);
+    SDL_FillRect(barreVie100Surface,NULL,SDL_MapRGB(barreVie100Surface->format,0,255,0));
+    RenderableObject::BarreVieTexture100 = SDL_CreateTextureFromSurface(renderer,barreVie100Surface);
+    SDL_FreeSurface(barreVie100Surface);
+
     //Chargement des textures des unités
     SDL_Surface* spriteCaCOrcSurface=IMG_Load("Editeur/Images/cac_sprite_orc.png");
     SDL_Surface* spriteCaCHumainSurface=IMG_Load("Editeur/Images/cac_sprite.png");
@@ -79,8 +85,8 @@ void Jeu::ChargerUnite()
         SDL_Texture *unitTexture;
         SDL_Rect positionUnitSurTexture;
         SDL_Rect positionUnitSurCarte;
-        positionUnitSurCarte.h=30;
-        positionUnitSurCarte.w=30;
+        positionUnitSurCarte.h=40;
+        positionUnitSurCarte.w=40;
         if(type=='c')
         {
             unitTexture=spriteCaCHumainTexture;
@@ -114,8 +120,8 @@ void Jeu::ChargerUnite()
         SDL_Texture *unitTexture;
         SDL_Rect positionUnitSurTexture;
         SDL_Rect positionUnitSurCarte;
-        positionUnitSurCarte.h=30;
-        positionUnitSurCarte.w=30;
+        positionUnitSurCarte.h=40;
+        positionUnitSurCarte.w=40;
         if(type=='c')
         {
             unitTexture=spriteCaCOrcTexture;

@@ -17,12 +17,12 @@ int GameObject::getId()
     return id;
 }
 
-float GameObject::getX()
+int GameObject::getX()
 {
     return x;
 }
 
-float GameObject::getY()
+int GameObject::getY()
 {
     return y;
 }

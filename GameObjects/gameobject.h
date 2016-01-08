@@ -13,8 +13,8 @@ class GameObject
         GameObject();
         GameObject(int x1, int y1):x(x1),y(y1){}
         virtual ~GameObject();
-        float getX();
-        float getY();
+        int getX();
+        int getY();
         void setX(int x);
         void setY(int y);
         int getId();
