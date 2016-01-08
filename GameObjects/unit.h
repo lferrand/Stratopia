@@ -10,6 +10,9 @@ class Unit : public RenderableObject
         Unit();
         Unit(char t, bool isJoueur, SDL_Texture *texture, SDL_Rect positionTexture, SDL_Rect positionCarte,SDL_Renderer *renderer): RenderableObject(texture,positionTexture,positionCarte, renderer), type(t),isJoueurUnite(isJoueur){}
         virtual ~Unit();
+        virtual void UniteMove();
+        virtual void Attack(Unit target);
+        virtual void Die();
     protected:
     private:
         char type;
