@@ -19,7 +19,9 @@ class TilesEditeur
 
         SDL_Rect GetPositionTileSelectionne(){return positionTileSelectionne;}
         int GetModeActuel(){return modeActuel;}
-        SDL_Rect GetPositionSpriteCaC(){return positionSpriteCaCSurTexture;}
+        bool IsEnnemieSpriteSelectionne(){return isEnnemieSpriteSelectionne;}
+        SDL_Rect GetPositionSpriteSelectionneSurTexture(){return positionSpriteSelectionneSurTexture;}
+        char GetTypeSpriteSelectionne(){return typeSpriteSelectionne;}
         void UpdateFenetreTile();
         void UpdateFenetreSprite();
 
@@ -32,9 +34,18 @@ class TilesEditeur
         SDL_Texture *tilesTexture;
         SDL_Texture *selectionTextureTiles;
         SDL_Texture *selectionTextureSprite;
-        SDL_Texture *spriteOrcTexture;
-        SDL_Texture *spriteOrcEnnemieTexture;
         SDL_Surface *tilesSurface;
+
+        SDL_Texture *spriteCaCHumainTexture;
+        SDL_Texture *spriteDistanceHumainTexture;
+        SDL_Texture *spriteCaCOrcTexture;
+        SDL_Texture *spriteDistanceOrcTexture;
+
+
+
+        SDL_Texture *spriteOrcTexture;
+
+
 
         int modeActuel;
         SDL_Rect positionClic;
@@ -46,10 +57,23 @@ class TilesEditeur
         SDL_Rect positionTileSelectionne;
 
         SDL_Rect positionSpriteCaCSurTexture;
-        SDL_Rect positionSpriteSelectionne;
+        SDL_Rect positionSpriteDistanceSurTexture;
+        SDL_Rect positionSpriteDistanceEnnemieSurTexture;
+        SDL_Rect positionSpriteCaCEnnemieSurTexture;
+
+
+        SDL_Rect positionSpriteSelectionneSurFenetre;
+        SDL_Rect positionSpriteEnnemieDistanceAffichage;
+
+
+        bool isEnnemieSpriteSelectionne;
+        char typeSpriteSelectionne;
+        SDL_Rect positionSpriteSelectionneSurTexture;
 
         SDL_Rect positionSpriteCaCAffichage;
         SDL_Rect positionSpriteEnnemieCaCAffichage;
+        SDL_Rect positionSpriteDistanceAffichage;
+
 };
 
 bool SourisDansRect(SDL_Rect &souris, SDL_Rect &zoneSelection);
