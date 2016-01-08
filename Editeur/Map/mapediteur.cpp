@@ -12,21 +12,9 @@ MapEditeur::MapEditeur()
     passageBloqueTexture=SDL_CreateTextureFromSurface(renderer,passageBloqueSurface);
     SDL_FreeSurface(passageBloqueSurface);
 
-    //Chargement des sprites des unités
-    SDL_Surface* spriteCaCOrcSurface=IMG_Load("Editeur/Images/cac_sprite_orc.png");
-    SDL_Surface* spriteCaCHumainSurface=IMG_Load("Editeur/Images/cac_sprite.png");
-    SDL_Surface* spriteDistanceHumainSurface=IMG_Load("Editeur/Images/archer_sprite.png");
-    SDL_Surface* spriteDistanceOrcSurface=IMG_Load("Editeur/Images/archer_sprite_orc.png");
-
-    spriteCaCOrcTexture=SDL_CreateTextureFromSurface(renderer, spriteCaCOrcSurface);
-    spriteDistanceOrcTexture=SDL_CreateTextureFromSurface(renderer, spriteDistanceOrcSurface);
-    spriteCaCHumainTexture=SDL_CreateTextureFromSurface(renderer, spriteCaCHumainSurface);
-    spriteDistanceHumainTexture=SDL_CreateTextureFromSurface(renderer, spriteDistanceHumainSurface);
-
-    SDL_FreeSurface(spriteCaCOrcSurface);
-    SDL_FreeSurface(spriteDistanceOrcSurface);
-    SDL_FreeSurface(spriteCaCHumainSurface);
-    SDL_FreeSurface(spriteDistanceHumainSurface);
+    SDL_Surface *spriteOrcSurface=IMG_Load("Editeur/Images/orc0.png");
+    spriteOrcTexture=SDL_CreateTextureFromSurface(renderer,spriteOrcSurface);
+    SDL_FreeSurface(spriteOrcSurface);
 
     LoadMap();
 
@@ -48,20 +36,20 @@ void MapEditeur::NewMap()
 
     SDL_RenderClear(renderer);
     SDL_Surface *tilesSurface=mesTiles->GetTilesSurface();
-    mapSurface=SDL_CreateRGBSurface(0,longueur*32,largeur*32,32,0,0,0,0);
+    mapSurface=SDL_CreateRGBSurface(0,longueur*16,largeur*16,32,0,0,0,0);
 
     SDL_Rect positionTileDefaut;
     positionTileDefaut.x=0;
-    positionTileDefaut.y=429;
-    positionTileDefaut.w=32;
-    positionTileDefaut.h=32;
+    positionTileDefaut.y=0;
+    positionTileDefaut.w=16;
+    positionTileDefaut.h=16;
 
     for(int i=0;i<longueur;i++)
     {
         for(int j=0;j<largeur;j++)
         {
-            positionGrille.x=i*32;
-            positionGrille.y=j*32;
+            positionGrille.x=i*16;
+            positionGrille.y=j*16;
             SDL_BlitSurface(tilesSurface,&positionTileDefaut,mapSurface,&positionGrille);
         }
     }
@@ -99,7 +87,7 @@ void MapEditeur::LoadMap()
         for(int j=0;j<largeur;j++)
         {
             cartePassage[i][j]=true;
-            carteTexture[i][j]="0 14";
+            carteTexture[i][j]="0 0";
             positionGrille.x=i*LARGEUR_CASE;
             positionGrille.y=j*HAUTEUR_CASE;
             SDL_BlitSurface(caseGrilleSurface,NULL,grilleSurface,&positionGrille);
@@ -143,22 +131,28 @@ void MapEditeur::RecevoirEvenement(SDL_Event event)
             {
                 //récupération de la case sélectionnée
                 SDL_Rect positionClic;
-                positionClic.x=event.button.x/LARGEUR_CASE*32;
-                positionClic.y=event.button.y/HAUTEUR_CASE*32;
-                positionClic.w=32;
-                positionClic.h=32;
+                positionClic.x=event.button.x/LARGEUR_CASE*16;
+                positionClic.y=event.button.y/HAUTEUR_CASE*16;
+                positionClic.w=16;
+                positionClic.h=16;
                 positionSourisPrecedente=positionClic;
 
                 //Création texture
                 SDL_Surface *tilesSurface=mesTiles->GetTilesSurface();
+
                 //Récupération du tile selectionné
                 SDL_Rect positionTileSelectionne=mesTiles->GetPositionTileSelectionne();
+                positionTileSelectionne.x/=1.5625;
+                positionTileSelectionne.y/=1.5625;
+                positionTileSelectionne.w/=1.5625;
+                positionTileSelectionne.h/=1.5625;
 
                 //Collage du tile sur la case
+
                 std::stringstream ss;
-                ss << positionTileSelectionne.x/32;
+                ss << positionTileSelectionne.x/16;
                 ss << " ";
-                ss << positionTileSelectionne.y/32;
+                ss << positionTileSelectionne.y/16;
                 std::string sauvegardeTexture= ss.str();
                 carteTexture[event.button.x/LARGEUR_CASE][event.button.y/HAUTEUR_CASE]=sauvegardeTexture;
                 SDL_BlitSurface(tilesSurface,&positionTileSelectionne,mapSurface,&positionClic);
@@ -173,20 +167,11 @@ void MapEditeur::RecevoirEvenement(SDL_Event event)
                 positionClic.y=event.button.y;
                 positionClic.w=30;
                 positionClic.h=30;
-                SDL_Rect positionSpriteSelectionne=mesTiles->GetPositionSpriteSelectionneSurTexture();
+                SDL_Rect positionSpriteCaC=mesTiles->GetPositionSpriteCaC();
                 UniteEditeurStr unit;
-                unit.type=mesTiles->GetTypeSpriteSelectionne();
-                unit.positionUnite=positionClic;
-                unit.positionTexture=positionSpriteSelectionne;
-                unit.isUniteJoueur=!mesTiles->IsEnnemieSpriteSelectionne();
-                if(unit.isUniteJoueur)
-                {
-                    uniteJoueur.push_back(unit);
-                }
-                else
-                {
-                    uniteEnnemie.push_back(unit);
-                }
+                unit.type='c';
+                unit.position=positionClic;
+                uniteJoueur.push_back(unit);
                 ActualiserAffichageCarte();
             }
 
@@ -218,10 +203,10 @@ void MapEditeur::RecevoirEvenement(SDL_Event event)
                         {
                             SDL_Rect positionClic;
 
-                            positionClic.x=event.motion.x/LARGEUR_CASE*32;
-                            positionClic.y=event.motion.y/HAUTEUR_CASE*32;
-                            positionClic.w=32;
-                            positionClic.h=32;
+                            positionClic.x=event.motion.x/LARGEUR_CASE*16;
+                            positionClic.y=event.motion.y/HAUTEUR_CASE*16;
+                            positionClic.w=16;
+                            positionClic.h=16;
                             if(positionClic.x == positionSourisPrecedente.x &&positionClic.y == positionSourisPrecedente.y)
                             {
                                 return;
@@ -231,11 +216,15 @@ void MapEditeur::RecevoirEvenement(SDL_Event event)
                             SDL_Surface *tilesSurface=mesTiles->GetTilesSurface();
 
                             SDL_Rect positionTileSelectionne=mesTiles->GetPositionTileSelectionne();
+                            positionTileSelectionne.x/=1.5625;
+                            positionTileSelectionne.y/=1.5625;
+                            positionTileSelectionne.w/=1.5625;
+                            positionTileSelectionne.h/=1.5625;
 
                             std::stringstream ss;
-                            ss << positionTileSelectionne.x/32;
+                            ss << positionTileSelectionne.x/16;
                             ss << " ";
-                            ss << positionTileSelectionne.y/32;
+                            ss << positionTileSelectionne.y/16;
                             std::string sauvegardeTexture= ss.str();
                             carteTexture[event.button.x/LARGEUR_CASE][event.button.y/HAUTEUR_CASE]=sauvegardeTexture;
 
@@ -291,28 +280,11 @@ void MapEditeur::ActualiserAffichageCarte()
             }
         }
     }
+    SDL_Rect positionOrcCaC=mesTiles->GetPositionSpriteCaC();
     for(int unsigned i=0;i<uniteJoueur.size();i++)
     {
-        if(uniteJoueur[i].type=='c')
-        {
-            SDL_RenderCopy(renderer,spriteCaCHumainTexture,&uniteJoueur[i].positionTexture,&uniteJoueur[i].positionUnite);
-        }
-        else if(uniteJoueur[i].type=='d')
-        {
-            SDL_RenderCopy(renderer,spriteDistanceHumainTexture,&uniteJoueur[i].positionTexture,&uniteJoueur[i].positionUnite);
-        }
-
+        SDL_RenderCopy(renderer,spriteOrcTexture,&positionOrcCaC,&uniteJoueur[i].position);
     }
-    for(int unsigned i=0;i<uniteEnnemie.size();i++)
-    {
-        if(uniteEnnemie[i].type=='c')
-        {
-            SDL_RenderCopy(renderer,spriteCaCOrcTexture,&uniteEnnemie[i].positionTexture,&uniteEnnemie[i].positionUnite);
-        }
-        else if(uniteEnnemie[i].type=='d')
-        {
-            SDL_RenderCopy(renderer,spriteDistanceOrcTexture,&uniteEnnemie[i].positionTexture,&uniteEnnemie[i].positionUnite);
-        }    }
 
     if(!visionCarte)
         SDL_RenderCopy(renderer,grilleTexture,NULL,NULL);
@@ -343,12 +315,7 @@ void MapEditeur::SauvegarderMap()
     fichier.open("unite1.lvl", std::ios::out | std::ios::trunc);
     for(unsigned int i=0;i<uniteJoueur.size();i++)
     {
-        fichier << uniteJoueur[i].type << " " << uniteJoueur[i].positionUnite.x << " " << uniteJoueur[i].positionUnite.y << '\n';
-    }
-    fichier << "-\n";
-    for(unsigned int i=0;i<uniteEnnemie.size();i++)
-    {
-        fichier << uniteEnnemie[i].type << " " << uniteEnnemie[i].positionUnite.x << " " << uniteEnnemie[i].positionUnite.y << '\n';
+        fichier << uniteJoueur[i].type << " " << uniteJoueur[i].position.x << " " << uniteJoueur[i].position.y << '\n';
     }
     fichier.close();
 

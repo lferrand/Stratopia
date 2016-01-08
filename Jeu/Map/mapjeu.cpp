@@ -22,14 +22,14 @@ void MapJeu::LoadMap()
 
 
     //Chargement des textures du tile
-    SDL_Surface *tilesSurface=IMG_Load("Editeur/Images/map_tiles_2.png");
+    SDL_Surface *tilesSurface=IMG_Load("Editeur/Images/map_tiles_3.png");
     SDL_Texture *tilesTexture=SDL_CreateTextureFromSurface(renderer,tilesSurface);
     SDL_FreeSurface(tilesSurface);
 
     //Préparation des positions
     SDL_Rect positionTexture;
-    positionTexture.w=32;
-    positionTexture.h=32;
+    positionTexture.w=16;
+    positionTexture.h=16;
     SDL_Rect positionCollage;
     positionCollage.w=LARGEUR_CASE;
     positionCollage.h=HAUTEUR_CASE;
@@ -60,12 +60,12 @@ void MapJeu::LoadMap()
             int result;
             std::stringstream convert(ligne);
             convert >> result;
-            positionTexture.x=result*32+result;
+            positionTexture.x=result*16;
             //Remplissage de la composante y de la texture
             fichier>>ligne;
             std::stringstream convert2(ligne);
             convert2 >> result;
-            positionTexture.y=result*32+result;
+            positionTexture.y=result*16;
 
             SDL_RenderCopy(renderer,tilesTexture,&positionTexture,&positionCollage);
         }
