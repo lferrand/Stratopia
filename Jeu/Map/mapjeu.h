@@ -22,12 +22,11 @@ class MapJeu
         void Render();
     protected:
     private:
-    int longueur;
-    int largeur;
-    SDL_Renderer *renderer;
-
-    bool **cartePassage;
-    SDL_Texture *mapTexture;
+        int longueur;
+        int largeur;
+        SDL_Renderer *renderer;
+        bool **cartePassage;
+        SDL_Texture *mapTexture;
 
 
 };
