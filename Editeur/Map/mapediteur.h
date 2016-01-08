@@ -7,11 +7,16 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <list>
+#include <vector>
 
 #define LARGEUR_CASE 20
 #define HAUTEUR_CASE 20
 
-
+struct UniteEditeurStr
+{
+    char type;
+    SDL_Rect position;
+};
 
 class MapEditeur
 {
@@ -22,7 +27,7 @@ class MapEditeur
         void ChangerTiles(TilesEditeur *nouveauTile);
         void NewMap();
         void RecevoirEvenement(SDL_Event event);
-        void ActualiserAffichageCartePassage();
+        void ActualiserAffichageCarte();
         void SauvegarderMap();
     protected:
     private:
@@ -32,19 +37,24 @@ class MapEditeur
         SDL_Texture *mapTexture;
 
         SDL_Texture* passageBloqueTexture;
+
+        SDL_Texture *spriteOrcTexture;
+
+        bool visionCarte;
+
         TilesEditeur *mesTiles;
         SDL_Renderer *renderer;
 
         int longueur;
         int largeur;
 
-        bool editerLieuPassage;
-
         SDL_Rect positionSourisPrecedente;
 
         bool **cartePassage;
         std::string **carteTexture;
 
+        std::vector<UniteEditeurStr> uniteJoueur;
 };
+
 
 #endif // MAPEDITEUR_H

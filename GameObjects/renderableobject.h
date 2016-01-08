@@ -14,6 +14,7 @@ class RenderableObject : public MovableObject
     protected:
     private:
         float health;
+
 };
 
 #endif // RENDERABLEOBJECT_H

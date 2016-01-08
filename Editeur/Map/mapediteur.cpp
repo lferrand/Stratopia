@@ -4,13 +4,17 @@ MapEditeur::MapEditeur()
 {
     editeurFenetre = SDL_CreateWindow("Stratopia Editeur", 450, 30, 800, 600, SDL_WINDOW_SHOWN);
 
+    visionCarte=false;
     longueur=40;
     largeur=30;
-    editerLieuPassage=false;
     renderer= SDL_CreateRenderer(editeurFenetre, -1, 0);
     SDL_Surface *passageBloqueSurface=IMG_Load("Editeur/Images/passage_bloque.png");
     passageBloqueTexture=SDL_CreateTextureFromSurface(renderer,passageBloqueSurface);
     SDL_FreeSurface(passageBloqueSurface);
+
+    SDL_Surface *spriteOrcSurface=IMG_Load("Editeur/Images/orc0.png");
+    spriteOrcTexture=SDL_CreateTextureFromSurface(renderer,spriteOrcSurface);
+    SDL_FreeSurface(spriteOrcSurface);
 
     LoadMap();
 
@@ -113,7 +117,7 @@ void MapEditeur::RecevoirEvenement(SDL_Event event)
 
         if(event.button.windowID==SDL_GetWindowID(editeurFenetre))
         {
-            if(editerLieuPassage)
+            if(mesTiles->GetModeActuel()==PASSAGE_MODE)
             {
                 SDL_Rect positionClic;
                 positionClic.x=event.button.x/LARGEUR_CASE;
@@ -121,9 +125,9 @@ void MapEditeur::RecevoirEvenement(SDL_Event event)
 
                 cartePassage[positionClic.x][positionClic.y]=!cartePassage[positionClic.x][positionClic.y];
                 positionSourisPrecedente=positionClic;
-                ActualiserAffichageCartePassage();
+                ActualiserAffichageCarte();
             }
-            else
+            else if(mesTiles->GetModeActuel()==TILE_MODE)
             {
                 //récupération de la case sélectionnée
                 SDL_Rect positionClic;
@@ -154,13 +158,21 @@ void MapEditeur::RecevoirEvenement(SDL_Event event)
                 SDL_BlitSurface(tilesSurface,&positionTileSelectionne,mapSurface,&positionClic);
                 mapTexture=SDL_CreateTextureFromSurface(renderer,mapSurface);
 
-                //mise à jour de l'affichage
-                SDL_RenderClear(renderer);
-
-                SDL_RenderCopy(renderer,mapTexture,NULL,NULL);
-                SDL_RenderCopy(renderer,grilleTexture,NULL,NULL);
-
-                SDL_RenderPresent(renderer);
+                ActualiserAffichageCarte();
+            }
+            else if(mesTiles->GetModeActuel()==SPRITE_MODE)
+            {
+                SDL_Rect positionClic;
+                positionClic.x=event.button.x;
+                positionClic.y=event.button.y;
+                positionClic.w=30;
+                positionClic.h=30;
+                SDL_Rect positionSpriteCaC=mesTiles->GetPositionSpriteCaC();
+                UniteEditeurStr unit;
+                unit.type='c';
+                unit.position=positionClic;
+                uniteJoueur.push_back(unit);
+                ActualiserAffichageCarte();
             }
 
         }
@@ -171,7 +183,7 @@ void MapEditeur::RecevoirEvenement(SDL_Event event)
             {
                     if(event.motion.state & SDL_BUTTON(SDL_BUTTON_LEFT))
                     {
-                        if(editerLieuPassage)
+                        if(mesTiles->GetModeActuel()==PASSAGE_MODE)
                         {
                             SDL_Rect positionClic;
                             positionClic.x=event.motion.x/LARGEUR_CASE;
@@ -185,9 +197,9 @@ void MapEditeur::RecevoirEvenement(SDL_Event event)
 
                             cartePassage[positionClic.x][positionClic.y]=!cartePassage[positionClic.x][positionClic.y];
                             positionSourisPrecedente=positionClic;
-                            ActualiserAffichageCartePassage();
+                            ActualiserAffichageCarte();
                         }
-                        else
+                        else if(mesTiles->GetModeActuel()==TILE_MODE)
                         {
                             SDL_Rect positionClic;
 
@@ -218,52 +230,64 @@ void MapEditeur::RecevoirEvenement(SDL_Event event)
 
                             SDL_BlitSurface(tilesSurface,&positionTileSelectionne,mapSurface,&positionClic);
                             mapTexture=SDL_CreateTextureFromSurface(renderer,mapSurface);
-                            SDL_RenderClear(renderer);
+                            ActualiserAffichageCarte();
+                        }
+                        else if(mesTiles->GetModeActuel()==SPRITE_MODE)
+                        {
 
-                            SDL_RenderCopy(renderer,mapTexture,NULL,NULL);
-                            SDL_RenderCopy(renderer,grilleTexture,NULL,NULL);
-
-                            SDL_RenderPresent(renderer);
                         }
                     }
             }
             break;
         case SDL_KEYDOWN:
-            if(event.key.keysym.sym==SDLK_F1)
-            {
-                editerLieuPassage=!editerLieuPassage;
-            }
+
             if(event.key.keysym.sym==SDLK_s)
             {
-                //SauvegarderMap();
+                SauvegarderMap();
             }
+            else if(event.key.keysym.sym==SDLK_m)
+            {
+                visionCarte=!visionCarte;
+                ActualiserAffichageCarte();
+            }
+
             break;
 
     }
 }
 
-void MapEditeur::ActualiserAffichageCartePassage()
+void MapEditeur::ActualiserAffichageCarte()
 {
     SDL_RenderClear(renderer);
-        SDL_RenderCopy(renderer,mapTexture,NULL,NULL);
+    SDL_RenderCopy(renderer,mapTexture,NULL,NULL);
 
     SDL_Rect collageTextureBloque;
     collageTextureBloque.w=LARGEUR_CASE;
     collageTextureBloque.h=HAUTEUR_CASE;
-    for(int i=0; i<longueur;i++)
+
+    if(!visionCarte)
     {
-        for(int j=0;j<largeur;j++)
+        for(int i=0; i<longueur;i++)
         {
-            if(!cartePassage[i][j])
+            for(int j=0;j<largeur;j++)
             {
-                collageTextureBloque.x=i*LARGEUR_CASE;
-                collageTextureBloque.y=j*HAUTEUR_CASE;
-                SDL_RenderCopy(renderer,passageBloqueTexture,NULL,&collageTextureBloque);
+                if(!cartePassage[i][j])
+                {
+                    collageTextureBloque.x=i*LARGEUR_CASE;
+                    collageTextureBloque.y=j*HAUTEUR_CASE;
+                    SDL_RenderCopy(renderer,passageBloqueTexture,NULL,&collageTextureBloque);
+                }
             }
         }
     }
+    SDL_Rect positionOrcCaC=mesTiles->GetPositionSpriteCaC();
+    for(int unsigned i=0;i<uniteJoueur.size();i++)
+    {
+        SDL_RenderCopy(renderer,spriteOrcTexture,&positionOrcCaC,&uniteJoueur[i].position);
+    }
 
-    SDL_RenderCopy(renderer,grilleTexture,NULL,NULL);
+    if(!visionCarte)
+        SDL_RenderCopy(renderer,grilleTexture,NULL,NULL);
 
     SDL_RenderPresent(renderer);
 }
@@ -286,9 +310,14 @@ void MapEditeur::SauvegarderMap()
             fichier << " " << carteTexture[i][j];
             fichier<< '\n';
         }
-
-
     }
+    fichier.close();
+    fichier.open("unite1.lvl", std::ios::out | std::ios::trunc);
+    for(unsigned int i=0;i<uniteJoueur.size();i++)
+    {
+        fichier << uniteJoueur[i].type << " " << uniteJoueur[i].position.x << " " << uniteJoueur[i].position.y << '\n';
+    }
+    fichier.close();
 
 
 }
@@ -300,4 +329,5 @@ MapEditeur::~MapEditeur()
          delete[] cartePassage[i];
     }
     delete[] cartePassage;
+    SDL_FreeSurface(mapSurface);
 }
