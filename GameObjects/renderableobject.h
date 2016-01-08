@@ -1,7 +1,7 @@
 #ifndef RENDERABLEOBJECT_H
 #define RENDERABLEOBJECT_H
 
-#include <movableobject.h>
+#include "movableobject.h"
 
 
 class RenderableObject : public MovableObject

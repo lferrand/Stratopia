@@ -1,4 +1,6 @@
 #include "mapjeu.h"
+#include "../../Tools/node.h"
+#include "../../Tools/tools.h"
 
 MapJeu::MapJeu()
 {
@@ -67,6 +69,14 @@ void MapJeu::LoadMap()
 
             SDL_RenderCopy(renderer,tilesTexture,&positionTexture,&positionCollage);
         }
+    }
+
+    Node start = Node(7,7);
+    Node endNode = Node(20,13);
+    std::vector<Node> path;
+
+    if(Tools::Astar(start,endNode,cartePassage,path)){
+        std::cout << "found path";
     }
 
     SDL_RenderPresent(renderer);

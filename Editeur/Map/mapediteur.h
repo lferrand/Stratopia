@@ -6,7 +6,7 @@
 #include <sstream>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-
+#include <list>
 
 #define LARGEUR_CASE 20
 #define HAUTEUR_CASE 20
