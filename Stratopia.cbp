@@ -81,6 +81,9 @@
 		<Unit filename="GameObjects/unit.h" />
 		<Unit filename="Jeu/Map/mapjeu.cpp" />
 		<Unit filename="Jeu/Map/mapjeu.h" />
+		<Unit filename="Jeu/jeu.cpp" />
+		<Unit filename="Jeu/jeu.h" />
+		<Unit filename="Tools/node.cpp" />
 		<Unit filename="Tools/node.h" />
 		<Unit filename="Tools/path.cpp" />
 		<Unit filename="Tools/path.h" />
