@@ -1,9 +1,10 @@
 #include <SDL2/SDL.h>
 #include <iostream>
 #include <SDL2/SDL_image.h>
+#include "Jeu\Map\mapjeu.h"
 #include "mapediteur.h"
 #include "tilesediteur.h"
-#include "mapjeu.h"
+
 
 void ChargerJeu()
 {

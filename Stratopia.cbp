@@ -9,17 +9,18 @@
 			<Target title="Debug">
 				<Option output="bin/Debug/Stratopia" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
-				<Option type="1" />
+				<Option type="0" />
 				<Option compiler="gcc" />
-				<Option use_console_runner="0" />
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="Editeur/Map" />
 					<Add directory="Editeur/Tiles" />
 					<Add directory="../../../../../SDL2/i686-w64-mingw32/include/SDL2" />
-					<Add directory="Jeu/Map" />
 				</Compiler>
 				<Linker>
+					<Add library="../../../../../SDL2/i686-w64-mingw32/lib/libSDL2.dll.a" />
+					<Add library="../../../../../SDL2/i686-w64-mingw32/lib/libSDL2main.a" />
+					<Add library="../../../../../SDL2/i686-w64-mingw32/lib/libSDL2.a" />
 					<Add directory="../../../../../SDL2/lib" />
 				</Linker>
 			</Target>
@@ -32,7 +33,6 @@
 					<Add option="-O2" />
 					<Add directory="Editeur/Map" />
 					<Add directory="Editeur/Tiles" />
-					<Add directory="Jeu/Map" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -41,19 +41,18 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add directory="D:/programme/CodeBlocks/Lib/SDL2/include/SDL2" />
-			<Add directory="D:/programme/CodeBlocks/Lib/SDL2/include" />
-			<Add directory="../../programme/CodeBlocks/SDL2_image-2.0.0/i686-w64-mingw32/include" />
+			<Add directory="include" />
 		</Compiler>
 		<Linker>
-			<Add option="-lSDL2" />
 			<Add library="mingw32" />
-			<Add library="SDL2main" />
-			<Add library="SDL2.dll" />
-			<Add library="..\..\programme\CodeBlocks\SDL2_image-2.0.0\i686-w64-mingw32\lib\libSDL2_image.dll.a" />
-			<Add library="..\..\programme\CodeBlocks\SDL2_image-2.0.0\i686-w64-mingw32\lib\libSDL2_image.a" />
-			<Add directory="D:/programme/CodeBlocks/Lib/SDL2/lib" />
-			<Add directory="../../programme/CodeBlocks/SDL2_image-2.0.0/i686-w64-mingw32/lib" />
+			<Add library="libSDL2.a" />
+			<Add library="libSDL2.dll.a" />
+			<Add library="libSDL2_image.a" />
+			<Add library="libSDL2_image.dll.a" />
+			<Add library="libSDL2_ttf.a" />
+			<Add library="libSDL2_ttf.dll.a" />
+			<Add library="libSDL2main.a" />
+			<Add directory="lib" />
 		</Linker>
 		<Unit filename="Controller/aicontroller.cpp" />
 		<Unit filename="Controller/aicontroller.h" />
@@ -77,6 +76,10 @@
 		<Unit filename="GameObjects/unit.h" />
 		<Unit filename="Jeu/Map/mapjeu.cpp" />
 		<Unit filename="Jeu/Map/mapjeu.h" />
+		<Unit filename="Tools/node.cpp" />
+		<Unit filename="Tools/node.h" />
+		<Unit filename="Tools/path.cpp" />
+		<Unit filename="Tools/path.h" />
 		<Unit filename="Tools/tools.cpp" />
 		<Unit filename="Tools/tools.h" />
 		<Unit filename="include/SDL2/SDL.h" />
