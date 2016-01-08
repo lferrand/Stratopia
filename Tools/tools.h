@@ -14,6 +14,7 @@ class Tools
         static bool Passable(Node testedNode, bool **pathingMap);
         static int DistanceManhattan(Node start, Node origin);
         static void UpdateNodeScoreInVector(Node *currentNode,Node updatedNode,std::vector<Node>& nodeVector, int gAdd, std::map<Node,Node>& parents);
+        static Node GetNodeFromAxis(int x, int y);
     protected:
     private:
 };

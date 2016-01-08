@@ -9,7 +9,7 @@
 void ChargerJeu()
 {
     Jeu *monJeu=new Jeu();
-        SDL_Event event;
+    SDL_Event event;
     bool end = false;
     while(!end)
     {
@@ -31,7 +31,7 @@ void ChargerEditeur()
     monEditeur->NewMap();
         SDL_Event event;
     bool end = false;
->>>>>>> origin/master
+
     while(!end)
     {
         SDL_WaitEvent(&event);
@@ -42,14 +42,9 @@ void ChargerEditeur()
             }
         else
         {
-<<<<<<< HEAD
-//            mesTiles->RecevoirEvenement(event);
-//            monEditeur->RecevoirEvenement(event);
-=======
 
             mesTiles->RecevoirEvenement(event);
             monEditeur->RecevoirEvenement(event);
->>>>>>> origin/master
 
         }
 

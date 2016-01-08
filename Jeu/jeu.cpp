@@ -14,7 +14,9 @@ Jeu::Jeu()
     }
     for(int i=0;i<uniteOrdinateur.size();i++)
     {
+
         uniteOrdinateur[i].Render();
+
     }
     SDL_RenderPresent(renderer);
 
@@ -29,10 +31,12 @@ void Jeu::ChargerMap()
 void Jeu::ChargerUnite()
 {
     //Chargement des textures de la barre de vie
-    SDL_Surface *barreVie100Surface=SDL_CreateRGBSurface(0,10,50,32,0,0,0,0);
-    SDL_FillRect(barreVie100Surface,NULL,SDL_MapRGB(barreVie100Surface->format,0,255,0));
-    RenderableObject::BarreVieTexture100 = SDL_CreateTextureFromSurface(renderer,barreVie100Surface);
-    SDL_FreeSurface(barreVie100Surface);
+    SDL_Surface *barreVieSurface=IMG_Load("Jeu/Images/barre_vie.png");
+    SDL_Surface *vieSurface=IMG_Load("Jeu/Images/vie.png");
+    RenderableObject::BarreVieTexture = SDL_CreateTextureFromSurface(renderer,barreVieSurface);
+    RenderableObject::VieTexture = SDL_CreateTextureFromSurface(renderer,vieSurface);
+    SDL_FreeSurface(barreVieSurface);
+    SDL_FreeSurface(vieSurface);
 
     //Chargement des textures des unités
     SDL_Surface* spriteCaCOrcSurface=IMG_Load("Editeur/Images/cac_sprite_orc.png");
@@ -111,6 +115,7 @@ void Jeu::ChargerUnite()
             positionUnitSurCarte.y=result;
 
             Unit unite(type,true,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer);
+
             uniteJoueur.push_back(unite);
     }
 

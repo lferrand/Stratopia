@@ -1,13 +1,12 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
-
+#include <iostream>>
 
 class GameObject
 {
     private:
         int id;
-        int x;
-        int y;
+
 
     public:
         GameObject();
@@ -19,8 +18,8 @@ class GameObject
         void setY(int y);
         int getId();
     protected:
-
-
+        int x;
+        int y;
 };
 
 #endif // GAMEOBJECT_H
