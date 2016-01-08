@@ -12,11 +12,12 @@ int main(int argc, char *argv[])
     SDL_Event event;
     bool end = false;
 
-    MapEditeur *monEditeur=new MapEditeur();
-    TilesEditeur *mesTiles=new TilesEditeur();
-
-    monEditeur->ChangerTiles(mesTiles);
-    monEditeur->NewMap();
+    MapJeu *mapjeu = new MapJeu();
+//    MapEditeur *monEditeur=new MapEditeur();
+//    TilesEditeur *mesTiles=new TilesEditeur();
+//
+//    monEditeur->ChangerTiles(mesTiles);
+//    monEditeur->NewMap();
 
 
     while(!end)
@@ -29,8 +30,8 @@ int main(int argc, char *argv[])
             }
         else
         {
-            mesTiles->RecevoirEvenement(event);
-            monEditeur->RecevoirEvenement(event);
+//            mesTiles->RecevoirEvenement(event);
+//            monEditeur->RecevoirEvenement(event);
 
         }
 

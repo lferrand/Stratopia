@@ -71,8 +71,8 @@ void MapJeu::LoadMap()
         }
     }
 
-    Node start = Node(7,7);
-    Node endNode = Node(20,13);
+    Node start = Node(15,15);
+    Node endNode = Node(35,23);
     std::vector<Node> path;
 
     if(Tools::Astar(start,endNode,cartePassage,path)){

@@ -354,10 +354,10 @@
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 
-1452177095 source:c:\users\taliera\documents\github\stratopia\editeur\map\mapediteur.cpp
+1452247661 source:c:\users\taliera\documents\github\stratopia\editeur\map\mapediteur.cpp
 	"mapediteur.h"
 
-1452186267 c:\users\taliera\documents\github\stratopia\editeur\map\mapediteur.h
+1452247881 c:\users\taliera\documents\github\stratopia\editeur\map\mapediteur.h
 	"tilesediteur.h"
 	<iostream>
 	<fstream>
@@ -365,6 +365,7 @@
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	<list>
+	<vector>
 
 1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl.h
 	"SDL_main.h"
@@ -691,14 +692,15 @@
 	"begin_code.h"
 	"close_code.h"
 
-1452177095 c:\users\taliera\documents\github\stratopia\editeur\tiles\tilesediteur.h
+1452247661 c:\users\taliera\documents\github\stratopia\editeur\tiles\tilesediteur.h
+	<iostream>
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 
-1452171140 source:c:\users\taliera\documents\github\stratopia\editeur\tiles\tilesediteur.cpp
+1452247661 source:c:\users\taliera\documents\github\stratopia\editeur\tiles\tilesediteur.cpp
 	"tilesediteur.h"
 
-1452183550 source:c:\users\taliera\documents\github\stratopia\main.cpp
+1452249872 source:c:\users\taliera\documents\github\stratopia\main.cpp
 	<SDL2/SDL.h>
 	<iostream>
 	<SDL2/SDL_image.h>
@@ -739,7 +741,7 @@
 1452219794 c:\users\taliera\documents\github\stratopia\gameobjects\building.h
 	"renderableobject.h"
 
-1452219801 c:\users\taliera\documents\github\stratopia\gameobjects\renderableobject.h
+1452247661 c:\users\taliera\documents\github\stratopia\gameobjects\renderableobject.h
 	"movableobject.h"
 
 1452219807 c:\users\taliera\documents\github\stratopia\gameobjects\movableobject.h
@@ -762,7 +764,7 @@
 1452219815 c:\users\taliera\documents\github\stratopia\gameobjects\unit.h
 	"renderableobject.h"
 
-1452227681 source:c:\users\taliera\documents\github\stratopia\jeu\map\mapjeu.cpp
+1452268176 source:c:\users\taliera\documents\github\stratopia\jeu\map\mapjeu.cpp
 	"mapjeu.h"
 	"../../Tools/node.h"
 	"../../Tools/tools.h"
@@ -781,23 +783,27 @@
 	<iostream>
 	<sstream>
 
-1452228718 source:c:\users\taliera\documents\github\stratopia\tools\node.cpp
+1452266581 source:c:\users\taliera\documents\github\stratopia\tools\node.cpp
 	"node.h"
 	<cstddef>
-
-1452228722 c:\users\taliera\documents\github\stratopia\tools\node.h
-
-1452178481 source:c:\users\taliera\documents\github\stratopia\tools\path.cpp
-	"path.h"
-
-1452178481 c:\users\taliera\documents\github\stratopia\tools\path.h
-
-1452228341 source:c:\users\taliera\documents\github\stratopia\tools\tools.cpp
-	"tools.h"
 	<iostream>
 	<stdlib.h>
 
-1452227751 c:\users\taliera\documents\github\stratopia\tools\tools.h
+1452257592 c:\users\taliera\documents\github\stratopia\tools\node.h
+
+1452247659 source:c:\users\taliera\documents\github\stratopia\tools\path.cpp
+	"path.h"
+
+1452247659 c:\users\taliera\documents\github\stratopia\tools\path.h
+
+1452269523 source:c:\users\taliera\documents\github\stratopia\tools\tools.cpp
+	"tools.h"
+	<iostream>
+	<stdlib.h>
+	<map>
+
+1452262723 c:\users\taliera\documents\github\stratopia\tools\tools.h
 	"node.h"
 	<vector>
+	<map>
 

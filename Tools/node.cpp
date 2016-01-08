@@ -1,5 +1,7 @@
 #include "node.h"
 #include <cstddef>
+#include <iostream>
+#include <stdlib.h>
 
 Node::Node()
 {
@@ -28,17 +30,17 @@ int Node::GetY()
 
 int Node::GetG()
 {
-    return this->G;
+    return  G;
 }
 
 int Node::GetH()
 {
-    return this->H;
+    return  H;
 }
 
 Node* Node::GetParent()
 {
-    return this->parentNode;
+    return  parentNode;
 }
 
 int Node::GetScore()
@@ -48,7 +50,8 @@ int Node::GetScore()
 
 void Node::SetParent(Node *parent)
 {
-    this->parentNode = parent;
+    std::cout << "added parent x :" << parent->GetX() << " y : " << parent->GetY() << "\n";
+     parentNode = parent;
 }
 
 void Node::SetH(int H)
@@ -73,43 +76,43 @@ void Node::SetX(int x)
 
 Node Node::GetRightNode()
 {
-    Node node = Node(this->x + 1, this->y);
+    Node node = Node(x + 1, y);
     return node;
 }
 
 Node Node::GetTopRightNode()
 {
-    Node node = Node(this->x+1,this->y+1);
+    Node node = Node(x+1,y+1);
     return node;
 }
 Node Node::GetTopNode()
 {
-    Node node = Node(this->x+1,this->y);
+    Node node = Node(x,y+1);
     return node;
 }
 Node Node::GetBottomRightNode()
 {
-    Node node = Node(this->x+1,this->y-1);
+    Node node = Node( x+1, y-1);
     return node;
 }
 Node Node::GetBottomNode()
 {
-    Node node = Node(this->x,this->y-1);
+    Node node = Node( x, y-1);
     return node;
 }
 Node Node::GetLeftNode()
 {
-    Node node = Node(this->x-1,this->y);
+    Node node = Node( x-1, y);
     return node;
 }
 Node Node::GetTopLeftNode()
 {
-    Node node = Node(this->x-1,this->y+1);
+    Node node = Node( x-1, y+1);
     return node;
 }
 Node Node::GetBottomLeftNode()
 {
-    Node node = Node(this->x-1,this->y-1);
+    Node node = Node( x-1, y-1);
     return node;
 }
 
