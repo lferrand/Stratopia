@@ -15,7 +15,9 @@
 struct UniteEditeurStr
 {
     char type;
-    SDL_Rect position;
+    bool isUniteJoueur;
+    SDL_Rect positionUnite;
+    SDL_Rect positionTexture;
 };
 
 class MapEditeur
@@ -38,7 +40,10 @@ class MapEditeur
 
         SDL_Texture* passageBloqueTexture;
 
-        SDL_Texture *spriteOrcTexture;
+        SDL_Texture *spriteCaCHumainTexture;
+        SDL_Texture *spriteDistanceHumainTexture;
+        SDL_Texture *spriteCaCOrcTexture;
+        SDL_Texture *spriteDistanceOrcTexture;
 
         bool visionCarte;
 
@@ -54,6 +59,8 @@ class MapEditeur
         std::string **carteTexture;
 
         std::vector<UniteEditeurStr> uniteJoueur;
+        std::vector<UniteEditeurStr> uniteEnnemie;
+
 };
 
 

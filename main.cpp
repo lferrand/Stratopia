@@ -1,25 +1,37 @@
 #include <SDL2/SDL.h>
 #include <iostream>
 #include <SDL2/SDL_image.h>
-#include "Jeu\Map\mapjeu.h"
+#include "mapjeu.h"
 #include "mapediteur.h"
 #include "tilesediteur.h"
+#include "jeu.h"
 
-
-
-int main(int argc, char *argv[])
+void ChargerJeu()
 {
-    SDL_Event event;
+    Jeu *monJeu=new Jeu();
+        SDL_Event event;
     bool end = false;
+    while(!end)
+    {
+        SDL_WaitEvent(&event);
+        if(event.window.event == SDL_WINDOWEVENT_CLOSE)
+            {
+                end = true;
+            }
+    }
 
-    MapJeu *mapjeu = new MapJeu();
-//    MapEditeur *monEditeur=new MapEditeur();
-//    TilesEditeur *mesTiles=new TilesEditeur();
-//
-//    monEditeur->ChangerTiles(mesTiles);
-//    monEditeur->NewMap();
+}
 
 
+void ChargerEditeur()
+{
+    MapEditeur *monEditeur=new MapEditeur();
+    TilesEditeur *mesTiles=new TilesEditeur();
+    monEditeur->ChangerTiles(mesTiles);
+    monEditeur->NewMap();
+        SDL_Event event;
+    bool end = false;
+>>>>>>> origin/master
     while(!end)
     {
         SDL_WaitEvent(&event);
@@ -30,12 +42,24 @@ int main(int argc, char *argv[])
             }
         else
         {
+<<<<<<< HEAD
 //            mesTiles->RecevoirEvenement(event);
 //            monEditeur->RecevoirEvenement(event);
+=======
+
+            mesTiles->RecevoirEvenement(event);
+            monEditeur->RecevoirEvenement(event);
+>>>>>>> origin/master
 
         }
 
     }
 
+}
+int main(int argc, char *argv[])
+{
+
+    ChargerJeu();
+    //ChargerEditeur();
     return 0;
 }

@@ -16,15 +16,16 @@ class MapJeu
 {
     public:
         MapJeu();
+        MapJeu(SDL_Renderer *render);
         void LoadMap();
-
         virtual ~MapJeu();
+        void Render();
     protected:
     private:
     int longueur;
     int largeur;
     SDL_Renderer *renderer;
-    SDL_Window *jeuFenetre;
+
     bool **cartePassage;
     SDL_Texture *mapTexture;
 
