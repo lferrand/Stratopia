@@ -1,40 +1,13 @@
 # depslib dependency file v1.0
-1452177202 source:d:\projets\stratopia\controller\aicontroller.cpp
-	"aicontroller.h"
-
-1452177568 d:\projets\stratopia\controller\aicontroller.h
-	"controller.h"
-
-1452177202 d:\projets\stratopia\controller\controller.h
-
-1452177202 source:d:\projets\stratopia\controller\controller.cpp
-	"controller.h"
-
-1452177202 source:d:\projets\stratopia\controller\playercontroller.cpp
-	"playercontroller.h"
-
-1452177574 d:\projets\stratopia\controller\playercontroller.h
-	"controller.h"
-
-1452268734 source:d:\projets\stratopia\editeur\map\mapediteur.cpp
+1452175925 source:d:\projets\stratopia\main.cpp
+	<SDL2/SDL.h>
+	<iostream>
+	<SDL2/SDL_image.h>
 	"mapediteur.h"
-
-1452261157 d:\projets\stratopia\editeur\map\mapediteur.h
 	"tilesediteur.h"
-	<iostream>
-	<fstream>
-	<sstream>
-	<SDL2/SDL.h>
-	<SDL2/SDL_image.h>
-	<list>
-	<vector>
+	"mapjeu.h"
 
-1452261157 d:\projets\stratopia\editeur\tiles\tilesediteur.h
-	<iostream>
-	<SDL2/SDL.h>
-	<SDL2/SDL_image.h>
-
-1452171893 d:\projets\stratopia\include\sdl2\sdl.h
+1394937196 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl.h
 	"SDL_main.h"
 	"SDL_stdinc.h"
 	"SDL_assert.h"
@@ -65,12 +38,376 @@
 	"begin_code.h"
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_main.h
+1394937196 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_main.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_stdinc.h
+1394937198 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_stdinc.h
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<math.h>
+	<float.h>
+	<iconv.h>
+	"begin_code.h"
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	"close_code.h"
+
+1394937198 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_config.h
+	"SDL_platform.h"
+
+1442390104 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_platform.h
+	"AvailabilityMacros.h"
+	"TargetConditionals.h"
+	<winapifamily.h>
+	"begin_code.h"
+	"close_code.h"
+
+1394937198 d:\programme\codeblocks\lib\sdl2\include\sdl2\begin_code.h
+
+1394937198 d:\programme\codeblocks\lib\sdl2\include\sdl2\close_code.h
+
+1394937196 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_assert.h
+	"SDL_config.h"
+	"begin_code.h"
+	<signal.h>
+	"close_code.h"
+
+1394937196 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_atomic.h
+	"SDL_stdinc.h"
+	"SDL_platform.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_audio.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_endian.h
+	"SDL_stdinc.h"
+	<endian.h>
+	"begin_code.h"
+	"close_code.h"
+
+1394937198 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937198 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_thread.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_atomic.h"
+	"SDL_mutex.h"
+	"begin_code.h"
+	<process.h>
+	"close_code.h"
+
+1394937198 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_clipboard.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_cpuinfo.h
+	"SDL_stdinc.h"
+	<intrin.h>
+	<intrin.h>
+	<altivec.h>
+	<mmintrin.h>
+	<mm3dnow.h>
+	<xmmintrin.h>
+	<emmintrin.h>
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_events.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_gamecontroller.h"
+	"SDL_quit.h"
+	"SDL_gesture.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937198 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_video.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_surface.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937198 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_pixels.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937198 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_rect.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_pixels.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937198 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_surface.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_blendmode.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_blendmode.h
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_keyboard.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keycode.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_keycode.h
+	"SDL_stdinc.h"
+	"SDL_scancode.h"
+
+1394937198 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_scancode.h
+	"SDL_stdinc.h"
+
+1394937196 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_mouse.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_gamecontroller.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
+
+<<<<<<< HEAD
+1452268734 source:d:\projets\stratopia\editeur\map\mapediteur.cpp
+=======
+1394937198 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_quit.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+
+1394937196 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_gesture.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937198 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_touch.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_filesystem.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_haptic.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_hints.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_loadso.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_log.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_messagebox.h
+	"SDL_stdinc.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937198 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_power.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937198 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_render.h
+	"SDL_stdinc.h"
+	"SDL_rect.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937198 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_system.h
+	"SDL_stdinc.h"
+	"SDL_keyboard.h"
+	"SDL_render.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937198 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937198 d:\programme\codeblocks\lib\sdl2\include\sdl2\sdl_version.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1376152754 d:\programme\codeblocks\sdl2_image-2.0.0\x86_64-w64-mingw32\include\sdl2\sdl_image.h
+	"SDL.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1376152742 d:\programme\codeblocks\sdl2_image-2.0.0\i686-w64-mingw32\include\sdl2\sdl_image.h
+	"SDL.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1452174010 source:d:\projets\stratopia\editeur\map\mapediteur.cpp
+>>>>>>> origin/master
+	"mapediteur.h"
+
+1452173122 d:\projets\stratopia\editeur\map\mapediteur.h
+	"tilesediteur.h"
+	<iostream>
+	<fstream>
+	<sstream>
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+
+1452164223 source:d:\projets\stratopia\editeur\tiles\tilesediteur.cpp
+	"tilesediteur.h"
+
+1452172983 d:\projets\stratopia\editeur\tiles\tilesediteur.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+
+1452247661 source:c:\users\taliera\documents\github\stratopia\editeur\map\mapediteur.cpp
+	"mapediteur.h"
+
+1452247881 c:\users\taliera\documents\github\stratopia\editeur\map\mapediteur.h
+	"tilesediteur.h"
+	<iostream>
+	<fstream>
+	<sstream>
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	<list>
+	<vector>
+
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl.h
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_assert.h"
+	"SDL_atomic.h"
+	"SDL_audio.h"
+	"SDL_clipboard.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_filesystem.h"
+	"SDL_joystick.h"
+	"SDL_gamecontroller.h"
+	"SDL_haptic.h"
+	"SDL_hints.h"
+	"SDL_loadso.h"
+	"SDL_log.h"
+	"SDL_messagebox.h"
+	"SDL_mutex.h"
+	"SDL_power.h"
+	"SDL_render.h"
+	"SDL_rwops.h"
+	"SDL_system.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_version.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_main.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_stdinc.h
 	"SDL_config.h"
 	<sys/types.h>
 	<stdio.h>
@@ -99,34 +436,34 @@
 	<stdlib.h>
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_config.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_config.h
 	"SDL_platform.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_platform.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_platform.h
 	"AvailabilityMacros.h"
 	"TargetConditionals.h"
 	<winapifamily.h>
 	"begin_code.h"
 	"close_code.h"
 
-1452171894 d:\projets\stratopia\include\sdl2\begin_code.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\begin_code.h
 
-1452171894 d:\projets\stratopia\include\sdl2\close_code.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\close_code.h
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_assert.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_assert.h
 	"SDL_config.h"
 	"begin_code.h"
 	<signal.h>
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_atomic.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_atomic.h
 	"SDL_stdinc.h"
 	"SDL_platform.h"
 	"begin_code.h"
 	<mbarrier.h>
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_audio.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_audio.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_endian.h"
@@ -136,24 +473,24 @@
 	"begin_code.h"
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_error.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_error.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_endian.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_endian.h
 	"SDL_stdinc.h"
 	<endian.h>
 	"begin_code.h"
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_mutex.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_mutex.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1452171894 d:\projets\stratopia\include\sdl2\sdl_thread.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_thread.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_atomic.h"
@@ -162,18 +499,18 @@
 	<process.h>
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_rwops.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_rwops.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_clipboard.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_clipboard.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_cpuinfo.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_cpuinfo.h
 	"SDL_stdinc.h"
 	<intrin.h>
 	<intrin.h>
@@ -185,7 +522,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_events.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_events.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
@@ -199,7 +536,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1452171894 d:\projets\stratopia\include\sdl2\sdl_video.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_video.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -207,12 +544,12 @@
 	"begin_code.h"
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_pixels.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_pixels.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_rect.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_rect.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_pixels.h"
@@ -220,7 +557,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_surface.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_surface.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -229,11 +566,11 @@
 	"begin_code.h"
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_blendmode.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_blendmode.h
 	"begin_code.h"
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_keyboard.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_keyboard.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_keycode.h"
@@ -241,27 +578,27 @@
 	"begin_code.h"
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_keycode.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_keycode.h
 	"SDL_stdinc.h"
 	"SDL_scancode.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_scancode.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_scancode.h
 	"SDL_stdinc.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_mouse.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_mouse.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_joystick.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_joystick.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_gamecontroller.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_gamecontroller.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_rwops.h"
@@ -269,11 +606,11 @@
 	"begin_code.h"
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_quit.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_quit.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_gesture.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_gesture.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
@@ -281,60 +618,60 @@
 	"begin_code.h"
 	"close_code.h"
 
-1452171894 d:\projets\stratopia\include\sdl2\sdl_touch.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_touch.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_filesystem.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_filesystem.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_haptic.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_haptic.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_joystick.h"
 	"begin_code.h"
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_hints.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_hints.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_loadso.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_loadso.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_log.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_log.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_messagebox.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_messagebox.h
 	"SDL_stdinc.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_power.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_power.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_render.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_render.h
 	"SDL_stdinc.h"
 	"SDL_rect.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_system.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_system.h
 	"SDL_stdinc.h"
 	"SDL_keyboard.h"
 	"SDL_render.h"
@@ -342,92 +679,148 @@
 	"begin_code.h"
 	"close_code.h"
 
-1452171894 d:\projets\stratopia\include\sdl2\sdl_timer.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_timer.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1452171894 d:\projets\stratopia\include\sdl2\sdl_version.h
+1451764693 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_version.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1452171893 d:\projets\stratopia\include\sdl2\sdl_image.h
+1451800373 c:\users\taliera\documents\github\stratopia\include\sdl2\sdl_image.h
 	"SDL.h"
 	"SDL_version.h"
 	"begin_code.h"
 	"close_code.h"
 
-1452261157 source:d:\projets\stratopia\editeur\tiles\tilesediteur.cpp
-	"tilesediteur.h"
-
-1452177202 source:d:\projets\stratopia\gameobjects\building.cpp
-	"building.h"
-
-1452177579 d:\projets\stratopia\gameobjects\building.h
-	"renderableobject.h"
-
-1452270746 d:\projets\stratopia\gameobjects\renderableobject.h
-	"movableobject.h"
+1452247661 c:\users\taliera\documents\github\stratopia\editeur\tiles\tilesediteur.h
+	<iostream>
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 
-1452263257 d:\projets\stratopia\gameobjects\movableobject.h
-	"gameobject.h"
+1452247661 source:c:\users\taliera\documents\github\stratopia\editeur\tiles\tilesediteur.cpp
+	"tilesediteur.h"
 
-1452269144 d:\projets\stratopia\gameobjects\gameobject.h
+1452249872 source:c:\users\taliera\documents\github\stratopia\main.cpp
+	<SDL2/SDL.h>
+	<iostream>
+	<SDL2/SDL_image.h>
+	"Jeu\Map\mapjeu.h"
+	"mapediteur.h"
+	"tilesediteur.h"
 
-1452269161 source:d:\projets\stratopia\gameobjects\gameobject.cpp
-	"gameobject.h"
-
-1452177202 source:d:\projets\stratopia\gameobjects\movableobject.cpp
-	"movableobject.h"
-
-1452270443 source:d:\projets\stratopia\gameobjects\renderableobject.cpp
-	"renderableobject.h"
-
-1452267118 source:d:\projets\stratopia\jeu\map\mapjeu.cpp
+1452175218 source:d:\projets\stratopia\jeu\map\mapjeu.cpp
 	"mapjeu.h"
-	"../../Tools/node.h"
-	"../../Tools/tools.h"
 
-1452265605 d:\projets\stratopia\jeu\map\mapjeu.h
+1452175177 d:\projets\stratopia\jeu\map\mapjeu.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	<fstream>
 	<iostream>
 	<sstream>
 
-1452259999 d:\projets\stratopia\tools\node.h
+1452177066 source:c:\users\taliera\documents\github\stratopia\controller\aicontroller.cpp
+	"aicontroller.h"
 
-1452259999 d:\projets\stratopia\tools\tools.h
-	"node.h"
-	<vector>
+1452219060 c:\users\taliera\documents\github\stratopia\controller\aicontroller.h
+	"controller.h"
 
-1452264284 source:d:\projets\stratopia\main.cpp
-	<SDL2/SDL.h>
-	<iostream>
-	<SDL2/SDL_image.h>
+1452177066 c:\users\taliera\documents\github\stratopia\controller\controller.h
+
+1452177066 source:c:\users\taliera\documents\github\stratopia\controller\controller.cpp
+	"controller.h"
+
+1452177066 source:c:\users\taliera\documents\github\stratopia\controller\playercontroller.cpp
+	"playercontroller.h"
+
+1452219077 c:\users\taliera\documents\github\stratopia\controller\playercontroller.h
+	"controller.h"
+
+1452177066 source:c:\users\taliera\documents\github\stratopia\gameobjects\building.cpp
+	"building.h"
+
+1452219794 c:\users\taliera\documents\github\stratopia\gameobjects\building.h
+	"renderableobject.h"
+
+<<<<<<< HEAD
+1452270746 d:\projets\stratopia\gameobjects\renderableobject.h
+=======
+1452247661 c:\users\taliera\documents\github\stratopia\gameobjects\renderableobject.h
+>>>>>>> origin/master
+	"movableobject.h"
+
+1452219807 c:\users\taliera\documents\github\stratopia\gameobjects\movableobject.h
+	"gameobject.h"
+
+<<<<<<< HEAD
+1452269144 d:\projets\stratopia\gameobjects\gameobject.h
+
+1452269161 source:d:\projets\stratopia\gameobjects\gameobject.cpp
+=======
+1452177066 c:\users\taliera\documents\github\stratopia\gameobjects\gameobject.h
+
+1452177066 source:c:\users\taliera\documents\github\stratopia\gameobjects\gameobject.cpp
+>>>>>>> origin/master
+	"gameobject.h"
+
+1452177066 source:c:\users\taliera\documents\github\stratopia\gameobjects\movableobject.cpp
+	"movableobject.h"
+
+<<<<<<< HEAD
+1452270443 source:d:\projets\stratopia\gameobjects\renderableobject.cpp
+=======
+1452177066 source:c:\users\taliera\documents\github\stratopia\gameobjects\renderableobject.cpp
+>>>>>>> origin/master
+	"renderableobject.h"
+
+1452177066 source:c:\users\taliera\documents\github\stratopia\gameobjects\unit.cpp
+	"unit.h"
+
+1452219815 c:\users\taliera\documents\github\stratopia\gameobjects\unit.h
+	"renderableobject.h"
+
+1452268176 source:c:\users\taliera\documents\github\stratopia\jeu\map\mapjeu.cpp
 	"mapjeu.h"
-	"mapediteur.h"
-	"tilesediteur.h"
-	"jeu.h"
+	"../../Tools/node.h"
+	"../../Tools/tools.h"
 
-1452259999 source:d:\projets\stratopia\tools\node.cpp
+1452183173 c:\users\taliera\documents\github\stratopia\jeu\map\mapjeu.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	<fstream>
+	<iostream>
+	<sstream>
+
+1452183173 source:c:\users\taliera\documents\github\stratopia\jeu\map\mapjeu.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	<fstream>
+	<iostream>
+	<sstream>
+
+1452266581 source:c:\users\taliera\documents\github\stratopia\tools\node.cpp
 	"node.h"
 	<cstddef>
-
-1452259999 source:d:\projets\stratopia\tools\path.cpp
-	"path.h"
-
-1452259999 d:\projets\stratopia\tools\path.h
-
-1452259999 source:d:\projets\stratopia\tools\tools.cpp
-	"tools.h"
 	<iostream>
 	<stdlib.h>
 
+1452257592 c:\users\taliera\documents\github\stratopia\tools\node.h
+
+1452247659 source:c:\users\taliera\documents\github\stratopia\tools\path.cpp
+	"path.h"
+
+1452247659 c:\users\taliera\documents\github\stratopia\tools\path.h
+
+1452269523 source:c:\users\taliera\documents\github\stratopia\tools\tools.cpp
+	"tools.h"
+	<iostream>
+	<stdlib.h>
+	<map>
+
+<<<<<<< HEAD
 1452263400 source:d:\projets\stratopia\gameobjects\unit.cpp
 	"unit.h"
 
@@ -438,8 +831,10 @@
 	"jeu.h"
 
 1452266495 d:\projets\stratopia\jeu\jeu.h
+=======
+1452262723 c:\users\taliera\documents\github\stratopia\tools\tools.h
+	"node.h"
+>>>>>>> origin/master
 	<vector>
-	<iostream>
-	"mapjeu.h"
-	"unit.h"
+	<map>
 

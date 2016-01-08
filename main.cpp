@@ -14,7 +14,6 @@ void ChargerJeu()
     while(!end)
     {
         SDL_WaitEvent(&event);
-
         if(event.window.event == SDL_WINDOWEVENT_CLOSE)
             {
                 end = true;
@@ -32,6 +31,7 @@ void ChargerEditeur()
     monEditeur->NewMap();
         SDL_Event event;
     bool end = false;
+>>>>>>> origin/master
     while(!end)
     {
         SDL_WaitEvent(&event);
@@ -42,9 +42,14 @@ void ChargerEditeur()
             }
         else
         {
+<<<<<<< HEAD
+//            mesTiles->RecevoirEvenement(event);
+//            monEditeur->RecevoirEvenement(event);
+=======
 
             mesTiles->RecevoirEvenement(event);
             monEditeur->RecevoirEvenement(event);
+>>>>>>> origin/master
 
         }
 

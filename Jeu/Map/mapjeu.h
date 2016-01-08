@@ -15,6 +15,7 @@
 class MapJeu
 {
     public:
+        MapJeu();
         MapJeu(SDL_Renderer *render);
         void LoadMap();
         virtual ~MapJeu();
