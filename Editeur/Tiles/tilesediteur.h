@@ -1,6 +1,6 @@
 #ifndef TILESEDITEUR_H
 #define TILESEDITEUR_H
-
+#include <iostream>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
@@ -19,7 +19,7 @@ class TilesEditeur
 
         SDL_Rect GetPositionTileSelectionne(){return positionTileSelectionne;}
         int GetModeActuel(){return modeActuel;}
-        SDL_Rect GetPositionSpriteCaC(){return positionSpriteCaC;}
+        SDL_Rect GetPositionSpriteCaC(){return positionSpriteCaCSurTexture;}
         void UpdateFenetreTile();
         void UpdateFenetreSprite();
 
@@ -30,7 +30,8 @@ class TilesEditeur
 
         SDL_Texture *textureFenetre;
         SDL_Texture *tilesTexture;
-        SDL_Texture *selectionTexture;
+        SDL_Texture *selectionTextureTiles;
+        SDL_Texture *selectionTextureSprite;
         SDL_Texture *spriteOrcTexture;
         SDL_Texture *spriteOrcEnnemieTexture;
         SDL_Surface *tilesSurface;
@@ -44,8 +45,13 @@ class TilesEditeur
         SDL_Rect positionTiles;
         SDL_Rect positionTileSelectionne;
 
-        SDL_Rect positionSpriteCaC;
+        SDL_Rect positionSpriteCaCSurTexture;
+        SDL_Rect positionSpriteSelectionne;
+
         SDL_Rect positionSpriteCaCAffichage;
+        SDL_Rect positionSpriteEnnemieCaCAffichage;
 };
+
+bool SourisDansRect(SDL_Rect &souris, SDL_Rect &zoneSelection);
 
 #endif // TILESEDITEUR_H

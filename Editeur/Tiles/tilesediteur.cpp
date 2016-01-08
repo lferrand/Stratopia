@@ -5,6 +5,9 @@ TilesEditeur::TilesEditeur()
     tileFenetre = SDL_CreateWindow("Stratopia Editeur Tile", 20, 30, 400, 325, SDL_WINDOW_SHOWN);
     spriteFenetre = SDL_CreateWindow("Stratopia Editeur sprite", 20, 30, 400, 325, SDL_WINDOW_HIDDEN);
 
+    rendererSprites =SDL_CreateRenderer(spriteFenetre,-1,0);
+    rendererTiles = SDL_CreateRenderer(tileFenetre, -1, 0);
+
     modeActuel=TILE_MODE;
 
     ChargerFenetreTile();
@@ -16,13 +19,12 @@ TilesEditeur::TilesEditeur()
 
 void TilesEditeur::ChargerFenetreTile()
 {
-    rendererTiles = SDL_CreateRenderer(tileFenetre, -1, 0);
     tilesSurface=IMG_Load("Editeur/Images/map_tiles_3.png");
     SDL_Surface *selectionSurface=IMG_Load("Editeur/Images/selection_tile.png");
 
     tilesTexture = SDL_CreateTextureFromSurface(rendererTiles, tilesSurface);
-    selectionTexture=SDL_CreateTextureFromSurface(rendererTiles, selectionSurface);
-
+    selectionTextureTiles=SDL_CreateTextureFromSurface(rendererTiles, selectionSurface);
+    selectionTextureSprite=SDL_CreateTextureFromSurface(rendererSprites, selectionSurface);
     SDL_FreeSurface(selectionSurface);
 
     positionTiles.x=0;
@@ -51,7 +53,6 @@ void TilesEditeur::ChargerFenetreTile()
 
 void TilesEditeur::ChargerFenetreSprite()
 {
-    rendererSprites =SDL_CreateRenderer(spriteFenetre,-1,0);
 
     SDL_Surface* spriteOrcSurface=IMG_Load("Editeur/Images/orc0.png");
     SDL_Surface* spriteOrcEnnemieSurface=IMG_Load("Editeur/Images/orc_ennemy.png");
@@ -63,14 +64,19 @@ void TilesEditeur::ChargerFenetreSprite()
     SDL_FreeSurface(spriteOrcEnnemieSurface);
 
 
-    positionSpriteCaC.x=37;
-    positionSpriteCaC.y=37;
-    positionSpriteCaC.w=75;
-    positionSpriteCaC.h=75;
+    positionSpriteCaCSurTexture.x=37;
+    positionSpriteCaCSurTexture.y=37;
+    positionSpriteCaCSurTexture.w=75;
+    positionSpriteCaCSurTexture.h=75;
     positionSpriteCaCAffichage.x=0;
     positionSpriteCaCAffichage.y=0;
     positionSpriteCaCAffichage.w=75;
     positionSpriteCaCAffichage.h=75;
+    positionSpriteEnnemieCaCAffichage=positionSpriteCaCAffichage;
+    positionSpriteEnnemieCaCAffichage.x=77;
+    positionSpriteSelectionne=positionSpriteCaCAffichage;
+
+
 
     UpdateFenetreSprite();
 }
@@ -85,7 +91,7 @@ void TilesEditeur::RecevoirEvenement(SDL_Event event)
     switch(event.type)
     {
     case SDL_MOUSEBUTTONDOWN:
-        if(event.button.windowID==SDL_GetWindowID(tileFenetre))
+        if(event.button.windowID==SDL_GetWindowID(tileFenetre)||event.button.windowID==SDL_GetWindowID(spriteFenetre))
         {
             if(modeActuel==TILE_MODE)
             {
@@ -104,6 +110,21 @@ void TilesEditeur::RecevoirEvenement(SDL_Event event)
                 positionTileSelectionne=positionClic;
 
                 UpdateFenetreTile();
+            }
+            else if (modeActuel==SPRITE_MODE)
+            {
+                positionClic.x=event.button.x;
+                positionClic.y=event.button.y;
+                if(SourisDansRect(positionClic,positionSpriteCaCAffichage))
+                {
+                    positionSpriteSelectionne=positionSpriteCaCAffichage;
+                    UpdateFenetreSprite();
+                }
+                else if(SourisDansRect(positionClic,positionSpriteEnnemieCaCAffichage))
+                {
+                    positionSpriteSelectionne=positionSpriteEnnemieCaCAffichage;
+                    UpdateFenetreSprite();
+                }
             }
         }
         break;
@@ -139,17 +160,16 @@ void TilesEditeur::UpdateFenetreTile()
 {
     SDL_RenderClear(rendererTiles);
     SDL_RenderCopy(rendererTiles,tilesTexture,NULL,&positionTiles);
-    SDL_RenderCopy(rendererTiles,selectionTexture,NULL,&positionClic);
+    SDL_RenderCopy(rendererTiles,selectionTextureTiles,NULL,&positionClic);
     SDL_RenderPresent(rendererTiles);
 }
 
 void TilesEditeur::UpdateFenetreSprite()
 {
     SDL_RenderClear(rendererSprites);
-    SDL_Rect positionSpriteEnnemieCaCAffichage=positionSpriteCaCAffichage;
-    positionSpriteEnnemieCaCAffichage.x=75;
-    SDL_RenderCopy(rendererSprites,spriteOrcTexture,&positionSpriteCaC,&positionSpriteCaCAffichage);
-    SDL_RenderCopy(rendererSprites,spriteOrcEnnemieTexture,&positionSpriteCaC,&positionSpriteEnnemieCaCAffichage);
+    SDL_RenderCopy(rendererSprites,spriteOrcTexture,&positionSpriteCaCSurTexture,&positionSpriteCaCAffichage);
+    SDL_RenderCopy(rendererSprites,spriteOrcEnnemieTexture,&positionSpriteCaCSurTexture,&positionSpriteEnnemieCaCAffichage);
+    SDL_RenderCopy(rendererSprites,selectionTextureSprite,NULL,&positionSpriteSelectionne);
 
     SDL_RenderPresent(rendererSprites);
 }
@@ -157,5 +177,10 @@ void TilesEditeur::UpdateFenetreSprite()
 TilesEditeur::~TilesEditeur()
 {
     SDL_FreeSurface(tilesSurface);
+}
+
+bool SourisDansRect(SDL_Rect &souris, SDL_Rect &zoneSelection)
+{
+    return souris.x>=zoneSelection.x && souris.y >=zoneSelection.y && souris.x <= zoneSelection.x+zoneSelection.w && souris.y <= zoneSelection.y+zoneSelection.h;
 }
 
