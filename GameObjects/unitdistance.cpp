@@ -11,7 +11,7 @@ UnitDistance::~UnitDistance()
     //dtor
 }
 
-void UnitDistance::UnitMove(int x, int y)
+void UnitDistance::UnitMove(int _x, int _y)
 {
     if (path.empty()){
         Tools::Astar(Tools::GetNodeFromAxis(x,y),Tools::GetNodeFromAxis(_x,_y),pathingMap, path);
