@@ -111,13 +111,13 @@ void Jeu::ChargerUnite()
             if(type=='d')
             {
                 UnitDistance unite(type,true,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer,maCarte->cartePassage);
-                uniteJoueur.push_back(unite);
+                uniteJoueur.push_back(&unite);
 
             }
             else if(type=='c')
             {
                 UnitCaC unite(type,true,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer,maCarte->cartePassage);
-                uniteJoueur.push_back(unite);
+                uniteJoueur.push_back(&unite);
 
             }
 
@@ -156,13 +156,13 @@ void Jeu::ChargerUnite()
             if(type=='c')
             {
                UnitCaC unite(type,false,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer,maCarte->cartePassage);
-                uniteOrdinateur.push_back(unite);
+                uniteOrdinateur.push_back(&unite);
 
             }
             else if(type=='d')
             {
                 UnitDistance unite(type,false,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer,maCarte->cartePassage);
-                uniteOrdinateur.push_back(unite);
+                uniteOrdinateur.push_back(&unite);
 
             }
     }
@@ -176,12 +176,12 @@ void Jeu::Render()
     maCarte->Render();
     for(unsigned int i=0;i<uniteJoueur.size();i++)
     {
-        uniteJoueur[i].Render();
+        uniteJoueur[i]->Render();
     }
     for(unsigned int i=0;i<uniteOrdinateur.size();i++)
     {
 
-        uniteOrdinateur[i].Render();
+        uniteOrdinateur[i]->Render();
     }
     joueurControlleur->Render();
     maCarte->RenderMiniMap();

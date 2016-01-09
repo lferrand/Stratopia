@@ -2,14 +2,8 @@
 
 
 
-<<<<<<< HEAD
 UnitCaC::UnitCaC(char _type, bool _isJoueurUniteS,SDL_Texture *texture, SDL_Rect positionTexture, SDL_Rect positionCarte,SDL_Renderer *renderer,bool **pathMap):
 Unit(_type,_isJoueurUniteS,texture,positionTexture,positionCarte,renderer,pathMap)
-=======
-
-UnitCaC::UnitCaC(char _type, bool _isJoueurUniteS,SDL_Texture *texture, SDL_Rect positionTexture, SDL_Rect positionCarte,SDL_Renderer *renderer):
-Unit(_type,_isJoueurUniteS,texture,positionTexture,positionCarte,renderer)
->>>>>>> origin/master
 {
     attackTimer = 0;
     attackCD = 100;
