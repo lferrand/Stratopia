@@ -14,10 +14,12 @@ class PlayerController : public Controller
         virtual ~PlayerController();
         void RecevoirEvenement(SDL_Event &event);
         void CreerTextureRectangleSelection();
+        void TesterIntersectionAvecJoueur();
+
         void Render();
     protected:
         std::vector<Unit> &unitesJoueur;
-        std::vector<Unit*> UnitesSelectionnees;
+        std::vector<Unit*> unitesSelectionnees;
 
         bool selectionEnCours;
 

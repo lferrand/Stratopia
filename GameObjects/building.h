@@ -7,7 +7,6 @@
 class Building : public RenderableObject
 {
     public:
-        Building();
         virtual ~Building();
     protected:
     private:

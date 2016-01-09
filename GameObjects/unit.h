@@ -9,7 +9,6 @@
 class Unit : public RenderableObject
 {
     public:
-        Unit();
         Unit(char t, bool isJoueur, SDL_Texture *texture, SDL_Rect positionTexture, SDL_Rect positionCarte,SDL_Renderer *renderer): RenderableObject(texture,positionTexture,positionCarte, renderer), type(t),isJoueurUnite(isJoueur){}
         virtual ~Unit();
         virtual void UnitMove(int x, int y);

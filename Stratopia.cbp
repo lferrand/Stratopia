@@ -20,6 +20,9 @@
 					<Add directory="Jeu/Map" />
 					<Add directory="include" />
 					<Add directory="Tools" />
+					<Add directory="GameObjects" />
+					<Add directory="Controller" />
+					<Add directory="Jeu" />
 				</Compiler>
 				<Linker>
 					<Add directory="../../../../../SDL2/lib" />
@@ -77,6 +80,7 @@
 		<Unit filename="GameObjects/movableobject.h" />
 		<Unit filename="GameObjects/renderableobject.cpp" />
 		<Unit filename="GameObjects/renderableobject.h" />
+		<Unit filename="GameObjects/unit.cpp" />
 		<Unit filename="GameObjects/unit.h">
 			<Option compile="1" />
 			<Option target="&lt;{~None~}&gt;" />

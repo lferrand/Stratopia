@@ -34,6 +34,7 @@ void PlayerController::RecevoirEvenement(SDL_Event &event)
                     rectangleSelectionForme.y-=rectangleSelectionForme.h;
                 }
                 CreerTextureRectangleSelection();
+                TesterIntersectionAvecJoueur();
             }
                         break;
 
@@ -84,6 +85,17 @@ void PlayerController::CreerTextureRectangleSelection()
     selectionTexture=SDL_CreateTextureFromSurface(renderer,rectangleSelectionSurface);
     SDL_FreeSurface(rectangleSelectionSurface);
 
+}
+void PlayerController::TesterIntersectionAvecJoueur()
+{
+    unitesSelectionnees.clear();
+    for(unsigned int i=0;i<unitesJoueur.size();i++)
+    {
+        if(unitesJoueur[i].EstDansRectangleSelection(rectangleSelectionForme))
+        {
+            unitesSelectionnees.push_back(&unitesJoueur[i]);
+        }
+    }
 }
 
 void PlayerController::Render()

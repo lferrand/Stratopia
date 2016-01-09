@@ -1,17 +1,15 @@
 #include "unitcac.h"
-#include "tools.h"
-#include "vector2d.h"
 
-UnitCaC::UnitCaC(float _attackTimer, float _attackCD , int _range, int _damage, char _type, bool _isJoueurUnite)
+
+
+UnitCaC::UnitCaC(char _type, bool _isJoueurUniteS,SDL_Texture *texture, SDL_Rect positionTexture, SDL_Rect positionCarte,SDL_Renderer *renderer):
+Unit(_type,_isJoueurUniteS,texture,positionTexture,positionCarte,renderer)
 {
-    attackTimer = _attackTimer;
-    attackCD = _attackCD;
-    range = _range;
-    damage = _damage;
-    type = _type;
-    isJoueurUnite = _isJoueurUnite;
+    attackTimer = 0;
+    attackCD = 100;
+    range = 20;
+    damage = 20;
 }
-
 UnitCaC::~UnitCaC()
 {
     //dtor

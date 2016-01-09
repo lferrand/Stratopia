@@ -9,16 +9,18 @@
 class RenderableObject : public MovableObject
 {
     public:
-        RenderableObject();
         RenderableObject(SDL_Texture *texture, SDL_Rect posTexture,SDL_Rect positionCarte,SDL_Renderer *render);
         virtual ~RenderableObject();
         void setHealth(int h){health=h;}
         float getHealth(){return health;}
         void Render();
+        void SetIsSelect(bool isSelect_){isSelect=isSelect_;}
+        bool EstDansRectangleSelection(SDL_Rect rectangle);
 
         //texture de barre de vie
         static SDL_Texture* BarreVieTexture;
         static SDL_Texture* VieTexture;
+        static SDL_Texture* SelectionUniteTexture;
 
 
     protected:
@@ -27,6 +29,7 @@ class RenderableObject : public MovableObject
         SDL_Renderer *renderer;
         SDL_Texture *textureObjet;
 
+        bool isSelect;
 
         SDL_Rect positionObjetTexture;
         SDL_Rect positionObjetMap;

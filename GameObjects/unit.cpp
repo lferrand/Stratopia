@@ -1,10 +1,6 @@
 #include "unit.h"
 #include "vector2d.h"
 
-Unit::Unit()
-{
-    //ctor
-}
 
 
 

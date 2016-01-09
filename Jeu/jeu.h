@@ -3,9 +3,13 @@
 #include <vector>
 #include <iostream>
 #include "mapjeu.h"
+
+#include "unitcac.h"
+
+#include "unitdistance.h"
+
 #include "playercontroller.h"
 
-#include "../GameObjects/unit.h"
 
 class Jeu
 {
