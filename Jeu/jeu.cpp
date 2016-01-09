@@ -184,6 +184,7 @@ void Jeu::Render()
         uniteOrdinateur[i].Render();
     }
     joueurControlleur->Render();
+    maCarte->RenderMiniMap();
     SDL_RenderPresent(renderer);
 }
 
@@ -212,6 +213,7 @@ void Jeu::RecevoirEvent(SDL_Event event)
     else
     {
         joueurControlleur->RecevoirEvenement(event);
+        maCarte->RecevoirEvenement(event);
     }
 }
 

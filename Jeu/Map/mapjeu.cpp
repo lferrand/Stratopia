@@ -7,13 +7,27 @@ MapJeu::MapJeu(SDL_Renderer *render)
     renderer=render;
     longueur=30;
     largeur=40;
+    positionMinimap.x=800;
+    positionMinimap.y=10;
+    positionMinimap.h=200;
+    positionMinimap.w=200;
 
+    positionSelectionMinimap.x=800;
+    positionSelectionMinimap.y=10;
+    positionSelectionMinimap.h=138;
+    positionSelectionMinimap.w=160;
+
+
+    positionUiMinimap.x=795;
+    positionUiMinimap.y=5;
+    positionUiMinimap.h=210;
+    positionUiMinimap.w=210;
     Camera::positionCamera.x=0;
     Camera::positionCamera.y=0;
     Camera::positionCamera.w=1024;
     Camera::positionCamera.h=640;
-
     LoadMap();
+    LoadMiniMap();
 }
 void MapJeu::BougerCamera(char direction)
 {
@@ -52,6 +66,42 @@ void MapJeu::Render()
 {
     SDL_RenderCopy(renderer,mapTexture,&Camera::positionCamera,NULL);
 }
+
+void MapJeu::RenderMiniMap()
+{
+    SDL_RenderCopy(renderer,uiMiniMapTexture,NULL,&positionUiMinimap);
+    SDL_RenderCopy(renderer,mapTexture,NULL,&positionMinimap);
+    positionSelectionMinimap.x=Camera::positionCamera.x*200/1248+positionMinimap.x;
+    positionSelectionMinimap.y=Camera::positionCamera.y*200/1024+positionMinimap.y;
+    SDL_RenderCopy(renderer,selectionMiniMapTexture,NULL,&positionSelectionMinimap);
+}
+
+void MapJeu::RecevoirEvenement(SDL_Event &event)
+{
+    if(event.type==SDL_MOUSEBUTTONDOWN)
+    {
+        SDL_Point souris;
+        souris.x=event.button.x;
+        souris.y=event.button.y;
+        if(SDL_PointInRect(&souris,&positionMinimap))
+        {
+            souris.x-=positionMinimap.x;
+            souris.y-=positionMinimap.y;
+
+            Camera::positionCamera.x=souris.x*1248/200;
+            if(Camera::positionCamera.x+Camera::positionCamera.w>1248)
+            {
+                Camera::positionCamera.x=1248-Camera::positionCamera.w;
+            }
+            Camera::positionCamera.y=souris.y*960/200;
+            if(Camera::positionCamera.y+Camera::positionCamera.h>960)
+            {
+                Camera::positionCamera.y=960-Camera::positionCamera.h;
+            }
+        }
+    }
+}
+
 void MapJeu::LoadMap()
 {
     std::ifstream fichier("carte1.lvl", std::ios::in);
@@ -120,6 +170,20 @@ void MapJeu::LoadMap()
 
 }
 
+
+void MapJeu::LoadMiniMap()
+{
+     SDL_Surface *miniMapSurface=IMG_Load("Jeu/Images/ui_minimap.png");
+     SDL_Surface *selectionMiniMapSurface=IMG_Load("Jeu/Images/selection_minimap.png");
+
+     uiMiniMapTexture=SDL_CreateTextureFromSurface(renderer,miniMapSurface);
+     selectionMiniMapTexture=SDL_CreateTextureFromSurface(renderer,selectionMiniMapSurface);
+
+     SDL_FreeSurface(miniMapSurface);
+     SDL_FreeSurface(selectionMiniMapSurface);
+
+
+}
 MapJeu::~MapJeu()
 {
     //dtor

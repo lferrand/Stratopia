@@ -18,8 +18,11 @@ class MapJeu
         MapJeu();
         MapJeu(SDL_Renderer *render);
         void LoadMap();
+        void LoadMiniMap();
         virtual ~MapJeu();
         void Render();
+        void RenderMiniMap();
+        void RecevoirEvenement(SDL_Event &event);
         void BougerCamera(char direction);
         bool **cartePassage;
 
@@ -28,9 +31,14 @@ class MapJeu
         int longueur;
         int largeur;
         SDL_Renderer *renderer;
-        SDL_Texture *mapTexture;
-        bool debug;
 
+        SDL_Texture *mapTexture;
+        SDL_Texture *uiMiniMapTexture;
+        SDL_Texture *selectionMiniMapTexture;
+
+        SDL_Rect positionSelectionMinimap;
+        SDL_Rect positionMinimap;
+        SDL_Rect positionUiMinimap;
 
 };
 

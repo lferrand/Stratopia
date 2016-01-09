@@ -40,6 +40,7 @@
 					<Add directory="Jeu/Map" />
 					<Add directory="include" />
 					<Add directory="Tools" />
+					<Add directory="Jeu" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -82,7 +83,6 @@
 		<Unit filename="GameObjects/renderableobject.h" />
 		<Unit filename="GameObjects/unit.cpp" />
 		<Unit filename="GameObjects/unit.h">
-			<Option compile="1" />
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="GameObjects/unitcac.cpp" />
@@ -93,6 +93,8 @@
 		<Unit filename="Jeu/Map/mapjeu.h">
 			<Option compile="1" />
 		</Unit>
+		<Unit filename="Jeu/camera.cpp" />
+		<Unit filename="Jeu/camera.h" />
 		<Unit filename="Jeu/jeu.cpp" />
 		<Unit filename="Jeu/jeu.h">
 			<Option compile="1" />
@@ -175,7 +177,6 @@
 		<Unit filename="include/SDL2/SDL_video.h" />
 		<Unit filename="include/SDL2/begin_code.h" />
 		<Unit filename="include/SDL2/close_code.h" />
-		<Unit filename="include/unitcac.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

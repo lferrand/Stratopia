@@ -27,7 +27,7 @@ class Jeu
         int startTick;
         int tempsAAttendre;
         int tempsEcoule;
-
+        int masqueDirection;
         MapJeu *maCarte;
         SDL_Window *jeuFenetre;
         SDL_Renderer *renderer;
