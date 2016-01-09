@@ -106,9 +106,9 @@ void PlayerController::TesterIntersectionAvecJoueur()
     unitesSelectionnees.clear();
     for(unsigned int i=0;i<unitesJoueur.size();i++)
     {
-        if(unitesJoueur[i].EstDansRectangleSelection(rectangleSelectionForme))
+        if(unitesJoueur[i]->EstDansRectangleSelection(rectangleSelectionForme))
         {
-            unitesSelectionnees.push_back(&unitesJoueur[i]);
+            unitesSelectionnees.push_back(unitesJoueur[i]);
         }
     }
 }

@@ -22,8 +22,11 @@ void UnitDistance::UnitMove()
         destination = NULL;
     }
     if (destination != NULL){
+
+        Node destinationNode = Tools::GetNodeFromAxis(destination->x,destination->y);
+
         if (path.empty()){
-        Tools::Astar(Tools::GetNodeFromAxis(x,y),Tools::GetNodeFromAxis(destination->x,destination->y),pathingMap, path);
+            Tools::Astar(Tools::GetNodeFromAxis(x,y),Tools::GetNodeFromAxis(destination->x,destination->y),pathingMap, path);
         }
         else{
             //std::cout << "position x : " << x << "position y : " << y << "\n";
@@ -49,6 +52,7 @@ void UnitDistance::UnitMove()
             //std::cout << "steering x : " << steering.x << "steering y : " << steering.y << "\n";
             Move(steering);
             //std::cout << Seek(target).Length()<< "\n";
+
             if( Seek(target).Length()<= (20/2) && path.size() !=1){
                 path.erase(path.begin()+index);
             }else if (Seek(target).Length() <= 0 && path.size() == 1){
@@ -56,6 +60,9 @@ void UnitDistance::UnitMove()
                 destination = NULL;
                 std::cout << Seek(target).Length()<< "\n";
                 path.erase(path.begin()+index);
+            }
+            if (destinationNode.GetWorldX() != path[0].GetWorldX() && destinationNode.GetWorldY()!= path[0].GetWorldY()){
+                path.clear();
             }
         }
     }
@@ -67,9 +74,16 @@ void UnitDistance::UnitMove()
 
 void UnitDistance::Attack(Unit& target)
 {
-    if(Tools::DistanceEuclidienne(this->getX(),target.getX(),this->getY(),target.getY())<= range){
-        target.setHealth(target.getHealth() - this->damage);
-        this->attackTimer = 0;
+    if(attackTimer < attackCD){
+        attackTimer++;
+    }
+
+    float distance = (Vector2D(x,y) - Vector2D(target.getX(),target.getY())).Length();
+    if(distance < range){
+        if(attackTimer >= attackCD){
+            target.setHealth(target.getHealth() - this->damage);
+            this->attackTimer = 0;
+        }
     }
     else{
         delete destination;

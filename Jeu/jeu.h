@@ -4,7 +4,6 @@
 #include <iostream>
 #include "mapjeu.h"
 #include "../Controller/playercontroller.h"
-#include "../GameObjects/unit.h"
 
 #include "unitcac.h"
 
@@ -33,8 +32,8 @@ class Jeu
         SDL_Window *jeuFenetre;
         SDL_Renderer *renderer;
         PlayerController *joueurControlleur;
-        std::vector<Unit> uniteJoueur;
-        std::vector<Unit> uniteOrdinateur;
+        std::vector<Unit*> uniteJoueur;
+        std::vector<Unit*> uniteOrdinateur;
 };
 
 #endif // JEU_H

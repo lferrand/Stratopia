@@ -8,7 +8,7 @@
 class PlayerController : public Controller
 {
     public:
-        PlayerController(std::vector<Unit> &unites, SDL_Renderer *render):
+        PlayerController(std::vector<Unit*> &unites, SDL_Renderer *render):
         unitesJoueur(unites),renderer(render),selectionEnCours(false)
         {}
         virtual ~PlayerController();
@@ -18,7 +18,7 @@ class PlayerController : public Controller
 
         void Render();
     protected:
-        std::vector<Unit> &unitesJoueur;
+        std::vector<Unit*> &unitesJoueur;
         std::vector<Unit*> unitesSelectionnees;
 
         bool selectionEnCours;

@@ -1,5 +1,4 @@
 #include "jeu.h"
-#include "unitcac.h"
 
 Jeu::Jeu()
 {
@@ -110,13 +109,13 @@ void Jeu::ChargerUnite()
 
             if(type=='d')
             {
-                UnitDistance unite(type,true,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer);
+                UnitDistance* unite = new UnitDistance(type,true,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer);
                 uniteJoueur.push_back(unite);
 
             }
             else if(type=='c')
             {
-                UnitCaC unite(type,true,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer);
+                UnitCaC* unite = new UnitCaC(type,true,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer);
                 uniteJoueur.push_back(unite);
 
             }
@@ -155,14 +154,14 @@ void Jeu::ChargerUnite()
             positionUnitSurCarte.y=result;
             if(type=='c')
             {
-               UnitCaC unite(type,false,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer);
+               UnitCaC* unite = new UnitCaC(type,false,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer);
                 uniteOrdinateur.push_back(unite);
 
             }
             else if(type=='d')
             {
-                UnitDistance unite(type,false,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer);
-                            uniteOrdinateur.push_back(unite);
+                UnitDistance* unite = new UnitDistance(type,false,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer);
+                uniteOrdinateur.push_back(unite);
 
             }
     }
@@ -171,23 +170,16 @@ void Jeu::ChargerUnite()
 
 void Jeu::Render()
 {
-    uniteJoueur[0].SetPathingMap(this->maCarte->cartePassage);
-    Vector2D face = Vector2D(10,5);
-    uniteJoueur[0].SetFacing(face);
-    uniteJoueur[0].SetDestination(400,20);
-    uniteJoueur[0].UnitMove();
-
-
     SDL_RenderClear(renderer);
     maCarte->Render();
     for(unsigned int i=0;i<uniteJoueur.size();i++)
     {
-        uniteJoueur[i].Render();
+        uniteJoueur[i]->Render();
     }
     for(unsigned int i=0;i<uniteOrdinateur.size();i++)
     {
 
-        uniteOrdinateur[i].Render();
+        uniteOrdinateur[i]->Render();
     }
     joueurControlleur->Render();
     SDL_RenderPresent(renderer);
@@ -211,6 +203,16 @@ void Jeu::Action()
         tempsEcoule=tempsEcoule-tempsAAttendre;
         startTick=-1;
 
+        uniteJoueur[0]->SetPathingMap(this->maCarte->cartePassage);
+        Vector2D face = Vector2D(10,5);
+        uniteJoueur[0]->SetFacing(face);
+        uniteJoueur[0]->SetDestination(40,50);
+        uniteJoueur[0]->Attack(*uniteOrdinateur[0]);
+
+        uniteOrdinateur[0]->SetPathingMap(this->maCarte->cartePassage);
+        uniteOrdinateur[0]->SetFacing(face);
+        uniteOrdinateur[0]->SetDestination(300,500);
+        uniteOrdinateur[0]->UnitMove();
         /*Executer l'action ici*/
 
 

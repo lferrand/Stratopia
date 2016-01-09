@@ -39,7 +39,7 @@ void Unit::UnitMove()
             Vector2D target;
             int index = 0;
             index = path.size()-1;
-            speed = 1;
+            speed = 3;
             pathForce = 1;
             Node currentNode = path[index];
             //std::cout << "node x : " << currentNode.GetWorldX() << "node y : " << currentNode.GetWorldY() << "\n";
@@ -58,7 +58,7 @@ void Unit::UnitMove()
             //std::cout << "steering x : " << steering.x << "steering y : " << steering.y << "\n";
             Move(steering);
             //std::cout << Seek(target).Length()<< "\n";
-            if( Seek(target).Length()<= (20/2) && path.size() !=1){
+            if( Seek(target).Length()<= (40/2) && path.size() !=1){
                 path.erase(path.begin()+index);
             }else if (Seek(target).Length() <= 0 && path.size() == 1){
                 delete destination;
