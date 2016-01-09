@@ -121,7 +121,7 @@ void MapEditeur::LoadMap()
 
 }
 
-void MapEditeur::RecevoirEvenement(SDL_Event event)
+void MapEditeur::RecevoirEvenement(SDL_Event &event)
 {
     switch(event.type)
     {

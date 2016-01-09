@@ -13,11 +13,20 @@ void ChargerJeu()
     bool end = false;
     while(!end)
     {
-        SDL_WaitEvent(&event);
-        if(event.window.event == SDL_WINDOWEVENT_CLOSE)
+        monJeu->Render();
+        while(SDL_PollEvent(&event)&&!end)
+        {
+            if(event.window.event == SDL_WINDOWEVENT_CLOSE)
             {
                 end = true;
             }
+            else
+            {
+                monJeu->RecevoirEvent(event);
+            }
+        }
+
+
     }
 
 }

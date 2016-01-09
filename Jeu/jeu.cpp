@@ -4,28 +4,14 @@ Jeu::Jeu()
 {
     jeuFenetre = SDL_CreateWindow("Stratopia jeu", 450, 30, 800, 600, SDL_WINDOW_SHOWN);
     renderer= SDL_CreateRenderer(jeuFenetre, -1, 0);
-    SDL_RenderClear(renderer);
-
+    joueurControlleur=new PlayerController(uniteJoueur,renderer);
     ChargerMap();
     ChargerUnite();
-    for(int i=0;i<uniteJoueur.size();i++)
-    {
-        uniteJoueur[i].Render();
-    }
-    for(int i=0;i<uniteOrdinateur.size();i++)
-    {
-
-        uniteOrdinateur[i].Render();
-
-    }
-    SDL_RenderPresent(renderer);
-
 }
 
 void Jeu::ChargerMap()
 {
     maCarte=new MapJeu(renderer);
-    maCarte->Render();
 }
 
 void Jeu::ChargerUnite()
@@ -154,6 +140,29 @@ void Jeu::ChargerUnite()
             uniteOrdinateur.push_back(unite);
     }
 
+}
+
+void Jeu::Render()
+{
+    SDL_RenderClear(renderer);
+    maCarte->Render();
+    for(int i=0;i<uniteJoueur.size();i++)
+    {
+        uniteJoueur[i].Render();
+    }
+    for(int i=0;i<uniteOrdinateur.size();i++)
+    {
+
+        uniteOrdinateur[i].Render();
+    }
+    joueurControlleur->Render();
+    SDL_RenderPresent(renderer);
+}
+
+
+void Jeu::RecevoirEvent(SDL_Event event)
+{
+    joueurControlleur->RecevoirEvenement(event);
 }
 
 Jeu::~Jeu()

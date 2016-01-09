@@ -122,7 +122,7 @@ SDL_Surface* TilesEditeur::GetTilesSurface()
     return tilesSurface;
 }
 
-void TilesEditeur::RecevoirEvenement(SDL_Event event)
+void TilesEditeur::RecevoirEvenement(SDL_Event &event)
 {
     switch(event.type)
     {

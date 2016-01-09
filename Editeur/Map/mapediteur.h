@@ -28,7 +28,7 @@ class MapEditeur
         void LoadMap();
         void ChangerTiles(TilesEditeur *nouveauTile);
         void NewMap();
-        void RecevoirEvenement(SDL_Event event);
+        void RecevoirEvenement(SDL_Event &event);
         void ActualiserAffichageCarte();
         void SauvegarderMap();
     protected:

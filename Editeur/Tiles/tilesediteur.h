@@ -15,7 +15,7 @@ class TilesEditeur
 
         SDL_Surface *GetTilesSurface();
         virtual ~TilesEditeur();
-        void RecevoirEvenement(SDL_Event event);
+        void RecevoirEvenement(SDL_Event &event);
 
         SDL_Rect GetPositionTileSelectionne(){return positionTileSelectionne;}
         int GetModeActuel(){return modeActuel;}

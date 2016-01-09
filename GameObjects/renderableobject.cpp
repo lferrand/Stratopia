@@ -17,7 +17,7 @@ MovableObject(positionCarte.x,positionCarte.y),renderer(render),textureObjet(tex
     positionBarreVieTexture.h=5;
     positionVieTexture.x=positionBarreVieTexture.x+1;
     positionVieTexture.y=positionBarreVieTexture.y+1;
-    positionVieTexture.w=positionBarreVieTexture.w-2;
+    positionVieTexture.w=health*(positionBarreVieTexture.w-2)/100;
     positionVieTexture.h=positionBarreVieTexture.h-2;
 
 
@@ -34,7 +34,7 @@ void RenderableObject::Render()
     positionBarreVieTexture.h=5;
     positionVieTexture.x=positionBarreVieTexture.x+1;
     positionVieTexture.y=positionBarreVieTexture.y+1;
-    positionVieTexture.w=positionBarreVieTexture.w-2;
+    positionVieTexture.w=health*(positionBarreVieTexture.w-2)/100;
     positionVieTexture.h=positionBarreVieTexture.h-2;
 
     SDL_RenderCopy(renderer,textureObjet,&positionObjetTexture,&positionObjetMap);
