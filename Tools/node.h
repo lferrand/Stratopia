@@ -12,6 +12,8 @@ class Node
         int GetG();
         int GetH();
         int GetScore();
+        int GetWorldX();
+        int GetWorldY();
         Node* GetParent();
         void SetX(int x);
         void SetY(int y);

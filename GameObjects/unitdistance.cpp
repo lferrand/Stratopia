@@ -13,7 +13,20 @@ UnitDistance::~UnitDistance()
 
 void UnitDistance::UnitMove(int x, int y)
 {
-
+    if (path.empty()){
+        Tools::Astar(Tools::GetNodeFromAxis(x,y),Tools::GetNodeFromAxis(_x,_y),pathingMap, path);
+    }
+    else{
+        int index;
+        index = path.size()-1;
+        Node currentNode = path[index];
+        Vector2D target = Vector2D(currentNode.GetWorldX(),currentNode.GetWorldY());
+        Vector2D steering = (facing.Normalized() * speed) + (Seek(target)*pathForce);
+        Move(steering);
+        if(Tools::DistanceEuclidienne(x,target.x,y,target.y) <= (40/2)){
+            path.erase(path.begin()+index);
+        }
+    }
 }
 
 void UnitDistance::Attack(Unit& target)

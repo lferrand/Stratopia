@@ -4,6 +4,7 @@
 #include "renderableobject.h"
 #include <vector>
 #include "../Tools/node.h"
+#include "../Tools/vector2d.h"
 
 class Unit : public RenderableObject
 {
@@ -14,6 +15,8 @@ class Unit : public RenderableObject
         virtual void UnitMove(int x, int y);
         virtual void Attack(Unit& target);
         virtual bool Die();
+        Vector2D Seek(Vector2D target);
+        void Move(Vector2D);
     protected:
         float attackTimer;
         float attackCD;
@@ -22,6 +25,9 @@ class Unit : public RenderableObject
         char type;
         bool isJoueurUnite;
         std::vector<Node> path;
+        bool** pathingMap;
+        Vector2D facing;
+
     private:
 
 };

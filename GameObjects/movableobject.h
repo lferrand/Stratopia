@@ -13,8 +13,10 @@ class MovableObject : public GameObject
         int Getspeed() { return speed; }
         void Setspeed(int val) { speed = val; }
     protected:
-    private:
         int speed;
+        int pathForce;
+    private:
+
 };
 
 #endif // MOVABLEOBJECT_H

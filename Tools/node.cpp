@@ -38,6 +38,16 @@ int Node::GetH()
     return  H;
 }
 
+int Node::GetWorldX()
+{
+    return x * (800/40) + (40/2);
+}
+
+int Node::GetWorldY()
+{
+    return y * (800/40) + (40/2);
+}
+
 Node* Node::GetParent()
 {
     return  parentNode;
