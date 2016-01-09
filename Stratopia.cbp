@@ -18,6 +18,8 @@
 					<Add directory="Editeur/Tiles" />
 					<Add directory="../../../../../SDL2/i686-w64-mingw32/include/SDL2" />
 					<Add directory="Jeu/Map" />
+					<Add directory="include" />
+					<Add directory="Tools" />
 				</Compiler>
 				<Linker>
 					<Add directory="../../../../../SDL2/lib" />
@@ -33,6 +35,8 @@
 					<Add directory="Editeur/Map" />
 					<Add directory="Editeur/Tiles" />
 					<Add directory="Jeu/Map" />
+					<Add directory="include" />
+					<Add directory="Tools" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -53,11 +57,7 @@
 			<Add library="libSDL2main.a" />
 			<Add library="SDL2main" />
 			<Add library="SDL2.dll" />
-			<Add library="../../programme/CodeBlocks/SDL2_image-2.0.0/i686-w64-mingw32/lib/libSDL2_image.dll.a" />
-			<Add library="../../programme/CodeBlocks/SDL2_image-2.0.0/i686-w64-mingw32/lib/libSDL2_image.a" />
 			<Add directory="lib" />
-			<Add directory="D:/programme/CodeBlocks/Lib/SDL2/lib" />
-			<Add directory="../../programme/CodeBlocks/SDL2_image-2.0.0/i686-w64-mingw32/lib" />
 		</Linker>
 		<Unit filename="Controller/aicontroller.cpp" />
 		<Unit filename="Controller/aicontroller.h" />
@@ -77,18 +77,28 @@
 		<Unit filename="GameObjects/movableobject.h" />
 		<Unit filename="GameObjects/renderableobject.cpp" />
 		<Unit filename="GameObjects/renderableobject.h" />
-		<Unit filename="GameObjects/unit.cpp" />
-		<Unit filename="GameObjects/unit.h" />
+		<Unit filename="GameObjects/unit.h">
+			<Option compile="1" />
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="GameObjects/unitcac.cpp" />
+		<Unit filename="GameObjects/unitcac.h" />
+		<Unit filename="GameObjects/unitdistance.cpp" />
+		<Unit filename="GameObjects/unitdistance.h" />
 		<Unit filename="Jeu/Map/mapjeu.cpp" />
-		<Unit filename="Jeu/Map/mapjeu.h" />
+		<Unit filename="Jeu/Map/mapjeu.h">
+			<Option compile="1" />
+		</Unit>
 		<Unit filename="Jeu/jeu.cpp" />
-		<Unit filename="Jeu/jeu.h" />
+		<Unit filename="Jeu/jeu.h">
+			<Option compile="1" />
+		</Unit>
 		<Unit filename="Tools/node.cpp" />
 		<Unit filename="Tools/node.h" />
-		<Unit filename="Tools/path.cpp" />
-		<Unit filename="Tools/path.h" />
 		<Unit filename="Tools/tools.cpp" />
 		<Unit filename="Tools/tools.h" />
+		<Unit filename="Tools/vector2d.cpp" />
+		<Unit filename="Tools/vector2d.h" />
 		<Unit filename="include/SDL2/SDL.h" />
 		<Unit filename="include/SDL2/SDL_assert.h" />
 		<Unit filename="include/SDL2/SDL_atomic.h" />
@@ -161,6 +171,7 @@
 		<Unit filename="include/SDL2/SDL_video.h" />
 		<Unit filename="include/SDL2/begin_code.h" />
 		<Unit filename="include/SDL2/close_code.h" />
+		<Unit filename="include/unitcac.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

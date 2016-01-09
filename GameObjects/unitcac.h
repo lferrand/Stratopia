@@ -7,11 +7,11 @@
 class UnitCaC : public Unit
 {
     public:
-        UnitCaC();
+        UnitCaC(float _attackTimer, float _attackCD , int _range, int _damage, char _type, bool _isJoueurUnite);
         virtual ~UnitCaC();
-        virtual void UniteMove();
-        virtual void Attack(Unit target);
-        virtual void Die();
+        virtual void UnitMove(int x, int y);
+        virtual void Attack(Unit& target);
+        virtual bool Die();
     protected:
     private:
 };

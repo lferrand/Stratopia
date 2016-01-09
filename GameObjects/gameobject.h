@@ -5,9 +5,7 @@
 class GameObject
 {
     private:
-        int id;
-        int x;
-        int y;
+
 
     public:
         GameObject();
@@ -19,7 +17,9 @@ class GameObject
         void setY(int y);
         int getId();
     protected:
-
+        int id;
+        int x;
+        int y;
 
 };
 

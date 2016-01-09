@@ -12,17 +12,17 @@ Unit::~Unit()
     //dtor
 }
 
-void Unit::UnitMove()
+void Unit::UnitMove(int x, int y)
 {
-
+    //something
 }
 
-void Unit::Attack(Unit Target)
+void Unit::Attack(Unit& target)
 {
-
+    //someting
 }
 
-void Unit::Die()
+bool Unit::Die()
 {
-
+    //something
 }

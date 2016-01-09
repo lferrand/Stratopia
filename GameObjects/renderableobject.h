@@ -19,7 +19,6 @@ class RenderableObject : public MovableObject
         static SDL_Texture* BarreVieTexture100;
 
     protected:
-    private:
         int health;
 
         SDL_Renderer *renderer;
@@ -30,6 +29,8 @@ class RenderableObject : public MovableObject
         SDL_Rect positionObjetMap;
 
         SDL_Rect positionBarreVieTexture;
+    private:
+
 
 };
 
