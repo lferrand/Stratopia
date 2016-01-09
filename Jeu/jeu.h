@@ -3,8 +3,7 @@
 #include <vector>
 #include <iostream>
 #include "mapjeu.h"
-#include "playercontroller.h"
-
+#include "../Controller/playercontroller.h"
 #include "../GameObjects/unit.h"
 
 class Jeu

@@ -1,4 +1,5 @@
 #include "jeu.h"
+#include "unitcac.h"
 
 Jeu::Jeu()
 {
@@ -144,6 +145,13 @@ void Jeu::ChargerUnite()
 
 void Jeu::Render()
 {
+    uniteJoueur[0].SetPathingMap(this->maCarte->cartePassage);
+    Vector2D face = Vector2D(10,5);
+    uniteJoueur[0].SetFacing(face);
+    uniteJoueur[0].SetDestination(400,20);
+    uniteJoueur[0].UnitMove();
+
+
     SDL_RenderClear(renderer);
     maCarte->Render();
     for(int i=0;i<uniteJoueur.size();i++)

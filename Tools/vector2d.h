@@ -16,11 +16,15 @@ class Vector2D
         Vector2D& operator*=(float scalar);
         Vector2D& operator/=(float scalar);
         Vector2D Normalized();
+        float Length();
+        void Truncate(float upperBound);
+
     protected:
     private:
 };
 
 Vector2D operator+ (const Vector2D &a, const Vector2D &b);
+Vector2D operator+ (const Vector2D* &a, const Vector2D &b);
 Vector2D operator- (const Vector2D &a, const Vector2D &b);
 Vector2D operator* (const Vector2D &a, float scalar);
 Vector2D operator* (float scalar, const Vector2D &a);

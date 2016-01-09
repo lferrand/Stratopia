@@ -20,12 +20,12 @@ class MapJeu
         void LoadMap();
         virtual ~MapJeu();
         void Render();
+        bool **cartePassage;
     protected:
     private:
         int longueur;
         int largeur;
         SDL_Renderer *renderer;
-        bool **cartePassage;
         SDL_Texture *mapTexture;
 
 
