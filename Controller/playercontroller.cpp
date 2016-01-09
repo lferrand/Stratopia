@@ -12,8 +12,23 @@ void PlayerController::RecevoirEvenement(SDL_Event &event)
     switch(event.type)
     {
         case SDL_MOUSEBUTTONDOWN:
-            positionCliqueInitial.x=event.button.x;
-            positionCliqueInitial.y=event.button.y;
+            if(event.button.button==SDL_BUTTON_LEFT)
+            {
+                positionCliqueInitial.x=event.button.x;
+                positionCliqueInitial.y=event.button.y;
+                rectangleSelectionForme.x=positionCliqueInitial.x;
+                rectangleSelectionForme.y=positionCliqueInitial.y;
+                rectangleSelectionForme.w=1;
+                rectangleSelectionForme.h=1;
+                TesterIntersectionAvecJoueur();
+            }
+            else
+            {
+                for(int i=0;i<unitesSelectionnees.size();i++)
+                {
+
+                }
+            }
             break;
         case SDL_MOUSEMOTION:
             if(event.motion.state& SDL_BUTTON(SDL_BUTTON_LEFT))
@@ -34,11 +49,12 @@ void PlayerController::RecevoirEvenement(SDL_Event &event)
                     rectangleSelectionForme.y-=rectangleSelectionForme.h;
                 }
                 CreerTextureRectangleSelection();
+                TesterIntersectionAvecJoueur();
             }
                         break;
 
         case SDL_MOUSEBUTTONUP:
-            selectionEnCours=false;
+                selectionEnCours=false;
             break;
     }
 
@@ -84,6 +100,17 @@ void PlayerController::CreerTextureRectangleSelection()
     selectionTexture=SDL_CreateTextureFromSurface(renderer,rectangleSelectionSurface);
     SDL_FreeSurface(rectangleSelectionSurface);
 
+}
+void PlayerController::TesterIntersectionAvecJoueur()
+{
+    unitesSelectionnees.clear();
+    for(unsigned int i=0;i<unitesJoueur.size();i++)
+    {
+        if(unitesJoueur[i].EstDansRectangleSelection(rectangleSelectionForme))
+        {
+            unitesSelectionnees.push_back(&unitesJoueur[i]);
+        }
+    }
 }
 
 void PlayerController::Render()

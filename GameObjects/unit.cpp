@@ -3,10 +3,6 @@
 #include "vector2d.h"
 #include "math.h"
 
-Unit::Unit()
-{
-    //ctor
-}
 
 
 

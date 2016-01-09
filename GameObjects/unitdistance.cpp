@@ -1,9 +1,13 @@
 #include "unitdistance.h"
 #include "tools.h"
 
-UnitDistance::UnitDistance()
+UnitDistance::UnitDistance(char _type, bool _isJoueurUniteS,SDL_Texture *texture, SDL_Rect positionTexture, SDL_Rect positionCarte,SDL_Renderer *renderer):
+Unit(_type,_isJoueurUniteS,texture,positionTexture,positionCarte,renderer)
 {
-    //ctor
+    attackTimer = 0;
+    attackCD = 100;
+    range = 20;
+    damage = 20;
 }
 
 UnitDistance::~UnitDistance()

@@ -6,6 +6,9 @@ Jeu::Jeu()
     jeuFenetre = SDL_CreateWindow("Stratopia jeu", 450, 30, 800, 600, SDL_WINDOW_SHOWN);
     renderer= SDL_CreateRenderer(jeuFenetre, -1, 0);
     joueurControlleur=new PlayerController(uniteJoueur,renderer);
+    startTick=-1;
+    tempsEcoule=0;
+    tempsAAttendre=17;
     ChargerMap();
     ChargerUnite();
 }
@@ -20,8 +23,12 @@ void Jeu::ChargerUnite()
     //Chargement des textures de la barre de vie
     SDL_Surface *barreVieSurface=IMG_Load("Jeu/Images/barre_vie.png");
     SDL_Surface *vieSurface=IMG_Load("Jeu/Images/vie.png");
+    SDL_Surface *selectionSurface=IMG_Load("Jeu/Images/selection_unite.png");
     RenderableObject::BarreVieTexture = SDL_CreateTextureFromSurface(renderer,barreVieSurface);
     RenderableObject::VieTexture = SDL_CreateTextureFromSurface(renderer,vieSurface);
+    RenderableObject::SelectionUniteTexture = SDL_CreateTextureFromSurface(renderer,selectionSurface);
+    SDL_FreeSurface(selectionSurface);
+
     SDL_FreeSurface(barreVieSurface);
     SDL_FreeSurface(vieSurface);
 
@@ -101,9 +108,19 @@ void Jeu::ChargerUnite()
             convert2 >> result;
             positionUnitSurCarte.y=result;
 
-            Unit unite(type,true,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer);
+            if(type=='d')
+            {
+                UnitDistance unite(type,true,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer);
+                uniteJoueur.push_back(unite);
 
-            uniteJoueur.push_back(unite);
+            }
+            else if(type=='c')
+            {
+                UnitCaC unite(type,true,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer);
+                uniteJoueur.push_back(unite);
+
+            }
+
     }
 
     while(fichier >> mot)
@@ -136,9 +153,18 @@ void Jeu::ChargerUnite()
             std::stringstream convert2(mot);
             convert2 >> result;
             positionUnitSurCarte.y=result;
+            if(type=='c')
+            {
+               UnitCaC unite(type,false,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer);
+                uniteOrdinateur.push_back(unite);
 
-            Unit unite(type,false,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer);
-            uniteOrdinateur.push_back(unite);
+            }
+            else if(type=='d')
+            {
+                UnitDistance unite(type,false,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer);
+                            uniteOrdinateur.push_back(unite);
+
+            }
     }
 
 }
@@ -154,11 +180,11 @@ void Jeu::Render()
 
     SDL_RenderClear(renderer);
     maCarte->Render();
-    for(int i=0;i<uniteJoueur.size();i++)
+    for(unsigned int i=0;i<uniteJoueur.size();i++)
     {
         uniteJoueur[i].Render();
     }
-    for(int i=0;i<uniteOrdinateur.size();i++)
+    for(unsigned int i=0;i<uniteOrdinateur.size();i++)
     {
 
         uniteOrdinateur[i].Render();
@@ -173,7 +199,25 @@ void Jeu::RecevoirEvent(SDL_Event event)
     joueurControlleur->RecevoirEvenement(event);
 }
 
+void Jeu::Action()
+{
+    if(startTick<0)
+    {
+        startTick=SDL_GetTicks();
+    }
+    tempsEcoule=SDL_GetTicks()-startTick;
+    if(tempsEcoule>=tempsAAttendre)
+    {
+        tempsEcoule=tempsEcoule-tempsAAttendre;
+        startTick=-1;
+
+        /*Executer l'action ici*/
+
+
+    }
+
+}
 Jeu::~Jeu()
 {
-    //dtor
+    delete joueurControlleur;
 }

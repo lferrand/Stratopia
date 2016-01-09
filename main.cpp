@@ -1,10 +1,11 @@
 #include <SDL2/SDL.h>
 #include <iostream>
 #include <SDL2/SDL_image.h>
+#include "Jeu/jeu.h"
 #include "mapjeu.h"
 #include "mapediteur.h"
 #include "tilesediteur.h"
-#include "Jeu/jeu.h"
+
 
 void ChargerJeu()
 {
@@ -13,6 +14,7 @@ void ChargerJeu()
     bool end = false;
     while(!end)
     {
+        monJeu->Action();
         monJeu->Render();
         while(SDL_PollEvent(&event)&&!end)
         {
