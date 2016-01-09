@@ -9,7 +9,7 @@ class UnitDistance : public Unit
     public:
         UnitDistance();
         virtual ~UnitDistance();
-        virtual void UnitMove(int x, int y);
+        virtual void UnitMove();
         virtual void Attack(Unit& target);
         virtual bool Die();
     protected:
