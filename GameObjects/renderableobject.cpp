@@ -25,9 +25,8 @@ MovableObject(positionCarte.x,positionCarte.y),renderer(render),textureObjet(tex
 
 void RenderableObject::Render()
 {
-    positionObjetMap.x=getX();
-    positionObjetMap.y=getY();
-
+    positionObjetMap.x=getX()-Camera::positionCamera.x;
+    positionObjetMap.y=getY()-Camera::positionCamera.y;
     positionBarreVieTexture.x=positionObjetMap.x;
     positionBarreVieTexture.y=positionObjetMap.y-5;
     positionBarreVieTexture.w=37;

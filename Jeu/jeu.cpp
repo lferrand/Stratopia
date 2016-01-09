@@ -2,7 +2,7 @@
 
 Jeu::Jeu()
 {
-    jeuFenetre = SDL_CreateWindow("Stratopia jeu", 450, 30, 800, 600, SDL_WINDOW_SHOWN);
+    jeuFenetre = SDL_CreateWindow("Stratopia jeu", 30, 30, 1024, 640, SDL_WINDOW_SHOWN);
     renderer= SDL_CreateRenderer(jeuFenetre, -1, 0);
     joueurControlleur=new PlayerController(uniteJoueur,renderer);
     startTick=-1;
@@ -19,15 +19,16 @@ void Jeu::ChargerMap()
 
 void Jeu::ChargerUnite()
 {
-    //Chargement des textures de la barre de vie
+    //Chargement des textures de la barre de vie et de selections
     SDL_Surface *barreVieSurface=IMG_Load("Jeu/Images/barre_vie.png");
     SDL_Surface *vieSurface=IMG_Load("Jeu/Images/vie.png");
     SDL_Surface *selectionSurface=IMG_Load("Jeu/Images/selection_unite.png");
+
     RenderableObject::BarreVieTexture = SDL_CreateTextureFromSurface(renderer,barreVieSurface);
     RenderableObject::VieTexture = SDL_CreateTextureFromSurface(renderer,vieSurface);
     RenderableObject::SelectionUniteTexture = SDL_CreateTextureFromSurface(renderer,selectionSurface);
-    SDL_FreeSurface(selectionSurface);
 
+    SDL_FreeSurface(selectionSurface);
     SDL_FreeSurface(barreVieSurface);
     SDL_FreeSurface(vieSurface);
 
@@ -165,6 +166,7 @@ void Jeu::ChargerUnite()
 
             }
     }
+    fichier.close();
 
 }
 
@@ -188,7 +190,29 @@ void Jeu::Render()
 
 void Jeu::RecevoirEvent(SDL_Event event)
 {
-    joueurControlleur->RecevoirEvenement(event);
+    if(event.type==SDL_KEYDOWN)
+    {
+        if(event.key.keysym.sym==SDLK_RIGHT)
+        {
+            maCarte->BougerCamera('d');
+        }
+        if(event.key.keysym.sym==SDLK_LEFT)
+        {
+            maCarte->BougerCamera('g');
+        }
+                if(event.key.keysym.sym==SDLK_UP)
+        {
+            maCarte->BougerCamera('h');
+        }
+                if(event.key.keysym.sym==SDLK_DOWN)
+        {
+            maCarte->BougerCamera('b');
+        }
+    }
+    else
+    {
+        joueurControlleur->RecevoirEvenement(event);
+    }
 }
 
 void Jeu::Action()
@@ -212,4 +236,5 @@ void Jeu::Action()
 Jeu::~Jeu()
 {
     delete joueurControlleur;
+    delete maCarte;
 }

@@ -4,6 +4,7 @@
 #include <math.h>
 #include <map>
 
+
 Tools::Tools()
 {
     //ctor
@@ -291,7 +292,7 @@ float Tools::DistanceEuclidienneF(int x1, int x2, int y1, int y2)
 
 Node Tools::GetNodeFromAxis(int x, int y)
 {
-    Node result(x/(800/40),y/(600/30));
+    Node result(x/32,y/32);
     return result;
 }
 

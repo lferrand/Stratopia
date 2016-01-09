@@ -5,24 +5,62 @@
 MapJeu::MapJeu(SDL_Renderer *render)
 {
     renderer=render;
-    longueur=40;
-    largeur=30;
+    longueur=30;
+    largeur=40;
+
+    Camera::positionCamera.x=0;
+    Camera::positionCamera.y=0;
+    Camera::positionCamera.w=1024;
+    Camera::positionCamera.h=640;
 
     LoadMap();
 }
+void MapJeu::BougerCamera(char direction)
+{
+    switch(direction)
+    {
+    case 'd':
+        if(Camera::positionCamera.x+Camera::positionCamera.w<largeur*32)
+        {
+            Camera::positionCamera.x+=8;
+        }
+        break;
+    case 'g':
+        if(Camera::positionCamera.x>0)
+        {
+            Camera::positionCamera.x-=8;
+        }
+        break;
+    case 'h':
+        if(Camera::positionCamera.y>0)
+        {
+            Camera::positionCamera.y-=8;
+        }
+        break;
+    case 'b':
+        if(Camera::positionCamera.y+Camera::positionCamera.h<longueur*32)
+        {
+            Camera::positionCamera.y+=8;
+        }
+        break;
+
+    }
+
+}
+
 void MapJeu::Render()
 {
-    SDL_RenderCopy(renderer,mapTexture,NULL,NULL);
+    SDL_RenderCopy(renderer,mapTexture,&Camera::positionCamera,NULL);
 }
 void MapJeu::LoadMap()
 {
     std::ifstream fichier("carte1.lvl", std::ios::in);
 
-    cartePassage=new bool*[longueur];
+    cartePassage=new bool*[largeur];
 
     //Chargement des textures du tile
     SDL_Surface *tilesSurface=IMG_Load("Editeur/Images/map_tiles_2.png");
-    SDL_Surface *mapSurface=SDL_CreateRGBSurface(0,longueur*32,largeur*32,32,0,0,0,0);
+    SDL_Surface *mapSurface=SDL_CreateRGBSurface(0,largeur*32,longueur*32,32,0,0,0,0);
     //Préparation des positions
     SDL_Rect positionTexture;
     positionTexture.w=32;
@@ -34,10 +72,10 @@ void MapJeu::LoadMap()
 
     //Chargement de la map
       std::string ligne;
-    for(int i=0;i<longueur;i++)
+    for(int i=0;i<largeur;i++)
     {
-        cartePassage[i]=new bool[largeur];
-        for(int j=0;j<largeur;j++)
+        cartePassage[i]=new bool[longueur];
+        for(int j=0;j<longueur;j++)
         {
             positionCollage.x=i*32;
             positionCollage.y=j*32;

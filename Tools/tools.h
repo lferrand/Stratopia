@@ -3,6 +3,9 @@
 #include "node.h"
 #include <vector>
 #include <map>
+#define LARGEUR_ECRAN 1024;
+#define LONGUEUR_ECRAN 640
+
 
 class Tools
 {
@@ -17,6 +20,7 @@ class Tools
         static int DistanceEuclidienne(int x1, int x2, int y1, int y2);
         static float DistanceEuclidienneF(int x1, int x2, int y1, int y2);
         static Node GetNodeFromAxis(int x, int y);
+
     protected:
     private:
 };

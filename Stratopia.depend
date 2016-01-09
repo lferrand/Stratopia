@@ -726,17 +726,18 @@
 	"tilesediteur.h"
 	"Jeu/jeu.h"
 
-1452267118 source:d:\projets\stratopia\jeu\map\mapjeu.cpp
+1452356416 source:d:\projets\stratopia\jeu\map\mapjeu.cpp
 	"mapjeu.h"
 	"../../Tools/node.h"
 	"../../Tools/tools.h"
 
-1452274650 d:\projets\stratopia\jeu\map\mapjeu.h
+1452356371 d:\projets\stratopia\jeu\map\mapjeu.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	<fstream>
 	<iostream>
 	<sstream>
+	"camera.h"
 
 1452177066 source:c:\users\taliera\documents\github\stratopia\controller\aicontroller.cpp
 	"aicontroller.h"
@@ -761,10 +762,12 @@
 1452219794 c:\users\taliera\documents\github\stratopia\gameobjects\building.h
 	"renderableobject.h"
 
-1452346362 d:\projets\stratopia\gameobjects\renderableobject.h
+1452356487 d:\projets\stratopia\gameobjects\renderableobject.h
+	"tools.h"
 	"movableobject.h"
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
+	"Camera.h"
 
 1452312925 c:\users\taliera\documents\github\stratopia\gameobjects\renderableobject.h
 	"movableobject.h"
@@ -793,7 +796,7 @@
 1452177066 source:c:\users\taliera\documents\github\stratopia\gameobjects\movableobject.cpp
 	"movableobject.h"
 
-1452346571 source:d:\projets\stratopia\gameobjects\renderableobject.cpp
+1452355219 source:d:\projets\stratopia\gameobjects\renderableobject.cpp
 	"renderableobject.h"
 
 1452312756 source:c:\users\taliera\documents\github\stratopia\gameobjects\renderableobject.cpp
@@ -858,7 +861,7 @@
 	"../Tools/node.h"
 	"../Tools/vector2d.h"
 
-1452351161 source:d:\projets\stratopia\jeu\jeu.cpp
+1452354115 source:d:\projets\stratopia\jeu\jeu.cpp
 	"jeu.h"
 
 1452350768 d:\projets\stratopia\jeu\jeu.h
@@ -1272,7 +1275,7 @@
 
 1452340686 d:\projets\stratopia\tools\node.h
 
-1452340686 d:\projets\stratopia\tools\tools.h
+1452355204 d:\projets\stratopia\tools\tools.h
 	"node.h"
 	<vector>
 	<map>
@@ -1282,9 +1285,9 @@
 
 1452259999 d:\projets\stratopia\tools\path.h
 
-1452345260 d:\projets\stratopia\jeu\map
+1452356421 d:\projets\stratopia\jeu\map
 
-1452340686 source:d:\projets\stratopia\tools\tools.cpp
+1452355197 source:d:\projets\stratopia\tools\tools.cpp
 	"tools.h"
 	<iostream>
 	<stdlib.h>
@@ -1305,12 +1308,13 @@
 	"unitdistance.h"
 	"playercontroller.h"
 
-1452274650 source:d:\projets\stratopia\jeu\map\mapjeu.h
+1452356371 source:d:\projets\stratopia\jeu\map\mapjeu.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	<fstream>
 	<iostream>
 	<sstream>
+	"camera.h"
 
 1452345016 source:d:\projets\stratopia\gameobjects\unitcac.cpp
 	"unitcac.h"
@@ -1337,4 +1341,10 @@
 
 1452274650 d:\projets\stratopia\include\unitcac.h
 	"unit.h"
+
+1452356345 source:d:\projets\stratopia\jeu\camera.cpp
+	"camera.h"
+
+1452356121 d:\projets\stratopia\jeu\camera.h
+	<SDL2/SDL.h>
 

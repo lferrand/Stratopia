@@ -6,7 +6,7 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
-
+#include"camera.h"
 
 #define LARGEUR_CASE 20
 #define HAUTEUR_CASE 20
@@ -20,6 +20,7 @@ class MapJeu
         void LoadMap();
         virtual ~MapJeu();
         void Render();
+        void BougerCamera(char direction);
     protected:
     private:
         int longueur;
