@@ -9,7 +9,7 @@ class UnitDistance : public Unit
     public:
         UnitDistance(char _type, bool _isJoueurUniteS,SDL_Texture *texture, SDL_Rect positionTexture, SDL_Rect positionCarte,SDL_Renderer *renderer,bool**pathMap);
         virtual ~UnitDistance();
-        virtual void UnitMove(int x, int y);
+        virtual void UnitMove();
         virtual void Attack(Unit& target);
         virtual bool Die();
     protected:

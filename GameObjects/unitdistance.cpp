@@ -15,32 +15,80 @@ UnitDistance::~UnitDistance()
     //dtor
 }
 
-void UnitDistance::UnitMove(int _x, int _y)
+void UnitDistance::UnitMove()
 {
-    if (path.empty()){
-        Tools::Astar(Tools::GetNodeFromAxis(x,y),Tools::GetNodeFromAxis(_x,_y),pathingMap, path);
+   if (destination->x == x && destination->y == y){
+        delete destination;
+        destination = NULL;
     }
-    else{
-        int index;
-        index = path.size()-1;
-        Node currentNode = path[index];
-        Vector2D target = Vector2D(currentNode.GetWorldX(),currentNode.GetWorldY());
-        Vector2D steering = (facing.Normalized() * speed) + (Seek(target)*pathForce);
-        Move(steering);
-        if(Tools::DistanceEuclidienne(x,target.x,y,target.y) <= (40/2)){
-            path.erase(path.begin()+index);
+    if (destination != NULL){
+
+        Node destinationNode = Tools::GetNodeFromAxis(destination->x,destination->y);
+
+        if (path.empty()){
+            Tools::Astar(Tools::GetNodeFromAxis(x,y),Tools::GetNodeFromAxis(destination->x,destination->y),pathingMap, path);
+        }
+        else{
+            //std::cout << "position x : " << x << "position y : " << y << "\n";
+            Vector2D target;
+            int index = 0;
+            index = path.size()-1;
+            speed = 1;
+            pathForce = 1;
+            Node currentNode = path[index];
+            //std::cout << "node x : " << currentNode.GetWorldX() << "node y : " << currentNode.GetWorldY() << "\n";
+            if (path.size() == 1){
+                target = Vector2D(destination->x,destination->y);
+            }
+            else{
+                target = Vector2D(currentNode.GetWorldX(),currentNode.GetWorldY());
+            }
+
+            //std::cout << "seek x : " << Seek(target).x << "seek y : " << Seek(target).y << "\n";
+            Vector2D steering = velocity + Seek(target).Normalized();
+            facing = velocity.Normalized();
+            velocity = steering;
+            velocity.Truncate(speed);
+            //std::cout << "steering x : " << steering.x << "steering y : " << steering.y << "\n";
+            Move(steering);
+            //std::cout << Seek(target).Length()<< "\n";
+
+            if( Seek(target).Length()<= (20/2) && path.size() !=1){
+                path.erase(path.begin()+index);
+            }else if (Seek(target).Length() <= 0 && path.size() == 1){
+                delete destination;
+                destination = NULL;
+                std::cout << Seek(target).Length()<< "\n";
+                path.erase(path.begin()+index);
+            }
+            if (destinationNode.GetWorldX() != path[0].GetWorldX() && destinationNode.GetWorldY()!= path[0].GetWorldY()){
+                path.clear();
+            }
         }
     }
+    else{
+        path.clear();
+    }
+
 }
 
 void UnitDistance::Attack(Unit& target)
 {
-    if(Tools::DistanceEuclidienne(this->x,target.getX(),this->y,target.getY())<= this->range){
-        target.setHealth(target.getHealth() - this->damage);
-        this->attackTimer = 0;
+    if(attackTimer < attackCD){
+        attackTimer++;
+    }
+
+    float distance = (Vector2D(x,y) - Vector2D(target.getX(),target.getY())).Length();
+    if(distance < range){
+        if(attackTimer >= attackCD){
+            target.setHealth(target.getHealth() - this->damage);
+            this->attackTimer = 0;
+        }
     }
     else{
-        UnitMove(target.getX(),target.getY());
+        delete destination;
+        destination = new Vector2D(target.getX(),target.getY());
+        UnitMove();
     }
 }
 

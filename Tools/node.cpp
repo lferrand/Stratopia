@@ -45,7 +45,7 @@ int Node::GetWorldX()
 
 int Node::GetWorldY()
 {
-    return y * (800/40) + (40/2);
+    return y * (600/30) + (40/2);
 }
 
 Node* Node::GetParent()
@@ -60,7 +60,6 @@ int Node::GetScore()
 
 void Node::SetParent(Node *parent)
 {
-    std::cout << "added parent x :" << parent->GetX() << " y : " << parent->GetY() << "\n";
      parentNode = parent;
 }
 

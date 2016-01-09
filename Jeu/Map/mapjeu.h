@@ -21,17 +21,24 @@ class MapJeu
         void LoadMiniMap();
         virtual ~MapJeu();
         void Render();
+<<<<<<< HEAD
         void RenderMiniMap();
         void RecevoirEvenement(SDL_Event &event);
         void BougerCamera(char direction);
         bool **cartePassage;
 
+=======
+        bool **cartePassage;
+>>>>>>> origin/master
     protected:
     private:
         int longueur;
         int largeur;
         SDL_Renderer *renderer;
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
         SDL_Texture *mapTexture;
         SDL_Texture *uiMiniMapTexture;
         SDL_Texture *selectionMiniMapTexture;

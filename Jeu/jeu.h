@@ -3,13 +3,13 @@
 #include <vector>
 #include <iostream>
 #include "mapjeu.h"
+#include "../Controller/playercontroller.h"
 
 #include "unitcac.h"
 
 #include "unitdistance.h"
 
 #include "playercontroller.h"
-
 
 class Jeu
 {
@@ -32,8 +32,8 @@ class Jeu
         SDL_Window *jeuFenetre;
         SDL_Renderer *renderer;
         PlayerController *joueurControlleur;
-        std::vector<Unit> uniteJoueur;
-        std::vector<Unit> uniteOrdinateur;
+        std::vector<Unit*> uniteJoueur;
+        std::vector<Unit*> uniteOrdinateur;
 };
 
 #endif // JEU_H

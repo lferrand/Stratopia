@@ -69,6 +69,7 @@ bool Tools::Astar(Node start, Node destination, bool **pathingMap, std::vector<N
                 UpdateNodeScoreInVector(&closedNodes[currentIndex],current.GetBottomLeftNode(),openNodes, 14,parents);
             }
         }
+
         //Verification de la case en bas
         if( Passable(current.GetBottomNode(),pathingMap) && !VectorContainsNode(current.GetBottomNode(),closedNodes))
         {
@@ -205,9 +206,8 @@ bool Tools::Astar(Node start, Node destination, bool **pathingMap, std::vector<N
         std::map<Node,Node>::iterator it = parents.find(currentBactrack);
         while(it != parents.end()) {
             currentBactrack = it->second;
-            std::cout << "solution x : " << currentBactrack.GetX()<<" solution y : " << currentBactrack.GetY() << "\n";
-            std::cout << "trackback : "<< path.size() << "\n";
-            std::cout << "test";
+            //std::cout << "solution x : " << currentBactrack.GetX()<<" solution y : " << currentBactrack.GetY() << "\n";
+            //std::cout << "trackback : "<< path.size() << "\n";
             path.push_back(currentBactrack);
             it = parents.find(currentBactrack);
 
@@ -239,7 +239,7 @@ bool Tools::VectorContainsNode(Node addedNode, std::vector<Node> nodeVector)
     for(std::vector<Node>::iterator it = nodeVector.begin(); it != nodeVector.end(); ++it) {
         Node currentNode = *it;
         if ( addedNode.GetX() == currentNode.GetX() && addedNode.GetY() == currentNode.GetY()){
-                std::cout << addedNode.GetX() << " : " << addedNode.GetY() << " contains " << currentNode.GetX() << " : " << currentNode.GetY() <<"\n";
+                //std::cout << addedNode.GetX() << " : " << addedNode.GetY() << " contains " << currentNode.GetX() << " : " << currentNode.GetY() <<"\n";
             return true;
         }
         }
@@ -268,7 +268,7 @@ Node Tools::BestNodeInVector(std::vector<Node> nodeVector, int& index)
 {
     Node bestNode = *nodeVector.begin();
     int i = 0;
-    std::cout << "new test" << "\n";
+    //std::cout << "new test" << "\n";
     for(std::vector<Node>::iterator it = nodeVector.begin(); it != nodeVector.end(); ++it) {
             Node currentNode = *it;
             if (currentNode.GetScore() < bestNode.GetScore()){
@@ -277,7 +277,7 @@ Node Tools::BestNodeInVector(std::vector<Node> nodeVector, int& index)
             }
             i++;
         }
-    std::cout << "best score is : " << bestNode.GetScore() << "\n";
+    //std::cout << "best score is : " << bestNode.GetScore() << "\n";
     return bestNode;
 }
 
@@ -287,6 +287,7 @@ int Tools::DistanceEuclidienne(int x1, int x2, int y1, int y2)
 }
 float Tools::DistanceEuclidienneF(int x1, int x2, int y1, int y2)
 {
+    std::cout << sqrt( (x1-x2)^2 + (y1-y2)^2) << "\n";
     return sqrt( (x1-x2)^2 + (y1-y2)^2);
 }
 

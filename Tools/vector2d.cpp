@@ -2,6 +2,9 @@
 #include "tools.h"
 #include <assert.h>
 #include <math.h>
+#include <stdlib.h>
+#include <iostream>
+
 
 Vector2D::Vector2D()
 {
@@ -22,11 +25,23 @@ Vector2D::~Vector2D()
 
 Vector2D Vector2D::Normalized()
 {
-    float length = Tools::DistanceEuclidienneF(0,x,0,y);
-    Vector2D normalized = Vector2D(x/length,y/length);
+    Vector2D normalized = Vector2D(x/Length(),y/Length());
     return normalized;
 }
-
+float Vector2D::Length()
+{
+    return (float)sqrt( pow(x,2)+pow(y,2) );
+}
+void Vector2D::Truncate(float upperBound)
+{
+    float lenght = Length();
+    if(lenght > upperBound)
+    {
+        float mult = upperBound/lenght;
+        x *= mult;
+        y *= mult;
+    }
+}
 
 Vector2D& Vector2D::operator= (const Vector2D &other)
 {
@@ -67,6 +82,10 @@ Vector2D& Vector2D::operator/=(float scalar)
 Vector2D operator+ (const Vector2D &a, const Vector2D &b)
 {
 	return Vector2D(a.x + b.x, a.y + b.y);
+}
+Vector2D operator+ (const Vector2D* &a, const Vector2D &b)
+{
+	return Vector2D(a->x + b.x, a->y + b.y);
 }
 
 Vector2D operator- (const Vector2D &a, const Vector2D &b)

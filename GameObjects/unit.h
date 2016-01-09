@@ -12,14 +12,18 @@ class Unit : public RenderableObject
         Unit(char t, bool isJoueur, SDL_Texture *texture, SDL_Rect positionTexture, SDL_Rect positionCarte,SDL_Renderer *renderer, bool **pathingMap_): RenderableObject(texture,positionTexture,positionCarte, renderer), type(t),isJoueurUnite(isJoueur),pathingMap(pathingMap_)
         {}
         virtual ~Unit();
-        virtual void UnitMove(int x, int y);
+        virtual void UnitMove();
         virtual void Attack(Unit& target);
         virtual bool Die();
         Vector2D Seek(Vector2D target);
         void Move(Vector2D);
+        void SetPathingMap(bool** &pathingMap);
+        void SetFacing(Vector2D face);
+        void SetDestination(int x, int y);
     protected:
         float attackTimer;
         float attackCD;
+
         int range;
         int damage;
         char type;
@@ -27,6 +31,8 @@ class Unit : public RenderableObject
         std::vector<Node> path;
         bool** pathingMap;
         Vector2D facing;
+        Vector2D velocity;
+        Vector2D *destination;
 
     private:
 
