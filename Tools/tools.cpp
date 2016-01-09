@@ -284,3 +284,10 @@ int Tools::DistanceEuclidienne(int x1, int x2, int y1, int y2)
 {
     return (int) sqrt( (x1-x2)^2 + (y1-y2)^2);
 }
+
+Node Tools::GetNodeFromAxis(int x, int y)
+{
+    Node result(x/(800/40),y/(600/30));
+    return result;
+}
+

@@ -16,7 +16,10 @@ class RenderableObject : public MovableObject
         float getHealth(){return health;}
         void Render();
 
-        static SDL_Texture* BarreVieTexture100;
+        //texture de barre de vie
+        static SDL_Texture* BarreVieTexture;
+        static SDL_Texture* VieTexture;
+
 
     protected:
         int health;
@@ -29,7 +32,10 @@ class RenderableObject : public MovableObject
         SDL_Rect positionObjetMap;
 
         SDL_Rect positionBarreVieTexture;
+        SDL_Rect positionVieTexture;
+
     private:
+
 
 
 };

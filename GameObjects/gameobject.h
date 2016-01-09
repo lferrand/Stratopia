@@ -1,6 +1,6 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
-
+#include <iostream>>
 
 class GameObject
 {
@@ -20,7 +20,6 @@ class GameObject
         int id;
         int x;
         int y;
-
 };
 
 #endif // GAMEOBJECT_H

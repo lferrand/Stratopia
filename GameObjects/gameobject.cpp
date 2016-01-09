@@ -2,7 +2,7 @@
 
 GameObject::GameObject()
 {
-    x = 0;
+    x = 100;
     y = 0;
 }
 
@@ -28,8 +28,8 @@ int GameObject::getY()
 }
 
 void GameObject::setX(int x){
-    this->x = x;
+  this->x = x;
 }
 void GameObject::setY(int y){
-    this->y = y;
+   this->y = y;
 }
