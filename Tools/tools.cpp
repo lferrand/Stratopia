@@ -207,7 +207,7 @@ bool Tools::Astar(Node start, Node destination, bool **pathingMap, std::vector<N
         while(it != parents.end()) {
             currentBactrack = it->second;
             //std::cout << "solution x : " << currentBactrack.GetX()<<" solution y : " << currentBactrack.GetY() << "\n";
-            //std::cout << "trackback : "<< path.size() << "\n";
+            std::cout << "trackback : "<< path.size() << "\n";
             path.push_back(currentBactrack);
             it = parents.find(currentBactrack);
 
@@ -261,7 +261,7 @@ bool Tools::Passable(Node testedNode, bool **pathingMap)
     if(pathingMap[testedNode.GetX()][testedNode.GetY()]){
         //std::cout << testedNode.GetX() << "oba" << testedNode.GetY() << "\n";
     }
-    return !pathingMap[testedNode.GetX()][testedNode.GetY()];
+    return pathingMap[testedNode.GetX()][testedNode.GetY()];
 }
 
 Node Tools::BestNodeInVector(std::vector<Node> nodeVector, int& index)

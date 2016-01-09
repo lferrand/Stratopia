@@ -8,10 +8,8 @@
 class UnitCaC : public Unit
 {
     public:
-<<<<<<< HEAD
+
         UnitCaC(char, bool,SDL_Texture*, SDL_Rect, SDL_Rect,SDL_Renderer*,bool**);
-=======
->>>>>>> origin/master
 
         UnitCaC(char, bool,SDL_Texture*, SDL_Rect, SDL_Rect,SDL_Renderer*);
         virtual ~UnitCaC();

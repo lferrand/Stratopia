@@ -40,12 +40,12 @@ int Node::GetH()
 
 int Node::GetWorldX()
 {
-    return x * (800/40) + (40/2);
+    return x * 32 + (32/2);
 }
 
 int Node::GetWorldY()
 {
-    return y * (600/30) + (40/2);
+    return y * 32 + (32/2);
 }
 
 Node* Node::GetParent()

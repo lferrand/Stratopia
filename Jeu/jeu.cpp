@@ -110,13 +110,13 @@ void Jeu::ChargerUnite()
 
             if(type=='d')
             {
-                UnitDistance unite(type,true,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer,maCarte->cartePassage);
+                UnitDistance* unite = new UnitDistance(type,true,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer,maCarte->cartePassage);
                 uniteJoueur.push_back(unite);
 
             }
             else if(type=='c')
             {
-                UnitCaC unite(type,true,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer,maCarte->cartePassage);
+                UnitCaC* unite = new UnitCaC(type,true,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer,maCarte->cartePassage);
                 uniteJoueur.push_back(unite);
 
             }
@@ -155,13 +155,13 @@ void Jeu::ChargerUnite()
             positionUnitSurCarte.y=result;
             if(type=='c')
             {
-               UnitCaC unite(type,false,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer,maCarte->cartePassage);
+                UnitCaC* unite = new UnitCaC(type,false,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer,maCarte->cartePassage);
                 uniteOrdinateur.push_back(unite);
 
             }
             else if(type=='d')
             {
-                UnitDistance unite(type,false,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer,maCarte->cartePassage);
+                UnitDistance* unite = new UnitDistance(type,false,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer,maCarte->cartePassage);
                 uniteOrdinateur.push_back(unite);
 
             }
@@ -176,12 +176,12 @@ void Jeu::Render()
     maCarte->Render();
     for(unsigned int i=0;i<uniteJoueur.size();i++)
     {
-        uniteJoueur[i].Render();
+        uniteJoueur[i]->Render();
     }
     for(unsigned int i=0;i<uniteOrdinateur.size();i++)
     {
 
-        uniteOrdinateur[i].Render();
+        uniteOrdinateur[i]->Render();
     }
     joueurControlleur->Render();
     maCarte->RenderMiniMap();
@@ -229,6 +229,9 @@ void Jeu::Action()
         tempsEcoule=tempsEcoule-tempsAAttendre;
         startTick=-1;
 
+        Vector2D face = Vector2D(5,10);
+        uniteJoueur[0];
+        uniteJoueur[0]->Attack(*uniteOrdinateur[0]);
         /*Executer l'action ici*/
 
 
