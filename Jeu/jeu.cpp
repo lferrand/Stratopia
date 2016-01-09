@@ -110,13 +110,13 @@ void Jeu::ChargerUnite()
 
             if(type=='d')
             {
-                UnitDistance unite(type,true,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer);
+                UnitDistance unite(type,true,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer,maCarte->cartePassage);
                 uniteJoueur.push_back(unite);
 
             }
             else if(type=='c')
             {
-                UnitCaC unite(type,true,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer);
+                UnitCaC unite(type,true,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer,maCarte->cartePassage);
                 uniteJoueur.push_back(unite);
 
             }
@@ -155,14 +155,14 @@ void Jeu::ChargerUnite()
             positionUnitSurCarte.y=result;
             if(type=='c')
             {
-               UnitCaC unite(type,false,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer);
+               UnitCaC unite(type,false,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer,maCarte->cartePassage);
                 uniteOrdinateur.push_back(unite);
 
             }
             else if(type=='d')
             {
-                UnitDistance unite(type,false,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer);
-                            uniteOrdinateur.push_back(unite);
+                UnitDistance unite(type,false,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer,maCarte->cartePassage);
+                uniteOrdinateur.push_back(unite);
 
             }
     }

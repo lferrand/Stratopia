@@ -81,7 +81,8 @@ void MapJeu::LoadMap()
             positionCollage.y=j*32;
             //Remplissage tableau de passage
             fichier>>ligne;
-            if(ligne.compare("0"))
+
+            if(ligne.compare("0")==0)
             {
                 cartePassage[i][j]=false;
             }
@@ -102,6 +103,7 @@ void MapJeu::LoadMap()
             positionTexture.y=result*32+result;
 
             SDL_BlitSurface(tilesSurface,&positionTexture,mapSurface ,&positionCollage);
+
         }
     }
     mapTexture=SDL_CreateTextureFromSurface(renderer,mapSurface),

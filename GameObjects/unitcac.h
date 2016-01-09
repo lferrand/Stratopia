@@ -8,7 +8,7 @@
 class UnitCaC : public Unit
 {
     public:
-        UnitCaC(char, bool,SDL_Texture*, SDL_Rect, SDL_Rect,SDL_Renderer*);
+        UnitCaC(char, bool,SDL_Texture*, SDL_Rect, SDL_Rect,SDL_Renderer*,bool**);
 
         virtual ~UnitCaC();
         virtual void UnitMove(int x, int y);

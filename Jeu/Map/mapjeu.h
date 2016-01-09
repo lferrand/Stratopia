@@ -21,13 +21,15 @@ class MapJeu
         virtual ~MapJeu();
         void Render();
         void BougerCamera(char direction);
+        bool **cartePassage;
+
     protected:
     private:
         int longueur;
         int largeur;
         SDL_Renderer *renderer;
-        bool **cartePassage;
         SDL_Texture *mapTexture;
+        bool debug;
 
 
 };
