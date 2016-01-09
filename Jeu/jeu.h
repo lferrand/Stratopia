@@ -19,9 +19,15 @@ class Jeu
         void ChargerUnite();
         void RecevoirEvent(SDL_Event event);
         void Render();
+        void Action();
         virtual ~Jeu();
     protected:
     private:
+        //Gestion du temps
+        int startTick;
+        int tempsAAttendre;
+        int tempsEcoule;
+
         MapJeu *maCarte;
         SDL_Window *jeuFenetre;
         SDL_Renderer *renderer;

@@ -5,6 +5,9 @@ Jeu::Jeu()
     jeuFenetre = SDL_CreateWindow("Stratopia jeu", 450, 30, 800, 600, SDL_WINDOW_SHOWN);
     renderer= SDL_CreateRenderer(jeuFenetre, -1, 0);
     joueurControlleur=new PlayerController(uniteJoueur,renderer);
+    startTick=-1;
+    tempsEcoule=0;
+    tempsAAttendre=17;
     ChargerMap();
     ChargerUnite();
 }
@@ -188,6 +191,24 @@ void Jeu::RecevoirEvent(SDL_Event event)
     joueurControlleur->RecevoirEvenement(event);
 }
 
+void Jeu::Action()
+{
+    if(startTick<0)
+    {
+        startTick=SDL_GetTicks();
+    }
+    tempsEcoule=SDL_GetTicks()-startTick;
+    if(tempsEcoule>=tempsAAttendre)
+    {
+        tempsEcoule=tempsEcoule-tempsAAttendre;
+        startTick=-1;
+
+        /*Executer l'action ici*/
+
+
+    }
+
+}
 Jeu::~Jeu()
 {
     delete joueurControlleur;

@@ -12,8 +12,23 @@ void PlayerController::RecevoirEvenement(SDL_Event &event)
     switch(event.type)
     {
         case SDL_MOUSEBUTTONDOWN:
-            positionCliqueInitial.x=event.button.x;
-            positionCliqueInitial.y=event.button.y;
+            if(event.button.button==SDL_BUTTON_LEFT)
+            {
+                positionCliqueInitial.x=event.button.x;
+                positionCliqueInitial.y=event.button.y;
+                rectangleSelectionForme.x=positionCliqueInitial.x;
+                rectangleSelectionForme.y=positionCliqueInitial.y;
+                rectangleSelectionForme.w=1;
+                rectangleSelectionForme.h=1;
+                TesterIntersectionAvecJoueur();
+            }
+            else
+            {
+                for(int i=0;i<unitesSelectionnees.size();i++)
+                {
+
+                }
+            }
             break;
         case SDL_MOUSEMOTION:
             if(event.motion.state& SDL_BUTTON(SDL_BUTTON_LEFT))
@@ -39,7 +54,7 @@ void PlayerController::RecevoirEvenement(SDL_Event &event)
                         break;
 
         case SDL_MOUSEBUTTONUP:
-            selectionEnCours=false;
+                selectionEnCours=false;
             break;
     }
 

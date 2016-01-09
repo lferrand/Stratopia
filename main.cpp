@@ -14,6 +14,7 @@ void ChargerJeu()
     bool end = false;
     while(!end)
     {
+        monJeu->Action();
         monJeu->Render();
         while(SDL_PollEvent(&event)&&!end)
         {
