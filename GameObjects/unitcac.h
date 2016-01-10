@@ -10,7 +10,6 @@ class UnitCaC : public Unit
     public:
 
         UnitCaC(char, bool,SDL_Texture*, SDL_Rect, SDL_Rect,SDL_Renderer*,bool**);
-
         UnitCaC(char, bool,SDL_Texture*, SDL_Rect, SDL_Rect,SDL_Renderer*);
         virtual ~UnitCaC();
         virtual void UnitMove();

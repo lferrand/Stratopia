@@ -25,6 +25,7 @@ class MapJeu
         void RecevoirEvenement(SDL_Event &event);
         void BougerCamera(char direction);
         bool **cartePassage;
+
     protected:
     private:
         int longueur;
