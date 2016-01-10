@@ -26,6 +26,8 @@ class RenderableObject : public MovableObject
     protected:
         int health;
 
+        int numeroSpriteAAfficher[2];
+
         SDL_Renderer *renderer;
 
         UnitTextures &textures;

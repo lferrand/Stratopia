@@ -207,7 +207,7 @@ bool Tools::Astar(Node start, Node destination, bool **pathingMap, std::vector<N
         while(it != parents.end()) {
             currentBactrack = it->second;
             //std::cout << "solution x : " << currentBactrack.GetX()<<" solution y : " << currentBactrack.GetY() << "\n";
-            std::cout << "trackback : "<< path.size() << "\n";
+            //std::cout << "trackback : "<< path.size() << "\n";
             path.push_back(currentBactrack);
             it = parents.find(currentBactrack);
 
@@ -287,7 +287,7 @@ int Tools::DistanceEuclidienne(int x1, int x2, int y1, int y2)
 }
 float Tools::DistanceEuclidienneF(int x1, int x2, int y1, int y2)
 {
-    std::cout << sqrt( (x1-x2)^2 + (y1-y2)^2) << "\n";
+    //std::cout << sqrt( (x1-x2)^2 + (y1-y2)^2) << "\n";
     return sqrt( (x1-x2)^2 + (y1-y2)^2);
 }
 

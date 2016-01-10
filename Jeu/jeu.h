@@ -9,6 +9,9 @@
 
 #include "Unites/unitcachumaintexture.h"
 #include "Unites/unitcacorctexture.h"
+#include "unitdistancehumaintexture.h"
+#include "Unites/unitdistanceorctexture.h"
+
 
 #include "playercontroller.h"
 #include "task.h"
@@ -35,8 +38,12 @@ class Jeu
         SDL_Window *jeuFenetre;
         SDL_Renderer *renderer;
         PlayerController *joueurControlleur;
+
         UnitCaCHumainTexture *humainCaCTextures;
         UnitCaCOrcTexture *orcCaCTextures;
+        UnitDistanceOrcTexture *orcDistanceTextures;
+        UnitDistanceHumainTexture *humainDistanceTextures;
+
         std::vector<Unit*> uniteJoueur;
         std::vector<Unit*> uniteOrdinateur;
 };

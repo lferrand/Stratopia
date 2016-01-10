@@ -20,7 +20,8 @@ MovableObject(positionCarte.x,positionCarte.y),renderer(render),positionObjetMap
     positionVieTexture.w=health*(positionBarreVieTexture.w-2)/100;
     positionVieTexture.h=positionBarreVieTexture.h-2;
     isSelect=false;
-
+    numeroSpriteAAfficher[0]=2;
+    numeroSpriteAAfficher[1]=0;
 }
 
 void RenderableObject::Render()
@@ -36,9 +37,7 @@ void RenderableObject::Render()
     positionVieTexture.w=health*(positionBarreVieTexture.w-2)/100;
     positionVieTexture.h=positionBarreVieTexture.h-2;
 
-    std::cout << SDL_GetError() << std::endl;
-
-    SDL_RenderCopy(renderer,textures.spriteTexture,&textures.positionTexture[0][0],&positionObjetMap);
+    SDL_RenderCopy(renderer,textures.spriteTexture,&textures.positionTexture[numeroSpriteAAfficher[0]][numeroSpriteAAfficher[1]],&positionObjetMap);
 
     SDL_RenderCopy(renderer,BarreVieTexture,NULL,&positionBarreVieTexture);
 

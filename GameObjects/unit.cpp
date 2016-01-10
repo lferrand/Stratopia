@@ -19,6 +19,7 @@ void Unit::SetPathingMap(bool** &pathingMap)
 void Unit::SetFacing(Vector2D face)
 {
     facing = face.Normalized();
+
 }
 void Unit::SetDestination(int _x, int _y)
 {
@@ -36,7 +37,6 @@ void Unit::Update()
         this->Attack();
     }
     else if(destination != NULL){
-        //std::cout << "move";
         this->UnitMove();
     }
     else{

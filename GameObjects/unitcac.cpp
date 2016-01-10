@@ -55,7 +55,7 @@ void UnitCaC::UnitMove()
         if ( !Tools::Passable(destinationNode,pathingMap)){
 
             destinationNode = Tools::FindClosestPassable(Tools::GetNodeFromAxis(x,y),destinationNode,pathingMap);
-            std::cout << "position x : \n";
+            //std::cout << "position x : \n";
             delete destination;
             destination = new Vector2D(destinationNode.GetWorldX(),destinationNode.GetWorldY());
         }
@@ -99,7 +99,7 @@ void UnitCaC::UnitMove()
             }
 
             if (destinationNode.GetX() != path[0].GetX() || destinationNode.GetY()!= path[0].GetY()){
-                std::cout << "clear" << "\n";
+                //std::cout << "clear" << "\n";
                 path.clear();
             }
             //std::cout << Seek(targetPosition).Length()<< "\n";

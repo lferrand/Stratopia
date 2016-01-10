@@ -63,7 +63,7 @@ void UnitDistance::UnitMove()
             }else if (Seek(target).Length() <= 0 && path.size() == 1){
                 delete destination;
                 destination = NULL;
-                std::cout << Seek(target).Length()<< "\n";
+                //std::cout << Seek(target).Length()<< "\n";
                 path.erase(path.begin()+index);
             }
             if (destinationNode.GetWorldX() != path[0].GetWorldX() && destinationNode.GetWorldY()!= path[0].GetWorldY()){
@@ -110,5 +110,7 @@ bool UnitDistance::Die()
 {
     if(health <= 0){
         delete this;
+        return true;
     }
+    return false;
 }
