@@ -10,7 +10,6 @@ AIController::AIController(std::vector<Task*> &_FSM):
     currentTask = 0;
 }
 
-
 AIController::~AIController()
 {
     //dtor

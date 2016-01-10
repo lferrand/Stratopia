@@ -16,6 +16,7 @@ void ChargerJeu()
     {
         monJeu->Action();
         monJeu->Render();
+
         while(SDL_PollEvent(&event)&&!end)
         {
             if(event.window.event == SDL_WINDOWEVENT_CLOSE)

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1452350956 source:d:\projets\stratopia\main.cpp
+1452426559 source:d:\projets\stratopia\main.cpp
 	<SDL2/SDL.h>
 	<iostream>
 	<SDL2/SDL_image.h>
@@ -726,12 +726,12 @@
 	"mapediteur.h"
 	"tilesediteur.h"
 
-1452366186 source:d:\projets\stratopia\jeu\map\mapjeu.cpp
+1452366748 source:d:\projets\stratopia\jeu\map\mapjeu.cpp
 	"mapjeu.h"
 	"../../Tools/node.h"
 	"../../Tools/tools.h"
 
-1452365817 d:\projets\stratopia\jeu\map\mapjeu.h
+1452420753 d:\projets\stratopia\jeu\map\mapjeu.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	<fstream>
@@ -766,12 +766,13 @@
 1452355126 c:\users\taliera\documents\github\stratopia\gameobjects\building.h
 	"renderableobject.h"
 
-1452356487 d:\projets\stratopia\gameobjects\renderableobject.h
+1452423897 d:\projets\stratopia\gameobjects\renderableobject.h
 	"tools.h"
 	"movableobject.h"
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	"Camera.h"
+	"unittextures.h"
 
 1452367116 c:\users\taliera\documents\github\stratopia\gameobjects\renderableobject.h
 	"tools.h"
@@ -802,7 +803,7 @@
 1452355126 source:c:\users\taliera\documents\github\stratopia\gameobjects\movableobject.cpp
 	"movableobject.h"
 
-1452356467 source:d:\projets\stratopia\gameobjects\renderableobject.cpp
+1452426703 source:d:\projets\stratopia\gameobjects\renderableobject.cpp
 	"renderableobject.h"
 
 1452367116 source:c:\users\taliera\documents\github\stratopia\gameobjects\renderableobject.cpp
@@ -862,25 +863,33 @@
 	<math.h>
 	<map>
 
-1452343427 source:d:\projets\stratopia\gameobjects\unit.cpp
+1452420753 source:d:\projets\stratopia\gameobjects\unit.cpp
 	"unit.h"
+	"tools.h"
 	"vector2d.h"
+	"math.h"
+	"aicontroller.h"
 
-1452357887 d:\projets\stratopia\gameobjects\unit.h
+1452424951 d:\projets\stratopia\gameobjects\unit.h
 	"renderableobject.h"
 	<vector>
 	"../Tools/node.h"
 	"../Tools/vector2d.h"
 
-1452362018 source:d:\projets\stratopia\jeu\jeu.cpp
+1452427145 source:d:\projets\stratopia\jeu\jeu.cpp
 	"jeu.h"
+	"task.h"
+	"aicontroller.h"
 
-1452358350 d:\projets\stratopia\jeu\jeu.h
+1452426910 d:\projets\stratopia\jeu\jeu.h
 	<vector>
 	<iostream>
 	"mapjeu.h"
+	"../Controller/playercontroller.h"
 	"unitcac.h"
 	"unitdistance.h"
+	"unitcachumaintexture.h"
+	"unitcacorctexture.h"
 	"playercontroller.h"
 
 1452395600 c:\users\taliera\documents\github\stratopia\tools\tools.h
@@ -940,24 +949,25 @@
 
 1452311336 
 
-1452177202 source:d:\projets\stratopia\controller\aicontroller.cpp
+1452424397 source:d:\projets\stratopia\controller\aicontroller.cpp
 	"aicontroller.h"
 
-1452177568 d:\projets\stratopia\controller\aicontroller.h
+1452424677 d:\projets\stratopia\controller\aicontroller.h
 	"controller.h"
+	"task.h"
 
 1452177202 d:\projets\stratopia\controller\controller.h
 
 1452177202 source:d:\projets\stratopia\controller\controller.cpp
 	"controller.h"
 
-1452349198 source:d:\projets\stratopia\controller\playercontroller.cpp
+1452366749 source:d:\projets\stratopia\controller\playercontroller.cpp
 	"playercontroller.h"
 
-1452347007 d:\projets\stratopia\controller\playercontroller.h
+1452366749 d:\projets\stratopia\controller\playercontroller.h
 	<vector>
-	"unit.h"
 	"controller.h"
+	"../GameObjects/unit.h"
 
 1452171893 d:\projets\stratopia\include\sdl2\sdl.h
 	"SDL_main.h"
@@ -1298,7 +1308,7 @@
 
 1452340686 d:\projets\stratopia\tools\node.h
 
-1452355204 d:\projets\stratopia\tools\tools.h
+1452420753 d:\projets\stratopia\tools\tools.h
 	"node.h"
 	<vector>
 	<map>
@@ -1308,30 +1318,33 @@
 
 1452259999 d:\projets\stratopia\tools\path.h
 
-1452366347 d:\projets\stratopia\jeu\map
+1452420753 d:\projets\stratopia\jeu\map
 
-1452356571 source:d:\projets\stratopia\tools\tools.cpp
+1452420753 source:d:\projets\stratopia\tools\tools.cpp
 	"tools.h"
 	<iostream>
 	<stdlib.h>
 	<math.h>
 	<map>
 
-1452340686 source:d:\projets\stratopia\tools\node.cpp
+1452420753 source:d:\projets\stratopia\tools\node.cpp
 	"node.h"
 	<cstddef>
 	<iostream>
 	<stdlib.h>
 
-1452358350 source:d:\projets\stratopia\jeu\jeu.h
+1452426910 source:d:\projets\stratopia\jeu\jeu.h
 	<vector>
 	<iostream>
 	"mapjeu.h"
+	"../Controller/playercontroller.h"
 	"unitcac.h"
 	"unitdistance.h"
+	"unitcachumaintexture.h"
+	"unitcacorctexture.h"
 	"playercontroller.h"
 
-1452365817 source:d:\projets\stratopia\jeu\map\mapjeu.h
+1452420753 source:d:\projets\stratopia\jeu\map\mapjeu.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	<fstream>
@@ -1339,36 +1352,40 @@
 	<sstream>
 	"camera.h"
 
-1452357924 source:d:\projets\stratopia\gameobjects\unitcac.cpp
+1452425028 source:d:\projets\stratopia\gameobjects\unitcac.cpp
 	"unitcac.h"
 
-1452357943 d:\projets\stratopia\gameobjects\unitcac.h
+1452425232 d:\projets\stratopia\gameobjects\unitcac.h
 	"unit.h"
 	"tools.h"
 	"vector2d.h"
+	"aicontroller.h"
 
-1452357964 source:d:\projets\stratopia\gameobjects\unitdistance.cpp
+1452425277 source:d:\projets\stratopia\gameobjects\unitdistance.cpp
 	"unitdistance.h"
 	"tools.h"
 
-1452357981 d:\projets\stratopia\gameobjects\unitdistance.h
+1452424951 d:\projets\stratopia\gameobjects\unitdistance.h
 	"unit.h"
+	"aicontroller.h"
 
-1452340686 source:d:\projets\stratopia\tools\vector2d.cpp
+1452366749 source:d:\projets\stratopia\tools\vector2d.cpp
 	"vector2d.h"
 	"tools.h"
 	<assert.h>
 	<math.h>
+	<stdlib.h>
+	<iostream>
 
-1452340686 d:\projets\stratopia\tools\vector2d.h
+1452366749 d:\projets\stratopia\tools\vector2d.h
 
 1452274650 d:\projets\stratopia\include\unitcac.h
 	"unit.h"
 
-1452356345 source:d:\projets\stratopia\jeu\camera.cpp
+1452366745 source:d:\projets\stratopia\jeu\camera.cpp
 	"camera.h"
 
-1452356121 d:\projets\stratopia\jeu\camera.h
+1452366745 d:\projets\stratopia\jeu\camera.h
 	<SDL2/SDL.h>
 
 1452410993 c:\users\taliera\documents\github\stratopia\jeu\map
@@ -1395,4 +1412,36 @@
 	"controller.h"
 	"unit.h"
 	"task.h"
+
+1452420753 d:\projets\stratopia\task\task.h
+	"unit.h"
+
+1452420753 source:d:\projets\stratopia\task\explore.cpp
+	"Explore.h"
+
+1452420753 d:\projets\stratopia\task\explore.h
+	"task.h"
+
+1452420753 source:d:\projets\stratopia\task\task.cpp
+	"task.h"
+
+1452426412 d:\projets\stratopia\jeu\unites\unittextures.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	<iostream>
+
+1452425685 d:\projets\stratopia\jeu\unites\unitcachumaintexture.h
+	"unittextures.h"
+
+1452425690 d:\projets\stratopia\jeu\unites\unitcacorctexture.h
+	"unitTextures.h"
+
+1452426480 source:d:\projets\stratopia\jeu\unites\unitcachumaintexture.cpp
+	"unitcachumaintexture.h"
+
+1452426464 source:d:\projets\stratopia\jeu\unites\unitcacorctexture.cpp
+	"unitcacorctexture.h"
+
+1452425959 source:d:\projets\stratopia\jeu\unites\unittextures.cpp
+	"unittextures.h"
 

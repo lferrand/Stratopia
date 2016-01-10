@@ -2,8 +2,8 @@
 
 
 
-UnitCaC::UnitCaC(char _type, bool _isJoueurUniteS,SDL_Texture *texture, SDL_Rect positionTexture, SDL_Rect positionCarte,SDL_Renderer *renderer,bool **pathMap):
-Unit(_type,_isJoueurUniteS,texture,positionTexture,positionCarte,renderer,pathMap)
+UnitCaC::UnitCaC(char _type, bool _isJoueurUniteS,SDL_Rect positionCarte,SDL_Renderer *renderer,bool **pathMap,UnitTextures &texts):
+Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts)
 {
     attackTimer = 0;
     attackCD = 100;
@@ -15,8 +15,8 @@ Unit(_type,_isJoueurUniteS,texture,positionTexture,positionCarte,renderer,pathMa
     destination = NULL;
     AIcontroller = NULL;
 }
-UnitCaC::UnitCaC(char _type, bool _isJoueurUniteS,SDL_Texture *texture, SDL_Rect positionTexture, SDL_Rect positionCarte,SDL_Renderer *renderer,bool **pathMap,AIController *_AIController):
-Unit(_type,_isJoueurUniteS,texture,positionTexture,positionCarte,renderer,pathMap)
+UnitCaC::UnitCaC(char _type, bool _isJoueurUniteS,SDL_Rect positionCarte,SDL_Renderer *renderer,bool **pathMap,AIController *_AIController,UnitTextures &texts):
+Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts)
 {
     attackTimer = 0;
     attackCD = 100;

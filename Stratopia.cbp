@@ -23,6 +23,7 @@
 					<Add directory="GameObjects" />
 					<Add directory="Controller" />
 					<Add directory="Jeu" />
+					<Add directory="Task" />
 				</Compiler>
 				<Linker>
 					<Add directory="../../../../../SDL2/lib" />
@@ -41,6 +42,7 @@
 					<Add directory="include" />
 					<Add directory="Tools" />
 					<Add directory="Jeu" />
+					<Add directory="Task" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -99,6 +101,10 @@
 		<Unit filename="Jeu/jeu.h">
 			<Option compile="1" />
 		</Unit>
+		<Unit filename="Task/Explore.cpp" />
+		<Unit filename="Task/Explore.h" />
+		<Unit filename="Task/task.cpp" />
+		<Unit filename="Task/task.h" />
 		<Unit filename="Tools/node.cpp" />
 		<Unit filename="Tools/node.h" />
 		<Unit filename="Tools/tools.cpp" />

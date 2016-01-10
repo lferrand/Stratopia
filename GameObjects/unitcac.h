@@ -10,9 +10,8 @@ class UnitCaC : public Unit
 {
     public:
 
-        UnitCaC(char, bool,SDL_Texture*, SDL_Rect, SDL_Rect,SDL_Renderer*,bool**);
-        UnitCaC(char, bool,SDL_Texture*, SDL_Rect, SDL_Rect,SDL_Renderer*,bool**,AIController*);
-        UnitCaC(char, bool,SDL_Texture*, SDL_Rect, SDL_Rect,SDL_Renderer*);
+        UnitCaC(char, bool, SDL_Rect,SDL_Renderer*,bool**,UnitTextures&);
+        UnitCaC(char, bool, SDL_Rect,SDL_Renderer*,bool**,AIController*,UnitTextures&);
         virtual ~UnitCaC();
         virtual void UnitMove();
         virtual void Attack();

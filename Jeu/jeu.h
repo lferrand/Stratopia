@@ -3,13 +3,16 @@
 #include <vector>
 #include <iostream>
 #include "mapjeu.h"
-#include "../Controller/playercontroller.h"
 
 #include "unitcac.h"
-
 #include "unitdistance.h"
 
+#include "Unites/unitcachumaintexture.h"
+#include "Unites/unitcacorctexture.h"
+
 #include "playercontroller.h"
+#include "task.h"
+#include "aicontroller.h"
 
 class Jeu
 {
@@ -32,6 +35,8 @@ class Jeu
         SDL_Window *jeuFenetre;
         SDL_Renderer *renderer;
         PlayerController *joueurControlleur;
+        UnitCaCHumainTexture *humainCaCTextures;
+        UnitCaCOrcTexture *orcCaCTextures;
         std::vector<Unit*> uniteJoueur;
         std::vector<Unit*> uniteOrdinateur;
 };
