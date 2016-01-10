@@ -9,6 +9,8 @@ Jeu::Jeu()
     joueurControlleur=new PlayerController(uniteJoueur,renderer);
     startTick=-1;
     tempsEcoule=0;
+    humainCaCTextures=new UnitCaCHumainTexture(renderer);
+    orcCaCTextures=new UnitCaCOrcTexture(renderer);
     tempsAAttendre=17;
     ChargerMap();
     ChargerUnite();
@@ -21,6 +23,9 @@ void Jeu::ChargerMap()
 
 void Jeu::ChargerUnite()
 {
+    //Creation des textures:
+
+
     //Chargement des textures de la barre de vie et de selections
     SDL_Surface *barreVieSurface=IMG_Load("Jeu/Images/barre_vie.png");
     SDL_Surface *vieSurface=IMG_Load("Jeu/Images/vie.png");
@@ -34,69 +39,16 @@ void Jeu::ChargerUnite()
     SDL_FreeSurface(barreVieSurface);
     SDL_FreeSurface(vieSurface);
 
-    //Chargement des textures des unités
-    SDL_Surface* spriteCaCOrcSurface=IMG_Load("Editeur/Images/cac_sprite_orc.png");
-    SDL_Surface* spriteCaCHumainSurface=IMG_Load("Editeur/Images/cac_sprite.png");
-    SDL_Surface* spriteDistanceHumainSurface=IMG_Load("Editeur/Images/archer_sprite.png");
-    SDL_Surface* spriteDistanceOrcSurface=IMG_Load("Editeur/Images/archer_sprite_orc.png");
-
-    SDL_Texture* spriteCaCOrcTexture=SDL_CreateTextureFromSurface(renderer, spriteCaCOrcSurface);
-    SDL_Texture* spriteDistanceOrcTexture=SDL_CreateTextureFromSurface(renderer, spriteDistanceOrcSurface);
-    SDL_Texture* spriteCaCHumainTexture=SDL_CreateTextureFromSurface(renderer, spriteCaCHumainSurface);
-    SDL_Texture* spriteDistanceHumainTexture=SDL_CreateTextureFromSurface(renderer, spriteDistanceHumainSurface);
-
-    SDL_FreeSurface(spriteCaCOrcSurface);
-    SDL_FreeSurface(spriteDistanceOrcSurface);
-    SDL_FreeSurface(spriteCaCHumainSurface);
-    SDL_FreeSurface(spriteDistanceHumainSurface);
-
-    //La position des unités sur la texture
-
-    SDL_Rect positionSpriteCaCSurTexture;
-    SDL_Rect positionSpriteDistanceSurTexture;
-    SDL_Rect positionSpriteCaCEnnemieSurTexture;
-    SDL_Rect positionSpriteDistanceEnnemieSurTexture;
-
-     positionSpriteCaCSurTexture.x=312;
-     positionSpriteCaCSurTexture.y=5;
-     positionSpriteCaCSurTexture.w=45;
-     positionSpriteCaCSurTexture.h=60;
-
-     positionSpriteDistanceSurTexture.x=240;
-     positionSpriteDistanceSurTexture.y=10;
-     positionSpriteDistanceSurTexture.w=50;
-     positionSpriteDistanceSurTexture.h=50;
-
-     positionSpriteCaCEnnemieSurTexture.x=312;
-     positionSpriteCaCEnnemieSurTexture.y=5;
-     positionSpriteCaCEnnemieSurTexture.w=45;
-     positionSpriteCaCEnnemieSurTexture.h=60;
-
-     positionSpriteDistanceEnnemieSurTexture.x=250;
-     positionSpriteDistanceEnnemieSurTexture.y=10;
-     positionSpriteDistanceEnnemieSurTexture.w=50;
-     positionSpriteDistanceEnnemieSurTexture.h=50;
-
     std::ifstream fichier("unite1.lvl", std::ios::in);
     std::string mot;
     while(fichier >> mot && mot[0] !='-')
     {
         char type=mot[0];
-        SDL_Texture *unitTexture;
-        SDL_Rect positionUnitSurTexture;
+
+
         SDL_Rect positionUnitSurCarte;
-        positionUnitSurCarte.h=40;
-        positionUnitSurCarte.w=40;
-        if(type=='c')
-        {
-            unitTexture=spriteCaCHumainTexture;
-            positionUnitSurTexture=positionSpriteCaCSurTexture;
-        }
-        else
-        {
-            unitTexture=spriteDistanceHumainTexture;
-            positionUnitSurTexture=positionSpriteDistanceSurTexture;
-        }
+        positionUnitSurCarte.h=humainCaCTextures->positionTexture[0][0].h;
+        positionUnitSurCarte.w=humainCaCTextures->positionTexture[0][0].w;
 
             fichier >> mot;
             int result;
@@ -112,14 +64,14 @@ void Jeu::ChargerUnite()
 
             if(type=='d')
             {
-                UnitDistance *unite=new UnitDistance(type,true,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer,maCarte->cartePassage);
+                UnitDistance *unite=new UnitDistance(type,true,positionUnitSurCarte,renderer,maCarte->cartePassage,*humainCaCTextures);
                 uniteJoueur.push_back(unite);
 
             }
             else if(type=='c')
             {
 
-                UnitCaC *unite= new UnitCaC(type,true,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer,maCarte->cartePassage);
+                UnitCaC *unite= new UnitCaC(type,true,positionUnitSurCarte,renderer,maCarte->cartePassage,*humainCaCTextures);
                 uniteJoueur.push_back(unite);
 
             }
@@ -128,22 +80,11 @@ void Jeu::ChargerUnite()
 
     while(fichier >> mot)
     {
+
         char type=mot[0];
-        SDL_Texture *unitTexture;
-        SDL_Rect positionUnitSurTexture;
         SDL_Rect positionUnitSurCarte;
-        positionUnitSurCarte.h=40;
-        positionUnitSurCarte.w=40;
-        if(type=='c')
-        {
-            unitTexture=spriteCaCOrcTexture;
-            positionUnitSurTexture=positionSpriteCaCEnnemieSurTexture;
-        }
-        else
-        {
-            unitTexture=spriteDistanceOrcTexture;
-            positionUnitSurTexture=positionSpriteDistanceEnnemieSurTexture;
-        }
+        positionUnitSurCarte.h=orcCaCTextures->positionTexture[0][0].h;
+        positionUnitSurCarte.w=orcCaCTextures->positionTexture[0][0].w;
 
             fichier >> mot;
             int result;
@@ -161,14 +102,14 @@ void Jeu::ChargerUnite()
                 std::vector<Task*> tasks;
                 tasks.push_back(new Task());
                AIController* contro = new AIController(tasks);
-               UnitCaC *unite =new UnitCaC(type,false,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer,maCarte->cartePassage,contro);
+               UnitCaC *unite =new UnitCaC(type,false,positionUnitSurCarte,renderer,maCarte->cartePassage,contro,*orcCaCTextures);
                 uniteOrdinateur.push_back(unite);
 
             }
             else if(type=='d')
             {
 
-                UnitDistance *unite=new UnitDistance(type,false,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer,maCarte->cartePassage);
+                UnitDistance *unite=new UnitDistance(type,false,positionUnitSurCarte,renderer,maCarte->cartePassage,*orcCaCTextures);
                 uniteOrdinateur.push_back(unite);
 
             }
@@ -181,6 +122,7 @@ void Jeu::Render()
 {
     SDL_RenderClear(renderer);
     maCarte->Render();
+
     for(unsigned int i=0;i<uniteJoueur.size();i++)
     {
         uniteJoueur[i]->Render();
@@ -190,6 +132,7 @@ void Jeu::Render()
 
         uniteOrdinateur[i]->Render();
     }
+
     joueurControlleur->Render();
     maCarte->RenderMiniMap();
     SDL_RenderPresent(renderer);

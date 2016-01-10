@@ -2,13 +2,7 @@
 
 
 
-AIController::AIController(std::vector<Task*> &_FSM):
-    FSM(_FSM)
-{
-    std::cout << FSM.size();
-    FSM = _FSM;
-    currentTask = 0;
-}
+
 
 
 AIController::~AIController()

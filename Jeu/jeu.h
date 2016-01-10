@@ -6,8 +6,10 @@
 #include "../Controller/playercontroller.h"
 
 #include "unitcac.h"
-
 #include "unitdistance.h"
+
+#include "unitcachumaintexture.h"
+#include "unitcacorctexture.h"
 
 #include "playercontroller.h"
 
@@ -32,6 +34,8 @@ class Jeu
         SDL_Window *jeuFenetre;
         SDL_Renderer *renderer;
         PlayerController *joueurControlleur;
+        UnitCaCHumainTexture *humainCaCTextures;
+        UnitCaCOrcTexture *orcCaCTextures;
         std::vector<Unit*> uniteJoueur;
         std::vector<Unit*> uniteOrdinateur;
 };

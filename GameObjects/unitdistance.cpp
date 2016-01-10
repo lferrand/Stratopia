@@ -1,8 +1,8 @@
 #include "unitdistance.h"
 #include "tools.h"
 
-UnitDistance::UnitDistance(char _type, bool _isJoueurUniteS,SDL_Texture *texture, SDL_Rect positionTexture, SDL_Rect positionCarte,SDL_Renderer *renderer,bool** pathMap):
-Unit(_type,_isJoueurUniteS,texture,positionTexture,positionCarte,renderer,pathMap)
+UnitDistance::UnitDistance(char _type, bool _isJoueurUniteS, SDL_Rect positionCarte,SDL_Renderer *renderer,bool** pathMap,UnitTextures &texts):
+Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts)
 {
     vision = 100;
     attackTimer = 0;

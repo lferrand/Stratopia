@@ -2,15 +2,17 @@
 #define AICONTROLLER_H
 
 #include "controller.h"
-#include "unit.h"
 #include "task.h"
 
 
 class AIController : public Controller
 {
     public:
-        AIController();
-        AIController(std::vector<Task*> &_FSM);
+        AIController(std::vector<Task*> &_FSM):FSM(_FSM)
+        {
+            std::cout << FSM.size();
+            currentTask = 0;
+        }
         virtual ~AIController();
         virtual bool Reflex(Unit &unit);
         virtual void Update(Unit &unit);
