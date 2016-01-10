@@ -13,17 +13,21 @@ class Unit : public RenderableObject
         {}
         virtual ~Unit();
         virtual void UnitMove();
-        virtual void Attack(Unit& target);
+        virtual void Attack();
+        virtual void Update();
         virtual bool Die();
         Vector2D Seek(Vector2D target);
         void Move(Vector2D);
         void SetPathingMap(bool** &pathingMap);
         void SetFacing(Vector2D face);
         void SetDestination(int x, int y);
+        void SetTarget(Unit* &target);
+
     protected:
         float attackTimer;
         float attackCD;
 
+        int vision;
         int range;
         int damage;
         char type;
@@ -33,7 +37,7 @@ class Unit : public RenderableObject
         Vector2D facing;
         Vector2D velocity;
         Vector2D *destination;
-
+        Unit *target;
     private:
 
 };

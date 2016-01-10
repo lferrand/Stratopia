@@ -1,4 +1,6 @@
 #include "jeu.h"
+#include "task.h"
+#include "aicontroller.h"
 
 Jeu::Jeu()
 {
@@ -156,8 +158,10 @@ void Jeu::ChargerUnite()
             positionUnitSurCarte.y=result;
             if(type=='c')
             {
-
-               UnitCaC *unite =new UnitCaC(type,false,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer,maCarte->cartePassage);
+                std::vector<Task*> tasks;
+                tasks.push_back(new Task());
+               AIController* contro = new AIController(tasks);
+               UnitCaC *unite =new UnitCaC(type,false,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer,maCarte->cartePassage,contro);
                 uniteOrdinateur.push_back(unite);
 
             }
@@ -233,8 +237,13 @@ void Jeu::Action()
         startTick=-1;
 
         Vector2D face = Vector2D(5,10);
-        uniteJoueur[0];
-        uniteJoueur[0]->Attack(*uniteOrdinateur[0]);
+        uniteJoueur[0]->SetTarget(uniteOrdinateur[0]);
+        uniteJoueur[0]->Update();
+
+
+        uniteOrdinateur[0]->SetDestination(400,500);
+        uniteOrdinateur[0]->Update();
+
         /*Executer l'action ici*/
 
 

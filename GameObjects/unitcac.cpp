@@ -7,12 +7,40 @@ Unit(_type,_isJoueurUniteS,texture,positionTexture,positionCarte,renderer,pathMa
 {
     attackTimer = 0;
     attackCD = 100;
+    vision = 100;
     range = 20;
     damage = 20;
+    facing = Vector2D(5,10);
+    target = NULL;
+    destination = NULL;
+    AIcontroller = NULL;
+}
+UnitCaC::UnitCaC(char _type, bool _isJoueurUniteS,SDL_Texture *texture, SDL_Rect positionTexture, SDL_Rect positionCarte,SDL_Renderer *renderer,bool **pathMap,AIController *_AIController):
+Unit(_type,_isJoueurUniteS,texture,positionTexture,positionCarte,renderer,pathMap)
+{
+    attackTimer = 0;
+    attackCD = 100;
+    vision = 100;
+    range = 20;
+    damage = 20;
+    facing = Vector2D(5,10);
+    target = NULL;
+    destination = NULL;
+    AIcontroller = _AIController;
 }
 UnitCaC::~UnitCaC()
 {
     //dtor
+}
+
+void UnitCaC::Update()
+{
+    if(AIcontroller != NULL){
+
+        //AIcontroller->Update(*this);
+
+    }
+    Unit::Update();
 }
 
 void UnitCaC::UnitMove()
@@ -24,46 +52,56 @@ void UnitCaC::UnitMove()
     if (destination != NULL){
 
         Node destinationNode = Tools::GetNodeFromAxis(destination->x,destination->y);
+        if ( !Tools::Passable(destinationNode,pathingMap)){
+
+            destinationNode = Tools::FindClosestPassable(Tools::GetNodeFromAxis(x,y),destinationNode,pathingMap);
+            std::cout << "position x : \n";
+            delete destination;
+            destination = new Vector2D(destinationNode.GetWorldX(),destinationNode.GetWorldY());
+        }
+
 
         if (path.empty()){
-            Tools::Astar(Tools::GetNodeFromAxis(x,y),Tools::GetNodeFromAxis(destination->x,destination->y),pathingMap, path);
+            Tools::Astar(Tools::GetNodeFromAxis(x,y),destinationNode,pathingMap, path);
         }
         else{
             //std::cout << "position x : " << x << "position y : " << y << "\n";
-            Vector2D target;
+            Vector2D targetPosition;
             int index = 0;
             index = path.size()-1;
-            speed = 1;
+            speed = 1.5;
             pathForce = 1;
             Node currentNode = path[index];
             //std::cout << "node x : " << currentNode.GetWorldX() << "node y : " << currentNode.GetWorldY() << "\n";
             if (path.size() == 1){
-                target = Vector2D(destination->x,destination->y);
+                targetPosition = Vector2D(destination->x,destination->y);
             }
             else{
-                target = Vector2D(currentNode.GetWorldX(),currentNode.GetWorldY());
+                targetPosition = Vector2D(currentNode.GetWorldX(),currentNode.GetWorldY());
             }
 
-            //std::cout << "seek x : " << Seek(target).x << "seek y : " << Seek(target).y << "\n";
-            Vector2D steering = velocity + Seek(target).Normalized();
+            //std::cout << "seek x : " << Seek(targetPosition).x << "seek y : " << Seek(targetPosition).y << "\n";
+            Vector2D steering = velocity + Seek(targetPosition).Normalized();
             facing = velocity.Normalized();
             velocity = steering;
             velocity.Truncate(speed);
             //std::cout << "steering x : " << steering.x << "steering y : " << steering.y << "\n";
             Move(steering);
-            //std::cout << Seek(target).Length()<< "\n";
 
-            if( Seek(target).Length()<= (20/2) && path.size() !=1){
+
+            if( Seek(targetPosition).Length()<= (32/2) && path.size() !=1){
                 path.erase(path.begin()+index);
-            }else if (Seek(target).Length() <= 0 && path.size() == 1){
+            }else if (Seek(targetPosition).Length() <= 0 && path.size() == 1){
                 delete destination;
                 destination = NULL;
-                std::cout << Seek(target).Length()<< "\n";
+                //std::cout << Seek(targetPosition).Length()<< "\n";
                 path.erase(path.begin()+index);
             }
+
             if (destinationNode.GetWorldX() != path[0].GetWorldX() && destinationNode.GetWorldY()!= path[0].GetWorldY()){
                 path.clear();
             }
+            //std::cout << Seek(targetPosition).Length()<< "\n";
         }
     }
     else{
@@ -72,21 +110,24 @@ void UnitCaC::UnitMove()
 
 }
 
-void UnitCaC::Attack(Unit& target)
+void UnitCaC::Attack()
 {
-    if(attackTimer < attackCD){
+    if(target != NULL){
+        if(attackTimer < attackCD){
         attackTimer++;
-    }
-
-    float distance = (Vector2D(x,y) - Vector2D(target.getX(),target.getY())).Length();
-    if(distance < range && attackTimer >= attackCD){
-        target.setHealth(target.getHealth() - this->damage);
-        this->attackTimer = 0;
-    }
-    else{
-        delete destination;
-        destination = new Vector2D(target.getX(),target.getY());
-        UnitMove();
+        }
+        float distance = (Vector2D(x,y) - Vector2D(target->getX(),target->getY())).Length();
+        if(distance < range){
+            if(attackTimer >= attackCD){
+                target->setHealth(target->getHealth() - this->damage);
+                this->attackTimer = 0;
+            }
+        }
+        else{
+            delete destination;
+            destination = new Vector2D(target->getX(),target->getY());
+            UnitMove();
+        }
     }
 }
 

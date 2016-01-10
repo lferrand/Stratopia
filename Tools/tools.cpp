@@ -296,4 +296,79 @@ Node Tools::GetNodeFromAxis(int x, int y)
     Node result(x/32,y/32);
     return result;
 }
+Node Tools::FindClosestPassable(Node start, Node unpassable,bool **pathingMap)
+{
+    Node passable;
+    bool found = false;
+    std::vector<Node> unpassableNodes;
+    std::vector<Node> passableNodes;
+    unpassableNodes.push_back(start);
+    while(!found){
+        for(std::vector<Node>::iterator it = unpassableNodes.begin(); it != unpassableNodes.end();) {
+
+            Node currentNode = *it;
+            if (Passable(currentNode.GetBottomNode(),pathingMap)){
+                passableNodes.push_back(currentNode.GetBottomNode());
+            }
+            else{
+                unpassableNodes.push_back(currentNode.GetBottomNode());
+            }
+            if (Passable(currentNode.GetBottomLeftNode(),pathingMap)){
+                passableNodes.push_back(currentNode.GetBottomLeftNode());
+            }
+            else{
+                unpassableNodes.push_back(currentNode.GetBottomLeftNode());
+            }
+            if (Passable(currentNode.GetLeftNode(),pathingMap)){
+                passableNodes.push_back(currentNode.GetLeftNode());
+            }
+            else{
+                unpassableNodes.push_back(currentNode.GetLeftNode());
+            }
+            if (Passable(currentNode.GetTopLeftNode(),pathingMap)){
+                passableNodes.push_back(currentNode.GetTopLeftNode());
+            }
+            else{
+                unpassableNodes.push_back(currentNode.GetTopLeftNode());
+            }
+            if (Passable(currentNode.GetTopNode(),pathingMap)){
+                passableNodes.push_back(currentNode.GetTopNode());
+            }
+            else{
+                unpassableNodes.push_back(currentNode.GetTopNode());
+            }
+            if (Passable(currentNode.GetTopRightNode(),pathingMap)){
+                passableNodes.push_back(currentNode.GetTopRightNode());
+            }
+            else{
+                unpassableNodes.push_back(currentNode.GetTopRightNode());
+            }
+            if (Passable(currentNode.GetRightNode(),pathingMap)){
+                passableNodes.push_back(currentNode.GetRightNode());
+            }
+            else{
+                unpassableNodes.push_back(currentNode.GetRightNode());
+            }
+            if (Passable(currentNode.GetBottomRightNode(),pathingMap)){
+                passableNodes.push_back(currentNode.GetBottomRightNode());
+            }
+            else{
+                unpassableNodes.push_back(currentNode.GetBottomRightNode());
+            }
+            it = unpassableNodes.erase(it);
+        }
+        if(!passableNodes.empty()){
+                found = true;
+        }
+
+    }
+    passable = passableNodes[0];
+    for(std::vector<Node>::iterator it = passableNodes.begin(); it != passableNodes.end(); ++it) {
+            Node currentNode = *it;
+            if (DistanceEuclidienne(start.GetX(),passable.GetX(),start.GetY(),passable.GetY()) > DistanceEuclidienne(start.GetX(),currentNode.GetX(),start.GetY(),currentNode.GetY())){
+                passable = currentNode;
+            }
+    }
+    return passable;
+}
 

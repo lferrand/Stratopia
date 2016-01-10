@@ -4,10 +4,15 @@
 UnitDistance::UnitDistance(char _type, bool _isJoueurUniteS,SDL_Texture *texture, SDL_Rect positionTexture, SDL_Rect positionCarte,SDL_Renderer *renderer,bool** pathMap):
 Unit(_type,_isJoueurUniteS,texture,positionTexture,positionCarte,renderer,pathMap)
 {
+    vision = 100;
     attackTimer = 0;
     attackCD = 100;
     range = 20;
     damage = 20;
+    facing = Vector2D(5,10);
+    target = NULL;
+    destination = NULL;
+    AIcontroller = NULL;
 }
 
 UnitDistance::~UnitDistance()
@@ -72,23 +77,32 @@ void UnitDistance::UnitMove()
 
 }
 
-void UnitDistance::Attack(Unit& target)
+void UnitDistance::Update()
 {
-    if(attackTimer < attackCD){
-        attackTimer++;
+    if(AIcontroller != NULL){
+        AIcontroller->Update(*this);
     }
+    Unit::Update();
+}
 
-    float distance = (Vector2D(x,y) - Vector2D(target.getX(),target.getY())).Length();
-    if(distance < range){
-        if(attackTimer >= attackCD){
-            target.setHealth(target.getHealth() - this->damage);
-            this->attackTimer = 0;
+void UnitDistance::Attack()
+{
+    if(target != NULL){
+        if(attackTimer < attackCD){
+        attackTimer++;
         }
-    }
-    else{
-        delete destination;
-        destination = new Vector2D(target.getX(),target.getY());
-        UnitMove();
+        float distance = (Vector2D(x,y) - Vector2D(target->getX(),target->getY())).Length();
+        if(distance < range){
+            if(attackTimer >= attackCD){
+                target->setHealth(target->getHealth() - this->damage);
+                this->attackTimer = 0;
+            }
+        }
+        else{
+            delete destination;
+            destination = new Vector2D(target->getX(),target->getY());
+            UnitMove();
+        }
     }
 }
 

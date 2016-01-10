@@ -2,6 +2,7 @@
 #define UNITDISTANCE_H
 
 #include "unit.h"
+#include "aicontroller.h"
 
 
 class UnitDistance : public Unit
@@ -10,9 +11,11 @@ class UnitDistance : public Unit
         UnitDistance(char _type, bool _isJoueurUniteS,SDL_Texture *texture, SDL_Rect positionTexture, SDL_Rect positionCarte,SDL_Renderer *renderer,bool**pathMap);
         virtual ~UnitDistance();
         virtual void UnitMove();
-        virtual void Attack(Unit& target);
+        virtual void Attack();
+        virtual void Update();
         virtual bool Die();
     protected:
+        AIController *AIcontroller;
     private:
 };
 

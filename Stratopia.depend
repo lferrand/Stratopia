@@ -739,11 +739,13 @@
 	<sstream>
 	"camera.h"
 
-1452177066 source:c:\users\taliera\documents\github\stratopia\controller\aicontroller.cpp
+1452409892 source:c:\users\taliera\documents\github\stratopia\controller\aicontroller.cpp
 	"aicontroller.h"
 
-1452219060 c:\users\taliera\documents\github\stratopia\controller\aicontroller.h
+1452410536 c:\users\taliera\documents\github\stratopia\controller\aicontroller.h
 	"controller.h"
+	"unit.h"
+	"task.h"
 
 1452177066 c:\users\taliera\documents\github\stratopia\controller\controller.h
 
@@ -806,13 +808,14 @@
 1452367116 source:c:\users\taliera\documents\github\stratopia\gameobjects\renderableobject.cpp
 	"renderableobject.h"
 
-1452356920 source:c:\users\taliera\documents\github\stratopia\gameobjects\unit.cpp
+1452408900 source:c:\users\taliera\documents\github\stratopia\gameobjects\unit.cpp
 	"unit.h"
 	"tools.h"
 	"vector2d.h"
 	"math.h"
+	"aicontroller.h"
 
-1452367116 c:\users\taliera\documents\github\stratopia\gameobjects\unit.h
+1452408847 c:\users\taliera\documents\github\stratopia\gameobjects\unit.h
 	"renderableobject.h"
 	<vector>
 	"../Tools/node.h"
@@ -823,7 +826,7 @@
 	"../../Tools/node.h"
 	"../../Tools/tools.h"
 
-1452367256 c:\users\taliera\documents\github\stratopia\jeu\map\mapjeu.h
+1452384953 c:\users\taliera\documents\github\stratopia\jeu\map\mapjeu.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	<fstream>
@@ -831,7 +834,7 @@
 	<sstream>
 	"camera.h"
 
-1452367256 source:c:\users\taliera\documents\github\stratopia\jeu\map\mapjeu.h
+1452384953 source:c:\users\taliera\documents\github\stratopia\jeu\map\mapjeu.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	<fstream>
@@ -839,7 +842,7 @@
 	<sstream>
 	"camera.h"
 
-1452368277 source:c:\users\taliera\documents\github\stratopia\tools\node.cpp
+1452369019 source:c:\users\taliera\documents\github\stratopia\tools\node.cpp
 	"node.h"
 	<cstddef>
 	<iostream>
@@ -852,7 +855,7 @@
 
 1452247659 c:\users\taliera\documents\github\stratopia\tools\path.h
 
-1452368133 source:c:\users\taliera\documents\github\stratopia\tools\tools.cpp
+1452398924 source:c:\users\taliera\documents\github\stratopia\tools\tools.cpp
 	"tools.h"
 	<iostream>
 	<stdlib.h>
@@ -880,7 +883,7 @@
 	"unitdistance.h"
 	"playercontroller.h"
 
-1452367116 c:\users\taliera\documents\github\stratopia\tools\tools.h
+1452395600 c:\users\taliera\documents\github\stratopia\tools\tools.h
 	"node.h"
 	<vector>
 	<map>
@@ -903,25 +906,29 @@
 	"unitdistance.h"
 	"playercontroller.h"
 
-1452367755 source:c:\users\taliera\documents\github\stratopia\jeu\jeu.cpp
+1452410162 source:c:\users\taliera\documents\github\stratopia\jeu\jeu.cpp
 	"jeu.h"
+	"task.h"
+	"aicontroller.h"
 
 1452355124 c:\users\taliera\documents\github\stratopia\tools\vector2d.h
 
-1452367857 source:c:\users\taliera\documents\github\stratopia\gameobjects\unitcac.cpp
+1452410641 source:c:\users\taliera\documents\github\stratopia\gameobjects\unitcac.cpp
 	"unitcac.h"
 
-1452367164 c:\users\taliera\documents\github\stratopia\gameobjects\unitcac.h
+1452410518 c:\users\taliera\documents\github\stratopia\gameobjects\unitcac.h
 	"unit.h"
 	"tools.h"
 	"vector2d.h"
+	"aicontroller.h"
 
-1452367116 source:c:\users\taliera\documents\github\stratopia\gameobjects\unitdistance.cpp
+1452409007 source:c:\users\taliera\documents\github\stratopia\gameobjects\unitdistance.cpp
 	"unitdistance.h"
 	"tools.h"
 
-1452367116 c:\users\taliera\documents\github\stratopia\gameobjects\unitdistance.h
+1452408836 c:\users\taliera\documents\github\stratopia\gameobjects\unitdistance.h
 	"unit.h"
+	"aicontroller.h"
 
 1452355124 source:c:\users\taliera\documents\github\stratopia\tools\vector2d.cpp
 	"vector2d.h"
@@ -1364,11 +1371,28 @@
 1452356121 d:\projets\stratopia\jeu\camera.h
 	<SDL2/SDL.h>
 
-1452367416 c:\users\taliera\documents\github\stratopia\jeu\map
+1452408264 c:\users\taliera\documents\github\stratopia\jeu\map
 
 1452367116 c:\users\taliera\documents\github\stratopia\jeu\camera.h
 	<SDL2/SDL.h>
 
 1452367116 source:c:\users\taliera\documents\github\stratopia\jeu\camera.cpp
 	"camera.h"
+
+1452388471 source:c:\users\taliera\documents\github\stratopia\task\explore.cpp
+	"Explore.h"
+
+1452388471 c:\users\taliera\documents\github\stratopia\task\explore.h
+	"task.h"
+
+1452405287 c:\users\taliera\documents\github\stratopia\task\task.h
+	"unit.h"
+
+1452409107 source:c:\users\taliera\documents\github\stratopia\task\task.cpp
+	"task.h"
+
+1452408139 source:c:\users\taliera\documents\github\stratopia\controller\aicontroller.h
+	"controller.h"
+	"unit.h"
+	"task.h"
 
