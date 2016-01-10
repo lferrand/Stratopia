@@ -14,8 +14,9 @@ class AIController : public Controller
         virtual ~AIController();
         virtual bool Reflex(Unit &unit);
         virtual void Update(Unit &unit);
-        std::vector<Task*> &FSM;
+
     protected:
+        std::vector<Task*> &FSM;
         int currentTask;
 
     private:

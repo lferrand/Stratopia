@@ -158,10 +158,12 @@ void Jeu::ChargerUnite()
             positionUnitSurCarte.y=result;
             if(type=='c')
             {
-                std::vector<Task*> tasks;
-                tasks.push_back(new Task());
-               AIController* contro = new AIController(tasks);
-               UnitCaC *unite =new UnitCaC(type,false,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer,maCarte->cartePassage,contro);
+                std::vector<Task*>* tasks = new std::vector<Task*>();
+                Task* test = new Task("lalala");
+                tasks->push_back(test);
+                AIController* contro = new AIController(*tasks);
+                //std::cout << contro.FSM.size() <<" fsdfs \n";
+                UnitCaC *unite =new UnitCaC(type,false,unitTexture,positionUnitSurTexture,positionUnitSurCarte,renderer,maCarte->cartePassage,contro);
                 uniteOrdinateur.push_back(unite);
 
             }

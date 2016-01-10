@@ -37,7 +37,7 @@ void UnitCaC::Update()
 {
     if(AIcontroller != NULL){
 
-        //AIcontroller->Update(*this);
+        AIcontroller->Update(*this);
 
     }
     Unit::Update();
@@ -98,7 +98,8 @@ void UnitCaC::UnitMove()
                 path.erase(path.begin()+index);
             }
 
-            if (destinationNode.GetWorldX() != path[0].GetWorldX() && destinationNode.GetWorldY()!= path[0].GetWorldY()){
+            if (destinationNode.GetX() != path[0].GetX() || destinationNode.GetY()!= path[0].GetY()){
+                std::cout << "clear" << "\n";
                 path.clear();
             }
             //std::cout << Seek(targetPosition).Length()<< "\n";

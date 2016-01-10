@@ -1,8 +1,7 @@
 #include "Explore.h"
 
-Explore::Explore()
+Explore::Explore(std::string _name):Task(_name)
 {
-    //ctor
 }
 
 Explore::~Explore()

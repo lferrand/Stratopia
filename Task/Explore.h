@@ -7,7 +7,7 @@
 class Explore : public Task
 {
     public:
-        Explore();
+        Explore(std::string name);
         virtual ~Explore();
     protected:
     private:

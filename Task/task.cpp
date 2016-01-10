@@ -1,8 +1,8 @@
 #include "task.h"
 
-Task::Task()
+Task::Task(std::string _name)
 {
-    //ctor
+    name = name;
 }
 
 Task::~Task()
@@ -12,8 +12,7 @@ Task::~Task()
 
 bool Task::execute(Unit &unit)
 {
-    std::cout << "test";
-    unit.SetDestination(50,50);
+    unit.SetDestination(200,200);
 }
 
 bool Task::exitCondition(Unit unit)
