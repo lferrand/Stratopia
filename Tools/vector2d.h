@@ -16,6 +16,7 @@ class Vector2D
         Vector2D& operator*=(float scalar);
         Vector2D& operator/=(float scalar);
         Vector2D Normalized();
+        Vector2D RotateByAngle(float angle);
         float Length();
         void Truncate(float upperBound);
 

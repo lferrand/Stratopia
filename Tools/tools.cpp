@@ -54,7 +54,7 @@ bool Tools::Astar(Node start, Node destination, bool **pathingMap, std::vector<N
         }
 
         //Verification de la case en bas a gauche
-        if( Passable(current.GetBottomLeftNode(),pathingMap) && !VectorContainsNode(current.GetBottomLeftNode(),closedNodes))
+        if(CheckInBound(current.GetBottomLeftNode()) && Passable(current.GetBottomLeftNode(),pathingMap) && !VectorContainsNode(current.GetBottomLeftNode(),closedNodes))
         {
             if(!VectorContainsNode(current.GetBottomLeftNode(),openNodes)){
                 Node nodeToAdd = current.GetBottomLeftNode();
@@ -71,7 +71,7 @@ bool Tools::Astar(Node start, Node destination, bool **pathingMap, std::vector<N
         }
 
         //Verification de la case en bas
-        if( Passable(current.GetBottomNode(),pathingMap) && !VectorContainsNode(current.GetBottomNode(),closedNodes))
+        if(CheckInBound(current.GetBottomNode()) && Passable(current.GetBottomNode(),pathingMap) && !VectorContainsNode(current.GetBottomNode(),closedNodes))
         {
             if(!VectorContainsNode(current.GetBottomNode(),openNodes)){
                 Node nodeToAdd = current.GetBottomNode();
@@ -87,7 +87,7 @@ bool Tools::Astar(Node start, Node destination, bool **pathingMap, std::vector<N
             }
         }
         //Verification de la case a gauche
-        if( Passable(current.GetLeftNode(),pathingMap) && !VectorContainsNode(current.GetLeftNode(),closedNodes))
+        if(CheckInBound(current.GetLeftNode()) && Passable(current.GetLeftNode(),pathingMap) && !VectorContainsNode(current.GetLeftNode(),closedNodes))
         {
             if(!VectorContainsNode(current.GetLeftNode(),openNodes)){
                 Node nodeToAdd = current.GetLeftNode();
@@ -103,7 +103,7 @@ bool Tools::Astar(Node start, Node destination, bool **pathingMap, std::vector<N
             }
         }
         // Verification de la case en haut a gauche
-        if( Passable(current.GetTopLeftNode(),pathingMap) && !VectorContainsNode(current.GetTopLeftNode(),closedNodes))
+        if(CheckInBound(current.GetTopLeftNode()) && Passable(current.GetTopLeftNode(),pathingMap) && !VectorContainsNode(current.GetTopLeftNode(),closedNodes))
         {
             if(!VectorContainsNode(current.GetTopLeftNode(),openNodes)){
                 Node nodeToAdd = current.GetTopLeftNode();
@@ -119,7 +119,7 @@ bool Tools::Astar(Node start, Node destination, bool **pathingMap, std::vector<N
             }
         }
         //Verification de la case en haut
-        if( Passable(current.GetTopNode(),pathingMap) && !VectorContainsNode(current.GetTopNode(),closedNodes))
+        if(CheckInBound(current.GetTopNode()) && Passable(current.GetTopNode(),pathingMap) && !VectorContainsNode(current.GetTopNode(),closedNodes))
         {
             if(!VectorContainsNode(current.GetTopNode(),openNodes)){
                 Node nodeToAdd = current.GetTopNode();
@@ -135,7 +135,7 @@ bool Tools::Astar(Node start, Node destination, bool **pathingMap, std::vector<N
             }
         }
         // Verification de la case en haut a droite
-        if( Passable(current.GetTopRightNode(),pathingMap) && !VectorContainsNode(current.GetTopRightNode(),closedNodes))
+        if(CheckInBound(current.GetTopRightNode()) && Passable(current.GetTopRightNode(),pathingMap) && !VectorContainsNode(current.GetTopRightNode(),closedNodes))
         {
             if(!VectorContainsNode(current.GetTopRightNode(),openNodes)){
                 Node nodeToAdd = current.GetTopRightNode();
@@ -151,7 +151,7 @@ bool Tools::Astar(Node start, Node destination, bool **pathingMap, std::vector<N
             }
         }
         //Verification de la case a droite
-        if( Passable(current.GetRightNode(),pathingMap) && !VectorContainsNode(current.GetRightNode(),closedNodes))
+        if(CheckInBound(current.GetRightNode()) && Passable(current.GetRightNode(),pathingMap) && !VectorContainsNode(current.GetRightNode(),closedNodes))
         {
             if(!VectorContainsNode(current.GetRightNode(),openNodes)){
                 Node nodeToAdd = current.GetRightNode();
@@ -167,7 +167,7 @@ bool Tools::Astar(Node start, Node destination, bool **pathingMap, std::vector<N
             }
         }
         // Verification de la case en bas a droite
-        if( Passable(current.GetBottomRightNode(),pathingMap) && !VectorContainsNode(current.GetBottomRightNode(),closedNodes))
+        if(CheckInBound(current.GetBottomRightNode()) && Passable(current.GetBottomRightNode(),pathingMap) && !VectorContainsNode(current.GetBottomRightNode(),closedNodes))
         {
             if(!VectorContainsNode(current.GetBottomRightNode(),openNodes)){
                 Node nodeToAdd = current.GetBottomRightNode();
@@ -207,7 +207,7 @@ bool Tools::Astar(Node start, Node destination, bool **pathingMap, std::vector<N
         while(it != parents.end()) {
             currentBactrack = it->second;
             //std::cout << "solution x : " << currentBactrack.GetX()<<" solution y : " << currentBactrack.GetY() << "\n";
-            std::cout << "trackback : "<< path.size() << "\n";
+            //std::cout << "trackback : "<< path.size() << "\n";
             path.push_back(currentBactrack);
             it = parents.find(currentBactrack);
 
@@ -257,7 +257,7 @@ int Tools::DistanceManhattan(Node start, Node origin)
 
 bool Tools::Passable(Node testedNode, bool **pathingMap)
 {
-    //std::cout << pathingMap[testedNode.GetX()][testedNode.GetY()];
+    std::cout << pathingMap[testedNode.GetX()][testedNode.GetY()];
     if(pathingMap[testedNode.GetX()][testedNode.GetY()]){
         //std::cout << testedNode.GetX() << "oba" << testedNode.GetY() << "\n";
     }
@@ -287,13 +287,16 @@ int Tools::DistanceEuclidienne(int x1, int x2, int y1, int y2)
 }
 float Tools::DistanceEuclidienneF(int x1, int x2, int y1, int y2)
 {
-    std::cout << sqrt( (x1-x2)^2 + (y1-y2)^2) << "\n";
+    //std::cout << sqrt( (x1-x2)^2 + (y1-y2)^2) << "\n";
     return sqrt( (x1-x2)^2 + (y1-y2)^2);
 }
 
 Node Tools::GetNodeFromAxis(int x, int y)
 {
-    Node result(x/32,y/32);
+    Node result;
+    std::cout << "\n node x "<< static_cast <int>(floor(x/32)) << "\n";
+    result.SetX(floor(x/32));
+    result.SetY(floor(y/32));
     return result;
 }
 Node Tools::FindClosestPassable(Node start, Node unpassable,bool **pathingMap)
@@ -303,65 +306,71 @@ Node Tools::FindClosestPassable(Node start, Node unpassable,bool **pathingMap)
     std::vector<Node> unpassableNodes;
     std::vector<Node> passableNodes;
     unpassableNodes.push_back(start);
-    while(!found){
-        for(std::vector<Node>::iterator it = unpassableNodes.begin(); it != unpassableNodes.end();) {
-
-            Node currentNode = *it;
-            if (Passable(currentNode.GetBottomNode(),pathingMap)){
+    std::cout << unpassableNodes.size()<<" unpassable \n";
+    while(!found && unpassableNodes.end() != unpassableNodes.begin()){
+            std::cout << "while \n";
+            std::cout << "test \n";
+            Node currentNode = unpassableNodes[0];
+            std::cout << unpassableNodes.size()<<" unpassable \n";
+            if (CheckInBound(currentNode.GetBottomNode()) && Passable(currentNode.GetBottomNode(),pathingMap)){
                 passableNodes.push_back(currentNode.GetBottomNode());
             }
             else{
                 unpassableNodes.push_back(currentNode.GetBottomNode());
             }
-            if (Passable(currentNode.GetBottomLeftNode(),pathingMap)){
+            if (CheckInBound(currentNode.GetBottomLeftNode()) && Passable(currentNode.GetBottomLeftNode(),pathingMap)){
                 passableNodes.push_back(currentNode.GetBottomLeftNode());
             }
             else{
                 unpassableNodes.push_back(currentNode.GetBottomLeftNode());
             }
-            if (Passable(currentNode.GetLeftNode(),pathingMap)){
+            if (CheckInBound(currentNode.GetLeftNode()) && Passable(currentNode.GetLeftNode(),pathingMap)){
                 passableNodes.push_back(currentNode.GetLeftNode());
             }
             else{
                 unpassableNodes.push_back(currentNode.GetLeftNode());
             }
-            if (Passable(currentNode.GetTopLeftNode(),pathingMap)){
+            if (CheckInBound(currentNode.GetTopLeftNode()) && Passable(currentNode.GetTopLeftNode(),pathingMap)){
                 passableNodes.push_back(currentNode.GetTopLeftNode());
             }
             else{
                 unpassableNodes.push_back(currentNode.GetTopLeftNode());
             }
-            if (Passable(currentNode.GetTopNode(),pathingMap)){
+            if (CheckInBound(currentNode.GetTopNode()) && Passable(currentNode.GetTopNode(),pathingMap)){
                 passableNodes.push_back(currentNode.GetTopNode());
             }
             else{
                 unpassableNodes.push_back(currentNode.GetTopNode());
             }
-            if (Passable(currentNode.GetTopRightNode(),pathingMap)){
+            if (CheckInBound(currentNode.GetTopRightNode()) && Passable(currentNode.GetTopRightNode(),pathingMap)){
                 passableNodes.push_back(currentNode.GetTopRightNode());
             }
             else{
                 unpassableNodes.push_back(currentNode.GetTopRightNode());
             }
-            if (Passable(currentNode.GetRightNode(),pathingMap)){
+            if (CheckInBound(currentNode.GetRightNode()) && Passable(currentNode.GetRightNode(),pathingMap)){
                 passableNodes.push_back(currentNode.GetRightNode());
             }
             else{
                 unpassableNodes.push_back(currentNode.GetRightNode());
             }
-            if (Passable(currentNode.GetBottomRightNode(),pathingMap)){
+            if (CheckInBound(currentNode.GetBottomRightNode()) && Passable(currentNode.GetBottomRightNode(),pathingMap)){
                 passableNodes.push_back(currentNode.GetBottomRightNode());
             }
             else{
                 unpassableNodes.push_back(currentNode.GetBottomRightNode());
             }
-            it = unpassableNodes.erase(it);
-        }
-        if(!passableNodes.empty()){
-                found = true;
-        }
+            std::cout << passableNodes.size()<<"\n passable \n";
+
+            std::cout << passableNodes.size()<<"\n passable \n";
+            if(!passableNodes.empty()){
+                    found = true;
+                    break;
+            }
+            unpassableNodes.erase(unpassableNodes.begin());
 
     }
+
     passable = passableNodes[0];
     for(std::vector<Node>::iterator it = passableNodes.begin(); it != passableNodes.end(); ++it) {
             Node currentNode = *it;
@@ -369,6 +378,15 @@ Node Tools::FindClosestPassable(Node start, Node unpassable,bool **pathingMap)
                 passable = currentNode;
             }
     }
+
     return passable;
+}
+
+bool Tools::CheckInBound(Node checkedNode)
+{
+    if (checkedNode.GetX() < 0 || checkedNode.GetY() < 0){
+        return false;
+    }
+    return true;
 }
 

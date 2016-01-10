@@ -13,6 +13,7 @@
 #include "playercontroller.h"
 #include "task.h"
 #include "aicontroller.h"
+#include "Explore.h"
 
 class Jeu
 {

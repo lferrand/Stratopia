@@ -21,7 +21,7 @@ class Tools
         static float DistanceEuclidienneF(int x1, int x2, int y1, int y2);
         static Node GetNodeFromAxis(int x, int y);
         static Node FindClosestPassable(Node start, Node unpassable, bool **pathingMap);
-
+        static bool CheckInBound(Node checkedNode);
     protected:
     private:
 };

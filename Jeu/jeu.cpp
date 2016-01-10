@@ -1,4 +1,5 @@
 #include "jeu.h"
+#include "Explore.h"
 
 
 Jeu::Jeu()
@@ -99,7 +100,7 @@ void Jeu::ChargerUnite()
             if(type=='c')
             {
                 std::vector<Task*>* tasks = new std::vector<Task*>();
-                Task* test = new Task("lalala");
+                Explore* test = new Explore("lalala");
                 tasks->push_back(test);
                 AIController* contro = new AIController(*tasks);
                 UnitCaC *unite =new UnitCaC(type,false,positionUnitSurCarte,renderer,maCarte->cartePassage,contro,*orcCaCTextures);
@@ -179,12 +180,13 @@ void Jeu::Action()
         tempsEcoule=tempsEcoule-tempsAAttendre;
         startTick=-1;
 
-        Vector2D face = Vector2D(5,10);
-        uniteJoueur[0]->SetTarget(uniteOrdinateur[0]);
+        Vector2D face = Vector2D(5,10).Normalized();
+        //uniteJoueur[0]->SetTarget(uniteOrdinateur[0]);
+
+
+        uniteJoueur[0]->SetDestination(2,2);
         uniteJoueur[0]->Update();
 
-
-        uniteOrdinateur[0]->SetDestination(400,500);
         uniteOrdinateur[0]->Update();
 
         /*Executer l'action ici*/

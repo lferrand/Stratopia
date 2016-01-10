@@ -28,6 +28,15 @@ Vector2D Vector2D::Normalized()
     Vector2D normalized = Vector2D(x/Length(),y/Length());
     return normalized;
 }
+
+Vector2D Vector2D::RotateByAngle(float angle)
+{
+    Vector2D rotated;
+    rotated.x =(x * cos(angle))-(y * sin(angle));
+    rotated.y =(x * sin(angle))-(y * cos(angle));
+    return rotated;
+}
+
 float Vector2D::Length()
 {
     return (float)sqrt( pow(x,2)+pow(y,2) );

@@ -22,6 +22,10 @@ class Unit : public RenderableObject
         void SetFacing(Vector2D face);
         void SetDestination(int x, int y);
         void SetTarget(Unit* &target);
+        Vector2D GetVelocity();
+        Vector2D GetFacing();
+        Vector2D* GetDestination();
+        void ClearPath();
 
     protected:
         float attackTimer;

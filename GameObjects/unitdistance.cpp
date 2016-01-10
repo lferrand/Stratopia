@@ -1,5 +1,6 @@
 #include "unitdistance.h"
 #include "tools.h"
+#include "math.h"
 
 UnitDistance::UnitDistance(char _type, bool _isJoueurUniteS, SDL_Rect positionCarte,SDL_Renderer *renderer,bool** pathMap,UnitTextures &texts):
 Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts)
@@ -22,53 +23,76 @@ UnitDistance::~UnitDistance()
 
 void UnitDistance::UnitMove()
 {
-   if (destination->x == x && destination->y == y){
+    if (destination->x == x && destination->y == y){
         delete destination;
         destination = NULL;
     }
     if (destination != NULL){
 
-        Node destinationNode = Tools::GetNodeFromAxis(destination->x,destination->y);
+        Node destinationNode = Tools::GetNodeFromAxis(static_cast <int> (floor(destination->x)),floor(destination->y));
+        std::cout << "out of bound "<< (int) destinationNode.GetX() <<"\n" ;
+        if ( destinationNode.GetX()<0 || destinationNode.GetY()<0){
+             std::cout << "out of bound \n";
+            if (destinationNode.GetX()<0){
+                destinationNode.SetX(0);
+            }
+             if (destinationNode.GetY()<0){
+                destinationNode.SetY(0);
+            }
+            delete destination;
+            destination = new Vector2D(destinationNode.GetWorldX(),destinationNode.GetWorldY());
+        }
+        if ( !Tools::Passable(destinationNode,pathingMap)){
+
+            destinationNode = Tools::FindClosestPassable(Tools::GetNodeFromAxis(x,y),destinationNode,pathingMap);
+            //std::cout << "position x : \n";
+            delete destination;
+            destination = new Vector2D(destinationNode.GetWorldX(),destinationNode.GetWorldY());
+        }
+
 
         if (path.empty()){
-            Tools::Astar(Tools::GetNodeFromAxis(x,y),Tools::GetNodeFromAxis(destination->x,destination->y),pathingMap, path);
+            Tools::Astar(Tools::GetNodeFromAxis(x,y),destinationNode,pathingMap, path);
         }
         else{
             //std::cout << "position x : " << x << "position y : " << y << "\n";
-            Vector2D target;
+            Vector2D targetPosition;
             int index = 0;
             index = path.size()-1;
-            speed = 1;
+            speed = 1.5;
             pathForce = 1;
             Node currentNode = path[index];
             //std::cout << "node x : " << currentNode.GetWorldX() << "node y : " << currentNode.GetWorldY() << "\n";
             if (path.size() == 1){
-                target = Vector2D(destination->x,destination->y);
+                targetPosition = Vector2D(destination->x,destination->y);
             }
             else{
-                target = Vector2D(currentNode.GetWorldX(),currentNode.GetWorldY());
+                targetPosition = Vector2D(currentNode.GetWorldX(),currentNode.GetWorldY());
             }
 
-            //std::cout << "seek x : " << Seek(target).x << "seek y : " << Seek(target).y << "\n";
-            Vector2D steering = velocity + Seek(target).Normalized();
-            facing = velocity.Normalized();
+            //std::cout << "seek x : " << Seek(targetPosition).x << "seek y : " << Seek(targetPosition).y << "\n";
+            Vector2D steering = velocity + Seek(targetPosition).Normalized();
+            facing = steering.Normalized();
             velocity = steering;
             velocity.Truncate(speed);
             //std::cout << "steering x : " << steering.x << "steering y : " << steering.y << "\n";
             Move(steering);
-            //std::cout << Seek(target).Length()<< "\n";
 
-            if( Seek(target).Length()<= (20/2) && path.size() !=1){
+
+            if( Seek(targetPosition).Length()<= (32/2) && path.size() !=1){
                 path.erase(path.begin()+index);
-            }else if (Seek(target).Length() <= 0 && path.size() == 1){
+            }else if (Seek(targetPosition).Length() <= 0 && path.size() == 1){
                 delete destination;
                 destination = NULL;
-                std::cout << Seek(target).Length()<< "\n";
+                //std::cout << Seek(targetPosition).Length()<< "\n";
                 path.erase(path.begin()+index);
             }
-            if (destinationNode.GetWorldX() != path[0].GetWorldX() && destinationNode.GetWorldY()!= path[0].GetWorldY()){
+
+            if (destinationNode.GetX() != path[0].GetX() || destinationNode.GetY()!= path[0].GetY()){
+                std::cout << "clear" << "\n";
                 path.clear();
             }
+            //std::cout << Seek(targetPosition).Length()<< "\n";
         }
     }
     else{

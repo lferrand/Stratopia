@@ -1,4 +1,5 @@
 #include "unitcac.h"
+#include "math.h"
 
 
 
@@ -51,11 +52,23 @@ void UnitCaC::UnitMove()
     }
     if (destination != NULL){
 
-        Node destinationNode = Tools::GetNodeFromAxis(destination->x,destination->y);
+        Node destinationNode = Tools::GetNodeFromAxis(static_cast <int> (floor(destination->x)),floor(destination->y));
+        std::cout << "out of bound "<< (int) destinationNode.GetX() <<"\n" ;
+        if ( destinationNode.GetX()<0 || destinationNode.GetY()<0){
+             std::cout << "out of bound \n";
+            if (destinationNode.GetX()<0){
+                destinationNode.SetX(0);
+            }
+             if (destinationNode.GetY()<0){
+                destinationNode.SetY(0);
+            }
+            delete destination;
+            destination = new Vector2D(destinationNode.GetWorldX(),destinationNode.GetWorldY());
+        }
         if ( !Tools::Passable(destinationNode,pathingMap)){
 
             destinationNode = Tools::FindClosestPassable(Tools::GetNodeFromAxis(x,y),destinationNode,pathingMap);
-            std::cout << "position x : \n";
+            //std::cout << "position x : \n";
             delete destination;
             destination = new Vector2D(destinationNode.GetWorldX(),destinationNode.GetWorldY());
         }
@@ -82,7 +95,7 @@ void UnitCaC::UnitMove()
 
             //std::cout << "seek x : " << Seek(targetPosition).x << "seek y : " << Seek(targetPosition).y << "\n";
             Vector2D steering = velocity + Seek(targetPosition).Normalized();
-            facing = velocity.Normalized();
+            facing = steering.Normalized();
             velocity = steering;
             velocity.Truncate(speed);
             //std::cout << "steering x : " << steering.x << "steering y : " << steering.y << "\n";

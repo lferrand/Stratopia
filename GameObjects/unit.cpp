@@ -22,11 +22,29 @@ void Unit::SetFacing(Vector2D face)
 }
 void Unit::SetDestination(int _x, int _y)
 {
+    delete destination;
     destination = new Vector2D(_x,_y);
 }
 void Unit::SetTarget(Unit* &_target)
 {
     target = _target;
+}
+Vector2D Unit::GetFacing()
+{
+    return facing;
+}
+Vector2D* Unit::GetDestination()
+{
+    return destination;
+}
+
+Vector2D Unit::GetVelocity()
+{
+    return velocity;
+}
+void Unit::ClearPath()
+{
+    path.clear();
 }
 
 void Unit::Update()
@@ -36,7 +54,7 @@ void Unit::Update()
         this->Attack();
     }
     else if(destination != NULL){
-        //std::cout << "move";
+        std::cout << "move";
         this->UnitMove();
     }
     else{
