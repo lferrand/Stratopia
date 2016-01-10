@@ -112,7 +112,7 @@ void UnitCaC::UnitMove()
             }
 
             if (destinationNode.GetX() != path[0].GetX() || destinationNode.GetY()!= path[0].GetY()){
-                std::cout << "clear" << "\n";
+                //std::cout << "clear" << "\n";
                 path.clear();
             }
             //std::cout << Seek(targetPosition).Length()<< "\n";

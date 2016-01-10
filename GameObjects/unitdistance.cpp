@@ -84,7 +84,6 @@ void UnitDistance::UnitMove()
             }else if (Seek(targetPosition).Length() <= 0 && path.size() == 1){
                 delete destination;
                 destination = NULL;
-                //std::cout << Seek(targetPosition).Length()<< "\n";
                 path.erase(path.begin()+index);
             }
 
@@ -134,5 +133,7 @@ bool UnitDistance::Die()
 {
     if(health <= 0){
         delete this;
+        return true;
     }
+    return false;
 }

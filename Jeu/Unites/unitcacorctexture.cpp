@@ -20,7 +20,8 @@ UnitCaCOrcTexture::UnitCaCOrcTexture(SDL_Renderer *render):UnitTextures(render)
             positionTexture[i][j].w=76;
             positionTexture[i][j].h=56;
         }
-    }}
+    }
+}
 
 UnitCaCOrcTexture::~UnitCaCOrcTexture()
 {

@@ -1,6 +1,4 @@
 #include "jeu.h"
-#include "Explore.h"
-
 
 Jeu::Jeu()
 {
@@ -9,8 +7,12 @@ Jeu::Jeu()
     joueurControlleur=new PlayerController(uniteJoueur,renderer);
     startTick=-1;
     tempsEcoule=0;
+
     humainCaCTextures=new UnitCaCHumainTexture(renderer);
     orcCaCTextures=new UnitCaCOrcTexture(renderer);
+    humainDistanceTextures=new UnitDistanceHumainTexture(renderer);
+    orcDistanceTextures=new UnitDistanceOrcTexture(renderer);
+
     tempsAAttendre=17;
     ChargerMap();
     ChargerUnite();
@@ -64,7 +66,7 @@ void Jeu::ChargerUnite()
 
             if(type=='d')
             {
-                UnitDistance *unite=new UnitDistance(type,true,positionUnitSurCarte,renderer,maCarte->cartePassage,*humainCaCTextures);
+                UnitDistance *unite=new UnitDistance(type,true,positionUnitSurCarte,renderer,maCarte->cartePassage,*humainDistanceTextures);
                 uniteJoueur.push_back(unite);
 
             }
@@ -110,7 +112,7 @@ void Jeu::ChargerUnite()
             else if(type=='d')
             {
 
-                UnitDistance *unite=new UnitDistance(type,false,positionUnitSurCarte,renderer,maCarte->cartePassage,*orcCaCTextures);
+                UnitDistance *unite=new UnitDistance(type,false,positionUnitSurCarte,renderer,maCarte->cartePassage,*orcDistanceTextures);
                 uniteOrdinateur.push_back(unite);
 
             }

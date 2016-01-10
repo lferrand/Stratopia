@@ -34,6 +34,8 @@ class Unit : public RenderableObject
         int vision;
         int range;
         int damage;
+
+
         char type;
         bool isJoueurUnite;
         std::vector<Node> path;
