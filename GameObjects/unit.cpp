@@ -72,14 +72,14 @@ void Unit::Update()
 void Unit::AnimationSprite()
 {
     etapeAnimation++;
-    int vitesseAnimation=20;
+    int vitesseAnimation=6;
     if(etapeAnimation<vitesseAnimation)
     {
-        numeroSpriteAAfficher[1]=4;
+        numeroSpriteAAfficher[1]=2;
     }
     else if(etapeAnimation<vitesseAnimation*2)
     {
-        numeroSpriteAAfficher[1]=3;
+        numeroSpriteAAfficher[1]=1;
     }
     else if(etapeAnimation<vitesseAnimation*3)
     {
@@ -87,9 +87,21 @@ void Unit::AnimationSprite()
     }
     else if(etapeAnimation<vitesseAnimation*4)
     {
-        numeroSpriteAAfficher[1]=1;
+        numeroSpriteAAfficher[1]=0;
     }
     else if(etapeAnimation<vitesseAnimation*5)
+    {
+        numeroSpriteAAfficher[1]=4;
+    }
+    else if(etapeAnimation<vitesseAnimation*6)
+    {
+        numeroSpriteAAfficher[1]=3;
+    }
+    else if(etapeAnimation<vitesseAnimation*7)
+    {
+        numeroSpriteAAfficher[1]=4;
+    }
+    else if(etapeAnimation<vitesseAnimation*8)
     {
         numeroSpriteAAfficher[1]=0;
     }

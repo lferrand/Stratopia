@@ -15,9 +15,9 @@ UnitCaCHumainTexture::UnitCaCHumainTexture(SDL_Renderer *render):UnitTextures(re
         for(int j=0;j<9;j++)
         {
             positionTexture[i][j].x=74*i;
-            positionTexture[i][j].y=56*j;
+            positionTexture[i][j].y=54*j+6;
             positionTexture[i][j].w=74;
-            positionTexture[i][j].h=53;
+            positionTexture[i][j].h=54;
         }
     }
 
