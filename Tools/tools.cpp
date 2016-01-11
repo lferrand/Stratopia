@@ -294,7 +294,7 @@ float Tools::DistanceEuclidienneF(int x1, int x2, int y1, int y2)
 Node Tools::GetNodeFromAxis(int x, int y)
 {
     Node result;
-    std::cout << "\n node x "<< static_cast <int>(floor(x/32)) << "\n";
+    //std::cout << "\n node x "<< static_cast <int>(floor(x/32)) << "\n";
     result.SetX(floor(x/32));
     result.SetY(floor(y/32));
     return result;
@@ -306,12 +306,12 @@ Node Tools::FindClosestPassable(Node start, Node unpassable,bool **pathingMap)
     std::vector<Node> unpassableNodes;
     std::vector<Node> passableNodes;
     unpassableNodes.push_back(start);
-    std::cout << unpassableNodes.size()<<" unpassable \n";
+    //std::cout << unpassableNodes.size()<<" unpassable \n";
     while(!found && unpassableNodes.end() != unpassableNodes.begin()){
-            std::cout << "while \n";
-            std::cout << "test \n";
+            //std::cout << "while \n";
+            //std::cout << "test \n";
             Node currentNode = unpassableNodes[0];
-            std::cout << unpassableNodes.size()<<" unpassable \n";
+            //std::cout << unpassableNodes.size()<<" unpassable \n";
             if (CheckInBound(currentNode.GetBottomNode()) && Passable(currentNode.GetBottomNode(),pathingMap)){
                 passableNodes.push_back(currentNode.GetBottomNode());
             }
@@ -360,9 +360,9 @@ Node Tools::FindClosestPassable(Node start, Node unpassable,bool **pathingMap)
             else{
                 unpassableNodes.push_back(currentNode.GetBottomRightNode());
             }
-            std::cout << passableNodes.size()<<"\n passable \n";
+            //std::cout << passableNodes.size()<<"\n passable \n";
 
-            std::cout << passableNodes.size()<<"\n passable \n";
+            //std::cout << passableNodes.size()<<"\n passable \n";
             if(!passableNodes.empty()){
                     found = true;
                     break;

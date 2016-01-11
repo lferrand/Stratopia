@@ -2,8 +2,8 @@
 #include "tools.h"
 #include "math.h"
 
-UnitDistance::UnitDistance(char _type, bool _isJoueurUniteS, SDL_Rect positionCarte,SDL_Renderer *renderer,bool** pathMap,UnitTextures &texts):
-Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts)
+UnitDistance::UnitDistance(char _type, bool _isJoueurUniteS, SDL_Rect positionCarte,SDL_Renderer *renderer,bool** pathMap,UnitTextures &texts,std::vector<RenderableObject*> &_objects,int _playerID):
+Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts,_objects,_playerID)
 {
     vision = 100;
     attackTimer = 0;

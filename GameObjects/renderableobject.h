@@ -9,14 +9,15 @@
 class RenderableObject : public MovableObject
 {
     public:
-        RenderableObject(SDL_Rect positionCarte,SDL_Renderer *render,UnitTextures &textures);
+        RenderableObject(SDL_Rect positionCarte,SDL_Renderer *render,UnitTextures &textures, std::vector<RenderableObject*> &objects, int playerID);
         virtual ~RenderableObject();
         void setHealth(int h){health=h;}
         float getHealth(){return health;}
         void Render();
         void SetIsSelect(bool isSelect_){isSelect=isSelect_;}
+        int GetPlayerID();
         bool EstDansRectangleSelection(SDL_Rect rectangle);
-
+        virtual void Update();
         //texture de barre de vie
         static SDL_Texture* BarreVieTexture;
         static SDL_Texture* VieTexture;
@@ -30,12 +31,13 @@ class RenderableObject : public MovableObject
 
         SDL_Renderer *renderer;
 
+        std::vector<RenderableObject*> &objects;
         UnitTextures &textures;
 
+        int playerID;
         bool isSelect;
 
         SDL_Rect positionObjetMap;
-
         SDL_Rect positionBarreVieTexture;
         SDL_Rect positionVieTexture;
 

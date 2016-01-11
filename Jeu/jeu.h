@@ -5,6 +5,7 @@
 #include "mapjeu.h"
 
 #include "unitcac.h"
+#include "renderableobject.h"
 #include "unitdistance.h"
 
 #include "Unites/unitcachumaintexture.h"
@@ -45,7 +46,7 @@ class Jeu
         UnitCaCHumainTexture *humainCaCTextures;
         UnitCaCOrcTexture *orcCaCTextures;
 
-
+        std::vector<RenderableObject*> objects;
         std::vector<Unit*> uniteJoueur;
         std::vector<Unit*> uniteOrdinateur;
 };

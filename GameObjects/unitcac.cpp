@@ -3,12 +3,12 @@
 
 
 
-UnitCaC::UnitCaC(char _type, bool _isJoueurUniteS,SDL_Rect positionCarte,SDL_Renderer *renderer,bool **pathMap,UnitTextures &texts):
-Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts)
+UnitCaC::UnitCaC(char _type, bool _isJoueurUniteS,SDL_Rect positionCarte,SDL_Renderer *renderer,bool **pathMap,UnitTextures &texts,std::vector<RenderableObject*> &_objects,int _playerID):
+Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts,_objects,_playerID)
 {
     attackTimer = 0;
     attackCD = 100;
-    vision = 100;
+    vision = 30;
     range = 20;
     damage = 20;
     facing = Vector2D(5,10);
@@ -16,8 +16,8 @@ Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts)
     destination = NULL;
     AIcontroller = NULL;
 }
-UnitCaC::UnitCaC(char _type, bool _isJoueurUniteS,SDL_Rect positionCarte,SDL_Renderer *renderer,bool **pathMap,AIController *_AIController,UnitTextures &texts):
-Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts)
+UnitCaC::UnitCaC(char _type, bool _isJoueurUniteS,SDL_Rect positionCarte,SDL_Renderer *renderer,bool **pathMap,AIController *_AIController,UnitTextures &texts,std::vector<RenderableObject*> &_objects,int _playerID):
+Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts,_objects,_playerID)
 {
     attackTimer = 0;
     attackCD = 100;
@@ -53,9 +53,9 @@ void UnitCaC::UnitMove()
     if (destination != NULL){
 
         Node destinationNode = Tools::GetNodeFromAxis(static_cast <int> (floor(destination->x)),floor(destination->y));
-        std::cout << "out of bound "<< (int) destinationNode.GetX() <<"\n" ;
+        //std::cout << "out of bound "<< (int) destinationNode.GetX() <<"\n" ;
         if ( destinationNode.GetX()<0 || destinationNode.GetY()<0){
-             std::cout << "out of bound \n";
+             //std::cout << "out of bound \n";
             if (destinationNode.GetX()<0){
                 destinationNode.SetX(0);
             }

@@ -9,7 +9,7 @@ class Task
         Task(std::string name);
         virtual ~Task();
         virtual bool execute(Unit &unit);
-        virtual bool exitCondition(Unit unit);
+        virtual bool exitCondition(Unit &unit);
     protected:
         std::string name;
     private:

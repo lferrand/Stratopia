@@ -30,6 +30,10 @@ void Unit::SetTarget(Unit* &_target)
 {
     target = _target;
 }
+void Unit::SetTarget(RenderableObject* &_target)
+{
+    target = _target;
+}
 Vector2D Unit::GetFacing()
 {
     return facing;
@@ -60,6 +64,23 @@ void Unit::Update()
     else{
         //std::cout << "idle";
     }
+}
+
+std::vector<RenderableObject*> Unit::GetPercept()
+{
+    std::vector<RenderableObject*> renderableInVision;
+    for(std::vector<RenderableObject*>::iterator it = objects.begin(); it != objects.end(); ++it) {
+            RenderableObject* currentObject = *it;
+            std::cout << " distance " <<(pow(currentObject->getX()- x,2) + pow(currentObject->getY()- y,2))<< "\n";
+            std::cout << " vision " << pow(vision,2) << "\n";
+
+            if ((pow(currentObject->getX()- x,2) + pow(currentObject->getY()- y,2)) <= pow(vision,2)){
+                renderableInVision.push_back(currentObject);
+            }
+    }
+    std::cout << "tout object " <<objects.size()<< "\n";
+    std::cout << "renduVision " <<renderableInVision.size()<< "\n";
+    return renderableInVision;
 }
 
 void Unit::UnitMove()

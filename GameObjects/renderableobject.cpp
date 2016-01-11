@@ -8,8 +8,8 @@ SDL_Texture* RenderableObject::SelectionUniteTexture = NULL;
 
 
 
-RenderableObject::RenderableObject(SDL_Rect positionCarte,SDL_Renderer *render,UnitTextures &texts):
-MovableObject(positionCarte.x,positionCarte.y),renderer(render),positionObjetMap(positionCarte),health(100),textures(texts)
+RenderableObject::RenderableObject(SDL_Rect positionCarte,SDL_Renderer *render,UnitTextures &texts, std::vector<RenderableObject*> &_objects,int _playerID):
+MovableObject(positionCarte.x,positionCarte.y),renderer(render),positionObjetMap(positionCarte),health(100),textures(texts),objects(_objects),playerID(_playerID)
 {
     positionBarreVieTexture.x=positionObjetMap.x;
     positionBarreVieTexture.y=positionObjetMap.y-5;
@@ -22,6 +22,16 @@ MovableObject(positionCarte.x,positionCarte.y),renderer(render),positionObjetMap
     isSelect=false;
     numeroSpriteAAfficher[0]=2;
     numeroSpriteAAfficher[1]=0;
+}
+
+void RenderableObject::Update()
+{
+
+}
+
+int RenderableObject::GetPlayerID()
+{
+    return playerID;
 }
 
 void RenderableObject::Render()

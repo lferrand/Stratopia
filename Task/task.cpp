@@ -15,7 +15,7 @@ bool Task::execute(Unit &unit)
     unit.SetDestination(200,200);
 }
 
-bool Task::exitCondition(Unit unit)
+bool Task::exitCondition(Unit &unit)
 {
     //exitCondition
 }

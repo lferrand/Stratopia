@@ -9,7 +9,7 @@
 class Unit : public RenderableObject
 {
     public:
-        Unit(char t, bool isJoueur,SDL_Rect positionCarte,SDL_Renderer *renderer, bool **pathingMap_,UnitTextures &texts): RenderableObject(positionCarte, renderer,texts), type(t),isJoueurUnite(isJoueur),pathingMap(pathingMap_)
+        Unit(char t, bool isJoueur,SDL_Rect positionCarte,SDL_Renderer *renderer, bool **pathingMap_,UnitTextures &texts,std::vector<RenderableObject*> &objects,int playerID): RenderableObject(positionCarte, renderer,texts,objects,playerID), type(t),isJoueurUnite(isJoueur),pathingMap(pathingMap_)
         {}
         virtual ~Unit();
         virtual void UnitMove();
@@ -22,9 +22,11 @@ class Unit : public RenderableObject
         void SetFacing(Vector2D face);
         void SetDestination(int x, int y);
         void SetTarget(Unit* &target);
+        void SetTarget(RenderableObject* &target);
         Vector2D GetVelocity();
         Vector2D GetFacing();
         Vector2D* GetDestination();
+        std::vector<RenderableObject*> GetPercept();
         void ClearPath();
 
     protected:
@@ -43,7 +45,7 @@ class Unit : public RenderableObject
         Vector2D facing;
         Vector2D velocity;
         Vector2D *destination;
-        Unit *target;
+        RenderableObject *target;
     private:
 
 };

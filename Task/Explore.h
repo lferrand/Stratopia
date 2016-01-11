@@ -10,7 +10,7 @@ class Explore : public Task
         Explore(std::string name);
         virtual ~Explore();
         virtual bool execute(Unit &unit);
-        virtual bool exitCondition(Unit unit);
+        virtual bool exitCondition(Unit &unit);
     protected:
     private:
 };

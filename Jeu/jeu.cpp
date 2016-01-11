@@ -66,16 +66,17 @@ void Jeu::ChargerUnite()
 
             if(type=='d')
             {
-                UnitDistance *unite=new UnitDistance(type,true,positionUnitSurCarte,renderer,maCarte->cartePassage,*humainDistanceTextures);
+                UnitDistance *unite=new UnitDistance(type,true,positionUnitSurCarte,renderer,maCarte->cartePassage,*humainDistanceTextures,objects,1);
                 uniteJoueur.push_back(unite);
+                objects.push_back(unite);
 
             }
             else if(type=='c')
             {
 
-                UnitCaC *unite= new UnitCaC(type,true,positionUnitSurCarte,renderer,maCarte->cartePassage,*humainCaCTextures);
+                UnitCaC *unite= new UnitCaC(type,true,positionUnitSurCarte,renderer,maCarte->cartePassage,*humainCaCTextures,objects,1);
                 uniteJoueur.push_back(unite);
-
+                objects.push_back(unite);
             }
 
     }
@@ -105,16 +106,16 @@ void Jeu::ChargerUnite()
                 Explore* test = new Explore("lalala");
                 tasks->push_back(test);
                 AIController* contro = new AIController(*tasks);
-                UnitCaC *unite =new UnitCaC(type,false,positionUnitSurCarte,renderer,maCarte->cartePassage,contro,*orcCaCTextures);
+                UnitCaC *unite =new UnitCaC(type,false,positionUnitSurCarte,renderer,maCarte->cartePassage,contro,*orcCaCTextures,objects,2);
                 uniteOrdinateur.push_back(unite);
-
+                objects.push_back(unite);
             }
             else if(type=='d')
             {
 
-                UnitDistance *unite=new UnitDistance(type,false,positionUnitSurCarte,renderer,maCarte->cartePassage,*orcDistanceTextures);
+                UnitDistance *unite=new UnitDistance(type,false,positionUnitSurCarte,renderer,maCarte->cartePassage,*orcDistanceTextures,objects,2);
                 uniteOrdinateur.push_back(unite);
-
+                objects.push_back(unite);
             }
     }
     fichier.close();
@@ -183,10 +184,9 @@ void Jeu::Action()
         startTick=-1;
 
         Vector2D face = Vector2D(5,10).Normalized();
-        //uniteJoueur[0]->SetTarget(uniteOrdinateur[0]);
+        uniteJoueur[0]->SetTarget(uniteOrdinateur[0]);
 
 
-        uniteJoueur[0]->SetDestination(2,2);
         uniteJoueur[0]->Update();
 
         uniteOrdinateur[0]->Update();
