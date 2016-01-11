@@ -12,6 +12,7 @@ class UnitDistance : public Unit
         virtual ~UnitDistance();
         virtual void UnitMove();
         virtual bool Attack();
+        virtual void AnimationSpriteCombat();
         virtual void Update();
         virtual bool Die();
     protected:

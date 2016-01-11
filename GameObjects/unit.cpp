@@ -28,7 +28,12 @@ void Unit::SetDestination(int _x, int _y)
 }
 void Unit::SetTarget(Unit* &_target)
 {
-    target = _target;
+    if(_target!=target)
+    {
+        attackTimer=0;
+        attaqueEnCours=false;
+        target = _target;
+    }
 }
 void Unit::SetTarget(RenderableObject* &_target)
 {
@@ -123,31 +128,34 @@ void Unit::AnimationSpriteDeplacement()
 void Unit::AnimationSpriteCombat()
 {
 
-    etapeAnimation++;
-    int vitesseAnimation=12;
-    if(etapeAnimation<vitesseAnimation)
+    int vitesseAnimation=attackCD/7;
+    if(attackTimer<vitesseAnimation)
     {
         numeroSpriteAAfficher[1]=4;
     }
-    else if(etapeAnimation<vitesseAnimation*2)
+    else if(attackTimer<vitesseAnimation*2)
     {
         numeroSpriteAAfficher[1]=5;
     }
-    else if(etapeAnimation<vitesseAnimation*3)
+    else if(attackTimer<vitesseAnimation*3)
     {
         numeroSpriteAAfficher[1]=6;
     }
-    else if(etapeAnimation<vitesseAnimation*4)
+    else if(attackTimer<vitesseAnimation*4)
     {
         numeroSpriteAAfficher[1]=7;
     }
-    else if(etapeAnimation<vitesseAnimation*5)
+    else if(attackTimer<vitesseAnimation*5)
+    {
+        numeroSpriteAAfficher[1]=6;
+    }
+    else if(attackTimer<vitesseAnimation*6)
+    {
+        numeroSpriteAAfficher[1]=5;
+    }
+    else if(attackTimer<vitesseAnimation*7)
     {
         numeroSpriteAAfficher[1]=0;
-    }
-    else
-    {
-        etapeAnimation=0;
     }
 
 }

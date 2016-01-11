@@ -8,7 +8,7 @@ Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts,_objects,_player
     vision = 100;
     attackTimer = 0;
     attackCD = 100;
-    range = 20;
+    range = 100;
     damage = 20;
     facing = Vector2D(5,10);
     target = NULL;
@@ -110,17 +110,25 @@ void UnitDistance::Update()
 
 bool UnitDistance::Attack()
 {
-    if(target != NULL){
-        if(attackTimer < attackCD){
-        attackTimer++;
-        }
+     if(target != NULL){
+
         float distance = (Vector2D(x,y) - Vector2D(target->getX(),target->getY())).Length();
-        if(distance < range){
-            if(attackTimer >= attackCD){
+        if(distance <= range){
+                attaqueEnCours=true;
+        }
+        if(attaqueEnCours)
+        {
+            if(attackTimer < attackCD){
+            attackTimer++;
+            return true;
+            }
+            else
+            {
                 target->setHealth(target->getHealth() - this->damage);
                 this->attackTimer = 0;
+                attaqueEnCours=false;
+                return true;
             }
-            return true;
         }
         else{
             delete destination;
@@ -129,10 +137,30 @@ bool UnitDistance::Attack()
             return false;
         }
     }
-                return false;
+    return false;
 
 }
+void UnitDistance::AnimationSpriteCombat()
+{
+    int vitesseAnimation=attackCD/4;
+    if(attackTimer<vitesseAnimation)
+    {
+        numeroSpriteAAfficher[1]=4;
+    }
+    else if(attackTimer<vitesseAnimation*2)
+    {
+        numeroSpriteAAfficher[1]=5;
+    }
+    else if(attackTimer<vitesseAnimation*3)
+    {
+        numeroSpriteAAfficher[1]=6;
+    }
+    else if(attackTimer<vitesseAnimation*5)
+    {
+        numeroSpriteAAfficher[1]=0;
+    }
 
+}
 bool UnitDistance::Die()
 {
     if(health <= 0){

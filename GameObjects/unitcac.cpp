@@ -7,7 +7,7 @@ UnitCaC::UnitCaC(char _type, bool _isJoueurUniteS,SDL_Rect positionCarte,SDL_Ren
 Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts,_objects,_playerID)
 {
     attackTimer = 0;
-    attackCD = 100;
+    attackCD = 60;
     vision = 30;
     range = 20;
     damage = 20;
@@ -132,16 +132,24 @@ void UnitCaC::UnitMove()
 bool UnitCaC::Attack()
 {
     if(target != NULL){
-        if(attackTimer < attackCD){
-        attackTimer++;
-        }
+
         float distance = (Vector2D(x,y) - Vector2D(target->getX(),target->getY())).Length();
-        if(distance < range){
-            if(attackTimer >= attackCD){
+        if(distance <= range){
+                attaqueEnCours=true;
+        }
+        if(attaqueEnCours)
+        {
+            if(attackTimer < attackCD){
+            attackTimer++;
+            return true;
+            }
+            else
+            {
                 target->setHealth(target->getHealth() - this->damage);
                 this->attackTimer = 0;
+                attaqueEnCours=false;
+                return true;
             }
-            return true;
         }
         else{
             delete destination;
