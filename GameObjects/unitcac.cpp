@@ -9,7 +9,7 @@ Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts,_objects,_player
     attackTimer = 0;
     attackCD = 100;
     vision = 30;
-    range = 20;
+    range = 30;
     damage = 20;
     facing = Vector2D(5,10).Normalized();
     target = NULL;
@@ -22,7 +22,7 @@ Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts,_objects,_player
     attackTimer = 0;
     attackCD = 100;
     vision = 100;
-    range = 20;
+    range = 30;
     damage = 20;
     facing = Vector2D(5,10).Normalized();
     target = NULL;
@@ -99,7 +99,7 @@ void UnitCaC::UnitMove()
             }
 
             //std::cout << "seek x : " << Seek(targetPosition).x << "seek y : " << Seek(targetPosition).y << "\n";
-            Vector2D steering = velocity + Seek(targetPosition).Normalized();
+            Vector2D steering = velocity + Seek(targetPosition).Normalized() + AvoidUnitCollision();
             facing = steering.Normalized();
             velocity = steering;
             velocity.Truncate(speed);

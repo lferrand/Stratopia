@@ -17,6 +17,7 @@ class Unit : public RenderableObject
         virtual void UnitMove();
         virtual void Attack();
         virtual void Update();
+        virtual bool IsDead();
         virtual bool Die();
         Vector2D Seek(Vector2D target);
         void Move(Vector2D);
@@ -24,15 +25,22 @@ class Unit : public RenderableObject
         void SetFacing(Vector2D face);
         void SetDestination(int x, int y);
         void SetTarget(Unit* &target);
+        void SetNullTarget();
         void SetTarget(RenderableObject* &target);
+        void SetNullDestination();
         Vector2D GetVelocity();
         Vector2D GetFacing();
         Vector2D* GetDestination();
+        RenderableObject* GetTarget();
         int GetDirection();
         void ChangerSpriteDirection();
         void AnimationSprite();
         std::vector<RenderableObject*> GetPercept();
         void ClearPath();
+        void DeleteTarget();
+        bool DetectUnitCollision();
+        Vector2D AvoidUnitCollision();
+
 
     protected:
         float attackTimer;

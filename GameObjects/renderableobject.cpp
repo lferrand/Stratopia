@@ -28,6 +28,10 @@ void RenderableObject::Update()
 {
 
 }
+bool RenderableObject::IsDead()
+{
+    return health <= 0;
+}
 
 int RenderableObject::GetPlayerID()
 {

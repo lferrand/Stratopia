@@ -1,6 +1,7 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 #include <iostream>
+#include "vector2d.h"
 
 class GameObject
 {
@@ -16,6 +17,7 @@ class GameObject
         void setX(int x);
         void setY(int y);
         int getId();
+        Vector2D GetPosition();
     protected:
         int id;
         int x;

@@ -103,8 +103,10 @@ void Jeu::ChargerUnite()
             if(type=='c')
             {
                 std::vector<Task*>* tasks = new std::vector<Task*>();
-                Explore* test = new Explore("lalala");
-                tasks->push_back(test);
+                Explore* explore = new Explore("explore");
+                Attack* attack = new Attack("attack");
+                tasks->push_back(explore);
+                tasks->push_back(attack);
                 AIController* contro = new AIController(*tasks);
                 UnitCaC *unite =new UnitCaC(type,false,positionUnitSurCarte,renderer,maCarte->cartePassage,contro,*orcCaCTextures,objects,2);
                 uniteOrdinateur.push_back(unite);
@@ -186,9 +188,11 @@ void Jeu::Action()
         uniteJoueur[0]->SetDestination(630,300);
 
 
-        //uniteJoueur[0]->Update();
+        uniteJoueur[0]->Update();
 
         uniteOrdinateur[0]->Update();
+        uniteOrdinateur[1]->Update();
+        uniteOrdinateur[2]->Update();
 
         /*Executer l'action ici*/
 

@@ -18,6 +18,7 @@
 #include "task.h"
 #include "aicontroller.h"
 #include "Explore.h"
+#include "attack.h"
 
 class Jeu
 {

@@ -18,6 +18,7 @@ class RenderableObject : public MovableObject
         int GetPlayerID();
         bool EstDansRectangleSelection(SDL_Rect rectangle);
         virtual void Update();
+        virtual bool IsDead();
         //texture de barre de vie
         static SDL_Texture* BarreVieTexture;
         static SDL_Texture* VieTexture;

@@ -43,7 +43,7 @@ bool Explore::exitCondition(Unit &unit)
 
     for(std::vector<RenderableObject*>::iterator it = objectInVision.begin(); it != objectInVision.end(); ++it) {
             RenderableObject* currentObject = *it;
-            if (currentObject->GetPlayerID() != unit.GetPlayerID()){
+            if (currentObject->GetPlayerID() != unit.GetPlayerID() && !currentObject->IsDead()){
                 enemyInVision.push_back(currentObject);
             }
     }
@@ -53,7 +53,7 @@ bool Explore::exitCondition(Unit &unit)
     if(!enemyInVision.empty()){
 
         RenderableObject* closesestUnit = enemyInVision[0];
-        for(std::vector<RenderableObject*>::iterator it = objectInVision.begin(); it != objectInVision.end(); ++it) {
+        for(std::vector<RenderableObject*>::iterator it = enemyInVision.begin(); it != enemyInVision.end(); ++it) {
             RenderableObject* currentObject = *it;
             if (pow(currentObject->getX()- unit.getX(),2) + pow(currentObject->getY()- unit.getY(),2) <= pow(closesestUnit->getX()- unit.getX(),2) + pow(closesestUnit->getY()- unit.getY(),2)){
                 closesestUnit = currentObject;
