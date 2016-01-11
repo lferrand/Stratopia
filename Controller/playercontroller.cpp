@@ -22,11 +22,33 @@ void PlayerController::RecevoirEvenement(SDL_Event &event)
                 rectangleSelectionForme.h=1;
                 TesterIntersectionAvecJoueur();
             }
-            else
+            else if(event.button.button==SDL_BUTTON_RIGHT)
             {
+                Unit *target=NULL;
+                SDL_Rect selection;
+                selection.x=event.button.x;
+                selection.y=event.button.y;
+                selection.w=1;
+                selection.h=1;
+                for(int i=0;i<unitesOrdinateur.size();i++)
+                {
+                    if(unitesOrdinateur[i]->EstDansRectangleSelection(selection))
+                    {
+                        target=unitesOrdinateur[i];
+                    }
+                }
                 for(int i=0;i<unitesSelectionnees.size();i++)
                 {
-
+                    Vector2D direction(event.button.x,event.button.y);
+                    if(target!=NULL)
+                    {
+                        unitesSelectionnees[i]->SetTarget(target);
+                    }
+                    else
+                    {
+                        unitesSelectionnees[i]->SetTarget(target);
+                        unitesSelectionnees[i]->SetDestination(event.button.x,event.button.y);
+                    }
                 }
             }
             break;

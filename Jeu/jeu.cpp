@@ -4,7 +4,7 @@ Jeu::Jeu()
 {
     jeuFenetre = SDL_CreateWindow("Stratopia jeu", 30, 30, 1024, 640, SDL_WINDOW_SHOWN);
     renderer= SDL_CreateRenderer(jeuFenetre, -1, 0);
-    joueurControlleur=new PlayerController(uniteJoueur,renderer);
+    joueurControlleur=new PlayerController(uniteJoueur,uniteOrdinateur,renderer);
     startTick=-1;
     tempsEcoule=0;
 
@@ -183,13 +183,22 @@ void Jeu::Action()
         tempsEcoule=tempsEcoule-tempsAAttendre;
         startTick=-1;
 
-        Vector2D face = Vector2D(5,10).Normalized();
+        /*Vector2D face = Vector2D(5,10).Normalized();
         uniteJoueur[0]->SetTarget(uniteOrdinateur[0]);
 
 
         uniteJoueur[0]->Update();
 
-        uniteOrdinateur[0]->Update();
+        uniteOrdinateur[0]->Update();*/
+
+        for(int i=0;i<uniteJoueur.size();i++)
+        {
+            uniteJoueur[i]->Update();
+        }
+                for(int i=0;i<uniteOrdinateur.size();i++)
+        {
+            uniteOrdinateur[i]->Update();
+        }
 
         /*Executer l'action ici*/
 
