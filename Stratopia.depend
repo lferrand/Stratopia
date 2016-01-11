@@ -773,7 +773,7 @@
 	"Camera.h"
 	"../Jeu/Unites/unittextures.h"
 
-1452483576 c:\users\taliera\documents\github\stratopia\gameobjects\renderableobject.h
+1452515584 c:\users\taliera\documents\github\stratopia\gameobjects\renderableobject.h
 	"tools.h"
 	"movableobject.h"
 	<SDL2/SDL.h>
@@ -806,17 +806,17 @@
 1452503518 source:d:\projets\stratopia\gameobjects\renderableobject.cpp
 	"renderableobject.h"
 
-1452483582 source:c:\users\taliera\documents\github\stratopia\gameobjects\renderableobject.cpp
+1452515584 source:c:\users\taliera\documents\github\stratopia\gameobjects\renderableobject.cpp
 	"renderableobject.h"
 
-1452487161 source:c:\users\taliera\documents\github\stratopia\gameobjects\unit.cpp
+1452515584 source:c:\users\taliera\documents\github\stratopia\gameobjects\unit.cpp
 	"unit.h"
 	"tools.h"
 	"vector2d.h"
 	"math.h"
 	"aicontroller.h"
 
-1452484284 c:\users\taliera\documents\github\stratopia\gameobjects\unit.h
+1452515584 c:\users\taliera\documents\github\stratopia\gameobjects\unit.h
 	"renderableobject.h"
 	<vector>
 	"../Tools/node.h"
@@ -856,7 +856,7 @@
 
 1452247659 c:\users\taliera\documents\github\stratopia\tools\path.h
 
-1452486249 source:c:\users\taliera\documents\github\stratopia\tools\tools.cpp
+1452520549 source:c:\users\taliera\documents\github\stratopia\tools\tools.cpp
 	"tools.h"
 	<iostream>
 	<stdlib.h>
@@ -932,12 +932,12 @@
 	"aicontroller.h"
 	"Explore.h"
 
-1452483967 source:c:\users\taliera\documents\github\stratopia\jeu\jeu.cpp
+1452520633 source:c:\users\taliera\documents\github\stratopia\jeu\jeu.cpp
 	"jeu.h"
 
 1452450846 c:\users\taliera\documents\github\stratopia\tools\vector2d.h
 
-1452487172 source:c:\users\taliera\documents\github\stratopia\gameobjects\unitcac.cpp
+1452522027 source:c:\users\taliera\documents\github\stratopia\gameobjects\unitcac.cpp
 	"unitcac.h"
 	"math.h"
 
@@ -956,7 +956,7 @@
 	"unit.h"
 	"aicontroller.h"
 
-1452450846 source:c:\users\taliera\documents\github\stratopia\tools\vector2d.cpp
+1452521081 source:c:\users\taliera\documents\github\stratopia\tools\vector2d.cpp
 	"vector2d.h"
 	"tools.h"
 	<assert.h>
@@ -1412,7 +1412,7 @@
 1452366745 d:\projets\stratopia\jeu\camera.h
 	<SDL2/SDL.h>
 
-1452453798 c:\users\taliera\documents\github\stratopia\jeu\map
+1452516513 c:\users\taliera\documents\github\stratopia\jeu\map
 
 1452367116 c:\users\taliera\documents\github\stratopia\jeu\camera.h
 	<SDL2/SDL.h>
@@ -1420,9 +1420,10 @@
 1452367116 source:c:\users\taliera\documents\github\stratopia\jeu\camera.cpp
 	"camera.h"
 
-1452485871 source:c:\users\taliera\documents\github\stratopia\task\explore.cpp
+1452521275 source:c:\users\taliera\documents\github\stratopia\task\explore.cpp
 	"Explore.h"
 	"math.h"
+	<time.h>
 
 1452483298 c:\users\taliera\documents\github\stratopia\task\explore.h
 	"task.h"
@@ -1480,16 +1481,16 @@
 1452429689 c:\users\taliera\documents\github\stratopia\jeu\unites\unitcacorctexture.h
 	"unitTextures.h"
 
-1452429689 source:c:\users\taliera\documents\github\stratopia\jeu\unites\unitcachumaintexture.cpp
+1452515584 source:c:\users\taliera\documents\github\stratopia\jeu\unites\unitcachumaintexture.cpp
 	"unitcachumaintexture.h"
 
-1452450848 source:c:\users\taliera\documents\github\stratopia\jeu\unites\unitcacorctexture.cpp
+1452515584 source:c:\users\taliera\documents\github\stratopia\jeu\unites\unitcacorctexture.cpp
 	"unitcacorctexture.h"
 
 1452430699 source:c:\users\taliera\documents\github\stratopia\jeu\unites\unittextures.cpp
 	"unittextures.h"
 
-1452450848 source:c:\users\taliera\documents\github\stratopia\jeu\unites\unitdistancehumaintexture.cpp
+1452515584 source:c:\users\taliera\documents\github\stratopia\jeu\unites\unitdistancehumaintexture.cpp
 	"unitdistancehumaintexture.h"
 
 1452450848 c:\users\taliera\documents\github\stratopia\jeu\unites\unitdistancehumaintexture.h

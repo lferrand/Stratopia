@@ -306,7 +306,7 @@ Node Tools::FindClosestPassable(Node start, Node unpassable,bool **pathingMap)
     std::vector<Node> unpassableNodes;
     std::vector<Node> passableNodes;
     unpassableNodes.push_back(start);
-    //std::cout << unpassableNodes.size()<<" unpassable \n";
+    std::cout << unpassableNodes.size()<<" unpassable \n";
     while(!found && unpassableNodes.end() != unpassableNodes.begin()){
             //std::cout << "while \n";
             //std::cout << "test \n";
@@ -384,7 +384,7 @@ Node Tools::FindClosestPassable(Node start, Node unpassable,bool **pathingMap)
 
 bool Tools::CheckInBound(Node checkedNode)
 {
-    if (checkedNode.GetX() < 0 || checkedNode.GetY() < 0){
+    if (33<checkedNode.GetX() < 0 || 33<checkedNode.GetY() < 0){
         return false;
     }
     return true;

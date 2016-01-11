@@ -25,8 +25,11 @@ Vector2D::~Vector2D()
 
 Vector2D Vector2D::Normalized()
 {
-    Vector2D normalized = Vector2D(x/Length(),y/Length());
-    return normalized;
+    if(Length() != 0){
+        Vector2D normalized = Vector2D(x/Length(),y/Length());
+        return normalized;
+    }
+    return *this;
 }
 
 Vector2D Vector2D::RotateByAngle(float angle)

@@ -183,11 +183,11 @@ void Jeu::Action()
         tempsEcoule=tempsEcoule-tempsAAttendre;
         startTick=-1;
 
+
         /*Vector2D face = Vector2D(5,10).Normalized();
         uniteJoueur[0]->SetTarget(uniteOrdinateur[0]);
-
-
-        uniteJoueur[0]->Update();
+        uniteJoueur[0]->SetDestination(630,300);
+	uniteJoueur[0]->Update();
 
         uniteOrdinateur[0]->Update();*/
 

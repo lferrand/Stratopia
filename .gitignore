@@ -62,3 +62,4 @@ Temporary Items
 *.exe
 *.depend
 *.gch
+Jeu/jeu.cpp
