@@ -11,7 +11,7 @@ Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts,_objects,_player
     vision = 30;
     range = 20;
     damage = 20;
-    facing = Vector2D(5,10);
+    facing = Vector2D(5,10).Normalized();
     target = NULL;
     destination = NULL;
     AIcontroller = NULL;
@@ -24,7 +24,7 @@ Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts,_objects,_player
     vision = 100;
     range = 20;
     damage = 20;
-    facing = Vector2D(5,10);
+    facing = Vector2D(5,10).Normalized();
     target = NULL;
     destination = NULL;
     AIcontroller = _AIController;
@@ -53,14 +53,19 @@ void UnitCaC::UnitMove()
     if (destination != NULL){
 
         Node destinationNode = Tools::GetNodeFromAxis(static_cast <int> (floor(destination->x)),floor(destination->y));
-        //std::cout << "out of bound "<< (int) destinationNode.GetX() <<"\n" ;
-        if ( destinationNode.GetX()<0 || destinationNode.GetY()<0){
-             //std::cout << "out of bound \n";
+        //std::cout << "out of bound X :"<< (int) destinationNode.GetX() << "out of bound Y :"<< (int) destinationNode.GetX() <<"\n" ;
+        if (!Tools::CheckInBound(destinationNode)){
             if (destinationNode.GetX()<0){
                 destinationNode.SetX(0);
             }
-             if (destinationNode.GetY()<0){
+            if (destinationNode.GetY()<0){
                 destinationNode.SetY(0);
+            }
+            if (destinationNode.GetX()>33){
+                destinationNode.SetX(33);
+            }
+            if (destinationNode.GetY()>33){
+                destinationNode.SetY(33);
             }
             delete destination;
             destination = new Vector2D(destinationNode.GetWorldX(),destinationNode.GetWorldY());
