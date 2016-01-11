@@ -15,7 +15,7 @@ class Unit : public RenderableObject
         {}
         virtual ~Unit();
         virtual void UnitMove();
-        virtual void Attack();
+        virtual bool Attack();
         virtual void Update();
         virtual bool Die();
         Vector2D Seek(Vector2D target);
@@ -30,7 +30,9 @@ class Unit : public RenderableObject
         Vector2D* GetDestination();
         int GetDirection();
         void ChangerSpriteDirection();
-        void AnimationSprite();
+        void AnimationSpriteDeplacement();
+        void AnimationSpriteCombat();
+
         std::vector<RenderableObject*> GetPercept();
         void ClearPath();
 

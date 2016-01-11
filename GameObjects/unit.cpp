@@ -56,21 +56,29 @@ void Unit::Update()
 {
     if(target != NULL){
         //std::cout << "attack";
-        this->Attack();
-        ChangerSpriteDirection();
-        AnimationSprite();
-
+        if(this->Attack())
+        {
+            ChangerSpriteDirection();
+            AnimationSpriteCombat();
+        }
+        else
+        {
+            ChangerSpriteDirection();
+            AnimationSpriteDeplacement();
+        }
     }
     else if(destination != NULL){
         this->UnitMove();
         ChangerSpriteDirection();
-        AnimationSprite();
+
+        AnimationSpriteDeplacement();
     }
     else{
     }
 }
-void Unit::AnimationSprite()
+void Unit::AnimationSpriteDeplacement()
 {
+
     etapeAnimation++;
     int vitesseAnimation=6;
     if(etapeAnimation<vitesseAnimation)
@@ -112,7 +120,37 @@ void Unit::AnimationSprite()
 
 }
 
+void Unit::AnimationSpriteCombat()
+{
 
+    etapeAnimation++;
+    int vitesseAnimation=12;
+    if(etapeAnimation<vitesseAnimation)
+    {
+        numeroSpriteAAfficher[1]=4;
+    }
+    else if(etapeAnimation<vitesseAnimation*2)
+    {
+        numeroSpriteAAfficher[1]=5;
+    }
+    else if(etapeAnimation<vitesseAnimation*3)
+    {
+        numeroSpriteAAfficher[1]=6;
+    }
+    else if(etapeAnimation<vitesseAnimation*4)
+    {
+        numeroSpriteAAfficher[1]=7;
+    }
+    else if(etapeAnimation<vitesseAnimation*5)
+    {
+        numeroSpriteAAfficher[1]=0;
+    }
+    else
+    {
+        etapeAnimation=0;
+    }
+
+}
 std::vector<RenderableObject*> Unit::GetPercept()
 {
     std::vector<RenderableObject*> renderableInVision;
@@ -231,7 +269,7 @@ void Unit::Move(Vector2D movement)
     y = y + floor(movement.y + 0.5);
 }
 
-void Unit::Attack()
+bool Unit::Attack()
 {
     //someting
 }

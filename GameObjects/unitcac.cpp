@@ -129,7 +129,7 @@ void UnitCaC::UnitMove()
 
 }
 
-void UnitCaC::Attack()
+bool UnitCaC::Attack()
 {
     if(target != NULL){
         if(attackTimer < attackCD){
@@ -141,13 +141,17 @@ void UnitCaC::Attack()
                 target->setHealth(target->getHealth() - this->damage);
                 this->attackTimer = 0;
             }
+            return true;
         }
         else{
             delete destination;
             destination = new Vector2D(target->getX(),target->getY());
             UnitMove();
+            return false;
         }
     }
+    return false;
+
 }
 
 bool UnitCaC::Die()

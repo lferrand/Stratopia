@@ -14,7 +14,7 @@ class UnitCaC : public Unit
         UnitCaC(char _type, bool _isJoueurUniteS,SDL_Rect positionCarte,SDL_Renderer *renderer,bool **pathMap,AIController *_AIController,UnitTextures &texts,std::vector<RenderableObject*> &_objects,int playerID);
             virtual ~UnitCaC();
         virtual void UnitMove();
-        virtual void Attack();
+        virtual bool Attack();
         virtual void Update();
         virtual bool Die();
     protected:
