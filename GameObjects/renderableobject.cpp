@@ -47,7 +47,14 @@ void RenderableObject::Render()
     positionVieTexture.w=health*(positionBarreVieTexture.w-2)/100;
     positionVieTexture.h=positionBarreVieTexture.h-2;
 
-    SDL_RenderCopy(renderer,textures.spriteTexture,&textures.positionTexture[numeroSpriteAAfficher[0]][numeroSpriteAAfficher[1]],&positionObjetMap);
+    if(!symetrieSpriteNecessaire)
+    {
+        SDL_RenderCopy(renderer,textures.spriteTexture,&textures.positionTexture[numeroSpriteAAfficher[0]][numeroSpriteAAfficher[1]],&positionObjetMap);
+    }
+    else
+    {
+        SDL_RenderCopyEx(renderer,textures.spriteTexture,&textures.positionTexture[numeroSpriteAAfficher[0]][numeroSpriteAAfficher[1]],&positionObjetMap,0,NULL,SDL_FLIP_HORIZONTAL);
+    }
 
     SDL_RenderCopy(renderer,BarreVieTexture,NULL,&positionBarreVieTexture);
 

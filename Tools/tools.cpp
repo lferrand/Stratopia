@@ -257,7 +257,7 @@ int Tools::DistanceManhattan(Node start, Node origin)
 
 bool Tools::Passable(Node testedNode, bool **pathingMap)
 {
-    std::cout << pathingMap[testedNode.GetX()][testedNode.GetY()];
+//    std::cout << pathingMap[testedNode.GetX()][testedNode.GetY()];
     if(pathingMap[testedNode.GetX()][testedNode.GetY()]){
         //std::cout << testedNode.GetX() << "oba" << testedNode.GetY() << "\n";
     }

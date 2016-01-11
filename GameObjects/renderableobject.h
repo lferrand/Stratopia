@@ -28,7 +28,7 @@ class RenderableObject : public MovableObject
         int health;
 
         int numeroSpriteAAfficher[2];
-
+        bool symetrieSpriteNecessaire;
         SDL_Renderer *renderer;
 
         std::vector<RenderableObject*> &objects;

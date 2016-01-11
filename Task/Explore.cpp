@@ -45,8 +45,8 @@ bool Explore::exitCondition(Unit &unit)
                 enemyInVision.push_back(currentObject);
             }
     }
-    std::cout << "object " <<objectInVision.size()<< "\n";
-    std::cout << "enemy " <<enemyInVision.size()<< "\n";
+//    std::cout << "object " <<objectInVision.size()<< "\n";
+//    std::cout << "enemy " <<enemyInVision.size()<< "\n";
 
     if(!enemyInVision.empty()){
 

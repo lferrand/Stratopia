@@ -6,6 +6,8 @@
 #include "../Tools/node.h"
 #include "../Tools/vector2d.h"
 
+enum {N,E,W,S,NE,NW,SE,SW};
+
 class Unit : public RenderableObject
 {
     public:
@@ -26,6 +28,8 @@ class Unit : public RenderableObject
         Vector2D GetVelocity();
         Vector2D GetFacing();
         Vector2D* GetDestination();
+        int GetDirection();
+        void ChangerSprite(int direct,char action='m');
         std::vector<RenderableObject*> GetPercept();
         void ClearPath();
 

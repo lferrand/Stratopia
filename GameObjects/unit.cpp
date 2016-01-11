@@ -57,35 +57,122 @@ void Unit::Update()
     if(target != NULL){
         //std::cout << "attack";
         this->Attack();
+        ChangerSprite(GetDirection());
+
     }
     else if(destination != NULL){
         this->UnitMove();
+        ChangerSprite(GetDirection());
+
     }
     else{
-        //std::cout << "idle";
     }
 }
+
 
 std::vector<RenderableObject*> Unit::GetPercept()
 {
     std::vector<RenderableObject*> renderableInVision;
     for(std::vector<RenderableObject*>::iterator it = objects.begin(); it != objects.end(); ++it) {
             RenderableObject* currentObject = *it;
-            std::cout << " distance " <<(pow(currentObject->getX()- x,2) + pow(currentObject->getY()- y,2))<< "\n";
-            std::cout << " vision " << pow(vision,2) << "\n";
+//            std::cout << " distance " <<(pow(currentObject->getX()- x,2) + pow(currentObject->getY()- y,2))<< "\n";
+//            std::cout << " vision " << pow(vision,2) << "\n";
 
             if ((pow(currentObject->getX()- x,2) + pow(currentObject->getY()- y,2)) <= pow(vision,2)){
                 renderableInVision.push_back(currentObject);
             }
     }
-    std::cout << "tout object " <<objects.size()<< "\n";
-    std::cout << "renduVision " <<renderableInVision.size()<< "\n";
+//    std::cout << "tout object " <<objects.size()<< "\n";
+//    std::cout << "renduVision " <<renderableInVision.size()<< "\n";
     return renderableInVision;
 }
 
 void Unit::UnitMove()
 {
-    //someting
+}
+
+void Unit::ChangerSprite(int direct,char action)
+{
+    switch(direct)
+    {
+    case N:
+        numeroSpriteAAfficher[0]=0;
+        symetrieSpriteNecessaire=false;
+        break;
+    case S:
+        numeroSpriteAAfficher[0]=4;
+        symetrieSpriteNecessaire=false;
+        break;
+    case E:
+        numeroSpriteAAfficher[0]=2;
+        symetrieSpriteNecessaire=false;
+        break;
+    case SE:
+        numeroSpriteAAfficher[0]=3;
+        symetrieSpriteNecessaire=false;
+        break;
+    case NE:
+        numeroSpriteAAfficher[0]=1;
+        symetrieSpriteNecessaire=false;
+        break;
+    case W:
+        numeroSpriteAAfficher[0]=2;
+        symetrieSpriteNecessaire=true;
+        break;
+    case SW:
+        numeroSpriteAAfficher[0]=3;
+        symetrieSpriteNecessaire=true;
+        break;
+    case NW:
+        numeroSpriteAAfficher[0]=1;
+        symetrieSpriteNecessaire=true;
+        break;
+
+
+    }
+}
+
+int Unit::GetDirection()
+{
+    float sensibiliteFacing(0.5);
+    if(facing.x >= sensibiliteFacing)
+    {
+        if(facing.y>=sensibiliteFacing)
+        {
+            return SE;
+        }
+        else if(facing.y<-sensibiliteFacing)
+        {
+            return NE;
+        }
+        else return E;
+    }
+    else if(facing.x <-sensibiliteFacing)
+    {
+        if(facing.y>=sensibiliteFacing)
+        {
+            return SW;
+        }
+        else if(facing.y<-sensibiliteFacing)
+        {
+            return NW;
+        }
+        else return W;
+    }
+    else
+    {
+        if(facing.y>=sensibiliteFacing)
+        {
+            return S;
+        }
+        else if(facing.y<-sensibiliteFacing)
+        {
+            return N;
+        }
+            return S;
+
+    }
+
 }
 
 Vector2D Unit::Seek(Vector2D target){
