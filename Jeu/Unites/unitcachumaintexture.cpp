@@ -9,15 +9,15 @@ UnitCaCHumainTexture::UnitCaCHumainTexture(SDL_Renderer *render):UnitTextures(re
     SDL_FreeSurface(spriteSurface);
 
     positionTexture=new SDL_Rect*[6];
-    for(int i=0;i<6;i++)
+    for(int i=0;i<5;i++)
     {
         positionTexture[i]=new SDL_Rect[9];
         for(int j=0;j<9;j++)
         {
             positionTexture[i][j].x=74*i;
-            positionTexture[i][j].y=58*j;
+            positionTexture[i][j].y=56*j;
             positionTexture[i][j].w=74;
-            positionTexture[i][j].h=58;
+            positionTexture[i][j].h=53;
         }
     }
 

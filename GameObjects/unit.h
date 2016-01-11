@@ -29,7 +29,8 @@ class Unit : public RenderableObject
         Vector2D GetFacing();
         Vector2D* GetDestination();
         int GetDirection();
-        void ChangerSprite(int direct,char action='m');
+        void ChangerSpriteDirection();
+        void AnimationSprite();
         std::vector<RenderableObject*> GetPercept();
         void ClearPath();
 
@@ -41,6 +42,7 @@ class Unit : public RenderableObject
         int range;
         int damage;
 
+        int etapeAnimation;
 
         char type;
         bool isJoueurUnite;

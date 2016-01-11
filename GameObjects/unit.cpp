@@ -57,16 +57,47 @@ void Unit::Update()
     if(target != NULL){
         //std::cout << "attack";
         this->Attack();
-        ChangerSprite(GetDirection());
+        ChangerSpriteDirection();
+        AnimationSprite();
 
     }
     else if(destination != NULL){
         this->UnitMove();
-        ChangerSprite(GetDirection());
-
+        ChangerSpriteDirection();
+        AnimationSprite();
     }
     else{
     }
+}
+void Unit::AnimationSprite()
+{
+    etapeAnimation++;
+    int vitesseAnimation=20;
+    if(etapeAnimation<vitesseAnimation)
+    {
+        numeroSpriteAAfficher[1]=4;
+    }
+    else if(etapeAnimation<vitesseAnimation*2)
+    {
+        numeroSpriteAAfficher[1]=3;
+    }
+    else if(etapeAnimation<vitesseAnimation*3)
+    {
+        numeroSpriteAAfficher[1]=2;
+    }
+    else if(etapeAnimation<vitesseAnimation*4)
+    {
+        numeroSpriteAAfficher[1]=1;
+    }
+    else if(etapeAnimation<vitesseAnimation*5)
+    {
+        numeroSpriteAAfficher[1]=0;
+    }
+    else
+    {
+        etapeAnimation=0;
+    }
+
 }
 
 
@@ -91,9 +122,9 @@ void Unit::UnitMove()
 {
 }
 
-void Unit::ChangerSprite(int direct,char action)
+void Unit::ChangerSpriteDirection()
 {
-    switch(direct)
+    switch(GetDirection())
     {
     case N:
         numeroSpriteAAfficher[0]=0;
