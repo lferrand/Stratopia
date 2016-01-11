@@ -26,6 +26,9 @@ MapJeu::MapJeu(SDL_Renderer *render)
     Camera::positionCamera.y=0;
     Camera::positionCamera.w=1024;
     Camera::positionCamera.h=640;
+
+    actionMiniMapEnCours=false;
+
     LoadMap();
     LoadMiniMap();
 }
@@ -76,15 +79,16 @@ void MapJeu::RenderMiniMap()
     SDL_RenderCopy(renderer,selectionMiniMapTexture,NULL,&positionSelectionMinimap);
 }
 
-void MapJeu::RecevoirEvenement(SDL_Event &event)
+bool MapJeu::RecevoirEvenement(SDL_Event &event)
 {
-    if(event.type==SDL_MOUSEBUTTONDOWN)
+    if(event.type==SDL_MOUSEBUTTONDOWN && (event.button.state& SDL_BUTTON(SDL_BUTTON_LEFT)))
     {
         SDL_Point souris;
         souris.x=event.button.x;
         souris.y=event.button.y;
         if(SDL_PointInRect(&souris,&positionMinimap))
         {
+            actionMiniMapEnCours=true;
             souris.x-=positionMinimap.x;
             souris.y-=positionMinimap.y;
 
@@ -100,6 +104,37 @@ void MapJeu::RecevoirEvenement(SDL_Event &event)
             }
         }
     }
+    else if(event.type == SDL_MOUSEMOTION)
+    {
+        if(event.motion.state& SDL_BUTTON(SDL_BUTTON_LEFT))
+        {
+            SDL_Point souris;
+            souris.x=event.motion.x;
+            souris.y=event.motion.y;
+            if(SDL_PointInRect(&souris,&positionMinimap))
+            {
+                actionMiniMapEnCours=true;
+                souris.x-=positionMinimap.x;
+                souris.y-=positionMinimap.y;
+
+                Camera::positionCamera.x=souris.x*1248/200;
+                if(Camera::positionCamera.x+Camera::positionCamera.w>1248)
+                {
+                    Camera::positionCamera.x=1248-Camera::positionCamera.w;
+                }
+                Camera::positionCamera.y=souris.y*960/200;
+                if(Camera::positionCamera.y+Camera::positionCamera.h>960)
+                {
+                    Camera::positionCamera.y=960-Camera::positionCamera.h;
+                }
+            }
+        }
+    }
+    else if(event.type==SDL_MOUSEBUTTONUP&&(event.motion.state& SDL_BUTTON(SDL_BUTTON_LEFT)))
+    {
+        actionMiniMapEnCours=false;
+    }
+    return actionMiniMapEnCours;
 }
 
 void MapJeu::LoadMap()

@@ -731,7 +731,7 @@
 	"../../Tools/node.h"
 	"../../Tools/tools.h"
 
-1452420753 d:\projets\stratopia\jeu\map\mapjeu.h
+1452531149 d:\projets\stratopia\jeu\map\mapjeu.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	<fstream>
@@ -864,20 +864,20 @@
 	<math.h>
 	<map>
 
-1452514839 source:d:\projets\stratopia\gameobjects\unit.cpp
+1452528890 source:d:\projets\stratopia\gameobjects\unit.cpp
 	"unit.h"
 	"tools.h"
 	"vector2d.h"
 	"math.h"
 	"aicontroller.h"
 
-1452506048 d:\projets\stratopia\gameobjects\unit.h
+1452528008 d:\projets\stratopia\gameobjects\unit.h
 	"renderableobject.h"
 	<vector>
 	"../Tools/node.h"
 	"../Tools/vector2d.h"
 
-1452495661 source:d:\projets\stratopia\jeu\jeu.cpp
+1452531004 source:d:\projets\stratopia\jeu\jeu.cpp
 	"jeu.h"
 
 1452495661 d:\projets\stratopia\jeu\jeu.h
@@ -981,10 +981,10 @@
 1452177202 source:d:\projets\stratopia\controller\controller.cpp
 	"controller.h"
 
-1452366749 source:d:\projets\stratopia\controller\playercontroller.cpp
+1452522414 source:d:\projets\stratopia\controller\playercontroller.cpp
 	"playercontroller.h"
 
-1452366749 d:\projets\stratopia\controller\playercontroller.h
+1452522414 d:\projets\stratopia\controller\playercontroller.h
 	<vector>
 	"controller.h"
 	"../GameObjects/unit.h"
@@ -1338,9 +1338,9 @@
 
 1452259999 d:\projets\stratopia\tools\path.h
 
-1452443569 d:\projets\stratopia\jeu\map
+1452531410 d:\projets\stratopia\jeu\map
 
-1452498453 source:d:\projets\stratopia\tools\tools.cpp
+1452522416 source:d:\projets\stratopia\tools\tools.cpp
 	"tools.h"
 	<iostream>
 	<stdlib.h>
@@ -1377,26 +1377,26 @@
 	<sstream>
 	"camera.h"
 
-1452495661 source:d:\projets\stratopia\gameobjects\unitcac.cpp
+1452528932 source:d:\projets\stratopia\gameobjects\unitcac.cpp
 	"unitcac.h"
 	"math.h"
 
-1452495661 d:\projets\stratopia\gameobjects\unitcac.h
+1452523741 d:\projets\stratopia\gameobjects\unitcac.h
 	"unit.h"
 	"tools.h"
 	"vector2d.h"
 	"aicontroller.h"
 
-1452495661 source:d:\projets\stratopia\gameobjects\unitdistance.cpp
+1452528983 source:d:\projets\stratopia\gameobjects\unitdistance.cpp
 	"unitdistance.h"
 	"tools.h"
 	"math.h"
 
-1452495661 d:\projets\stratopia\gameobjects\unitdistance.h
+1452527209 d:\projets\stratopia\gameobjects\unitdistance.h
 	"unit.h"
 	"aicontroller.h"
 
-1452495661 source:d:\projets\stratopia\tools\vector2d.cpp
+1452522416 source:d:\projets\stratopia\tools\vector2d.cpp
 	"vector2d.h"
 	"tools.h"
 	<assert.h>
@@ -1445,9 +1445,10 @@
 1452495661 d:\projets\stratopia\task\task.h
 	"unit.h"
 
-1452498342 source:d:\projets\stratopia\task\explore.cpp
+1452522416 source:d:\projets\stratopia\task\explore.cpp
 	"Explore.h"
 	"math.h"
+	<time.h>
 
 1452495661 d:\projets\stratopia\task\explore.h
 	"task.h"
@@ -1465,7 +1466,7 @@
 1452425690 d:\projets\stratopia\jeu\unites\unitcacorctexture.h
 	"unitTextures.h"
 
-1452515135 source:d:\projets\stratopia\jeu\unites\unitcachumaintexture.cpp
+1452515326 source:d:\projets\stratopia\jeu\unites\unitcachumaintexture.cpp
 	"unitcachumaintexture.h"
 
 1452515009 source:d:\projets\stratopia\jeu\unites\unitcacorctexture.cpp
@@ -1505,7 +1506,7 @@
 1452450848 c:\users\taliera\documents\github\stratopia\jeu\unites\unitdistanceorctexture.h
 	"unittextures.h"
 
-1452498757 source:d:\projets\stratopia\jeu\unites\unitdistancehumaintexture.cpp
+1452522939 source:d:\projets\stratopia\jeu\unites\unitdistancehumaintexture.cpp
 	"unitdistancehumaintexture.h"
 
 1452442880 d:\projets\stratopia\jeu\unites\unitdistancehumaintexture.h

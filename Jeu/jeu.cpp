@@ -4,7 +4,7 @@ Jeu::Jeu()
 {
     jeuFenetre = SDL_CreateWindow("Stratopia jeu", 30, 30, 1024, 640, SDL_WINDOW_SHOWN);
     renderer= SDL_CreateRenderer(jeuFenetre, -1, 0);
-    joueurControlleur=new PlayerController(uniteJoueur,renderer);
+    joueurControlleur=new PlayerController(uniteJoueur,uniteOrdinateur,renderer);
     startTick=-1;
     tempsEcoule=0;
 
@@ -168,8 +168,10 @@ void Jeu::RecevoirEvent(SDL_Event event)
     }
     else
     {
-        joueurControlleur->RecevoirEvenement(event);
-        maCarte->RecevoirEvenement(event);
+        if(!maCarte->RecevoirEvenement(event))
+        {
+            joueurControlleur->RecevoirEvenement(event);
+        }
     }
 }
 
@@ -185,14 +187,15 @@ void Jeu::Action()
         tempsEcoule=tempsEcoule-tempsAAttendre;
         startTick=-1;
 
-        uniteJoueur[0]->SetDestination(630,300);
 
-
-        uniteJoueur[0]->Update();
-
-        uniteOrdinateur[0]->Update();
-        uniteOrdinateur[1]->Update();
-        uniteOrdinateur[2]->Update();
+        for(int i=0;i<uniteJoueur.size();i++)
+        {
+            uniteJoueur[i]->Update();
+        }
+        for(int i=0;i<uniteOrdinateur.size();i++)
+        {
+            uniteOrdinateur[i]->Update();
+        }
 
         /*Executer l'action ici*/
 

@@ -28,7 +28,12 @@ void Unit::SetDestination(int _x, int _y)
 }
 void Unit::SetTarget(Unit* &_target)
 {
-    target = _target;
+    if(_target!=target)
+    {
+        attackTimer=0;
+        attaqueEnCours=false;
+        target = _target;
+    }
 }
 void Unit::SetTarget(RenderableObject* &_target)
 {
@@ -56,21 +61,29 @@ void Unit::Update()
 {
     if(target != NULL){
         //std::cout << "attack";
-        this->Attack();
-        ChangerSpriteDirection();
-        AnimationSprite();
-
+        if(this->Attack())
+        {
+            ChangerSpriteDirection();
+            AnimationSpriteCombat();
+        }
+        else
+        {
+            ChangerSpriteDirection();
+            AnimationSpriteDeplacement();
+        }
     }
     else if(destination != NULL){
         this->UnitMove();
         ChangerSpriteDirection();
-        AnimationSprite();
+
+        AnimationSpriteDeplacement();
     }
     else{
     }
 }
-void Unit::AnimationSprite()
+void Unit::AnimationSpriteDeplacement()
 {
+
     etapeAnimation++;
     int vitesseAnimation=6;
     if(etapeAnimation<vitesseAnimation)
@@ -112,7 +125,40 @@ void Unit::AnimationSprite()
 
 }
 
+void Unit::AnimationSpriteCombat()
+{
 
+    int vitesseAnimation=attackCD/7;
+    if(attackTimer<vitesseAnimation)
+    {
+        numeroSpriteAAfficher[1]=4;
+    }
+    else if(attackTimer<vitesseAnimation*2)
+    {
+        numeroSpriteAAfficher[1]=5;
+    }
+    else if(attackTimer<vitesseAnimation*3)
+    {
+        numeroSpriteAAfficher[1]=6;
+    }
+    else if(attackTimer<vitesseAnimation*4)
+    {
+        numeroSpriteAAfficher[1]=7;
+    }
+    else if(attackTimer<vitesseAnimation*5)
+    {
+        numeroSpriteAAfficher[1]=6;
+    }
+    else if(attackTimer<vitesseAnimation*6)
+    {
+        numeroSpriteAAfficher[1]=5;
+    }
+    else if(attackTimer<vitesseAnimation*7)
+    {
+        numeroSpriteAAfficher[1]=0;
+    }
+
+}
 std::vector<RenderableObject*> Unit::GetPercept()
 {
     std::vector<RenderableObject*> renderableInVision;
@@ -308,7 +354,7 @@ void Unit::Move(Vector2D movement)
     y = y + floor(movement.y + 0.5);
 }
 
-void Unit::Attack()
+bool Unit::Attack()
 {
     //someting
 }

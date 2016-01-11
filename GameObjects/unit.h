@@ -11,11 +11,12 @@ enum {N,E,W,S,NE,NW,SE,SW};
 class Unit : public RenderableObject
 {
     public:
-        Unit(char t, bool isJoueur,SDL_Rect positionCarte,SDL_Renderer *renderer, bool **pathingMap_,UnitTextures &texts,std::vector<RenderableObject*> &objects,int playerID): RenderableObject(positionCarte, renderer,texts,objects,playerID), type(t),isJoueurUnite(isJoueur),pathingMap(pathingMap_)
+        Unit(char t, bool isJoueur,SDL_Rect positionCarte,SDL_Renderer *renderer, bool **pathingMap_,UnitTextures &texts,std::vector<RenderableObject*> &objects,int playerID):
+            RenderableObject(positionCarte, renderer,texts,objects,playerID), type(t),isJoueurUnite(isJoueur),pathingMap(pathingMap_),attaqueEnCours(false)
         {}
         virtual ~Unit();
         virtual void UnitMove();
-        virtual void Attack();
+        virtual bool Attack();
         virtual void Update();
         virtual bool IsDead();
         virtual bool Die();
@@ -34,7 +35,9 @@ class Unit : public RenderableObject
         RenderableObject* GetTarget();
         int GetDirection();
         void ChangerSpriteDirection();
-        void AnimationSprite();
+        void AnimationSpriteDeplacement();
+        virtual void AnimationSpriteCombat();
+
         std::vector<RenderableObject*> GetPercept();
         void ClearPath();
         void DeleteTarget();
@@ -50,6 +53,7 @@ class Unit : public RenderableObject
         int range;
         int damage;
 
+        bool attaqueEnCours;
         int etapeAnimation;
 
         char type;

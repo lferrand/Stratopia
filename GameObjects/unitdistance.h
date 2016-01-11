@@ -11,7 +11,8 @@ class UnitDistance : public Unit
         UnitDistance(char _type, bool _isJoueurUniteS,SDL_Rect positionCarte,SDL_Renderer *renderer,bool**pathMap,UnitTextures &texts,std::vector<RenderableObject*> &_objects,int playerID);
         virtual ~UnitDistance();
         virtual void UnitMove();
-        virtual void Attack();
+        virtual bool Attack();
+        virtual void AnimationSpriteCombat();
         virtual void Update();
         virtual bool Die();
     protected:

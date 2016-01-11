@@ -22,7 +22,7 @@ class MapJeu
         virtual ~MapJeu();
         void Render();
         void RenderMiniMap();
-        void RecevoirEvenement(SDL_Event &event);
+        bool RecevoirEvenement(SDL_Event &event);
         void BougerCamera(char direction);
         bool **cartePassage;
 
@@ -34,6 +34,8 @@ class MapJeu
         SDL_Texture *mapTexture;
         SDL_Texture *uiMiniMapTexture;
         SDL_Texture *selectionMiniMapTexture;
+
+        bool actionMiniMapEnCours;
 
         SDL_Rect positionSelectionMinimap;
         SDL_Rect positionMinimap;

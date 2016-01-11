@@ -16,9 +16,9 @@ UnitDistanceHumainTexture::UnitDistanceHumainTexture(SDL_Renderer *render):UnitT
         for(int j=0;j<9;j++)
         {
             positionTexture[i][j].x=58*i;
-            positionTexture[i][j].y=54*j;
+            positionTexture[i][j].y=71*j+10;
             positionTexture[i][j].w=58;
-            positionTexture[i][j].h=54;
+            positionTexture[i][j].h=61;
         }
     }}
 
