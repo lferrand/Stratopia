@@ -166,8 +166,10 @@ void Jeu::RecevoirEvent(SDL_Event event)
     }
     else
     {
-        joueurControlleur->RecevoirEvenement(event);
-        maCarte->RecevoirEvenement(event);
+        if(!maCarte->RecevoirEvenement(event))
+        {
+            joueurControlleur->RecevoirEvenement(event);
+        }
     }
 }
 
