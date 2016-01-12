@@ -17,20 +17,20 @@ MapJeu::MapJeu(SDL_Renderer *render,SDL_Window *w,std::vector<Unit*> &uniteJ,std
 
     positionCarteJeu.x=0;
     positionCarteJeu.y=0;
-    positionCarteJeu.w=largeurFenetre*0.8;
+    positionCarteJeu.w=largeurFenetre*0.85;
     positionCarteJeu.h=hauteurFenetre;
 
 
 
-    positionUiMinimap.x=largeurFenetre*0.8;
+    positionUiMinimap.x=largeurFenetre*0.85;
     positionUiMinimap.y=5;
     positionUiMinimap.h=hauteurFenetre;
-    positionUiMinimap.w=largeurFenetre*0.2;
+    positionUiMinimap.w=largeurFenetre*0.15;
 
-    positionMinimap.x=positionUiMinimap.x+5;
+    positionMinimap.x=positionUiMinimap.x+20;
     positionMinimap.y=positionUiMinimap.y+5;
-    positionMinimap.h=positionUiMinimap.w-10;
-    positionMinimap.w=positionUiMinimap.w-10;
+    positionMinimap.h=positionUiMinimap.w-40;
+    positionMinimap.w=positionUiMinimap.w-40;
 
 
     Camera::positionCamera.x=0;
