@@ -2,7 +2,7 @@
 
 Jeu::Jeu()
 {
-    jeuFenetre = SDL_CreateWindow("Stratopia jeu", 30, 30, 1024, 640, SDL_WINDOW_SHOWN);
+    jeuFenetre = SDL_CreateWindow("Stratopia jeu", 30, 30, 1024, 640, SDL_WINDOW_SHOWN | SDL_WINDOW_FULLSCREEN_DESKTOP);
     renderer= SDL_CreateRenderer(jeuFenetre, -1, 0);
     joueurControlleur=new PlayerController(uniteJoueur,uniteOrdinateur,renderer);
     startTick=-1;
@@ -20,7 +20,7 @@ Jeu::Jeu()
 
 void Jeu::ChargerMap()
 {
-    maCarte=new MapJeu(renderer);
+    maCarte=new MapJeu(renderer,jeuFenetre);
 }
 
 void Jeu::ChargerUnite()

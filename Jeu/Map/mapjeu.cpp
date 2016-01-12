@@ -2,30 +2,48 @@
 #include "../../Tools/node.h"
 #include "../../Tools/tools.h"
 
-MapJeu::MapJeu(SDL_Renderer *render)
+MapJeu::MapJeu(SDL_Renderer *render,SDL_Window *w)
 {
     renderer=render;
     longueur=30;
     largeur=40;
-    positionMinimap.x=800;
-    positionMinimap.y=10;
-    positionMinimap.h=200;
-    positionMinimap.w=200;
 
-    positionSelectionMinimap.x=800;
-    positionSelectionMinimap.y=10;
-    positionSelectionMinimap.h=138;
-    positionSelectionMinimap.w=160;
+    fenetre=w;
+
+    int largeurFenetre;
+    int hauteurFenetre;
+    SDL_GetWindowSize(fenetre,&largeurFenetre,&hauteurFenetre);
+
+    positionCarteJeu.x=0;
+    positionCarteJeu.y=0;
+    positionCarteJeu.w=largeurFenetre*0.8;
+    positionCarteJeu.h=hauteurFenetre;
 
 
-    positionUiMinimap.x=795;
+
+    positionUiMinimap.x=largeurFenetre*0.8;
     positionUiMinimap.y=5;
-    positionUiMinimap.h=210;
-    positionUiMinimap.w=210;
+    positionUiMinimap.h=hauteurFenetre;
+    positionUiMinimap.w=largeurFenetre*0.2;
+
+    positionMinimap.x=positionUiMinimap.x+5;
+    positionMinimap.y=positionUiMinimap.y+5;
+    positionMinimap.h=positionUiMinimap.w-10;
+    positionMinimap.w=positionUiMinimap.w-10;
+
+
     Camera::positionCamera.x=0;
     Camera::positionCamera.y=0;
-    Camera::positionCamera.w=1024;
-    Camera::positionCamera.h=640;
+    Camera::positionCamera.w=positionCarteJeu.w;
+    Camera::positionCamera.h=positionCarteJeu.h;
+
+    positionSelectionMinimap.x=positionMinimap.x;
+    positionSelectionMinimap.y=positionMinimap.y;
+    positionSelectionMinimap.h=Camera::positionCamera.h*positionMinimap.h/(longueur*HAUTEUR_CASE);
+    positionSelectionMinimap.w=Camera::positionCamera.w*positionMinimap.w/(largeur*LARGEUR_CASE);
+
+
+
 
     actionMiniMapEnCours=false;
 
@@ -67,15 +85,15 @@ void MapJeu::BougerCamera(char direction)
 
 void MapJeu::Render()
 {
-    SDL_RenderCopy(renderer,mapTexture,&Camera::positionCamera,NULL);
+    SDL_RenderCopy(renderer,mapTexture,&Camera::positionCamera,&positionCarteJeu);
 }
 
 void MapJeu::RenderMiniMap()
 {
     SDL_RenderCopy(renderer,uiMiniMapTexture,NULL,&positionUiMinimap);
     SDL_RenderCopy(renderer,mapTexture,NULL,&positionMinimap);
-    positionSelectionMinimap.x=Camera::positionCamera.x*200/1248+positionMinimap.x;
-    positionSelectionMinimap.y=Camera::positionCamera.y*200/1024+positionMinimap.y;
+    positionSelectionMinimap.x=Camera::positionCamera.x*positionMinimap.w/(largeur*LARGEUR_CASE)+positionMinimap.x;
+    positionSelectionMinimap.y=Camera::positionCamera.y*positionMinimap.h/(longueur*HAUTEUR_CASE)+positionMinimap.y;
     SDL_RenderCopy(renderer,selectionMiniMapTexture,NULL,&positionSelectionMinimap);
 }
 
@@ -92,15 +110,15 @@ bool MapJeu::RecevoirEvenement(SDL_Event &event)
             souris.x-=positionMinimap.x;
             souris.y-=positionMinimap.y;
 
-            Camera::positionCamera.x=souris.x*1248/200;
-            if(Camera::positionCamera.x+Camera::positionCamera.w>1248)
+            Camera::positionCamera.x=souris.x*LARGEUR_CASE*largeur/positionMinimap.w;
+            if(Camera::positionCamera.x+Camera::positionCamera.w>LARGEUR_CASE*largeur)
             {
-                Camera::positionCamera.x=1248-Camera::positionCamera.w;
+                Camera::positionCamera.x=LARGEUR_CASE*largeur-Camera::positionCamera.w;
             }
-            Camera::positionCamera.y=souris.y*960/200;
-            if(Camera::positionCamera.y+Camera::positionCamera.h>960)
+            Camera::positionCamera.y=souris.y*HAUTEUR_CASE*longueur/positionMinimap.h;
+            if(Camera::positionCamera.y+Camera::positionCamera.h>HAUTEUR_CASE*longueur)
             {
-                Camera::positionCamera.y=960-Camera::positionCamera.h;
+                Camera::positionCamera.y=HAUTEUR_CASE*longueur-Camera::positionCamera.h;
             }
         }
     }
@@ -117,15 +135,15 @@ bool MapJeu::RecevoirEvenement(SDL_Event &event)
                 souris.x-=positionMinimap.x;
                 souris.y-=positionMinimap.y;
 
-                Camera::positionCamera.x=souris.x*1248/200;
-                if(Camera::positionCamera.x+Camera::positionCamera.w>1248)
+                Camera::positionCamera.x=souris.x*LARGEUR_CASE*largeur/positionMinimap.w;
+                if(Camera::positionCamera.x+Camera::positionCamera.w>LARGEUR_CASE*largeur)
                 {
-                    Camera::positionCamera.x=1248-Camera::positionCamera.w;
+                    Camera::positionCamera.x=LARGEUR_CASE*largeur-Camera::positionCamera.w;
                 }
-                Camera::positionCamera.y=souris.y*960/200;
-                if(Camera::positionCamera.y+Camera::positionCamera.h>960)
+                Camera::positionCamera.y=souris.y*HAUTEUR_CASE*longueur/positionMinimap.h;
+                if(Camera::positionCamera.y+Camera::positionCamera.h>HAUTEUR_CASE*longueur)
                 {
-                    Camera::positionCamera.y=960-Camera::positionCamera.h;
+                    Camera::positionCamera.y=HAUTEUR_CASE*longueur-Camera::positionCamera.h;
                 }
             }
         }

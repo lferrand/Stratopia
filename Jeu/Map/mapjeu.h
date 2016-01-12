@@ -8,15 +8,15 @@
 #include <sstream>
 #include"camera.h"
 
-#define LARGEUR_CASE 20
-#define HAUTEUR_CASE 20
+#define LARGEUR_CASE 32
+#define HAUTEUR_CASE 32
 
 
 class MapJeu
 {
     public:
         MapJeu();
-        MapJeu(SDL_Renderer *render);
+        MapJeu(SDL_Renderer *render, SDL_Window *w);
         void LoadMap();
         void LoadMiniMap();
         virtual ~MapJeu();
@@ -30,6 +30,7 @@ class MapJeu
     private:
         int longueur;
         int largeur;
+        SDL_Window *fenetre;
         SDL_Renderer *renderer;
         SDL_Texture *mapTexture;
         SDL_Texture *uiMiniMapTexture;
@@ -38,6 +39,7 @@ class MapJeu
         bool actionMiniMapEnCours;
 
         SDL_Rect positionSelectionMinimap;
+        SDL_Rect positionCarteJeu;
         SDL_Rect positionMinimap;
         SDL_Rect positionUiMinimap;
 

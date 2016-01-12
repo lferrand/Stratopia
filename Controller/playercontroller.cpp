@@ -39,7 +39,9 @@ void PlayerController::RecevoirEvenement(SDL_Event &event)
                 }
                 for(int i=0;i<unitesSelectionnees.size();i++)
                 {
-                    Vector2D direction(event.button.x,event.button.y);
+                    selection.x+=Camera::positionCamera.x;
+                    selection.y+=Camera::positionCamera.y;
+                    //Vector2D direction(selection.x,selection.y);
                     if(target!=NULL)
                     {
                         unitesSelectionnees[i]->SetTarget(target);
@@ -47,7 +49,7 @@ void PlayerController::RecevoirEvenement(SDL_Event &event)
                     else
                     {
                         unitesSelectionnees[i]->SetTarget(target);
-                        unitesSelectionnees[i]->SetDestination(event.button.x,event.button.y);
+                        unitesSelectionnees[i]->SetDestination(selection.x,selection.y);
                     }
                 }
             }
