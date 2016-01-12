@@ -2,8 +2,6 @@
 #include "tools.h"
 #include "vector2d.h"
 #include "math.h"
-#include "aicontroller.h"
-
 
 
 
@@ -59,7 +57,8 @@ void Unit::ClearPath()
 
 void Unit::Update()
 {
-    if(target != NULL){
+    if(!IsDead()){
+        if(target != NULL){
         //std::cout << "attack";
         if(this->Attack())
         {
@@ -80,6 +79,8 @@ void Unit::Update()
     }
     else{
     }
+    }
+
 }
 void Unit::AnimationSpriteDeplacement()
 {
@@ -286,6 +287,7 @@ void Unit::SetNullTarget()
 }
 void Unit::SetNullDestination()
 {
+    delete destination;
     destination = NULL;
 }
 
@@ -316,7 +318,7 @@ bool Unit::DetectUnitCollision()
 
     Vector2D currentToPosition = GetPosition() - colPosition;
     //std::cout << "\n final : " << currentToPosition.Length();
-    if(currentToPosition.Length() < 20){
+    if(currentToPosition.Length() < 30){
         return true;
     }
     return false;

@@ -1,7 +1,6 @@
 #include "aicontroller.h"
 
 
-
 AIController::AIController(std::vector<Task*> &_FSM):
     FSM(_FSM)
 {
@@ -18,6 +17,7 @@ AIController::~AIController()
 bool AIController::Reflex(Unit &unit)
 {
     if(unit.getHealth()<=50){
+        //unit.SetNullTarget();
         unit.SetDestination(300,50);
         return true;
     }

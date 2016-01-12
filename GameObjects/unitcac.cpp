@@ -9,7 +9,7 @@ Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts,_objects,_player
     attackTimer = 0;
     attackCD = 60;
     vision = 30;
-    range = 30;
+    range = 31;
     damage = 20;
     facing = Vector2D(5,10).Normalized();
     target = NULL;
@@ -22,7 +22,7 @@ Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts,_objects,_player
     attackTimer = 0;
     attackCD = 100;
     vision = 100;
-    range = 30;
+    range = 31;
     damage = 20;
     facing = Vector2D(5,10).Normalized();
     target = NULL;

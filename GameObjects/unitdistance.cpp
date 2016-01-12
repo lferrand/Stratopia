@@ -30,14 +30,19 @@ void UnitDistance::UnitMove()
     if (destination != NULL){
 
         Node destinationNode = Tools::GetNodeFromAxis(static_cast <int> (floor(destination->x)),floor(destination->y));
-        std::cout << "out of bound "<< (int) destinationNode.GetX() <<"\n" ;
-        if ( destinationNode.GetX()<0 || destinationNode.GetY()<0){
-             std::cout << "out of bound \n";
+        //std::cout << "out of bound X :"<< (int) destinationNode.GetX() << "out of bound Y :"<< (int) destinationNode.GetX() <<"\n" ;
+        if (!Tools::CheckInBound(destinationNode)){
             if (destinationNode.GetX()<0){
                 destinationNode.SetX(0);
             }
-             if (destinationNode.GetY()<0){
+            if (destinationNode.GetY()<0){
                 destinationNode.SetY(0);
+            }
+            if (destinationNode.GetX()>33){
+                destinationNode.SetX(33);
+            }
+            if (destinationNode.GetY()>33){
+                destinationNode.SetY(33);
             }
             delete destination;
             destination = new Vector2D(destinationNode.GetWorldX(),destinationNode.GetWorldY());
@@ -71,7 +76,7 @@ void UnitDistance::UnitMove()
             }
 
             //std::cout << "seek x : " << Seek(targetPosition).x << "seek y : " << Seek(targetPosition).y << "\n";
-            Vector2D steering = velocity + Seek(targetPosition).Normalized();
+            Vector2D steering = velocity + Seek(targetPosition).Normalized() + AvoidUnitCollision();
             facing = steering.Normalized();
             velocity = steering;
             velocity.Truncate(speed);
@@ -84,11 +89,12 @@ void UnitDistance::UnitMove()
             }else if (Seek(targetPosition).Length() <= 0 && path.size() == 1){
                 delete destination;
                 destination = NULL;
+                //std::cout << Seek(targetPosition).Length()<< "\n";
                 path.erase(path.begin()+index);
             }
 
             if (destinationNode.GetX() != path[0].GetX() || destinationNode.GetY()!= path[0].GetY()){
-                std::cout << "clear" << "\n";
+                //std::cout << "clear" << "\n";
                 path.clear();
             }
             //std::cout << Seek(targetPosition).Length()<< "\n";
@@ -97,7 +103,6 @@ void UnitDistance::UnitMove()
     else{
         path.clear();
     }
-
 }
 
 void UnitDistance::Update()

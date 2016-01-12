@@ -86,9 +86,7 @@
 		<Unit filename="GameObjects/renderableobject.cpp" />
 		<Unit filename="GameObjects/renderableobject.h" />
 		<Unit filename="GameObjects/unit.cpp" />
-		<Unit filename="GameObjects/unit.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
+		<Unit filename="GameObjects/unit.h" />
 		<Unit filename="GameObjects/unitcac.cpp" />
 		<Unit filename="GameObjects/unitcac.h" />
 		<Unit filename="GameObjects/unitdistance.cpp" />
@@ -115,10 +113,14 @@
 		</Unit>
 		<Unit filename="Task/Explore.cpp" />
 		<Unit filename="Task/Explore.h" />
+		<Unit filename="Task/attack.cpp" />
+		<Unit filename="Task/attack.h" />
 		<Unit filename="Task/task.cpp" />
 		<Unit filename="Task/task.h" />
 		<Unit filename="Tools/node.cpp" />
 		<Unit filename="Tools/node.h" />
+		<Unit filename="Tools/path.cpp" />
+		<Unit filename="Tools/path.h" />
 		<Unit filename="Tools/tools.cpp" />
 		<Unit filename="Tools/tools.h" />
 		<Unit filename="Tools/vector2d.cpp" />
