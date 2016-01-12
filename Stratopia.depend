@@ -726,7 +726,7 @@
 	"mapediteur.h"
 	"tilesediteur.h"
 
-1452366748 source:d:\projets\stratopia\jeu\map\mapjeu.cpp
+1452531562 source:d:\projets\stratopia\jeu\map\mapjeu.cpp
 	"mapjeu.h"
 	"../../Tools/node.h"
 	"../../Tools/tools.h"
@@ -765,7 +765,7 @@
 1452355126 c:\users\taliera\documents\github\stratopia\gameobjects\building.h
 	"renderableobject.h"
 
-1452503304 d:\projets\stratopia\gameobjects\renderableobject.h
+1452583664 d:\projets\stratopia\gameobjects\renderableobject.h
 	"tools.h"
 	"movableobject.h"
 	<SDL2/SDL.h>
@@ -786,10 +786,11 @@
 1452355126 c:\users\taliera\documents\github\stratopia\gameobjects\movableobject.h
 	"gameobject.h"
 
-1452443696 d:\projets\stratopia\gameobjects\gameobject.h
+1452583664 d:\projets\stratopia\gameobjects\gameobject.h
 	<iostream>
+	"vector2d.h"
 
-1452274648 source:d:\projets\stratopia\gameobjects\gameobject.cpp
+1452583664 source:d:\projets\stratopia\gameobjects\gameobject.cpp
 	"gameobject.h"
 
 1452537490 c:\users\taliera\documents\github\stratopia\gameobjects\gameobject.h
@@ -804,7 +805,7 @@
 1452355126 source:c:\users\taliera\documents\github\stratopia\gameobjects\movableobject.cpp
 	"movableobject.h"
 
-1452503518 source:d:\projets\stratopia\gameobjects\renderableobject.cpp
+1452584990 source:d:\projets\stratopia\gameobjects\renderableobject.cpp
 	"renderableobject.h"
 
 1452537490 source:c:\users\taliera\documents\github\stratopia\gameobjects\renderableobject.cpp
@@ -863,23 +864,22 @@
 	<math.h>
 	<map>
 
-1452528890 source:d:\projets\stratopia\gameobjects\unit.cpp
+1452583664 source:d:\projets\stratopia\gameobjects\unit.cpp
 	"unit.h"
 	"tools.h"
 	"vector2d.h"
 	"math.h"
-	"aicontroller.h"
 
-1452528008 d:\projets\stratopia\gameobjects\unit.h
+1452583664 d:\projets\stratopia\gameobjects\unit.h
 	"renderableobject.h"
 	<vector>
 	"../Tools/node.h"
 	"../Tools/vector2d.h"
 
-1452531004 source:d:\projets\stratopia\jeu\jeu.cpp
+1452583664 source:d:\projets\stratopia\jeu\jeu.cpp
 	"jeu.h"
 
-1452495661 d:\projets\stratopia\jeu\jeu.h
+1452583664 d:\projets\stratopia\jeu\jeu.h
 	<vector>
 	<iostream>
 	"mapjeu.h"
@@ -894,6 +894,7 @@
 	"task.h"
 	"aicontroller.h"
 	"Explore.h"
+	"attack.h"
 
 1452450846 c:\users\taliera\documents\github\stratopia\tools\tools.h
 	"node.h"
@@ -968,7 +969,7 @@
 
 1452311336 
 
-1452442466 source:d:\projets\stratopia\controller\aicontroller.cpp
+1452583664 source:d:\projets\stratopia\controller\aicontroller.cpp
 	"aicontroller.h"
 
 1452442466 d:\projets\stratopia\controller\aicontroller.h
@@ -1337,9 +1338,9 @@
 
 1452259999 d:\projets\stratopia\tools\path.h
 
-1452531410 d:\projets\stratopia\jeu\map
+1452584756 d:\projets\stratopia\jeu\map
 
-1452522416 source:d:\projets\stratopia\tools\tools.cpp
+1452583664 source:d:\projets\stratopia\tools\tools.cpp
 	"tools.h"
 	<iostream>
 	<stdlib.h>
@@ -1352,7 +1353,7 @@
 	<iostream>
 	<stdlib.h>
 
-1452495661 source:d:\projets\stratopia\jeu\jeu.h
+1452583664 source:d:\projets\stratopia\jeu\jeu.h
 	<vector>
 	<iostream>
 	"mapjeu.h"
@@ -1367,8 +1368,9 @@
 	"task.h"
 	"aicontroller.h"
 	"Explore.h"
+	"attack.h"
 
-1452420753 source:d:\projets\stratopia\jeu\map\mapjeu.h
+1452531149 source:d:\projets\stratopia\jeu\map\mapjeu.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	<fstream>
@@ -1376,7 +1378,7 @@
 	<sstream>
 	"camera.h"
 
-1452528932 source:d:\projets\stratopia\gameobjects\unitcac.cpp
+1452583664 source:d:\projets\stratopia\gameobjects\unitcac.cpp
 	"unitcac.h"
 	"math.h"
 
@@ -1386,7 +1388,7 @@
 	"vector2d.h"
 	"aicontroller.h"
 
-1452528983 source:d:\projets\stratopia\gameobjects\unitdistance.cpp
+1452583664 source:d:\projets\stratopia\gameobjects\unitdistance.cpp
 	"unitdistance.h"
 	"tools.h"
 	"math.h"
@@ -1444,7 +1446,7 @@
 1452495661 d:\projets\stratopia\task\task.h
 	"unit.h"
 
-1452522416 source:d:\projets\stratopia\task\explore.cpp
+1452583664 source:d:\projets\stratopia\task\explore.cpp
 	"Explore.h"
 	"math.h"
 	<time.h>
@@ -1528,4 +1530,10 @@
 	<vector>
 	"../Tools/node.h"
 	"../Tools/vector2d.h"
+
+1452583664 d:\projets\stratopia\task\attack.h
+	"Task.h"
+
+1452583664 source:d:\projets\stratopia\task\attack.cpp
+	"attack.h"
 

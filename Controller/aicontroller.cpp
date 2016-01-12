@@ -17,7 +17,7 @@ AIController::~AIController()
 bool AIController::Reflex(Unit &unit)
 {
     if(unit.getHealth()<=50){
-        //unit.SetNullTarget();
+        unit.SetNullTarget();
         unit.SetDestination(300,50);
         return true;
     }
