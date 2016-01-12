@@ -2,11 +2,12 @@
 #include "../../Tools/node.h"
 #include "../../Tools/tools.h"
 
-MapJeu::MapJeu(SDL_Renderer *render,SDL_Window *w)
+MapJeu::MapJeu(SDL_Renderer *render,SDL_Window *w,std::vector<Unit*> &uniteJ,std::vector<Unit*> &uniteO):uniteJoueur(uniteJ),uniteOrdinateur(uniteO)
 {
     renderer=render;
     longueur=30;
     largeur=40;
+
 
     fenetre=w;
 
@@ -41,9 +42,6 @@ MapJeu::MapJeu(SDL_Renderer *render,SDL_Window *w)
     positionSelectionMinimap.y=positionMinimap.y;
     positionSelectionMinimap.h=Camera::positionCamera.h*positionMinimap.h/(longueur*HAUTEUR_CASE);
     positionSelectionMinimap.w=Camera::positionCamera.w*positionMinimap.w/(largeur*LARGEUR_CASE);
-
-
-
 
     actionMiniMapEnCours=false;
 
@@ -92,6 +90,25 @@ void MapJeu::RenderMiniMap()
 {
     SDL_RenderCopy(renderer,uiMiniMapTexture,NULL,&positionUiMinimap);
     SDL_RenderCopy(renderer,mapTexture,NULL,&positionMinimap);
+    for(int i=0;i<uniteJoueur.size();i++)
+    {
+        SDL_Rect positionUniteMiniMap;
+        positionUniteMiniMap.x=uniteJoueur[i]->getX()*positionMinimap.w/(largeur*LARGEUR_CASE)+positionMinimap.x;
+        positionUniteMiniMap.y=uniteJoueur[i]->getY()*positionMinimap.h/(longueur*HAUTEUR_CASE)+positionMinimap.y;
+        positionUniteMiniMap.h=5;
+        positionUniteMiniMap.w=5;
+        SDL_RenderCopy(renderer,uniteTexture,NULL,&positionUniteMiniMap);
+    }
+        for(int i=0;i<uniteOrdinateur.size();i++)
+    {
+        SDL_Rect positionUniteMiniMap;
+        positionUniteMiniMap.x=uniteOrdinateur[i]->getX()*positionMinimap.w/(largeur*LARGEUR_CASE)+positionMinimap.x;
+        positionUniteMiniMap.y=uniteOrdinateur[i]->getY()*positionMinimap.h/(longueur*HAUTEUR_CASE)+positionMinimap.y;
+        positionUniteMiniMap.h=5;
+        positionUniteMiniMap.w=5;
+        SDL_RenderCopy(renderer,uniteEnnemieTexture,NULL,&positionUniteMiniMap);
+    }
+
     positionSelectionMinimap.x=Camera::positionCamera.x*positionMinimap.w/(largeur*LARGEUR_CASE)+positionMinimap.x;
     positionSelectionMinimap.y=Camera::positionCamera.y*positionMinimap.h/(longueur*HAUTEUR_CASE)+positionMinimap.y;
     SDL_RenderCopy(renderer,selectionMiniMapTexture,NULL,&positionSelectionMinimap);
@@ -228,10 +245,16 @@ void MapJeu::LoadMiniMap()
 {
      SDL_Surface *miniMapSurface=IMG_Load("Jeu/Images/ui_minimap.png");
      SDL_Surface *selectionMiniMapSurface=IMG_Load("Jeu/Images/selection_minimap.png");
+     SDL_Surface *uniteSurface=SDL_CreateRGBSurface(0,3,3,32,0,0,0,0);
+     SDL_FillRect(uniteSurface,NULL,SDL_MapRGB(uniteSurface->format,0,255,0));
+     uniteTexture=SDL_CreateTextureFromSurface(renderer,uniteSurface);
+    SDL_FillRect(uniteSurface,NULL,SDL_MapRGB(uniteSurface->format,255,0,0));
+     uniteEnnemieTexture=SDL_CreateTextureFromSurface(renderer,uniteSurface);
 
      uiMiniMapTexture=SDL_CreateTextureFromSurface(renderer,miniMapSurface);
      selectionMiniMapTexture=SDL_CreateTextureFromSurface(renderer,selectionMiniMapSurface);
 
+     SDL_FreeSurface(uniteSurface);
      SDL_FreeSurface(miniMapSurface);
      SDL_FreeSurface(selectionMiniMapSurface);
 

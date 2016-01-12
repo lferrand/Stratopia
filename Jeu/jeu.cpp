@@ -20,7 +20,7 @@ Jeu::Jeu()
 
 void Jeu::ChargerMap()
 {
-    maCarte=new MapJeu(renderer,jeuFenetre);
+    maCarte=new MapJeu(renderer,jeuFenetre,uniteJoueur,uniteOrdinateur);
 }
 
 void Jeu::ChargerUnite()

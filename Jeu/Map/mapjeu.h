@@ -10,13 +10,13 @@
 
 #define LARGEUR_CASE 32
 #define HAUTEUR_CASE 32
-
+#include "unit.h"
 
 class MapJeu
 {
     public:
         MapJeu();
-        MapJeu(SDL_Renderer *render, SDL_Window *w);
+        MapJeu(SDL_Renderer *render, SDL_Window *w,std::vector<Unit*> &uniteJ,std::vector<Unit*> &uniteO);
         void LoadMap();
         void LoadMiniMap();
         virtual ~MapJeu();
@@ -33,8 +33,13 @@ class MapJeu
         SDL_Window *fenetre;
         SDL_Renderer *renderer;
         SDL_Texture *mapTexture;
+        SDL_Texture *uniteTexture;
+        SDL_Texture *uniteEnnemieTexture;
         SDL_Texture *uiMiniMapTexture;
         SDL_Texture *selectionMiniMapTexture;
+
+        std::vector<Unit*> &uniteJoueur;
+        std::vector<Unit*> &uniteOrdinateur;
 
         bool actionMiniMapEnCours;
 
