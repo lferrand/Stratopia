@@ -13,12 +13,36 @@ UnitDistanceHumainTexture::UnitDistanceHumainTexture(SDL_Renderer *render):UnitT
     SDL_FreeSurface(projectileSurface);
     positionActuelleProjectile.w=44;
     positionActuelleProjectile.h=27;
-    positionProjectileTexture.x=72;
-    positionProjectileTexture.y=6;
-    positionProjectileTexture.w=44;
-    positionProjectileTexture.h=27;
-    positionTexture=new SDL_Rect*[6];
-    for(int i=0;i<6;i++)
+
+    positionProjectileTexture=new SDL_Rect[5];
+
+    positionProjectileTexture[0].x=9;
+    positionProjectileTexture[0].y=5;
+    positionProjectileTexture[0].w=14;
+    positionProjectileTexture[0].h=35;
+
+    positionProjectileTexture[1].x=40;
+    positionProjectileTexture[1].y=8;
+    positionProjectileTexture[1].w=31;
+    positionProjectileTexture[1].h=29;
+
+    positionProjectileTexture[2].x=75;
+    positionProjectileTexture[2].y=18;
+    positionProjectileTexture[2].w=41;
+    positionProjectileTexture[2].h=9;
+
+    positionProjectileTexture[3].x=121;
+    positionProjectileTexture[3].y=9;
+    positionProjectileTexture[3].w=31;
+    positionProjectileTexture[3].h=29;
+
+    positionProjectileTexture[4].x=168;
+    positionProjectileTexture[4].y=4;
+    positionProjectileTexture[4].w=14;
+    positionProjectileTexture[4].h=36;
+
+    positionTexture=new SDL_Rect*[5];
+    for(int i=0;i<5;i++)
     {
         positionTexture[i]=new SDL_Rect[9];
         for(int j=0;j<9;j++)

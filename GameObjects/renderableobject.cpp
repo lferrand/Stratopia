@@ -56,15 +56,20 @@ void RenderableObject::Render()
         if(!symetrieSpriteNecessaire)
         {
             SDL_RenderCopy(renderer,textures.spriteTexture,&textures.positionTexture[numeroSpriteAAfficher[0]][numeroSpriteAAfficher[1]],&positionObjetMap);
+            if(textures.projectileLance)
+            {
+                SDL_RenderCopy(renderer,textures.projectileTexture,&textures.positionProjectileTexture[numeroSpriteAAfficher[0]],&textures.positionActuelleProjectile);
+                textures.projectileLance=false;
+            }
         }
         else
         {
             SDL_RenderCopyEx(renderer,textures.spriteTexture,&textures.positionTexture[numeroSpriteAAfficher[0]][numeroSpriteAAfficher[1]],&positionObjetMap,0,NULL,SDL_FLIP_HORIZONTAL);
-        }
-        if(textures.projectileLance)
-        {
-            SDL_RenderCopy(renderer,textures.projectileTexture,&textures.positionProjectileTexture,&textures.positionActuelleProjectile);
-            textures.projectileLance=false;
+            if(textures.projectileLance)
+            {
+                SDL_RenderCopyEx(renderer,textures.projectileTexture,&textures.positionProjectileTexture[numeroSpriteAAfficher[0]],&textures.positionActuelleProjectile,0,NULL,SDL_FLIP_HORIZONTAL);
+                textures.projectileLance=false;
+            }
         }
             SDL_RenderCopy(renderer,BarreVieTexture,NULL,&positionBarreVieTexture);
             SDL_RenderCopy(renderer,VieTexture,NULL,&positionVieTexture);

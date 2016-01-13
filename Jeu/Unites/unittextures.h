@@ -13,7 +13,7 @@ class UnitTextures
         SDL_Rect **positionTexture;
         SDL_Texture *projectileTexture;
         SDL_Rect positionActuelleProjectile;
-        SDL_Rect positionProjectileTexture;
+        SDL_Rect *positionProjectileTexture;
         bool projectileLance;
         unsigned int etapeProjectile;
         virtual ~UnitTextures();
