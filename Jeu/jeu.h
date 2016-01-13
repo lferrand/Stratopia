@@ -28,7 +28,7 @@ class Jeu
         void ChargerUnite();
         void RecevoirEvent(SDL_Event event);
         void Render();
-        void Action();
+        bool Action();
         virtual ~Jeu();
     protected:
     private:

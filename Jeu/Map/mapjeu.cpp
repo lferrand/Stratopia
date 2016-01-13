@@ -23,7 +23,7 @@ MapJeu::MapJeu(SDL_Renderer *render,SDL_Window *w,std::vector<Unit*> &uniteJ,std
 
 
     positionUiMinimap.x=largeurFenetre*0.85;
-    positionUiMinimap.y=5;
+    positionUiMinimap.y=0;
     positionUiMinimap.h=hauteurFenetre;
     positionUiMinimap.w=largeurFenetre*0.15;
 

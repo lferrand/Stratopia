@@ -175,7 +175,7 @@ void Jeu::RecevoirEvent(SDL_Event event)
     }
 }
 
-void Jeu::Action()
+bool Jeu::Action()
 {
     if(startTick<0)
     {
@@ -196,10 +196,11 @@ void Jeu::Action()
         {
             uniteOrdinateur[i]->Update();
         }
-
-        /*Executer l'action ici*/
-
-
+        return true;
+    }
+    else
+    {
+        return false;
     }
 
 }

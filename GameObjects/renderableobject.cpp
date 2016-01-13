@@ -61,6 +61,11 @@ void RenderableObject::Render()
         {
             SDL_RenderCopyEx(renderer,textures.spriteTexture,&textures.positionTexture[numeroSpriteAAfficher[0]][numeroSpriteAAfficher[1]],&positionObjetMap,0,NULL,SDL_FLIP_HORIZONTAL);
         }
+        if(textures.projectileLance)
+        {
+            SDL_RenderCopy(renderer,textures.projectileTexture,&textures.positionProjectileTexture,&textures.positionActuelleProjectile);
+            textures.projectileLance=false;
+        }
             SDL_RenderCopy(renderer,BarreVieTexture,NULL,&positionBarreVieTexture);
             SDL_RenderCopy(renderer,VieTexture,NULL,&positionVieTexture);
     }

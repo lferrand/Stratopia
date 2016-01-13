@@ -7,8 +7,8 @@ Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts,_objects,_player
 {
     vision = 100;
     attackTimer = 0;
-    attackCD = 100;
-    range = 100;
+    attackCD = 80;
+    range = 200;
     damage = 20;
     facing = Vector2D(5,10);
     target = NULL;
@@ -131,6 +131,7 @@ bool UnitDistance::Attack()
             {
                 target->setHealth(target->getHealth() - this->damage);
                 this->attackTimer = 0;
+                textures.projectileLance=false;
                 attaqueEnCours=false;
                 return true;
             }
@@ -163,6 +164,12 @@ void UnitDistance::AnimationSpriteCombat()
     else if(attackTimer<vitesseAnimation*5)
     {
         numeroSpriteAAfficher[1]=0;
+    }
+    if(attackTimer>vitesseAnimation*3)
+    {
+        textures.projectileLance=true;
+        textures.positionActuelleProjectile.x=(target->getX()-this->getX())*(attackTimer-vitesseAnimation*3)/(attackCD-vitesseAnimation*3) +this->getX();
+        textures.positionActuelleProjectile.y=(target->getY()-this->getY())*(attackTimer-vitesseAnimation*3)/(attackCD-vitesseAnimation*3) +this->getY();
     }
 
 }

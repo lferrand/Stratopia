@@ -15,6 +15,7 @@ class UnitDistance : public Unit
         virtual void AnimationSpriteCombat();
         virtual void Update();
         virtual bool Die();
+
     protected:
         AIController *AIcontroller;
     private:

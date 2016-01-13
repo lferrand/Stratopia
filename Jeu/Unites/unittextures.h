@@ -11,8 +11,11 @@ class UnitTextures
 
         SDL_Texture *spriteTexture;
         SDL_Rect **positionTexture;
-
-
+        SDL_Texture *projectileTexture;
+        SDL_Rect positionActuelleProjectile;
+        SDL_Rect positionProjectileTexture;
+        bool projectileLance;
+        unsigned int etapeProjectile;
         virtual ~UnitTextures();
     protected:
         SDL_Renderer *renderer;
