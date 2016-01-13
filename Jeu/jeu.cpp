@@ -32,11 +32,14 @@ void Jeu::ChargerUnite()
     SDL_Surface *barreVieSurface=IMG_Load("Jeu/Images/barre_vie.png");
     SDL_Surface *vieSurface=IMG_Load("Jeu/Images/vie.png");
     SDL_Surface *selectionSurface=IMG_Load("Jeu/Images/selection_unite.png");
+    SDL_Surface *selectionSurfaceEnnemie=IMG_Load("Jeu/Images/selection_unite_ennemie.png");
 
     RenderableObject::BarreVieTexture = SDL_CreateTextureFromSurface(renderer,barreVieSurface);
     RenderableObject::VieTexture = SDL_CreateTextureFromSurface(renderer,vieSurface);
     RenderableObject::SelectionUniteTexture = SDL_CreateTextureFromSurface(renderer,selectionSurface);
+    RenderableObject::SelectionUniteEnnemieTexture = SDL_CreateTextureFromSurface(renderer,selectionSurfaceEnnemie);
 
+    SDL_FreeSurface(selectionSurfaceEnnemie);
     SDL_FreeSurface(selectionSurface);
     SDL_FreeSurface(barreVieSurface);
     SDL_FreeSurface(vieSurface);

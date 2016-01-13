@@ -12,7 +12,7 @@ class Unit : public RenderableObject
 {
     public:
         Unit(char t, bool isJoueur,SDL_Rect positionCarte,SDL_Renderer *renderer, bool **pathingMap_,UnitTextures &texts,std::vector<RenderableObject*> &objects,int playerID):
-            RenderableObject(positionCarte, renderer,texts,objects,playerID), type(t),isJoueurUnite(isJoueur),pathingMap(pathingMap_),attaqueEnCours(false)
+            RenderableObject(positionCarte, renderer,texts,objects,playerID,!isJoueur), type(t),isJoueurUnite(isJoueur),pathingMap(pathingMap_),attaqueEnCours(false)
         {}
         virtual ~Unit();
         virtual void UnitMove();

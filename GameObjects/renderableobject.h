@@ -9,7 +9,7 @@
 class RenderableObject : public MovableObject
 {
     public:
-        RenderableObject(SDL_Rect positionCarte,SDL_Renderer *render,UnitTextures &textures, std::vector<RenderableObject*> &objects, int playerID);
+        RenderableObject(SDL_Rect positionCarte,SDL_Renderer *render,UnitTextures &textures, std::vector<RenderableObject*> &objects, int playerID,bool isEnnemy_);
         virtual ~RenderableObject();
         void setHealth(int h){health=h;}
         float getHealth(){return health;}
@@ -23,6 +23,8 @@ class RenderableObject : public MovableObject
         static SDL_Texture* BarreVieTexture;
         static SDL_Texture* VieTexture;
         static SDL_Texture* SelectionUniteTexture;
+        static SDL_Texture* SelectionUniteEnnemieTexture;
+
 
 
     protected:
@@ -37,6 +39,9 @@ class RenderableObject : public MovableObject
 
         int playerID;
         bool isSelect;
+        bool isEnnemy;
+
+        int etapeSelection;
 
         SDL_Rect positionObjetMap;
         SDL_Rect positionBarreVieTexture;

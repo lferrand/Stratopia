@@ -3,13 +3,14 @@
 SDL_Texture* RenderableObject::BarreVieTexture = NULL;
 SDL_Texture* RenderableObject::VieTexture = NULL;
 SDL_Texture* RenderableObject::SelectionUniteTexture = NULL;
+SDL_Texture* RenderableObject::SelectionUniteEnnemieTexture = NULL;
 
 
 
 
 
-RenderableObject::RenderableObject(SDL_Rect positionCarte,SDL_Renderer *render,UnitTextures &texts, std::vector<RenderableObject*> &_objects,int _playerID):
-MovableObject(positionCarte.x,positionCarte.y),renderer(render),positionObjetMap(positionCarte),health(100),textures(texts),objects(_objects),playerID(_playerID)
+RenderableObject::RenderableObject(SDL_Rect positionCarte,SDL_Renderer *render,UnitTextures &texts, std::vector<RenderableObject*> &_objects,int _playerID,bool isEnnemy_):
+MovableObject(positionCarte.x,positionCarte.y),renderer(render),positionObjetMap(positionCarte),health(100),textures(texts),objects(_objects),playerID(_playerID),isEnnemy(isEnnemy_),etapeSelection(0)
 {
     positionBarreVieTexture.x=positionObjetMap.x;
     positionBarreVieTexture.y=positionObjetMap.y-5;
@@ -77,9 +78,22 @@ void RenderableObject::Render()
 
 
 
-    if(isSelect)
+    if(isSelect && !isEnnemy)
     {
         SDL_RenderCopy(renderer,SelectionUniteTexture,NULL,&positionObjetMap);
+    }
+    else if(isSelect && isEnnemy)
+    {
+        etapeSelection++;
+        if(etapeSelection%20<15)
+        {
+            SDL_RenderCopy(renderer,SelectionUniteEnnemieTexture,NULL,&positionObjetMap);
+        }
+        else if(etapeSelection>=60)
+        {
+            etapeSelection=0;
+            isSelect=false;
+        }
     }
 
 }
