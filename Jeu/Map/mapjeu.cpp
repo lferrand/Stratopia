@@ -8,7 +8,6 @@ MapJeu::MapJeu(SDL_Renderer *render,SDL_Window *w,std::vector<Unit*> &uniteJ,std
     longueur=30;
     largeur=40;
 
-
     fenetre=w;
 
     int largeurFenetre;
@@ -19,8 +18,6 @@ MapJeu::MapJeu(SDL_Renderer *render,SDL_Window *w,std::vector<Unit*> &uniteJ,std
     positionCarteJeu.y=0;
     positionCarteJeu.w=largeurFenetre*0.85;
     positionCarteJeu.h=hauteurFenetre;
-
-
 
     positionUiMinimap.x=largeurFenetre*0.85;
     positionUiMinimap.y=0;
@@ -78,7 +75,6 @@ void MapJeu::BougerCamera(char direction)
         break;
 
     }
-
 }
 
 void MapJeu::Render()
@@ -248,7 +244,7 @@ void MapJeu::LoadMiniMap()
      SDL_Surface *uniteSurface=SDL_CreateRGBSurface(0,3,3,32,0,0,0,0);
      SDL_FillRect(uniteSurface,NULL,SDL_MapRGB(uniteSurface->format,0,255,0));
      uniteTexture=SDL_CreateTextureFromSurface(renderer,uniteSurface);
-    SDL_FillRect(uniteSurface,NULL,SDL_MapRGB(uniteSurface->format,255,0,0));
+     SDL_FillRect(uniteSurface,NULL,SDL_MapRGB(uniteSurface->format,255,0,0));
      uniteEnnemieTexture=SDL_CreateTextureFromSurface(renderer,uniteSurface);
 
      uiMiniMapTexture=SDL_CreateTextureFromSurface(renderer,miniMapSurface);

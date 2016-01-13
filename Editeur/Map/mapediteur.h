@@ -9,8 +9,10 @@
 #include <list>
 #include <vector>
 
-#define LARGEUR_CASE 20
-#define HAUTEUR_CASE 20
+#define LARGEUR_CASE 32
+#define HAUTEUR_CASE 32
+
+#include "camera.h"
 
 struct UniteEditeurStr
 {
@@ -31,13 +33,19 @@ class MapEditeur
         void RecevoirEvenement(SDL_Event &event);
         void ActualiserAffichageCarte();
         void SauvegarderMap();
+        void BougerCamera(char direction);
+        void LoadMiniMap();
+        void RenderMiniMap();
+
+
     protected:
     private:
         SDL_Window *editeurFenetre;
         SDL_Surface *mapSurface;
         SDL_Texture *grilleTexture;
         SDL_Texture *mapTexture;
-
+        SDL_Texture *uniteTexture;
+        SDL_Texture *uniteEnnemieTexture;
         SDL_Texture* passageBloqueTexture;
 
         SDL_Texture *spriteCaCHumainTexture;
@@ -50,11 +58,18 @@ class MapEditeur
         TilesEditeur *mesTiles;
         SDL_Renderer *renderer;
 
-        int longueur;
+        int hauteur;
         int largeur;
 
+
+        SDL_Rect positionCarte;
         SDL_Rect positionSourisPrecedente;
 
+        SDL_Texture *uiMiniMapTexture;
+        SDL_Texture *selectionMiniMapTexture;
+        SDL_Rect positionSelectionMinimap;
+        SDL_Rect positionMinimap;
+        SDL_Rect positionUiMinimap;
         bool **cartePassage;
         std::string **carteTexture;
 
