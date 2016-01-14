@@ -4,7 +4,7 @@ UnitDistanceOrcTexture::UnitDistanceOrcTexture(SDL_Renderer *render):UnitTexture
 {
 //Chargement de texture
     SDL_Surface *spriteSurface=IMG_Load("Editeur/Images/archer_sprite_orc.png");
-    SDL_Surface *projectileSurface=IMG_Load("Jeu/Images/fleche_archer.png");
+    SDL_Surface *projectileSurface=IMG_Load("Jeu/Images/hache_orc.png");
 
     spriteTexture=SDL_CreateTextureFromSurface(renderer,spriteSurface);
     projectileTexture=SDL_CreateTextureFromSurface(renderer,projectileSurface);
@@ -49,9 +49,9 @@ UnitDistanceOrcTexture::UnitDistanceOrcTexture(SDL_Renderer *render):UnitTexture
         for(int j=0;j<9;j++)
         {
             positionTexture[i][j].x=62*i;
-            positionTexture[i][j].y=56*j;
+            positionTexture[i][j].y=54*j;
             positionTexture[i][j].w=62;
-            positionTexture[i][j].h=56;
+            positionTexture[i][j].h=54;
         }
         positionTexture[i][9].x=62*i;
         positionTexture[i][9].y=503;

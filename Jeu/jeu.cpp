@@ -191,6 +191,44 @@ void Jeu::RecevoirEvent(SDL_Event event)
         }
     }
 }
+bool Jeu::Fin()
+{
+    bool victoire=true;
+    bool defaite=true;
+    for(int i=0;i<uniteJoueur.size();i++)
+    {
+        if(!uniteJoueur[i]->IsDead())
+        {
+            defaite=false;
+            break;
+        }
+    }
+    for(int i=0;i<uniteOrdinateur.size();i++)
+    {
+        if(!uniteOrdinateur[i]->IsDead())
+        {
+            victoire=false;
+            break;
+        }
+    }
+    if(victoire)
+    {
+        SDL_Surface *victoireSurface=IMG_Load("Jeu/Images/victoire.bmp");
+        SDL_Texture *victoireTexture = SDL_CreateTextureFromSurface(renderer,victoireSurface);
+        SDL_RenderClear(renderer);
+        SDL_RenderCopy(renderer,victoireTexture,NULL,NULL);
+        SDL_RenderPresent(renderer);
+    }
+    else if(defaite)
+    {
+        SDL_Surface *defaiteSurface=IMG_Load("Jeu/Images/defaite.bmp");
+        SDL_Texture *defaiteTexture = SDL_CreateTextureFromSurface(renderer,defaiteSurface);
+        SDL_RenderClear(renderer);
+        SDL_RenderCopy(renderer,defaiteTexture,NULL,NULL);
+        SDL_RenderPresent(renderer);
+    }
+    return victoire || defaite;
+}
 
 bool Jeu::Action()
 {

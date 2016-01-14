@@ -29,6 +29,7 @@ class Jeu
         void RecevoirEvent(SDL_Event event);
         void Render();
         bool Action();
+        bool Fin();
         virtual ~Jeu();
     protected:
     private:

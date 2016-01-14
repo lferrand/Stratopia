@@ -238,6 +238,21 @@ void TilesEditeur::UpdateFenetreSprite()
 TilesEditeur::~TilesEditeur()
 {
     SDL_FreeSurface(tilesSurface);
+    SDL_DestroyTexture(tilesTexture);
+    SDL_DestroyRenderer(rendererTiles);
+    SDL_DestroyRenderer(rendererSprites);
+    SDL_DestroyTexture(textureFenetre);
+    SDL_DestroyTexture(selectionTextureTiles);
+    SDL_DestroyTexture(selectionTextureSprite);
+
+    SDL_DestroyTexture(spriteCaCHumainTexture);
+    SDL_DestroyTexture(spriteDistanceHumainTexture);
+    SDL_DestroyTexture(spriteCaCOrcTexture);
+    SDL_DestroyTexture(spriteDistanceOrcTexture);
+    SDL_DestroyTexture(spriteOrcTexture);
+
+    SDL_DestroyWindow(tileFenetre);
+    SDL_DestroyWindow(spriteFenetre);
 }
 
 bool SourisDansRect(SDL_Rect &souris, SDL_Rect &zoneSelection)
