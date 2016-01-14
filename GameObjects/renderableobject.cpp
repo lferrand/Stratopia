@@ -60,6 +60,8 @@ void RenderableObject::Render()
             SDL_RenderCopy(renderer,textures.spriteTexture,&textures.positionTexture[numeroSpriteAAfficher[0]][numeroSpriteAAfficher[1]],&positionObjetMap);
             if(textures.projectileLance)
             {
+                textures.positionActuelleProjectile.x=textures.positionActuelleProjectile.x-Camera::positionCamera.x;
+                textures.positionActuelleProjectile.y=textures.positionActuelleProjectile.y-Camera::positionCamera.y;
                 SDL_RenderCopy(renderer,textures.projectileTexture,&textures.positionProjectileTexture[numeroSpriteAAfficher[0]],&textures.positionActuelleProjectile);
                 textures.projectileLance=false;
             }
@@ -69,6 +71,8 @@ void RenderableObject::Render()
             SDL_RenderCopyEx(renderer,textures.spriteTexture,&textures.positionTexture[numeroSpriteAAfficher[0]][numeroSpriteAAfficher[1]],&positionObjetMap,0,NULL,SDL_FLIP_HORIZONTAL);
             if(textures.projectileLance)
             {
+                textures.positionActuelleProjectile.x=textures.positionActuelleProjectile.x-Camera::positionCamera.x;
+                textures.positionActuelleProjectile.y=textures.positionActuelleProjectile.y-Camera::positionCamera.y;
                 SDL_RenderCopyEx(renderer,textures.projectileTexture,&textures.positionProjectileTexture[numeroSpriteAAfficher[0]],&textures.positionActuelleProjectile,0,NULL,SDL_FLIP_HORIZONTAL);
                 textures.projectileLance=false;
             }
