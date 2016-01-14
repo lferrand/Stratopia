@@ -126,8 +126,13 @@ void Jeu::ChargerUnite()
             }
             else if(type=='d')
             {
-
-                UnitDistance *unite=new UnitDistance(type,false,positionUnitSurCarte,renderer,maCarte->cartePassage,*orcDistanceTextures,objects,2);
+                std::vector<Task*>* tasks = new std::vector<Task*>();
+                Explore* explore = new Explore("explore");
+                Attack* attack = new Attack("attack");
+                tasks->push_back(explore);
+                tasks->push_back(attack);
+                AIController* contro = new AIController(*tasks);
+                UnitDistance *unite = new UnitDistance(type,false,positionUnitSurCarte,renderer,maCarte->cartePassage,contro,*orcDistanceTextures,objects,2);
                 uniteOrdinateur.push_back(unite);
                 objects.push_back(unite);
             }

@@ -1,4 +1,5 @@
 #include "renderableobject.h"
+#include "message.h"
 
 SDL_Texture* RenderableObject::BarreVieTexture = NULL;
 SDL_Texture* RenderableObject::VieTexture = NULL;
@@ -112,6 +113,19 @@ void RenderableObject::Render()
 
 }
 
+void RenderableObject::SendMessage(RenderableObject &target, Message message)
+{
+    target.ReceiveMessage(message);
+}
+void RenderableObject::ReceiveMessage(Message message)
+{
+    receivedMessages.push_back(message);
+}
+std::vector<Message> RenderableObject::GetMessages()
+{
+    return receivedMessages;
+}
+
 bool RenderableObject::EstDansRectangleSelection(SDL_Rect rectangleSelection)
 {
     if(SDL_HasIntersection(&rectangleSelection,&positionObjetMap))
@@ -124,6 +138,9 @@ bool RenderableObject::EstDansRectangleSelection(SDL_Rect rectangleSelection)
         isSelect=false;
         return false;
     }
+}
+char RenderableObject::GetType(){
+
 }
 
 RenderableObject::~RenderableObject()

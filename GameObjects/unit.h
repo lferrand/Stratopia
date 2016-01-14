@@ -5,6 +5,7 @@
 #include <vector>
 #include "../Tools/node.h"
 #include "../Tools/vector2d.h"
+#include "message.h"
 
 enum {N,E,W,S,NE,NW,SE,SW};
 
@@ -25,9 +26,9 @@ class Unit : public RenderableObject
         void SetPathingMap(bool** &pathingMap);
         void SetFacing(Vector2D face);
         void SetDestination(int x, int y);
-        void SetTarget(Unit* &target);
         void SetNullTarget();
         void SetTarget(RenderableObject* &target);
+        void SetTarget(Unit* &target);
         void SetNullDestination();
         Vector2D GetVelocity();
         Vector2D GetFacing();
@@ -37,17 +38,24 @@ class Unit : public RenderableObject
         void ChangerSpriteDirection();
         void AnimationSpriteDeplacement();
         virtual void AnimationSpriteCombat();
+        void RunAway();
 
         std::vector<RenderableObject*> GetPercept();
         void ClearPath();
         void DeleteTarget();
         bool DetectUnitCollision();
         Vector2D AvoidUnitCollision();
+        RenderableObject* GetClosestEnemy();
+        bool CanRunAway();
+        bool CanAttack();
+        int runAwayTimer;
+        virtual char GetType();
 
 
     protected:
         float attackTimer;
         float attackCD;
+        int runAwayTime;
 
         int vision;
         int range;
@@ -64,6 +72,7 @@ class Unit : public RenderableObject
         Vector2D velocity;
         Vector2D *destination;
         RenderableObject *target;
+
     private:
 
 };
