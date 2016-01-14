@@ -2,11 +2,20 @@
 #include "../../Tools/node.h"
 #include "../../Tools/tools.h"
 
-MapJeu::MapJeu(SDL_Renderer *render,SDL_Window *w,std::vector<Unit*> &uniteJ,std::vector<Unit*> &uniteO):uniteJoueur(uniteJ),uniteOrdinateur(uniteO)
+MapJeu::MapJeu(SDL_Renderer *render,SDL_Window *w,std::vector<Unit*> &uniteJ,std::vector<Unit*> &uniteO,int taille):uniteJoueur(uniteJ),uniteOrdinateur(uniteO)
 {
     renderer=render;
-    longueur=30;
-    largeur=40;
+    this->taille=taille;
+    if(taille==1)
+    {
+        largeur=32;
+        longueur=20;
+    }
+    else if(taille==2)
+    {
+        largeur=64;
+        longueur=40;
+    }
 
     fenetre=w;
 
@@ -170,7 +179,16 @@ bool MapJeu::RecevoirEvenement(SDL_Event &event)
 
 void MapJeu::LoadMap()
 {
-    std::ifstream fichier("carte1.lvl", std::ios::in);
+    std::string nomFichier;
+    if(taille==1)
+    {
+        nomFichier="Save/carte1.lvl";
+    }
+    else
+    {
+        nomFichier="Save/carte2.lvl";
+    }
+    std::ifstream fichier(nomFichier.c_str(), std::ios::in);
 
     cartePassage=new bool*[largeur];
 
