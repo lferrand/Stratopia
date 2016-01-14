@@ -117,6 +117,8 @@
 		<Unit filename="Task/attack.h" />
 		<Unit filename="Task/task.cpp" />
 		<Unit filename="Task/task.h" />
+		<Unit filename="Tools/message.cpp" />
+		<Unit filename="Tools/message.h" />
 		<Unit filename="Tools/node.cpp" />
 		<Unit filename="Tools/node.h" />
 		<Unit filename="Tools/path.cpp" />

@@ -9,6 +9,7 @@ class UnitDistance : public Unit
 {
     public:
         UnitDistance(char _type, bool _isJoueurUniteS,SDL_Rect positionCarte,SDL_Renderer *renderer,bool**pathMap,UnitTextures &texts,std::vector<RenderableObject*> &_objects,int playerID);
+        UnitDistance(char _type, bool _isJoueurUniteS,SDL_Rect positionCarte,SDL_Renderer *renderer,bool **pathMap,AIController *_AIController,UnitTextures &texts,std::vector<RenderableObject*> &_objects,int _playerID);
         virtual ~UnitDistance();
         virtual void UnitMove();
         virtual bool Attack();

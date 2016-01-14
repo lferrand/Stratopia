@@ -6,6 +6,9 @@
 #include <SDL2/SDL_image.h>
 #include "Camera.h"
 #include "../Jeu/Unites/unittextures.h"
+
+class Message;
+
 class RenderableObject : public MovableObject
 {
     public:
@@ -25,6 +28,10 @@ class RenderableObject : public MovableObject
         static SDL_Texture* SelectionUniteTexture;
         static SDL_Texture* SelectionUniteEnnemieTexture;
 
+        void SendMessage(RenderableObject &target, Message message);
+        void ReceiveMessage(Message message);
+        std::vector<Message> GetMessages();
+        virtual char GetType();
 
 
     protected:
@@ -35,11 +42,13 @@ class RenderableObject : public MovableObject
         SDL_Renderer *renderer;
 
         std::vector<RenderableObject*> &objects;
+        std::vector<Message> receivedMessages;
         UnitTextures &textures;
 
         int playerID;
         bool isSelect;
         bool isEnnemy;
+        char type;
 
         int etapeSelection;
 

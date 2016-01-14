@@ -8,26 +8,30 @@ Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts,_objects,_player
 {
     attackTimer = 0;
     attackCD = 60;
-    vision = 30;
+    vision = 200;
     range = 31;
     damage = 20;
     facing = Vector2D(5,10).Normalized();
     target = NULL;
     destination = NULL;
     AIcontroller = NULL;
+    runAwayTime = 400;
+    runAwayTimer = 0;
 }
 UnitCaC::UnitCaC(char _type, bool _isJoueurUniteS,SDL_Rect positionCarte,SDL_Renderer *renderer,bool **pathMap,AIController *_AIController,UnitTextures &texts,std::vector<RenderableObject*> &_objects,int _playerID):
 Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts,_objects,_playerID)
 {
     attackTimer = 0;
     attackCD = 100;
-    vision = 100;
+    vision = 200;
     range = 31;
     damage = 20;
     facing = Vector2D(5,10).Normalized();
     target = NULL;
     destination = NULL;
     AIcontroller = _AIController;
+    runAwayTime = 400;
+    runAwayTimer = 0;
 }
 UnitCaC::~UnitCaC()
 {
@@ -132,13 +136,18 @@ void UnitCaC::UnitMove()
 bool UnitCaC::Attack()
 {
     if(target != NULL){
-
+        if(target->IsDead()){
+            target = NULL;
+            return false;
+        }
         float distance = (Vector2D(x,y) - Vector2D(target->getX(),target->getY())).Length();
         if(distance <= range){
                 attaqueEnCours=true;
         }
         if(attaqueEnCours)
         {
+            Vector2D toFace = (target->GetPosition() - GetPosition()).Normalized();
+            facing = toFace;
             if(attackTimer < attackCD){
             attackTimer++;
             return true;
@@ -146,7 +155,7 @@ bool UnitCaC::Attack()
             else
             {
                 target->setHealth(target->getHealth() - this->damage);
-                this->attackTimer = 0;
+                attackTimer = 0;
                 attaqueEnCours=false;
                 return true;
             }
