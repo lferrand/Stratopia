@@ -522,4 +522,19 @@ MapEditeur::~MapEditeur()
     }
     delete[] cartePassage;
     SDL_FreeSurface(mapSurface);
+
+    SDL_DestroyTexture(grilleTexture);
+    SDL_DestroyTexture(mapTexture);
+    SDL_DestroyTexture(uniteTexture);
+    SDL_DestroyTexture(uniteEnnemieTexture);
+    SDL_DestroyTexture(passageBloqueTexture);
+    SDL_DestroyTexture(spriteCaCHumainTexture);
+    SDL_DestroyTexture(spriteDistanceHumainTexture);
+    SDL_DestroyTexture(spriteCaCOrcTexture);
+    SDL_DestroyTexture(spriteDistanceOrcTexture);
+    SDL_DestroyTexture(uiMiniMapTexture);
+    SDL_DestroyTexture(selectionMiniMapTexture);
+
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(editeurFenetre);
 }

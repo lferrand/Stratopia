@@ -24,6 +24,7 @@ void ChargerJeu()
             if(event.window.event == SDL_WINDOWEVENT_CLOSE)
             {
                 end = true;
+                delete monJeu;
             }
             else
             {
@@ -53,6 +54,8 @@ void ChargerEditeur()
         if(event.window.event == SDL_WINDOWEVENT_CLOSE)
             {
                 end = true;
+                delete mesTiles;
+                delete monEditeur;
             }
         else
         {
