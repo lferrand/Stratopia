@@ -5,6 +5,7 @@
 #include <vector>
 #include "../Tools/node.h"
 #include "../Tools/vector2d.h"
+#include "message.h"
 
 enum {N,E,W,S,NE,NW,SE,SW};
 

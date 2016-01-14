@@ -408,6 +408,8 @@ bool Unit::CanAttack()
 char Unit::GetType(){
     return type;
 }
+
+
 bool Unit::Attack()
 {
     //someting
