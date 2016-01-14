@@ -11,7 +11,7 @@ UnitCaCHumainTexture::UnitCaCHumainTexture(SDL_Renderer *render):UnitTextures(re
     positionTexture=new SDL_Rect*[6];
     for(int i=0;i<5;i++)
     {
-        positionTexture[i]=new SDL_Rect[9];
+        positionTexture[i]=new SDL_Rect[10];
         for(int j=0;j<9;j++)
         {
             positionTexture[i][j].x=74*i;
@@ -19,6 +19,10 @@ UnitCaCHumainTexture::UnitCaCHumainTexture(SDL_Renderer *render):UnitTextures(re
             positionTexture[i][j].w=74;
             positionTexture[i][j].h=58;
         }
+        positionTexture[i][9].x=74*i;
+        positionTexture[i][9].y=521;
+        positionTexture[i][9].w=74;
+        positionTexture[i][9].h=55;
     }
 
 

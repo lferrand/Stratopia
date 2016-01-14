@@ -44,7 +44,7 @@ UnitDistanceHumainTexture::UnitDistanceHumainTexture(SDL_Renderer *render):UnitT
     positionTexture=new SDL_Rect*[5];
     for(int i=0;i<5;i++)
     {
-        positionTexture[i]=new SDL_Rect[9];
+        positionTexture[i]=new SDL_Rect[10];
         for(int j=0;j<9;j++)
         {
             positionTexture[i][j].x=58*i;
@@ -52,6 +52,10 @@ UnitDistanceHumainTexture::UnitDistanceHumainTexture(SDL_Renderer *render):UnitT
             positionTexture[i][j].w=58;
             positionTexture[i][j].h=61;
         }
+        positionTexture[i][9].x=58*i;
+        positionTexture[i][9].y=517;
+        positionTexture[i][9].w=58;
+        positionTexture[i][9].h=60;
     }}
 
 UnitDistanceHumainTexture::~UnitDistanceHumainTexture()

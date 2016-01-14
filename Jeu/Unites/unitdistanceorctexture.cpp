@@ -45,7 +45,7 @@ UnitDistanceOrcTexture::UnitDistanceOrcTexture(SDL_Renderer *render):UnitTexture
     positionTexture=new SDL_Rect*[6];
     for(int i=0;i<6;i++)
     {
-        positionTexture[i]=new SDL_Rect[9];
+        positionTexture[i]=new SDL_Rect[10];
         for(int j=0;j<9;j++)
         {
             positionTexture[i][j].x=62*i;
@@ -53,6 +53,11 @@ UnitDistanceOrcTexture::UnitDistanceOrcTexture(SDL_Renderer *render):UnitTexture
             positionTexture[i][j].w=62;
             positionTexture[i][j].h=56;
         }
+        positionTexture[i][9].x=62*i;
+        positionTexture[i][9].y=503;
+        positionTexture[i][9].w=62;
+        positionTexture[i][9].h=60;
+        positionTexture[i][9].h=60;
     }}
 
 UnitDistanceOrcTexture::~UnitDistanceOrcTexture()

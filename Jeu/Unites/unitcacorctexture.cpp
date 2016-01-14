@@ -12,7 +12,7 @@ UnitCaCOrcTexture::UnitCaCOrcTexture(SDL_Renderer *render):UnitTextures(render)
     positionTexture=new SDL_Rect*[6];
     for(int i=0;i<6;i++)
     {
-        positionTexture[i]=new SDL_Rect[9];
+        positionTexture[i]=new SDL_Rect[10];
         for(int j=0;j<9;j++)
         {
             positionTexture[i][j].x=76*i;
@@ -20,6 +20,10 @@ UnitCaCOrcTexture::UnitCaCOrcTexture(SDL_Renderer *render):UnitTextures(render)
             positionTexture[i][j].w=76;
             positionTexture[i][j].h=54;
         }
+        positionTexture[i][9].x=76*i;
+        positionTexture[i][9].y=505;
+        positionTexture[i][9].w=76;
+        positionTexture[i][9].h=60;
     }
 }
 

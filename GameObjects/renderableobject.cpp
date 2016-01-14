@@ -31,6 +31,7 @@ void RenderableObject::Update()
 }
 bool RenderableObject::IsDead()
 {
+
     return health <= 0;
 }
 
@@ -74,27 +75,40 @@ void RenderableObject::Render()
         }
             SDL_RenderCopy(renderer,BarreVieTexture,NULL,&positionBarreVieTexture);
             SDL_RenderCopy(renderer,VieTexture,NULL,&positionVieTexture);
+
+            if(isSelect && !isEnnemy)
+            {
+                SDL_RenderCopy(renderer,SelectionUniteTexture,NULL,&positionObjetMap);
+            }
+            else if(isSelect && isEnnemy)
+            {
+                etapeSelection++;
+                if(etapeSelection%20<15)
+                {
+                    SDL_RenderCopy(renderer,SelectionUniteEnnemieTexture,NULL,&positionObjetMap);
+                }
+                else if(etapeSelection>=60)
+                {
+                    etapeSelection=0;
+                    isSelect=false;
+                }
+            }
     }
-
-
-
-    if(isSelect && !isEnnemy)
+    else
     {
-        SDL_RenderCopy(renderer,SelectionUniteTexture,NULL,&positionObjetMap);
-    }
-    else if(isSelect && isEnnemy)
-    {
-        etapeSelection++;
-        if(etapeSelection%20<15)
+        numeroSpriteAAfficher[1]=9;
+        if(!symetrieSpriteNecessaire)
         {
-            SDL_RenderCopy(renderer,SelectionUniteEnnemieTexture,NULL,&positionObjetMap);
+            SDL_RenderCopy(renderer,textures.spriteTexture,&textures.positionTexture[numeroSpriteAAfficher[0]][numeroSpriteAAfficher[1]],&positionObjetMap);
         }
-        else if(etapeSelection>=60)
+        else
         {
-            etapeSelection=0;
-            isSelect=false;
+            SDL_RenderCopyEx(renderer,textures.spriteTexture,&textures.positionTexture[numeroSpriteAAfficher[0]][numeroSpriteAAfficher[1]],&positionObjetMap,0,NULL,SDL_FLIP_HORIZONTAL);
         }
     }
+
+
+
 
 }
 
