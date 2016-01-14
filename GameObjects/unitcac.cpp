@@ -15,6 +15,8 @@ Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts,_objects,_player
     target = NULL;
     destination = NULL;
     AIcontroller = NULL;
+    runAwayTime = 400;
+    runAwayTimer = 0;
 }
 UnitCaC::UnitCaC(char _type, bool _isJoueurUniteS,SDL_Rect positionCarte,SDL_Renderer *renderer,bool **pathMap,AIController *_AIController,UnitTextures &texts,std::vector<RenderableObject*> &_objects,int _playerID):
 Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts,_objects,_playerID)
@@ -28,6 +30,8 @@ Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts,_objects,_player
     target = NULL;
     destination = NULL;
     AIcontroller = _AIController;
+    runAwayTime = 400;
+    runAwayTimer = 0;
 }
 UnitCaC::~UnitCaC()
 {
@@ -139,6 +143,8 @@ bool UnitCaC::Attack()
         }
         if(attaqueEnCours)
         {
+            Vector2D toFace = (target->GetPosition() - GetPosition()).Normalized();
+            facing = toFace;
             if(attackTimer < attackCD){
             attackTimer++;
             return true;
@@ -146,7 +152,7 @@ bool UnitCaC::Attack()
             else
             {
                 target->setHealth(target->getHealth() - this->damage);
-                this->attackTimer = 0;
+                attackTimer = 0;
                 attaqueEnCours=false;
                 return true;
             }

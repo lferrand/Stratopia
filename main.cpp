@@ -68,7 +68,7 @@ void ChargerEditeur()
 int main(int argc, char *argv[])
 {
 
-    //ChargerJeu();
-    ChargerEditeur();
+    ChargerJeu();
+    //ChargerEditeur();
     return 0;
 }

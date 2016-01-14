@@ -12,14 +12,32 @@ Attack::~Attack()
 
 bool Attack::execute(Unit &unit)
 {
+    if(unit.GetType() == 'c'){
+        return exitCondition(unit);
+    }
+    else{
+        if (unit.CanAttack()){
+            unit.SetNullDestination();
+            RenderableObject* newTarget = unit.GetClosestEnemy();
+            unit.SetTarget(newTarget);
+        }
+        else{
+            unit.SetNullTarget();
+            unit.RunAway();
+        }
+        return exitCondition(unit);
 
-    return exitCondition(unit);
+    }
+
     //unit.ClearPath();
 }
 
 bool Attack::exitCondition(Unit &unit)
 {
-    if(unit.GetTarget()->IsDead()){
+    if(unit.GetTarget() == NULL && unit.GetClosestEnemy() == NULL){
+        return true;
+    }
+    if(unit.GetTarget() != NULL && unit.GetTarget()->IsDead()){
         unit.SetNullTarget();
         unit.SetNullDestination();
         return true;

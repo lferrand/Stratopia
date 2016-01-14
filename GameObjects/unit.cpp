@@ -356,6 +356,58 @@ void Unit::Move(Vector2D movement)
     y = y + floor(movement.y + 0.5);
 }
 
+RenderableObject* Unit::GetClosestEnemy()
+{
+    std::vector<RenderableObject*> objectInVision = GetPercept();
+    std::vector<RenderableObject*> enemyInVision;
+
+    for(std::vector<RenderableObject*>::iterator it = objectInVision.begin(); it != objectInVision.end(); ++it) {
+            RenderableObject* currentObject = *it;
+            if (currentObject->GetPlayerID() != GetPlayerID() && !currentObject->IsDead()){
+                enemyInVision.push_back(currentObject);
+            }
+    }
+
+    if(!enemyInVision.empty()){
+
+        RenderableObject* closesestUnit = enemyInVision[0];
+        for(std::vector<RenderableObject*>::iterator it = enemyInVision.begin(); it != enemyInVision.end(); ++it) {
+            RenderableObject* currentObject = *it;
+            if (pow(currentObject->getX()- x,2) + pow(currentObject->getY()- y,2) <= pow(closesestUnit->getX()- x,2) + pow(closesestUnit->getY()- y,2)){
+                closesestUnit = currentObject;
+            }
+        }
+
+        return closesestUnit;
+    }
+    return NULL;
+}
+
+void Unit::RunAway()
+{
+    RenderableObject* runFrom = GetClosestEnemy();
+    Vector2D destination = GetPosition() - runFrom->GetPosition();
+    SetDestination(destination.x,destination.y);
+}
+bool Unit::CanRunAway()
+{
+    if(runAwayTimer < runAwayTime){
+        return true;
+    }
+    return false;
+}
+
+bool Unit::CanAttack()
+{
+    if(attackTimer < attackCD){
+        return false;
+    }
+    return true;
+}
+
+char Unit::GetType(){
+    return type;
+}
 bool Unit::Attack()
 {
     //someting
