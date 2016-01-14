@@ -26,16 +26,46 @@ bool AIController::Reflex(Unit &unit)
     }
     return false;
 }
+bool AIController::ProcessMessage(Unit &unit)
+{
+    std::vector<Message> messagesReceived = unit.GetMessages();
+    if(!messagesReceived.empty() && unit.GetTarget()== NULL){
+
+        float currentLenght = 0;
+        float bestLenght = (messagesReceived[0].sender->GetPosition() - unit.GetPosition()).Length();
+        Message closestMessage = messagesReceived[0];
+        for(std::vector<Message>::iterator it = messagesReceived.begin(); it != messagesReceived.end(); ++it) {
+                Message currentObject = *it;
+                currentLenght = (currentObject.sender->GetPosition() - unit.GetPosition()).Length();
+                if (currentLenght < bestLenght){
+                    closestMessage = currentObject;
+                    bestLenght = currentLenght;
+                }
+        }
+        if(!closestMessage.content.compare("attack") && bestLenght < 400){
+            unit.SetTarget(closestMessage.target);
+            unit.SetNullDestination();
+            unit.ClearMessages();
+            return true;
+        }
+    }
+    unit.ClearMessages();
+    return false;
+
+}
 
 void AIController::Update(Unit &unit)
 {
-    if(!Reflex(unit)){
+    if(!ProcessMessage(unit)){
+        if(!Reflex(unit)){
 
-        if(FSM[currentTask]->execute(unit)){
-            currentTask++;
-            if (currentTask >= FSM.size()){
-                currentTask = 0;
+            if(FSM[currentTask]->execute(unit)){
+                currentTask++;
+                if (currentTask >= FSM.size()){
+                    currentTask = 0;
+                }
             }
         }
     }
+
 }

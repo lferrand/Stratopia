@@ -35,7 +35,12 @@ void Unit::SetTarget(Unit* &_target)
 }
 void Unit::SetTarget(RenderableObject* &_target)
 {
-    target = _target;
+    if(_target!=target)
+    {
+        attackTimer=0;
+        attaqueEnCours=false;
+        target = _target;
+    }
 }
 Vector2D Unit::GetFacing()
 {
@@ -414,6 +419,16 @@ bool Unit::CanAttack()
 
 char Unit::GetType(){
     return type;
+}
+
+void Unit::SendMessageAllAlly(Message message)
+{
+    for(std::vector<RenderableObject*>::iterator it = objects.begin(); it != objects.end(); ++it) {
+            RenderableObject* currentObject = *it;
+            if (currentObject->GetPlayerID() == GetPlayerID() && !currentObject->IsDead()){
+                currentObject->ReceiveMessage(message);
+            }
+    }
 }
 
 
