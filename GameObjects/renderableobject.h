@@ -33,6 +33,7 @@ class RenderableObject : public MovableObject
         std::vector<Message> GetMessages();
         void ClearMessages();
         virtual char GetType();
+        virtual void CalculateDamage(int _damage);
 
 
     protected:

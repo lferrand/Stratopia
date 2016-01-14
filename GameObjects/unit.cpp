@@ -19,6 +19,10 @@ void Unit::SetFacing(Vector2D face)
     facing = face.Normalized();
 
 }
+int Unit::GetDefence()
+{
+    return defence;
+}
 void Unit::SetDestination(int _x, int _y)
 {
     delete destination;
@@ -429,6 +433,11 @@ void Unit::SendMessageAllAlly(Message message)
                 currentObject->ReceiveMessage(message);
             }
     }
+}
+
+void Unit::CalculateDamage(int _damage)
+{
+    health = health - _damage + defence;
 }
 
 

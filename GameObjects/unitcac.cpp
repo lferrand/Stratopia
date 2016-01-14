@@ -11,6 +11,7 @@ Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts,_objects,_player
     vision = 200;
     range = 31;
     damage = 20;
+    defence = 10;
     facing = Vector2D(5,10).Normalized();
     target = NULL;
     destination = NULL;
@@ -26,6 +27,7 @@ Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts,_objects,_player
     vision = 200;
     range = 31;
     damage = 20;
+    defence = 10;
     facing = Vector2D(5,10).Normalized();
     target = NULL;
     destination = NULL;
@@ -154,7 +156,7 @@ bool UnitCaC::Attack()
             }
             else
             {
-                target->setHealth(target->getHealth() - this->damage);
+                target->CalculateDamage(damage);
                 attackTimer = 0;
                 attaqueEnCours=false;
                 return true;

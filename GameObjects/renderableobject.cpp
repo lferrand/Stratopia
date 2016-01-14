@@ -116,6 +116,10 @@ void RenderableObject::Render()
 
 
 }
+void RenderableObject::CalculateDamage(int _damage)
+{
+    //void
+}
 
 void RenderableObject::SendMessage(RenderableObject &target, Message message)
 {

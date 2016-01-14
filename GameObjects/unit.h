@@ -51,6 +51,9 @@ class Unit : public RenderableObject
         int runAwayTimer;
         virtual char GetType();
         void SendMessageAllAlly(Message message);
+        int GetDefence();
+        virtual void CalculateDamage(int _damage);
+
 
 
     protected:
@@ -61,6 +64,7 @@ class Unit : public RenderableObject
         int vision;
         int range;
         int damage;
+        int defence;
 
         bool attaqueEnCours;
         int etapeAnimation;

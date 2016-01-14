@@ -9,7 +9,8 @@ Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts,_objects,_player
     attackTimer = 0;
     attackCD = 80;
     range = 200;
-    damage = 20;
+    damage = 30;
+    defence = 0;
     facing = Vector2D(5,10);
     target = NULL;
     destination = NULL;
@@ -24,7 +25,8 @@ Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts,_objects,_player
     attackTimer = 0;
     attackCD = 80;
     range = 200;
-    damage = 20;
+    damage = 30;
+    defence = 0;
     facing = Vector2D(5,10).Normalized();
     target = NULL;
     destination = NULL;
