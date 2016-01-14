@@ -58,7 +58,8 @@ UnitDistanceOrcTexture::UnitDistanceOrcTexture(SDL_Renderer *render):UnitTexture
         positionTexture[i][9].w=62;
         positionTexture[i][9].h=60;
         positionTexture[i][9].h=60;
-    }}
+    }
+}
 
 UnitDistanceOrcTexture::~UnitDistanceOrcTexture()
 {

@@ -84,6 +84,8 @@ void ChargerMenu()
                 SDL_RenderClear(renderer);
                 SDL_RenderCopy(renderer,menuTexture,NULL,NULL);
                 SDL_RenderPresent(renderer);
+                                end=true;
+
             }
             else if(event.key.keysym.sym==SDLK_2)
             {
@@ -94,6 +96,8 @@ void ChargerMenu()
                 SDL_RenderClear(renderer);
                 SDL_RenderCopy(renderer,menuTexture,NULL,NULL);
                 SDL_RenderPresent(renderer);
+                                end=true;
+
             }
             else if(event.key.keysym.sym==SDLK_3)
             {
@@ -104,6 +108,8 @@ void ChargerMenu()
                 SDL_RenderClear(renderer);
                 SDL_RenderCopy(renderer,menuTexture,NULL,NULL);
                 SDL_RenderPresent(renderer);
+                                end=true;
+
             }
             else if(event.key.keysym.sym==SDLK_4)
             {
@@ -114,6 +120,8 @@ void ChargerMenu()
                 SDL_RenderClear(renderer);
                 SDL_RenderCopy(renderer,menuTexture,NULL,NULL);
                 SDL_RenderPresent(renderer);
+                                end=true;
+
             }
             else if(event.key.keysym.sym==SDLK_ESCAPE && event.key.windowID==SDL_GetWindowID(menuFenetre))
             {
