@@ -523,7 +523,7 @@ MapEditeur::~MapEditeur()
     delete[] cartePassage;
     SDL_FreeSurface(mapSurface);
 
-    SDL_DestroyTexture(grilleTexture)
+    SDL_DestroyTexture(grilleTexture);
     SDL_DestroyTexture(mapTexture);
     SDL_DestroyTexture(uniteTexture);
     SDL_DestroyTexture(uniteEnnemieTexture);
