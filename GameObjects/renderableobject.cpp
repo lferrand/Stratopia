@@ -143,6 +143,11 @@ char RenderableObject::GetType(){
 
 }
 
+void RenderableObject::ClearMessages()
+{
+    receivedMessages.clear();
+}
+
 RenderableObject::~RenderableObject()
 {
     //dtor

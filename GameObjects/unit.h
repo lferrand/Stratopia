@@ -50,6 +50,7 @@ class Unit : public RenderableObject
         bool CanAttack();
         int runAwayTimer;
         virtual char GetType();
+        void SendMessageAllAlly(Message message);
 
 
     protected:

@@ -29,8 +29,9 @@ bool Attack::execute(Unit &unit)
 //
 //    }
     RenderableObject* enemy = unit.GetClosestEnemy();
-    if(enemy != NULL){
-
+    if(enemy != NULL && enemy != unit.GetTarget()){
+        Message attackMessage = Message("attack",&unit,enemy);
+        unit.SendMessageAllAlly(attackMessage);
         unit.SetTarget(enemy);
     }
     return exitCondition(unit);

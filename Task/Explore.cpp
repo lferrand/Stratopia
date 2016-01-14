@@ -41,6 +41,8 @@ bool Explore::exitCondition(Unit &unit)
         RenderableObject* closesestUnit = unit.GetClosestEnemy();
 
         if (closesestUnit != NULL){
+            Message attackMessage = Message("attack",&unit,closesestUnit);
+            unit.SendMessageAllAlly(attackMessage);
             unit.SetTarget(closesestUnit);
             return true;
         }
