@@ -12,6 +12,7 @@ class AIController : public Controller
         virtual ~AIController();
         virtual bool Reflex(Unit &unit);
         virtual void Update(Unit &unit);
+        virtual bool ProcessMessage(Unit &unit);
 
     protected:
         std::vector<Task*> &FSM;

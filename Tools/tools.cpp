@@ -384,7 +384,7 @@ Node Tools::FindClosestPassable(Node start, Node unpassable,bool **pathingMap)
 
 bool Tools::CheckInBound(Node checkedNode)
 {
-    if (checkedNode.GetX() < 0 || checkedNode.GetY() < 0 || checkedNode.GetX() > 33 || checkedNode.GetY() > 33){
+    if (checkedNode.GetX() < 0 || checkedNode.GetY() < 0 || checkedNode.GetX() > 63 || checkedNode.GetY() > 39){
         return false;
     }
     return true;
