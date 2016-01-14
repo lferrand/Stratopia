@@ -276,5 +276,9 @@ void MapJeu::LoadMiniMap()
 }
 MapJeu::~MapJeu()
 {
-    //dtor
+    SDL_DestroyTexture(mapTexture);
+    SDL_DestroyTexture(uniteTexture);
+    SDL_DestroyTexture(uniteEnnemieTexture);
+    SDL_DestroyTexture(uiMiniMapTexture);
+    SDL_DestroyTexture(selectionMiniMapTexture);
 }

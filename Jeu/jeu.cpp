@@ -220,4 +220,19 @@ Jeu::~Jeu()
 {
     delete joueurControlleur;
     delete maCarte;
+    for(int i=0;i<uniteJoueur.size();i++)
+    {
+        delete uniteJoueur[i];
+    }
+    for(int i=0;i<uniteOrdinateur.size();i++)
+    {
+        delete uniteOrdinateur[i];
+    }
+    delete orcDistanceTextures;
+    delete humainDistanceTextures;
+    delete humainCaCTextures;
+    delete orcCaCTextures;
+
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(jeuFenetre);
 }
