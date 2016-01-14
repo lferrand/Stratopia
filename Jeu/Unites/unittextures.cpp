@@ -8,5 +8,12 @@ UnitTextures::UnitTextures(SDL_Renderer *render):renderer(render)
 
 UnitTextures::~UnitTextures()
 {
-    //dtor
+    SDL_DestroyTexture(spriteTexture);
+    for(int i=0;i<6;i++)
+    {
+        delete[] positionTexture[i];
+    }
+    delete[] positionTexture;
+    SDL_DestroyTexture(projectileTexture);
+    delete[] positionProjectileTexture;
 }
