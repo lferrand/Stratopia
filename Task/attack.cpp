@@ -12,23 +12,28 @@ Attack::~Attack()
 
 bool Attack::execute(Unit &unit)
 {
-    if(unit.GetType() == 'c'){
-        return exitCondition(unit);
-    }
-    else{
-        if (unit.CanAttack()){
-            unit.SetNullDestination();
-            RenderableObject* newTarget = unit.GetClosestEnemy();
-            unit.SetTarget(newTarget);
-        }
-        else{
-            unit.SetNullTarget();
-            unit.RunAway();
-        }
-        return exitCondition(unit);
+//    if(unit.GetType() == 'c'){
+//        return exitCondition(unit);
+//    }
+//    else{
+//        if (unit.CanAttack()){
+//            unit.SetNullDestination();
+//            RenderableObject* newTarget = unit.GetClosestEnemy();
+//            unit.SetTarget(newTarget);
+//        }
+//        else{
+//            unit.SetNullTarget();
+//            unit.RunAway();
+//        }
+//        return exitCondition(unit);
+//
+//    }
+    RenderableObject* enemy = unit.GetClosestEnemy();
+    if(enemy != NULL){
 
+        unit.SetTarget(enemy);
     }
-
+    return exitCondition(unit);
     //unit.ClearPath();
 }
 

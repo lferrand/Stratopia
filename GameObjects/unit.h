@@ -27,8 +27,8 @@ class Unit : public RenderableObject
         void SetFacing(Vector2D face);
         void SetDestination(int x, int y);
         void SetNullTarget();
-        void SetTarget(Unit* &target);
         void SetTarget(RenderableObject* &target);
+        void SetTarget(Unit* &target);
         void SetNullDestination();
         Vector2D GetVelocity();
         Vector2D GetFacing();
@@ -49,7 +49,7 @@ class Unit : public RenderableObject
         bool CanRunAway();
         bool CanAttack();
         int runAwayTimer;
-        char GetType();
+        virtual char GetType();
 
 
     protected:

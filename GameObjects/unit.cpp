@@ -165,8 +165,8 @@ std::vector<RenderableObject*> Unit::GetPercept()
     std::vector<RenderableObject*> renderableInVision;
     for(std::vector<RenderableObject*>::iterator it = objects.begin(); it != objects.end(); ++it) {
             RenderableObject* currentObject = *it;
-//            std::cout << " distance " <<(pow(currentObject->getX()- x,2) + pow(currentObject->getY()- y,2))<< "\n";
-//            std::cout << " vision " << pow(vision,2) << "\n";
+            //std::cout << " distance " <<(pow(currentObject->getX()- x,2) + pow(currentObject->getY()- y,2))<< "\n";
+            //std::cout << " vision " << pow(vision,2) << "\n";
 
             if ((pow(currentObject->getX()- x,2) + pow(currentObject->getY()- y,2)) <= pow(vision,2)){
                 renderableInVision.push_back(currentObject);
@@ -306,10 +306,10 @@ bool Unit::DetectUnitCollision()
             Vector2D length = GetPosition() - currentObject->GetPosition();
 //            std::cout << "\n current : " << length.Length();
 //            std::cout << "\n current test : " << (GetPosition() - closesestUnit->GetPosition()).Length();
-            if ((GetPosition() - closesestUnit->GetPosition()).Length() == 0){
+            if ((GetPosition() - closesestUnit->GetPosition()).Length() == 0 || closesestUnit->IsDead()){
                 closesestUnit = currentObject;
             }
-            if (length.Length() <= (GetPosition() - closesestUnit->GetPosition()).Length() && length.Length() > 0){
+            if (length.Length() <= (GetPosition() - closesestUnit->GetPosition()).Length() && length.Length() > 0 && !closesestUnit->IsDead()){
 
                 closesestUnit = currentObject;
             }
@@ -385,9 +385,16 @@ RenderableObject* Unit::GetClosestEnemy()
 
 void Unit::RunAway()
 {
+
     RenderableObject* runFrom = GetClosestEnemy();
-    Vector2D destination = GetPosition() - runFrom->GetPosition();
-    SetDestination(destination.x,destination.y);
+    std::cout << runAwayTimer <<"\n test";
+    if(runFrom != NULL){
+        Vector2D destination = GetPosition() - runFrom->GetPosition();
+        destination = GetPosition() + destination;
+        SetDestination(destination.x,destination.y);
+    }
+
+
 }
 bool Unit::CanRunAway()
 {

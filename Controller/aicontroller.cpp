@@ -16,14 +16,13 @@ AIController::~AIController()
 
 bool AIController::Reflex(Unit &unit)
 {
-    if(unit.getHealth()<=50 && unit.CanRunAway()){
+    if(unit.getHealth()<=50 && unit.CanRunAway() && (unit.GetTarget() != NULL && unit.GetType() == 'c' && unit.GetTarget()->GetType() != 'd')){
+
         unit.runAwayTimer++;
         unit.SetNullTarget();
         unit.RunAway();
+
         return true;
-    }
-    else{
-        unit.runAwayTimer = 0;
     }
     return false;
 }

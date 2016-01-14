@@ -5,7 +5,7 @@
 UnitDistance::UnitDistance(char _type, bool _isJoueurUniteS, SDL_Rect positionCarte,SDL_Renderer *renderer,bool** pathMap,UnitTextures &texts,std::vector<RenderableObject*> &_objects,int _playerID):
 Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts,_objects,_playerID)
 {
-    vision = 100;
+    vision = 200;
     attackTimer = 0;
     attackCD = 80;
     range = 200;
@@ -20,7 +20,7 @@ Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts,_objects,_player
 UnitDistance::UnitDistance(char _type, bool _isJoueurUniteS,SDL_Rect positionCarte,SDL_Renderer *renderer,bool **pathMap,AIController *_AIController,UnitTextures &texts,std::vector<RenderableObject*> &_objects,int _playerID):
 Unit(_type,_isJoueurUniteS,positionCarte,renderer,pathMap,texts,_objects,_playerID)
 {
-    vision = 100;
+    vision = 200;
     attackTimer = 0;
     attackCD = 80;
     range = 200;
@@ -133,7 +133,10 @@ void UnitDistance::Update()
 bool UnitDistance::Attack()
 {
      if(target != NULL){
-
+        if(target->IsDead()){
+            target = NULL;
+            return false;
+        }
         float distance = (Vector2D(x,y) - Vector2D(target->getX(),target->getY())).Length();
         if(distance <= range){
                 attaqueEnCours=true;

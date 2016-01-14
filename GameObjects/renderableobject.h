@@ -31,6 +31,7 @@ class RenderableObject : public MovableObject
         void SendMessage(RenderableObject &target, Message message);
         void ReceiveMessage(Message message);
         std::vector<Message> GetMessages();
+        virtual char GetType();
 
 
     protected:
@@ -47,6 +48,7 @@ class RenderableObject : public MovableObject
         int playerID;
         bool isSelect;
         bool isEnnemy;
+        char type;
 
         int etapeSelection;
 

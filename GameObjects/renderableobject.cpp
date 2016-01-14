@@ -139,6 +139,9 @@ bool RenderableObject::EstDansRectangleSelection(SDL_Rect rectangleSelection)
         return false;
     }
 }
+char RenderableObject::GetType(){
+
+}
 
 RenderableObject::~RenderableObject()
 {
