@@ -9,7 +9,7 @@
 
 void ChargerJeu()
 {
-    Jeu *monJeu=new Jeu();
+    Jeu *monJeu=new Jeu(2);
     SDL_Event event;
     bool end = false;
     while(!end)
@@ -39,7 +39,7 @@ void ChargerJeu()
 
 void ChargerEditeur()
 {
-    MapEditeur *monEditeur=new MapEditeur();
+    MapEditeur *monEditeur=new MapEditeur(2);
     TilesEditeur *mesTiles=new TilesEditeur();
     monEditeur->ChangerTiles(mesTiles);
     monEditeur->NewMap();

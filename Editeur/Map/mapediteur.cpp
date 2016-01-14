@@ -1,18 +1,27 @@
 #include "mapediteur.h"
 
-MapEditeur::MapEditeur()
+MapEditeur::MapEditeur(int taille)
 {
     editeurFenetre = SDL_CreateWindow("Stratopia Editeur", 20, 30, 1248, 640, SDL_WINDOW_SHOWN);
     Camera::positionCamera.x=0;
     Camera::positionCamera.y=0;
     Camera::positionCamera.w=1024;
     Camera::positionCamera.h=640;
-
+    this->taille=taille;
     positionCarte=Camera::positionCamera;
 
     visionCarte=false;
-    largeur=70;
-    hauteur=60;
+    if(taille==1)
+    {
+        largeur=32;
+        hauteur=20;
+    }
+    else if(taille==2)
+    {
+        largeur=64;
+        hauteur=40;
+    }
+
     renderer= SDL_CreateRenderer(editeurFenetre, -1, 0);
 
     //Chargement surface
@@ -202,6 +211,7 @@ void MapEditeur::RecevoirEvenement(SDL_Event &event)
                 std::string sauvegardeTexture= ss.str();
                 carteTexture[event.button.x/LARGEUR_CASE][event.button.y/HAUTEUR_CASE]=sauvegardeTexture;
                 SDL_BlitSurface(tilesSurface,&positionTileSelectionne,mapSurface,&positionClic);
+                SDL_DestroyTexture(mapTexture);
                 mapTexture=SDL_CreateTextureFromSurface(renderer,mapSurface);
 
                 ActualiserAffichageCarte();
@@ -280,6 +290,7 @@ void MapEditeur::RecevoirEvenement(SDL_Event &event)
                             carteTexture[event.button.x/LARGEUR_CASE][event.button.y/HAUTEUR_CASE]=sauvegardeTexture;
 
                             SDL_BlitSurface(tilesSurface,&positionTileSelectionne,mapSurface,&positionClic);
+                            SDL_DestroyTexture(mapTexture);
                             mapTexture=SDL_CreateTextureFromSurface(renderer,mapSurface);
                             ActualiserAffichageCarte();
                         }
@@ -435,7 +446,7 @@ void MapEditeur::ActualiserAffichageCarte()
     }
     for(int unsigned i=0;i<uniteEnnemie.size();i++)
     {
-        SDL_Rect positionObjetMap=uniteJoueur[i].positionUnite;
+        SDL_Rect positionObjetMap=uniteEnnemie[i].positionUnite;
         positionObjetMap.x-=Camera::positionCamera.x;
         positionObjetMap.y-=Camera::positionCamera.y;
         if(uniteEnnemie[i].type=='c')
@@ -457,7 +468,20 @@ void MapEditeur::ActualiserAffichageCarte()
 
 void MapEditeur::SauvegarderMap()
 {
-    std::ofstream fichier("carte1.lvl", std::ios::out | std::ios::trunc);
+    std::string nomFicher;
+    std::string nomFicherUnite;
+    if(taille==1)
+    {
+        nomFicher="Save/carte1.lvl";
+        nomFicherUnite="Save/unite1.lvl";
+    }
+    else
+    {
+        nomFicher="Save/carte2.lvl";
+        nomFicherUnite="Save/unite2.lvl";
+    }
+    std::ofstream fichier(nomFicher.c_str(), std::ios::out | std::ios::trunc);
+
     for(int i=0; i<largeur;i++)
     {
         for(int j=0;j<hauteur;j++)
@@ -475,7 +499,7 @@ void MapEditeur::SauvegarderMap()
         }
     }
     fichier.close();
-    fichier.open("unite1.lvl", std::ios::out | std::ios::trunc);
+    fichier.open(nomFicherUnite.c_str(), std::ios::out | std::ios::trunc);
     for(unsigned int i=0;i<uniteJoueur.size();i++)
     {
         fichier << uniteJoueur[i].type << " " << uniteJoueur[i].positionUnite.x << " " << uniteJoueur[i].positionUnite.y << '\n';

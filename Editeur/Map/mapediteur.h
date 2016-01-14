@@ -8,7 +8,7 @@
 #include <SDL2/SDL_image.h>
 #include <list>
 #include <vector>
-
+#include <string>
 #define LARGEUR_CASE 32
 #define HAUTEUR_CASE 32
 
@@ -25,7 +25,7 @@ struct UniteEditeurStr
 class MapEditeur
 {
     public:
-        MapEditeur();
+        MapEditeur(int taille);
         virtual ~MapEditeur();
         void LoadMap();
         void ChangerTiles(TilesEditeur *nouveauTile);
@@ -60,6 +60,7 @@ class MapEditeur
 
         int hauteur;
         int largeur;
+        int taille;
 
 
         SDL_Rect positionCarte;

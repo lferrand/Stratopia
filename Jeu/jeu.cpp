@@ -1,13 +1,13 @@
 #include "jeu.h"
 
-Jeu::Jeu()
+Jeu::Jeu(int t)
 {
     jeuFenetre = SDL_CreateWindow("Stratopia jeu", 30, 30, 1024, 640, SDL_WINDOW_SHOWN | SDL_WINDOW_FULLSCREEN_DESKTOP);
     renderer= SDL_CreateRenderer(jeuFenetre, -1, 0);
     joueurControlleur=new PlayerController(uniteJoueur,uniteOrdinateur,renderer);
     startTick=-1;
     tempsEcoule=0;
-
+    taille=t;
     humainCaCTextures=new UnitCaCHumainTexture(renderer);
     orcCaCTextures=new UnitCaCOrcTexture(renderer);
     humainDistanceTextures=new UnitDistanceHumainTexture(renderer);
@@ -20,7 +20,7 @@ Jeu::Jeu()
 
 void Jeu::ChargerMap()
 {
-    maCarte=new MapJeu(renderer,jeuFenetre,uniteJoueur,uniteOrdinateur);
+    maCarte=new MapJeu(renderer,jeuFenetre,uniteJoueur,uniteOrdinateur,taille);
 }
 
 void Jeu::ChargerUnite()
@@ -44,7 +44,16 @@ void Jeu::ChargerUnite()
     SDL_FreeSurface(barreVieSurface);
     SDL_FreeSurface(vieSurface);
 
-    std::ifstream fichier("unite1.lvl", std::ios::in);
+    std::string nomFichier;
+    if(taille==1)
+    {
+        nomFichier="Save/unite1.lvl";
+    }
+    else
+    {
+        nomFichier="Save/unite2.lvl";
+    }
+    std::ifstream fichier(nomFichier.c_str(), std::ios::in);
     std::string mot;
     while(fichier >> mot && mot[0] !='-')
     {

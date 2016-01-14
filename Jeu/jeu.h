@@ -23,7 +23,7 @@
 class Jeu
 {
     public:
-        Jeu();
+        Jeu(int t);
         void ChargerMap();
         void ChargerUnite();
         void RecevoirEvent(SDL_Event event);
@@ -41,7 +41,7 @@ class Jeu
         SDL_Window *jeuFenetre;
         SDL_Renderer *renderer;
         PlayerController *joueurControlleur;
-
+        int taille;
         UnitDistanceOrcTexture *orcDistanceTextures;
         UnitDistanceHumainTexture *humainDistanceTextures;
         UnitCaCHumainTexture *humainCaCTextures;

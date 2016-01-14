@@ -16,7 +16,7 @@ class MapJeu
 {
     public:
         MapJeu();
-        MapJeu(SDL_Renderer *render, SDL_Window *w,std::vector<Unit*> &uniteJ,std::vector<Unit*> &uniteO);
+        MapJeu(SDL_Renderer *render, SDL_Window *w,std::vector<Unit*> &uniteJ,std::vector<Unit*> &uniteO,int taille);
         void LoadMap();
         void LoadMiniMap();
         virtual ~MapJeu();
@@ -37,7 +37,7 @@ class MapJeu
         SDL_Texture *uniteEnnemieTexture;
         SDL_Texture *uiMiniMapTexture;
         SDL_Texture *selectionMiniMapTexture;
-
+        int taille;
         std::vector<Unit*> &uniteJoueur;
         std::vector<Unit*> &uniteOrdinateur;
 
